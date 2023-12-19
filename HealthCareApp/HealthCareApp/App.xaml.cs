@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace HealthCareApp1
+namespace HealthCareApp
 {
     /// <summary>
     /// Interaction logic for App.xaml
