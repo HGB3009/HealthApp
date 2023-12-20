@@ -9,12 +9,54 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Components\" />
+    <None Remove="Resources\Diagnosis_Logo.jpg" />
+    <None Remove="Resources\Fitness_Logo.png" />
+    <None Remove="Resources\Home_Logo.jpg" />
+    <None Remove="Resources\Logo.jpg" />
+    <None Remove="Resources\Logout_Logo.jpg" />
+    <None Remove="Resources\Nutrition_Logo.png" />
+    <None Remove="Resources\Reminders_Logo.png" />
+    <None Remove="Resources\screenSignIn.jpg" />
+    <None Remove="Resources\screenSignIn.png" />
+    <None Remove="Resources\Setting_Logo.jpg" />
+    <None Remove="Resources\Sleep_Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Validations\" />
-    <Folder Include="Resources\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Diagnosis_Logo.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Home_Logo.jpg" />
+    <Resource Include="Resources\Logo.jpg" />
+    <Resource Include="Resources\Logout_Logo.jpg" />
+    <Resource Include="Resources\screenSignIn.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Setting_Logo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Fitness_Logo.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Nutrition_Logo.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Reminders_Logo.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Sleep_Logo.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

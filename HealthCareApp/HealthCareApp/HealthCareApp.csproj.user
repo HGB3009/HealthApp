@@ -7,7 +7,30 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Components\MainScreenComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SignIn.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SymptomChecker.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Components\MainScreenComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceXAML\SymptomCheckerResource.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SignIn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SymptomChecker.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
