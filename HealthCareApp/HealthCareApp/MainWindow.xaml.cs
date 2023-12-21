@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using HealthCareApp.ViewModels;
+using HealthCareApp.Views;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +21,9 @@ namespace HealthCareApp
         public MainWindow()
         {
             InitializeComponent();
+            SymtompCheckerView symtompCheckerView = new SymtompCheckerView();
+            symtompCheckerView.ShowDialog();
+            this.Close();
         }
     }
 }

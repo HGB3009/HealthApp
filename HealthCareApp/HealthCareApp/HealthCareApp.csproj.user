@@ -10,10 +10,10 @@
     <Compile Update="Components\MainScreenComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\SignIn.xaml.cs">
+    <Compile Update="Views\SignInView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\SymptomChecker.xaml.cs">
+    <Compile Update="Views\SymtompCheckerView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -27,10 +27,10 @@
     <Page Update="ResourceXAML\SymptomCheckerResource.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\SignIn.xaml">
+    <Page Update="Views\SignInView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\SymptomChecker.xaml">
+    <Page Update="Views\SymtompCheckerView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

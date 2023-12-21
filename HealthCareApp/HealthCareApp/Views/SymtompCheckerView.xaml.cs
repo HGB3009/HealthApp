@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HealthCareApp.Views
 {
     /// <summary>
-    /// Interaction logic for SymptomChecker.xaml
+    /// Interaction logic for SymtompCheckerView.xaml
     /// </summary>
-    public partial class SymptomChecker : UserControl
+    public partial class SymtompCheckerView : Window
     {
-        public SymptomChecker()
+        public SymtompCheckerView()
         {
             InitializeComponent();
         }

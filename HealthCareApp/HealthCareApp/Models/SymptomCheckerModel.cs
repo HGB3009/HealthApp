@@ -18,9 +18,13 @@ namespace HealthCareApp.Models
             public string Token { get; set; }
             public int ValidThrough { get; set; }
         }
+        public class ComboBoxSymptoms
+        {
+            public List<string> symptomps;
+        }
         public class rootSymptoms
         {
-            public List<symptom> symptoms = new List<symptom>();
+            public List<symptom> symptoms=new List<symptom>();
         }
     }
 }
