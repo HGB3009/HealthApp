@@ -18,17 +18,31 @@ namespace HealthCareApp.ViewModels
 {
     internal class SymptomCheckerViewModel:BaseViewModel
     {
-
-        public DataTable Items = new DataTable();
-        string aaa;
-        public string test
+        public List<string> temp = new List<string>(); 
+        public List<string> Items
         {
-            get { return aaa; }
+            get { return temp; }
             set
             {
-                test = value;
-                OnPropertyChanged("aaa");
+                temp = value;
+                OnPropertyChanged("Items");
             }
+        }
+        public string curSymptoms;
+        public string dataOfSymptomBox
+        {
+            get { return curSymptoms; }
+            set
+            {
+                curSymptoms = value;
+                OnPropertyChanged("dataOfSymptomBox");
+            }
+        }
+        public string selectedItem="";
+        public void SelectedItemChanged()
+        {
+            curSymptoms += '\n' + selectedItem;
+           
         }
         bool successAccess = false;
         public SymptomCheckerViewModel()
@@ -42,7 +56,8 @@ namespace HealthCareApp.ViewModels
         string token;
 
         Autherity autherity;
-        public rootSymptoms ListSymptoms = new rootSymptoms();
+        rootSymptoms ListSymptoms=new rootSymptoms();
+        
         private async void LoadToken()
         {
             token = await getToken();
@@ -50,6 +65,8 @@ namespace HealthCareApp.ViewModels
         private async void LoadListSymptom()
         {
             string result = await getListSymptoms(url, token);
+            File.WriteAllText("DataSymptoms.txt", result);
+            ConverToObject(result);
         }
         private async Task<string> getToken()
         {
@@ -87,17 +104,7 @@ namespace HealthCareApp.ViewModels
                 HttpResponseMessage responseMessage = await client.GetAsync(urlFormat);
                 if (responseMessage.IsSuccessStatusCode)
                 {
-                    string json = await responseMessage.Content.ReadAsStringAsync();
-                    ListSymptoms = JsonConvert.DeserializeObject<rootSymptoms>(json);
-                    aaa = json;
-                    Items = ConvertListToDataTable();
-                    //rootSymptoms Symptoms = JsonConvert.DeserializeObject<rootSymptoms>(json);
-
-                    //for (int i = 0; i < Symptoms.symptoms.Count; i++)
-                    //{
-                    //    File.AppendAllText("dataSymptoms.txt", "ID: " + Symptoms.symptoms[i].ID + " Name: " + Symptoms.symptoms[i].Name + Environment.NewLine);
-                    //}
-                    return "Complete get List of Symptoms";
+                    return await responseMessage.Content.ReadAsStringAsync();
                 }
                 else
                 {
@@ -119,39 +126,13 @@ namespace HealthCareApp.ViewModels
                 symptom newSymptoms = new symptom();
                 newSymptoms.Name = Nametemp;
                 newSymptoms.ID = IDtemp;
-
+                temp.Add(Nametemp);
                 ListSymptoms.symptoms.Add(newSymptoms);
             }
-            for (int j = 0; j < ListSymptoms.symptoms.Count; j++)
-                File.AppendAllText("dataSymptoms.txt", "ID: " + ListSymptoms.symptoms[j].ID + " Name: " + ListSymptoms.symptoms[j].Name + Environment.NewLine);
         }
-        public DataTable ConvertListToDataTable()
+        public void ComboBoxSymptoms_SelectionChanged()
         {
-            DataTable dataTable = new DataTable();
-
-            // Use reflection to get the properties of the Person class
-            var properties = typeof(symptom).GetProperties();
-
-            // Create columns in DataTable based on the properties of the Person class
-            foreach (var property in properties)
-            {
-                dataTable.Columns.Add(property.Name, property.PropertyType);
-            }
-
-            // Add rows to DataTable based on the data in the List
-            foreach (var symptom in ListSymptoms.symptoms)
-            {
-                DataRow row = dataTable.NewRow();
-
-                foreach (var property in properties)
-                {
-                    row[property.Name] = property.GetValue(symptom);
-                }
-
-                dataTable.Rows.Add(row);
-            }
-
-            return dataTable;
+            
         }
 
         //private async void btnDiagnosis_Click(object sender, RoutedEventArgs e)
