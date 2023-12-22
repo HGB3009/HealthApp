@@ -28,29 +28,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Diagnosis_Logo.jpg">
+    <Resource Include="Resources\Images\Diagnosis_Logo.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Home_Logo.jpg" />
-    <Resource Include="Resources\Logo.jpg" />
-    <Resource Include="Resources\Logout_Logo.jpg" />
-    <Resource Include="Resources\screenSignIn.jpg">
+    <Resource Include="Resources\Images\Home_Logo.jpg" />
+    <Resource Include="Resources\Images\Logo.jpg" />
+    <Resource Include="Resources\Images\Logout_Logo.jpg" />
+    <Resource Include="Resources\Images\screenSignIn.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Setting_Logo.jpg" />
+    <Resource Include="Resources\Images\Setting_Logo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\Fitness_Logo.jpg">
+    <None Update="Resources\Images\Fitness_Logo.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Nutrition_Logo.jpg">
+    <None Update="Resources\Images\Nutrition_Logo.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Reminders_Logo.jpg">
+    <None Update="Resources\Images\Reminders_Logo.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Sleep_Logo.jpg">
+    <None Update="Resources\Images\Sleep_Logo.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </None>
   </ItemGroup>
