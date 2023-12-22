@@ -21,7 +21,7 @@
     <Page Update="Components\MainScreenComponent.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Resources\ButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\MainResources.xaml">
