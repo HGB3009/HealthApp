@@ -5,8 +5,250 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthCareApp.Views"
         mc:Ignorable="d"
-        Title="AddMealView" Height="450" Width="800">
-    <Grid>
         
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+         FontFamily="{DynamicResource MaterialDesignFont}" 
+         d:DesignHeight="650" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+           
+            <Button
+                FontSize="20"
+                Height="auto"
+                Background="Black"
+                Margin="10,0,0,0"
+                Grid.Column="1"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                ToolTip="MaterialDesignRaisedButton with Round Corners"> 
+                <TextBlock Text="Cancel" />
+            </Button>
+            
+            <Button
+                FontSize="20"
+                Height="auto"
+                Background="{StaticResource PrimaryColor}"
+                Margin="10,0,0,0"
+                Grid.Column="2"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                ToolTip="MaterialDesignRaisedButton with Round Corners">
+                <TextBlock Text="Cancel" />
+            </Button>
+
+
+        </Grid>
+        <TextBlock Grid.Row="0"
+                   Text="Add Meal"
+                   Foreground="{StaticResource PrimaryColor}"
+                   TextAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="60px"
+                   FontWeight="Bold"></TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card Width="100" Height="100" Margin="78,40,79,294">
+                <Image Source="/Resources/Images/MealName.jpg" Width="90" Height="90"></Image>
+            </materialDesign:Card>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.02*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Grid.Row="0" Source="/Resources/Images/MealTime.jpg" Height="auto" Margin="10,10,10,10"></Image>
+                <Image Grid.Column="0" Grid.Row="1" Source="/Resources/Images/MealName.jpg" Height="auto" Margin="10,10,10,10"></Image>
+                <Image Grid.Column="0" Grid.Row="2" Source="/Resources/Images/DateMeal.jpg" Height="auto" Margin="10,10,10,10"></Image>
+                <Image Grid.Column="0" Grid.Row="3" Source="/Resources/Images/quatity.jpg" Height="auto" Margin="10,10,10,10"></Image>
+                <Image Grid.Column="0" Grid.Row="4" Source="/Resources/Images/unit.jpg" Height="auto" Margin="10,10,10,10"></Image>
+                <Image Grid.Column="0" Grid.Row="5" Source="/Resources/Images/calories.jpg" Height="auto" Margin="10,10,10,10"></Image>
+
+                <Line
+                    Grid.Row="0" Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    X1="0" Y1="0"
+                    X2="0" Y2="30"
+                    StrokeThickness="1"
+                    Stroke="Gray"></Line>
+                <Line
+                    Grid.Row="1" Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    X1="0" Y1="0"
+                    X2="0" Y2="30"
+                    StrokeThickness="1"
+                    Stroke="Gray"></Line>
+                <Line
+                    Grid.Row="2" Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    X1="0" Y1="0"
+                    X2="0" Y2="30"
+                    StrokeThickness="1"
+                    Stroke="Gray"></Line>
+                <Line
+                    Grid.Row="3" Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    X1="0" Y1="0"
+                    X2="0" Y2="30"
+                    StrokeThickness="1"
+                    Stroke="Gray"></Line>
+                <Line
+                    Grid.Row="4" Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    X1="0" Y1="0"
+                    X2="0" Y2="30"
+                    StrokeThickness="1"
+                    Stroke="Gray"></Line>
+                <Line
+                    Grid.Row="5" Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    X1="0" Y1="0"
+                    X2="0" Y2="30"
+                    StrokeThickness="1"
+                    Stroke="Gray"></Line>
+
+                <ComboBox
+                    Grid.Column="2"
+                    Margin="0,0,20,0"
+                    FontSize="22"
+                    MinWidth="128"
+                    materialDesign:ColorZoneAssist.Mode="SecondaryLight"
+                    materialDesign:HintAssist.Hint="Meal Time"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource SecondaryHueMidBrush}" 
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBoxItem Content="BreakFast" />
+                        <ComboBoxItem Content="Lunch"/>
+                        <ComboBoxItem Content="Late lunch" />
+                        <ComboBoxItem Content="Dinner" />
+                        <ComboBoxItem Content="Supper" />
+                </ComboBox> 
+                <TextBox
+                    Grid.Column="2" Grid.Row="1"
+                    FontSize="22"
+                    Margin="0,0,20,0"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="Meal Name"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <DatePicker
+                    Grid.Row="2" Grid.Column="2"
+                    Width="auto"
+                    FontSize="22"
+                    Margin="0,0,20,0"
+                    materialDesign:HintAssist.Hint="Custom"> 
+                    <DatePicker.Resources>
+                        <Style
+                            x:Key="CustomCalendarDayButton"
+                            TargetType="CalendarDayButton"
+                            BasedOn="{StaticResource MaterialDesignCalendarDayButton}"> 
+                            <Setter
+                                Property="materialDesign:CalendarAssist.SelectionColor"
+                                Value="#B2F39B" /> 
+                            <Setter
+                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                Value="Black" /> 
+                        </Style>
+                        <Style
+                            x:Key="CustomCalendarButton"
+                            TargetType="CalendarButton"
+                            BasedOn="{StaticResource MaterialDesignCalendarButton}"> 
+                            <Setter
+                                Property="materialDesign:CalendarAssist.SelectionColor"
+                                Value="#B2F39B" /> 
+                            <Setter
+                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                Value="Black" /> 
+                        </Style>
+                        <Style
+                            x:Key="CustomCalendar"
+                            TargetType="{x:Type Calendar}"
+                            BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}"> 
+                            <Setter
+                                Property="Background"
+                                Value="#343C3F" /> 
+                            <Setter
+                                Property="CalendarButtonStyle"
+                                Value="{StaticResource CustomCalendarButton}" /> 
+                            <Setter
+                                Property="CalendarDayButtonStyle"
+                                Value="{StaticResource CustomCalendarDayButton}" /> 
+                            <Setter
+                                Property="Foreground"
+                                Value="White" /> 
+                            <Setter
+                                Property="materialDesign:CalendarAssist.HeaderBackground"
+                                Value="#A2E9FF" /> 
+                            <Setter
+                                Property="materialDesign:CalendarAssist.HeaderForeground"
+                                Value="Black" /> 
+                        </Style>
+                        <Style
+                            TargetType="DatePicker"
+                            BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}"> 
+                            <Setter
+                                Property="CalendarStyle"
+                                Value="{StaticResource CustomCalendar}" /> 
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+                <TextBox
+                    Grid.Column="2" Grid.Row="3"
+                    FontSize="22"
+                    Margin="0,0,20,0"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="Quantity"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <TextBox
+                    Grid.Column="2" Grid.Row="4"
+                    FontSize="22"
+                    Margin="0,0,20,0"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="Unit"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <TextBox
+                    Grid.Column="2" Grid.Row="5"
+                    FontSize="22"
+                    Margin="0,0,20,0"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="Calories"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
