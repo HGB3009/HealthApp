@@ -10,6 +10,18 @@
     <Compile Update="Components\MainScreenComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AddMealView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\CalculateCaloriesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\FitnessView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NutrientsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\SignInView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +40,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\MainResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddMealView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CalculateCaloriesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\FitnessView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NutrientsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SignInView.xaml">
