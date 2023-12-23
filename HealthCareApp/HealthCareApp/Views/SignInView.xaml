@@ -15,18 +15,28 @@
         <Grid.Background>
             <ImageBrush ImageSource="\Resources\Images\screenSignIn.jpg"/>
         </Grid.Background>
-        <Label 
-            x:Name="appName" 
-            Content="Your Healthcare Companion"     
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top" 
-            Height="170" 
-            Width="850" 
-            Padding="60"
-            VerticalContentAlignment="Stretch" 
-            FontSize="46" 
-            Foreground="{StaticResource White}" 
-            FontWeight="Bold"/>
+        <Grid HorizontalAlignment="Left" 
+              VerticalAlignment="Top" 
+              Height="170" 
+              Width="850" 
+              Margin="40, 0, 0, 0"
+              >
+            <Grid
+                HorizontalAlignment="Left"
+                Height="100" 
+                Width="200" 
+                >
+            </Grid>
+            <Label
+                x:Name="appName" 
+                Content="Your Healthcare Companion"
+                FontSize="46" 
+                Foreground="{StaticResource White}" 
+                FontWeight="Bold"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Right"/>
+            
+        </Grid>
         <Rectangle
             Fill="White"
             Height="480"
@@ -149,16 +159,17 @@
                     FontSize="18" 
                     HorizontalAlignment="Center"                  
                     VerticalAlignment="Top" 
-                    Foreground="#FF7222"
+                    Foreground="{StaticResource Orange}"
                     FontWeight="Medium">
             </TextBlock>
 
             <TextBlock Text="Forgot password?" 
-                           FontSize="16" 
-                           VerticalAlignment="Top"
-                           Grid.Row="3" Foreground="#FF7222"
-                           Margin="229,0,43,0"
-                           FontWeight="Medium">
+                       FontSize="16" 
+                       VerticalAlignment="Top"
+                       Grid.Row="3" 
+                       Foreground="{StaticResource Orange}"
+                       Margin="229,0,43,0"
+                       FontWeight="Medium">
             </TextBlock>
 
         </Grid>
