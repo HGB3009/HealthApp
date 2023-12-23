@@ -38,7 +38,7 @@
                         <ColumnDefinition Width="0.15*"></ColumnDefinition>
                         <ColumnDefinition Width="0.85*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image Source="/Resources/Images/MealName.jpg" Height="55" VerticalAlignment="Bottom"></Image>
+                    <Image Source="/Resources/Images/MealName.jpg" Height="40" VerticalAlignment="Bottom"></Image>
                     <Line X1="10" Y1="10"
                           X2="10" Y2="60"
                           HorizontalAlignment="Right"
@@ -58,7 +58,7 @@
                         <ColumnDefinition Width="0.15*"></ColumnDefinition>
                         <ColumnDefinition Width="0.85*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image Source="/Resources/Images/quatity.jpg" Height="55" VerticalAlignment="Bottom"></Image>
+                    <Image Source="/Resources/Images/quatity.jpg" Height="40" VerticalAlignment="Bottom"></Image>
                     <Line X1="10" Y1="10"
                       X2="10" Y2="60"
                       HorizontalAlignment="Right"
@@ -78,7 +78,7 @@
                         <ColumnDefinition Width="0.15*"></ColumnDefinition>
                         <ColumnDefinition Width="0.85*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image Source="/Resources/Images/Unit.jpg" Height="55" VerticalAlignment="Top"></Image>
+                    <Image Source="/Resources/Images/Unit.jpg" Height="40" VerticalAlignment="Bottom"></Image>
                     <Line X1="10" Y1="10"
                           X2="10" Y2="60"
                           HorizontalAlignment="Left"
@@ -110,11 +110,77 @@
                     <TextBox x:Name="IngredientsBox"></TextBox>
                 </Border>
             </Grid>
-            <materialDesign:Card Grid.Column="1">
+            <materialDesign:Card Grid.Column="1" Margin="10,0,10,0">
                 <Grid>
-                    <Grid.Effect>
-                        <DropShadowEffect BlurRadius="20"></DropShadowEffect>
-                    </Grid.Effect>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Nutrition Facts"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"
+                               ></TextBlock>
+                    <Line Stroke="Black"
+                          StrokeThickness="1"
+                          X1="0" Y1="0"
+                          X2="430" Y2="0"
+                          Grid.Row="0"
+                          Margin="10,0,10,2"
+                          VerticalAlignment="Bottom"></Line>
+                    <TextBlock Text="Amount Per Serving"
+                               VerticalAlignment="Bottom"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Margin="10,0,0,3"
+                               Foreground="Black"
+                               Grid.Row="1"/>
+                    <Line Stroke="Black"
+                          StrokeThickness="22"
+                          X1="0" Y1="0"
+                          X2="430" Y2="0"
+                          Margin="10,1,10,0"
+                          VerticalAlignment="Top" Grid.Row="1"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Calories"
+                                   FontSize="29"
+                                   FontWeight="Bold"
+                                   Margin="10,0,0,0"
+                                   VerticalAlignment="Top"
+                                   Foreground="Black"></TextBlock>
+                        <TextBlock x:Name="caloriesBox"
+                                   Text="1144"
+                                   FontSize="29"
+                                   FontWeight="Bold"
+                                   Margin="0,0,10,0"
+                                   HorizontalAlignment="Right"
+                                   Foreground="Black"
+                                   Grid.Column="1"></TextBlock>
+                    </Grid>
                 </Grid>
             </materialDesign:Card>
         </Grid>
@@ -131,7 +197,7 @@
                 <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-        <Button 
+            <Button 
                 
                 Margin="10"
                 Grid.Column="1"
@@ -141,21 +207,21 @@
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 ToolTip="MaterialDesignRaisedButton with Round Corners">
-            <TextBlock Text="Cancel" Foreground="White" />
-        </Button>
-            
-        <Button Margin="10"
+                <TextBlock Text="Cancel" Foreground="White" />
+            </Button>
+
+            <Button Margin="10"
                 Grid.Column="2"
                 Background="{StaticResource PrimaryColor}"
                 Height="auto"
                 materialDesign:ButtonAssist.CornerRadius="10"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
-                ToolTip="MaterialDesignRaisedButton with Round Corners"> 
-            <TextBlock Text="Calculate" Foreground="White" />
-        </Button>
+                ToolTip="MaterialDesignRaisedButton with Round Corners">
+                <TextBlock Text="Calculate" Foreground="White" />
+            </Button>
         </Grid>
-        
+
 
     </Grid>
 </Window>
