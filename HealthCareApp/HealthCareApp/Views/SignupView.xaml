@@ -4,21 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthCareApp.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="SignupView"
         Height="600"
         Width="800"
-        WindowStartupLocation="CenterScreen" >
+        WindowStartupLocation="CenterScreen" 
+        FontFamily="Poppins">
     <Border >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="5*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Label
+            <Grid Grid.Row="0">
+                <Label
                 Content="Sign Up" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center"
@@ -29,20 +31,394 @@
                 Grid.Row="0"/>
             </Grid>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <Rectangle Grid.Column="1" Width="1" Fill="Black" VerticalAlignment="Stretch" />
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid>
+                            <Rectangle 
+                                x:Name="recImage"
+                                StrokeDashArray="4 2" 
+                                Stroke="{StaticResource PrimaryColor}" 
+                                StrokeThickness="4" 
+                                RadiusX="4" 
+                                RadiusY="4"
+                                Width="150"
+                                Height="150" 
+                                Margin="20"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon 
+                                x:Name="iconImage" 
+                                Kind="FileImageOutline" 
+                                Foreground="{StaticResource PrimaryColor}"
+                                Width="64" 
+                                Height="54"
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Center"  
+                                Margin="65"/>
+
+                            <Button
+                                Height="50"
+                                Width="170"
+                                Margin="20"
+                                materialDesign:ButtonAssist.CornerRadius="5"
+                                HorizontalAlignment="Right" 
+                                VerticalAlignment="Center" 
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                Background="{StaticResource PrimaryColor}"
+                                BorderBrush="{StaticResource LightBlackColor}"
+                                ToolTip="MaterialDesignRaisedLightButton with Round Corners">
+                                <TextBlock
+                                    Text="Choose your image" />
+                            </Button>
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid
+                        Width="300" 
+                        Height="50"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Grid.Row="1">
+                        <materialDesign:PackIcon 
+                            Kind="Account" 
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30"
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"  
+                            Margin="0" />
+                        <TextBox 
+                            x:Name="Username"
+                            Text="{Binding Username}"
+                            materialDesign:HintAssist.Hint="Username" 
+                            Margin="0" 
+                            Width="250"
+                            Height="50" 
+                            HorizontalAlignment="Right" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            FontSize="16" 
+                            BorderBrush="{StaticResource PrimaryColor}" 
+                            TabIndex="1" 
+                            VerticalAlignment="Center"
+                            CaretBrush="{StaticResource PrimaryColor}"
+                            FontWeight="Medium">
+
+                        </TextBox>
+                    </Grid>
+
+                    <Grid 
+                        Width="300"  
+                        Height="50"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Grid.Row="2">
+                        <materialDesign:PackIcon 
+                            Kind="Lock" 
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Margin="0" />
+                        <PasswordBox
+                            x:Name="Password"
+                            materialDesign:HintAssist.Hint="Password" 
+                            Margin="0" 
+                            Width="250" 
+                            Height="50" 
+                            HorizontalAlignment="Right" 
+                            BorderBrush="{StaticResource PrimaryColor}"
+                            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                            FontSize="16" 
+                            TabIndex="2" 
+                            VerticalAlignment="Center"
+                            CaretBrush="{StaticResource PrimaryColor}" 
+                            FontWeight="SemiBold" 
+                            Padding="2,0,0,0" >
+                        </PasswordBox>
+                    </Grid>
+                    <Grid 
+                        Width="300"  
+                        Height="50"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Grid.Row="3">
+                        <materialDesign:PackIcon 
+                            Kind="Lock" 
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Margin="0" />
+                        <PasswordBox
+                            x:Name="RePassword"
+                            materialDesign:HintAssist.Hint="Re-enter Password" 
+                            Margin="0" 
+                            Width="250" 
+                            Height="50" 
+                            HorizontalAlignment="Right" 
+                            BorderBrush="{StaticResource PrimaryColor}"
+                            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                            FontSize="16" 
+                            TabIndex="2" 
+                            VerticalAlignment="Center"
+                            CaretBrush="{StaticResource PrimaryColor}" 
+                            FontWeight="SemiBold" 
+                            Padding="2,0,0,0" >
+                        </PasswordBox>
+                    </Grid>
+
+
+
+                </Grid>
+                <Rectangle Grid.Column="1" Width="2" Fill="Black" VerticalAlignment="Stretch" />
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid 
+                        Width="300"  
+                        Height="50"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Grid.Row="0">
+                        <materialDesign:PackIcon 
+                            Kind="CardAccountDetailsOutline" 
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Margin="0" />
+                        <TextBox 
+                            x:Name="Name"
+                            materialDesign:HintAssist.Hint="Name" 
+                            Margin="0" 
+                            Width="250"
+                            Height="50" 
+                            HorizontalAlignment="Right" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            FontSize="16" 
+                            BorderBrush="{StaticResource PrimaryColor}" 
+                            TabIndex="1" 
+                            VerticalAlignment="Center"
+                            CaretBrush="{StaticResource PrimaryColor}"
+                            FontWeight="Medium" />
+                    </Grid>
+
+                    <Grid 
+                        Width="300"  
+                        Height="50"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Grid.Row="1">
+                        <materialDesign:PackIcon 
+                            Kind="GenderMaleFemale" 
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Margin="0" />
+                        <ComboBox
+                            x:Name="Gender"
+                            Margin="0" 
+                            Width="250"
+                            Height="50" 
+                            HorizontalAlignment="Right" 
+                            materialDesign:ColorZoneAssist.Mode="SecondaryLight"
+                            materialDesign:HintAssist.HelperText="Select one gender"
+                            materialDesign:HintAssist.Hint="Gender"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryColor}"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                            FontSize="16" 
+                            TabIndex="1" 
+                            VerticalAlignment="Center"
+                            FontWeight="Medium" >
+                            <ComboBoxItem
+                                Content="Male" />
+                            <ComboBoxItem
+                                Content="Female" />
+                        </ComboBox>
+                    </Grid>
+                    <Grid 
+                        Width="300"  
+                        Height="50"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Grid.Row="2">
+                        <materialDesign:PackIcon 
+                            Kind="CardAccountPhoneOutline" 
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Margin="0" />
+                        <TextBox 
+                            x:Name="PhoneNumber"
+                            materialDesign:HintAssist.Hint="Phone Number"                           
+                            Margin="0" 
+                            Width="250"
+                            Height="50" 
+                            HorizontalAlignment="Right" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            FontSize="16" 
+                            BorderBrush="{StaticResource PrimaryColor}" 
+                            TabIndex="1" 
+                            VerticalAlignment="Center"
+                            CaretBrush="{StaticResource PrimaryColor}"
+                            FontWeight="Medium" />
+                    </Grid>
+
+                    <Grid 
+                        Width="300"  
+                        Height="50"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Grid.Row="3">
+                        <materialDesign:PackIcon 
+                            Kind="CakeVariant" 
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Margin="0" />
+                        <DatePicker
+                            x:Name="Birthday"
+                            materialDesign:HintAssist.Hint="Birthday" 
+                            Margin="0" 
+                            Width="250"
+                            Height="50"
+                            HorizontalAlignment="Right" 
+                            FontSize="16" 
+                            BorderBrush="{StaticResource PrimaryColor}" 
+                            TabIndex="1" 
+                            VerticalAlignment="Center"
+                            FontWeight="Medium" 
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                            />
+                    </Grid>
+
+                    <Grid 
+                        Width="300"  
+                        Height="50"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Grid.Row="4">
+                        <materialDesign:PackIcon 
+                            Kind="MapMarker" 
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Margin="0" />
+                        <TextBox 
+                            x:Name="Address"
+                            materialDesign:HintAssist.Hint="Address" 
+                            Margin="0" 
+                            Width="250"
+                            Height="50" 
+                            HorizontalAlignment="Right" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            FontSize="16" 
+                            BorderBrush="{StaticResource PrimaryColor}" 
+                            TabIndex="1" 
+                            VerticalAlignment="Center"
+                            CaretBrush="{StaticResource PrimaryColor}"
+                            FontWeight="Medium" />
+                    </Grid>
+
+                    <Grid 
+                        Width="300"  
+                        Height="50"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Grid.Row="5">
+                        <materialDesign:PackIcon 
+                            Kind="Email" 
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" 
+                            Margin="0" />
+                        <TextBox 
+                            x:Name="Email"
+                            materialDesign:HintAssist.Hint="Email" 
+                            Margin="0" 
+                            Width="250"
+                            Height="50" 
+                            HorizontalAlignment="Right" 
+                            FontSize="16" 
+                            BorderBrush="{StaticResource PrimaryColor}" 
+                            TabIndex="1" 
+                            VerticalAlignment="Center"
+                            FontWeight="Medium" 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            CaretBrush="{StaticResource PrimaryColor}"/>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Row="2">
+                <Button
+                    Height="50"
+                    Width="170"
+                    Margin="180, 0, 0, 0"
+                    materialDesign:ButtonAssist.CornerRadius="5"
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center" 
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Background="{StaticResource LightBlackColor}"
+                    BorderBrush="{StaticResource LightBlackColor}"
+                    ToolTip="MaterialDesignRaisedLightButton with Round Corners">
+                    <TextBlock
+                        Text="Cancel" />
+                </Button>
+
+                <Button
+                    Height="50"
+                    Width="170"
+                    Margin="0, 0, 180, 0"
+                    materialDesign:ButtonAssist.CornerRadius="5"
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center" 
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Background="{StaticResource PrimaryColor}"
+                    BorderBrush="{StaticResource LightBlackColor}"
+                    ToolTip="MaterialDesignRaisedLightButton with Round Corners">
+                    <TextBlock
+                        Text="Confirm" />
+                </Button>
+            </Grid>
         </Grid>
-        
-            
-        <Grid Grid.Row="2">
-            
-        </Grid>
-    </Grid>
     </Border>
 </Window>
