@@ -4,7 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HealthCareApp.Views"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:components="clr-namespace:HealthCareApp.Components"
+             Name="SCView"
+             
+        
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:uc="clr-namespace:HealthCareApp.Components"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:components="clr-namespace:HealthCareApp.Components"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -12,112 +18,139 @@
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
-             DataContext="{StaticResource SymptomVM}"
+             DataContext="{StaticResource SymptomCheckerVM}"
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="1200">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <materialDesign:Card Grid.Column="1" x:Name="SymptomsCard" Width="400" Height="500">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="3*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Border x:Name="BDroundSymptomBox" 
-                        BorderBrush="Black" 
-                        BorderThickness="1" 
-                        CornerRadius="15" 
-                        Width="350" Height="150"
-                        VerticalAlignment="Center">
-                    <TextBox x:Name="SymptomsBox" 
-                             Margin="5"
-                             BorderThickness="0"
-                             BorderBrush="White"
-                             Text=""
-                             TextWrapping="Wrap"></TextBox>
-                </Border>
-                <TextBlock Grid.Row="0" 
-                           Text="Symptoms" 
-                           VerticalAlignment="Top" 
-                           HorizontalAlignment="Left" 
-                           FontSize="20"
-                           FontWeight="Bold" Margin="22,0,0,0"></TextBlock>
-                <TextBlock Text="Symptoms List"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Grid.Row="1"
-                           FontWeight="Bold"
-                           FontSize="20" Margin="26,0,0,0"></TextBlock>
-                <Button
-                    Grid.Row="1"
+        <uc:MainScreenComponent></uc:MainScreenComponent>
+            <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Grid.Row="1" Grid.Column="1" x:Name="SymptomsCard" 
+                                 Width="auto" Height="auto"
+                                 Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="3*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border x:Name="BDroundSymptomBox" 
+                 BorderBrush="Black" 
+                 BorderThickness="1" 
+                 CornerRadius="15" 
+                 Width="350" Height="150"
+                 VerticalAlignment="Bottom">
+                        <TextBox x:Name="SymptomsBox"
+                      Margin="5"
+                        Height="auto"
+                      BorderThickness="0"
+                      BorderBrush="White"
+                      Text="{Binding TempSymptoms, Mode=TwoWay}"
+                      TextWrapping="Wrap"></TextBox>
+                    </Border>
+                    <TextBlock Grid.Row="0" 
+                    Text="Symptoms" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    FontSize="20"
+                    FontWeight="Bold" Margin="22,0,0,0"></TextBlock>
+                    <TextBlock Text="Symptoms List"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
-                      Width="150"
-                      Content="Dianosis"
-                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                      Style="{StaticResource MaterialDesignRaisedButton}"
-                      ToolTip="Resource name: MaterialDesignRaisedButton" Margin="222,0,0,0" />
-                <ComboBox
-                      Grid.Row="2"
-                      x:Name="ComboBoxSymptoms"
-                      Width="350"
-                      materialDesign:HintAssist.Hint="You are allowed to chose more than one symptom"
-                      materialDesign:TextFieldAssist.HasClearButton="True"
-                      IsEditable="True"
-             
-                      ItemsSource="{Binding Items}"
-                      Style="{StaticResource MaterialDesignFilledComboBox}" Margin="25,7,25,152"
-                      />
+                    Grid.Row="1"
+                    FontWeight="Bold"
+                    FontSize="20" Margin="26,0,0,0"></TextBlock>
+                    <Button
+                        x:Name="DiagnosisBtn" 
+                        Command="{Binding DiagnosisBtnCommand}"
+                        CommandParameter="{Binding ElementName=SCView}"
+             Grid.Row="1"
+             VerticalAlignment="Center"
+             HorizontalAlignment="Left"
+               Width="150"
+               Content="Diagnosis"
+               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+               Style="{StaticResource MaterialDesignRaisedButton}"
+               ToolTip="Resource name: MaterialDesignRaisedButton" Margin="222,0,0,0" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding DiagnosisBtnCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <ComboBox
+                            Grid.Row="2"
+                            x:Name="ComboBoxSymptoms"
+                            SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
+                            Width="300" 
+                            materialDesign:HintAssist.Hint="You are allowed to chose more than one symptom"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            IsEditable="True"
+                            ItemsSource="{Binding Items}"
+                            Style="{StaticResource MaterialDesignFilledComboBox}" Margin="52,7,53,136">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectionChangedItemCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
 
-            </Grid>
-        </materialDesign:Card>
-        <materialDesign:Card Grid.Column="2" x:Name="ResultCard" Width="400" Height="500">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="6*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Result"
-                           FontSize="20"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"
-                           Grid.Row="0"
-                           HorizontalAlignment="Center"></TextBlock>
-                <Border x:Name="BDroundResult"
-                        BorderBrush="Black"
-                        BorderThickness="1"
-                        CornerRadius="15"
-                        Width="350"
-                        Height="280"
-                        Grid.Row="1">
-                    <TextBlock x:Name="ResultBlock"></TextBlock>
-                </Border>
-                <TextBlock Text="Advice"
-                           FontSize="20"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Grid.Row="2"></TextBlock>
-                <Border x:Name="BDroundAdvice"
-                        Grid.Row="3"
-                        Width="350"
-                        Height="80"
-                        BorderThickness="1"
-                        BorderBrush="Black"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        CornerRadius="15">
-                    <TextBlock x:Name="AdviceBlock"></TextBlock>
-                </Border>
-            </Grid>
-        </materialDesign:Card>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1" Grid.Column="2" x:Name="ResultCard" 
+                                 Width="auto" Height="auto"
+                                 Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="6*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Result"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    VerticalAlignment="Center"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"></TextBlock>
+                    <Border x:Name="BDroundResult"
+                            VerticalAlignment="Center"
+                 BorderBrush="Black"
+                 BorderThickness="1"
+                 CornerRadius="15"
+                 Width="350"
+                 Height="250"
+                 Grid.Row="1">
+                        <TextBlock x:Name="ResultBlock"></TextBlock>
+                    </Border>
+                    <TextBlock Text="Advice" Height="auto"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Grid.Row="2"></TextBlock>
+                    <Border x:Name="BDroundAdvice"
+                 Grid.Row="3"
+                 Width="350"
+                 Height="80"
+                 BorderThickness="1"
+                 BorderBrush="Black"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 CornerRadius="15">
+                        <TextBlock x:Name="AdviceBlock"></TextBlock>
+                    </Border>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
     </Grid>
 </Window>

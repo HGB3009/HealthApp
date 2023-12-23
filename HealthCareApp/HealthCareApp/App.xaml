@@ -11,7 +11,6 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
                 <ResourceDictionary Source="/Resources/MainResources.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/ReSourceXAML/SymptomCheckerReSource.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/ButtonStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/ColorPalette.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
