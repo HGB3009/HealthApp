@@ -10,7 +10,34 @@
     <Compile Update="Components\MainScreenComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AddMealView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\CalculateCalories.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\FitnessDashBoardView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\MainScreenView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NutrientsDashBoardView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ResetPasswordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SettingDashBoardView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\SignInView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SignUpView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SleepDashBoardView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\SymtompCheckerView.xaml.cs">
@@ -24,10 +51,37 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ResourceXAML\SymptomCheckerResource.xaml">
+    <Page Update="ResourceXAML\MainResource.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddMealView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CalculateCalories.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\FitnessDashBoardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainScreenView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NutrientsDashBoardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ResetPasswordView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SettingDashBoardView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SignInView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SignUpView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SleepDashBoardView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SymtompCheckerView.xaml">

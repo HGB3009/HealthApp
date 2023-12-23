@@ -10,49 +10,55 @@
 
   <ItemGroup>
     <None Remove="Resources\Diagnosis_Logo.jpg" />
+    <None Remove="Resources\Fitness_Logo.jpg" />
     <None Remove="Resources\Fitness_Logo.png" />
     <None Remove="Resources\Home_Logo.jpg" />
     <None Remove="Resources\Logo.jpg" />
     <None Remove="Resources\Logout_Logo.jpg" />
+    <None Remove="Resources\Message _Box_ Icon.jpg" />
+    <None Remove="Resources\Nutrition_Logo.jpg" />
     <None Remove="Resources\Nutrition_Logo.png" />
+    <None Remove="Resources\personAvata.jpg" />
+    <None Remove="Resources\Reminders_Logo.jpg" />
     <None Remove="Resources\Reminders_Logo.png" />
     <None Remove="Resources\screenSignIn.jpg" />
     <None Remove="Resources\screenSignIn.png" />
     <None Remove="Resources\Setting_Logo.jpg" />
+    <None Remove="Resources\Sleep_Logo.jpg" />
     <None Remove="Resources\Sleep_Logo.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\Diagnosis_Logo.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Fitness_Logo.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Home_Logo.jpg" />
     <Resource Include="Resources\Logo.jpg" />
     <Resource Include="Resources\Logout_Logo.jpg" />
+    <Resource Include="Resources\Message _Box_ Icon.jpg" />
+    <Resource Include="Resources\Nutrition_Logo.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\personAvata.jpg" />
+    <Resource Include="Resources\Reminders_Logo.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\screenSignIn.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Setting_Logo.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Resources\Fitness_Logo.jpg">
+    <Resource Include="Resources\Sleep_Logo.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Nutrition_Logo.jpg">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Reminders_Logo.jpg">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Sleep_Logo.jpg">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </None>
+    </Resource>
   </ItemGroup>
 
 </Project>

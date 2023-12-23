@@ -13,6 +13,7 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
+        DataContext="{StaticResource MainVM}"
         Title="MainWindow" Height="750" Width="1200">
     <Grid>
         

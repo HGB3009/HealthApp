@@ -1,5 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:viewmodel="clr-namespace:HealthCareApp.ViewModels"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <viewmodel:SymptomCheckerViewModel x:Key="SymptomVM"></viewmodel:SymptomCheckerViewModel>
+    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:SymptomCheckerViewModel x:Key="SymptomCheckerVM"></viewmodel:SymptomCheckerViewModel>
+    <viewmodel:MainScreenViewModel x:Key="MainScreenVM"></viewmodel:MainScreenViewModel>
 </ResourceDictionary>

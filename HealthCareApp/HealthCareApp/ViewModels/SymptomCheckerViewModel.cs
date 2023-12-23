@@ -13,11 +13,17 @@ using System.Windows;
 using static HealthCareApp.Models.SymptomCheckerModel;
 using Newtonsoft.Json;
 using System.IO;
+using System.Windows.Input;
+using System.Net.Http.Json;
+using System.ComponentModel;
+using static HealthCareApp.Models.SymptomCheckerModel.Autherity;
 
 namespace HealthCareApp.ViewModels
 {
-    internal class SymptomCheckerViewModel:BaseViewModel
+    public class SymptomCheckerViewModel:BaseViewModel
     {
+        public ICommand DiagnosisBtnCommand { get; set; }
+        public ICommand SelectionChangedItemCommand {  get; set; }
         public List<string> temp = new List<string>(); 
         public List<string> Items
         {
@@ -26,6 +32,26 @@ namespace HealthCareApp.ViewModels
             {
                 temp = value;
                 OnPropertyChanged("Items");
+            }
+        }
+        public string selectedItem;
+        public string SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                selectedItem = value; 
+                OnPropertyChanged("SelectedItem");
+            }
+        }
+        public string tempSymptoms;
+        public string TempSymptoms
+        {
+            get { return tempSymptoms; }
+            set
+            {
+                tempSymptoms = value;
+                OnPropertyChanged("TempSymptoms");
             }
         }
         public string curSymptoms;
@@ -38,17 +64,21 @@ namespace HealthCareApp.ViewModels
                 OnPropertyChanged("dataOfSymptomBox");
             }
         }
-        public string selectedItem="";
-        public void SelectedItemChanged()
-        {
-            curSymptoms += '\n' + selectedItem;
-           
-        }
         bool successAccess = false;
         public SymptomCheckerViewModel()
         {
             LoadToken();
             LoadListSymptom();
+            DiagnosisBtnCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) =>{
+                DiagnosisBtn_Click();
+            });
+            SelectionChangedItemCommand = new RelayCommand<object>((p) => { return p == null ? false : true; }, (p) => {
+                if(SelectedItem != null) 
+                {
+                    tempSymptoms+= SelectedItem.ToString();
+                }
+            });
+
         }
         string api_key = "Ff24Y_GMAIL_COM_AUT";
         string secret_key = "Mi6b9GEz38Lfm7ZKd";
@@ -65,7 +95,6 @@ namespace HealthCareApp.ViewModels
         private async void LoadListSymptom()
         {
             string result = await getListSymptoms(url, token);
-            File.WriteAllText("DataSymptoms.txt", result);
             ConverToObject(result);
         }
         private async Task<string> getToken()
@@ -130,35 +159,70 @@ namespace HealthCareApp.ViewModels
                 ListSymptoms.symptoms.Add(newSymptoms);
             }
         }
-        public void ComboBoxSymptoms_SelectionChanged()
+        private async void DiagnosisBtn_Click()
         {
-            
+            string fewSymptoms="33";
+            string gender="male";
+            string yearOfBirth = "1988";
+            string token = await getToken();
+            string result = await getDiagnosis(url, autherity.Token, gender, yearOfBirth, fewSymptoms);
+            int topAccIssueID = getTopIssueID_or_Acc(result,2);
+            double topAccIssue= getTopIssueID_or_Acc(result, 4);
+            LoadIssueInfo(topAccIssueID);
         }
-
-        //private async void btnDiagnosis_Click(object sender, RoutedEventArgs e)
-        //{
-        //    string fewSymptoms = SymptomsBox.Text;
-        //    MessageBox.Show(fewSymptoms);
-        //    string gender = Gender.Text;
-        //    string yearOfBirth = YearOfBirth.Text;
-        //    string token = await getToken();
-        //    string result = await getDiagnosis(url, autherity.Token, gender, yearOfBirth, fewSymptoms);
-        //    File.WriteAllText("Diagnosis.txt", result);
-        //}
-        //private async Task<string> getDiagnosis(string url, string token, string gender, string yearOfBirth, string fewSymtomps)
-        //{
-        //    using (HttpClient client = new HttpClient())
-        //    {
-        //        var uri = new Uri($"{url}diagnosis?token={token}&language=en-gb&symptoms=[{fewSymtomps}]&gender={gender}&year_of_birth={yearOfBirth}");
-        //        HttpResponseMessage responseMessage = await client.GetAsync(uri);
-        //        if (responseMessage.IsSuccessStatusCode)
-        //        {
-        //            return await responseMessage.Content.ReadAsStringAsync();
-        //        }
-        //        else
-        //            return $"Error:{responseMessage.StatusCode},{await responseMessage.Content.ReadAsStringAsync()}";
-        //    }
-        //}
-
+        private async Task<string> getDiagnosis(string url, string token, string gender, string yearOfBirth, string fewSymtomps)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var uri = new Uri($"{url}diagnosis?token={token}&language=en-gb&symptoms=[{fewSymtomps}]&gender={gender}&year_of_birth={yearOfBirth}&format=json");
+                HttpResponseMessage responseMessage = await client.GetAsync(uri);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return await responseMessage.Content.ReadAsStringAsync();
+                }
+                else
+                    return $"Error:{responseMessage.StatusCode},{await responseMessage.Content.ReadAsStringAsync()}";
+            }
+        }
+        private async void LoadIssueInfo(int issue_id)
+        {
+            string result = await getIssueInfo(issue_id);
+            issueInfo curIssuInfo=JsonConvert.DeserializeObject<issueInfo>(result);
+            MessageBox.Show(curIssuInfo.Name);
+        }
+        private async Task<string>getIssueInfo(int issue_id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var uri = new Uri($"{url}issues/{issue_id}/info?token={token}&language=en-gb");
+                HttpResponseMessage response=await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    return $"Error:{response.StatusCode},{await response.Content.ReadAsStringAsync()}";
+                }
+            }
+        }
+        private int getTopIssueID_or_Acc(string issueList,int num_dot) // numdot=2 : lay ID; numdot=4: lay Acc
+        {
+            string result = "";
+            int dot = 0;
+            int i = 0;
+            while (dot!=num_dot)
+            {
+                if (issueList[i] == ':')
+                    dot++;
+                ++i;
+            }
+            while (issueList[i] != ',')
+            {
+                result += issueList[i];
+                ++i;
+            }
+            return int.Parse(result);
+        }
     }
 }
