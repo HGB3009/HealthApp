@@ -9,98 +9,118 @@
         Height="810" 
         Width="1440" 
         DataContext="{StaticResource SignInVM}"
-        WindowStartupLocation="CenterScreen" 
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}">
+        WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="\Resources\Images\screenSignIn.jpg"/>
         </Grid.Background>
-        <Border BorderBrush="#FF000000" x:Name="BDround" BorderThickness="0" CornerRadius="15">
-            <Border.BitmapEffect>
-                <DropShadowBitmapEffect></DropShadowBitmapEffect>
-            </Border.BitmapEffect>
-            <materialDesign:Card 
-                x:Name="SignInCard"
-                Height="400" 
-                Width="400" 
-                Margin="180"
-                HorizontalAlignment="Left">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    
-                    <TextBlock Text="Sign In" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Stretch" 
-                               FontSize="30" 
-                               Margin="0,12,0,30"/>
-                    
-                    <TextBox Grid.Row="1" Width="250"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        materialDesign:HintAssist.Hint="User Name"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
-                    
-                    <PasswordBox Width="250" Grid.Row="2" Height="39"
+        <Grid x:Name="SignInCard"
+              Height="520"
+              Width="400"
+              Margin="180, 0, 0, 0"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Center"
+              Background ="white">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="20" Opacity="0.4"/>
+            </Grid.Effect>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            
+
+            <Label Content="Sign In" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Stretch"
+                   Foreground= "{StaticResource PrimaryColor}"
+                   FontSize="40" 
+                   Margin="30"
+                   FontFamily="Poppins"
+                   FontWeight="Bold"/>
+
+            <!--<Grid 
+                Width="270" 
+                Height="50"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top"
+                Margin="0,140,0,0">
+                --><!--<materialDesign:PackIcon 
+                    Kind="Account" 
+                    Foreground="{StaticResource Gray2}"
+                    Width="30" 
+                    Height="30" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"  
+                    Margin="0" />
+                <TextBox 
+                    x:Name="txtUsername"
+                    Text="{Binding Username}"
+                    materialDesign:HintAssist.Hint="Tên đăng nhập" 
+                    Margin="0" 
+                    Width="220"
+                    Height="50" 
+                    HorizontalAlignment="Right" 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    FontSize="18" 
+                    BorderBrush="{StaticResource Primary}" 
+                    TabIndex="1" 
+                    VerticalAlignment="Center" 
+                    CaretBrush="{StaticResource Primary}" 
+                    FontWeight="Medium" 
+                    Padding="2,0,0,0" />--><!--
+            </Grid>-->
+
+            <PasswordBox Width="250" Grid.Row="2" Height="39"
                                  x:Name="FloatingPasswordBox"
                                  materialDesign:HintAssist.Foreground="Green"
                                  materialDesign:HintAssist.Hint="Password"
                                  materialDesign:TextFieldAssist.UnderlineBrush="Green"
                                  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-                    
-                    <Grid Grid.Row="3">
-                        <Button Width="150"
-                                Background="#82BBB2"
-                                materialDesign:ButtonAssist.CornerRadius="15"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Margin="125,25,125,10">
-                            <TextBlock Text="Log In" />
-                        </Button>
-                    </Grid>
-                    
-                    <TextBlock Text="Sign Up?" 
-                           Grid.Row="4" 
-                           FontSize="16" 
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" 
-                           Foreground="#FF7222"></TextBlock>
-                    
-                    <TextBlock Text="Forgot password?" 
-                           FontSize="12" 
-                           VerticalAlignment="Top" 
-                           
-                           Grid.Row="3" Foreground="#FF7222"
-                           Margin="229,0,43,0"></TextBlock>
-                    <materialDesign:PackIcon Kind="Account" Margin="28,31,0,0" Grid.Row="1" Height="27" Width="30" />
-                    <materialDesign:PackIcon Kind="Key" Margin="28,30,0,0" Grid.Row="2" Height="28" Width="30" />
 
-                    <Line
-                    X1="10" Y1="10"
-                    X2="10" Y2="40"
-                    StrokeThickness="1"
-                    Stroke="Gray" Margin="51,20,330,12" Grid.Row="1"
+            <Grid Grid.Row="3">
+                <Button Width="150"
+                        Background="#82BBB2"
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Margin="125,25,125,10">
+                    <TextBlock Text="Log In" />
+                </Button>
+            </Grid>
+
+            <TextBlock 
+                Text="Sign Up?" 
+                Grid.Row="4" 
+                FontSize="16" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Foreground="#FF7222"></TextBlock>
+
+            <TextBlock Text="Forgot password?" 
+                       FontSize="12" 
+                       VerticalAlignment="Top"
+                       Grid.Row="3" Foreground="#FF7222"
+                       Margin="229,0,43,0"></TextBlock>
+            <materialDesign:PackIcon Kind="Account" Margin="28,31,0,0" Grid.Row="1" Height="27" Width="30" />
+            <materialDesign:PackIcon Kind="Key" Margin="28,30,0,0" Grid.Row="2" Height="28" Width="30" />
+
+            <Line
+                        X1="10" Y1="10"
+                        X2="10" Y2="40"
+                        StrokeThickness="1"
+                        Stroke="Gray" Margin="51,20,330,12" Grid.Row="1"
                     />
-                    <Line
+            <Line
                             X1="10" Y1="10"
                             X2="10" Y2="40"
                             StrokeThickness="1"
                             Stroke="Gray" Margin="51,20,330,13" Grid.Row="2">
-                    </Line>
-
-                </Grid>
-            </materialDesign:Card>
-        </Border>
+            </Line>
+        </Grid>
     </Grid>
 </Window>

@@ -24,6 +24,9 @@
     <Page Update="Resources\ButtonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Resources\ColorPalette.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Resources\MainResources.xaml">
       <SubType>Designer</SubType>
     </Page>
