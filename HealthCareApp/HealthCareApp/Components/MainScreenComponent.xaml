@@ -145,6 +145,7 @@
                 <Button Grid.Row="2"
                         Width="100"
                         Content="Log out"
+                        Foreground="Black"
                         FontFamily="Inter"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignFlatDarkButton}"
@@ -158,7 +159,7 @@
                    VerticalAlignment="Center" 
                    HorizontalAlignment="Left" 
                    Margin="70,0,0,0"
-                   Foreground="SeaGreen"
+                   Foreground="{StaticResource PrimaryColor}"
                    FontWeight="Bold"/>
         <materialDesign:Card Grid.Row="0" Grid.Column="1"
                              Margin="10,0,0,10">
@@ -186,6 +187,7 @@
                 <Image x:Name="userAvarta" Grid.Column="3" Source="/Resources/Images/personAvata.jpg" Width="40"></Image>
                 <TextBlock x:Name="helloUserText" Text="Hello UserName!" FontSize="20" HorizontalAlignment="Left" 
                            VerticalAlignment="Center" Margin="60,0,0,0"
+                           Foreground="Black"
                            FontFamily="Poppins"></TextBlock>
             </Grid>
         </materialDesign:Card>
