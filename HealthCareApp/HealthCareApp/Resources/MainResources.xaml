@@ -9,4 +9,5 @@
     <viewmodels:MainScreenViewModel x:Key="MainScreenVM"></viewmodels:MainScreenViewModel>
     <viewmodels:NutrientsViewModel x:Key="NutrientsVM"></viewmodels:NutrientsViewModel>
     <viewmodels:FitnessViewModel x:Key="FitnessVM"></viewmodels:FitnessViewModel>
+    <viewmodels:CalculateCaloriesViewModel x:Key="CalculateCaloriesVM"></viewmodels:CalculateCaloriesViewModel>
 </ResourceDictionary> 
