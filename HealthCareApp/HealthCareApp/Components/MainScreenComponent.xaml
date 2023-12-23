@@ -1,19 +1,20 @@
-﻿<UserControl x:Class="HealthCareApp.Components.MainScreenComponent"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HealthCareApp.Components"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-     TextElement.FontWeight="Regular"
-     TextElement.FontSize="13"
-     TextOptions.TextFormattingMode="Ideal"
-     TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}"
-             mc:Ignorable="d" 
-             d:DesignHeight="750" d:DesignWidth="1200">
+﻿<UserControl   x:Class="HealthCareApp.Components.MainScreenComponent"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:HealthCareApp.Components"
+                mc:Ignorable="d" 
+               
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                TextElement.FontWeight="Regular"
+                TextElement.FontSize="13"
+                TextOptions.TextFormattingMode="Ideal"
+                TextOptions.TextRenderingMode="Auto"
+                Background="{DynamicResource MaterialDesignPaper}"
+                FontFamily="{DynamicResource MaterialDesignFont}"
+                d:DesignHeight="750" d:DesignWidth="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -23,69 +24,171 @@
             <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0" Grid.Column="1" Background="PaleGreen"></Grid>
-        <Grid Grid.Row="1" Grid.Column="1" Background="PaleGreen"></Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Background="{StaticResource MainBackgroundColor}"></Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Background="{StaticResource MainBackgroundColor}"></Grid>
         <materialDesign:Card x:Name="MainMenu" Grid.RowSpan="2" Grid.Row="0" Grid.Column="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="80"/>
-
                 </Grid.RowDefinitions>
-                <TabControl x:Name="MenuField" Grid.Row="1"
-                          Width="250"
-                          TabStripPlacement="Left" Grid.RowSpan="2">
-                    <TabItem
-                            Width="250"
-                            Header="Main Menu">
+                <TabControl x:Name="MenuField" 
+                            Width="auto" Height="500"
+                            Foreground="Black"
+                            Grid.Column="0" Grid.Row="1"
+                            TabStripPlacement="Left"
+                            VerticalAlignment="Top">
+
+                    <TabItem Width="250">
+                        <TabItem.Header>
+                            <Grid Width="220">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="103*"></ColumnDefinition>
+                                    <ColumnDefinition Width="117*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/Images/Home_Logo.jpg" Margin="38,0,38,-1"/>
+                                <TextBlock Grid.Column="1" Text="Home" FontSize="16"
+                                           FontFamily="Inter"
+                                           FontWeight="Medium"
+                                           VerticalAlignment="Center" Height="16"/>
+                            </Grid>
+                        </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                            Header="Fitness">
+                    <TabItem Width="250">
+                        <TabItem.Header>
+                            <Grid Width="220">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="103*"></ColumnDefinition>
+                                    <ColumnDefinition Width="117*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/Images/Fitness_Logo.jpg" Margin="36,0,38,-1"/>
+                                <TextBlock Grid.Column="1" Text="Fitness" FontSize="16" FontFamily="Inter"
+                        FontWeight="Medium"
+                        VerticalAlignment="Center" Height="16"/>
+                            </Grid>
+                        </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                            Header="Nutrition">
+                    <TabItem Width="250">
+                        <TabItem.Header>
+                            <Grid Width="220">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="103*"></ColumnDefinition>
+                                    <ColumnDefinition Width="117*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/Images/Nutrition_Logo.jpg" Margin="36,0,38,-1"/>
+                                <TextBlock Grid.Column="1" Text="Nutritions" FontSize="16" FontFamily="Inter"
+                        FontWeight="Medium"
+                        VerticalAlignment="Center" Height="16"/>
+                            </Grid>
+                        </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                            Header="Sleep">
+                    <TabItem Width="250">
+                        <TabItem.Header>
+                            <Grid Width="220">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="103*"></ColumnDefinition>
+                                    <ColumnDefinition Width="117*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/Images/Sleep_Logo.jpg" Margin="36,0,39,-1"/>
+                                <TextBlock Grid.Column="1" Text="Sleep" FontSize="16" FontFamily="Inter"
+                        FontWeight="Medium"
+                        VerticalAlignment="Center" Height="20"/>
+                            </Grid>
+                        </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                            Header="Dianosis">
+                    <TabItem Width="250">
+                        <TabItem.Header>
+                            <Grid Width="220">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="103*"></ColumnDefinition>
+                                    <ColumnDefinition Width="117*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/Images/Diagnosis_Logo.jpg" Margin="36,0,38,-1"/>
+                                <TextBlock Grid.Column="1" Text="Diagnosis" FontSize="16" FontFamily="Inter"
+                        FontWeight="Medium"
+                        VerticalAlignment="Center" Height="22"/>
+                            </Grid>
+                        </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                        Header="Reminder">
+                    <TabItem Width="250">
+                        <TabItem.Header>
+                            <Grid Width="220">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="103*"></ColumnDefinition>
+                                    <ColumnDefinition Width="117*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/Images/Reminders_Logo.jpg" Margin="34,0,38,-1"/>
+                                <TextBlock Grid.Column="1" Text="Remiders" FontSize="16" FontFamily="Inter"
+                        FontWeight="Medium"
+                        VerticalAlignment="Center" Height="16"/>
+                            </Grid>
+                        </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                            Header="Setting">
+                    <TabItem Width="250">
+                        <TabItem.Header>
+                            <Grid Width="220">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="103*"></ColumnDefinition>
+                                    <ColumnDefinition Width="117*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Resources/Images/Setting_Logo.jpg" Margin="34,0,38,-1"/>
+                                <TextBlock Grid.Column="1" Text="Setting" FontSize="16" FontFamily="Inter"
+                                           FontWeight="Medium"
+                                           VerticalAlignment="Center" Height="20"/>    
+                            </Grid>
+                        </TabItem.Header>
                     </TabItem>
                 </TabControl>
+
+
                 <Button Grid.Row="2"
-  Width="100"
-  Content="Log out"
-  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-  Style="{StaticResource MaterialDesignFlatDarkButton}"
-  ToolTip="MaterialDesignFlatButton" Margin="81,20,69,28"/>
-                <Image Source="/Resources/LogOut_Logo.jpg" Width="30" Height="30" Grid.Row="2" Margin="48,21,172,29"></Image>
+                        Width="100"
+                        Content="Log out"
+                        Foreground="Black"
+                        FontFamily="Inter"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFlatDarkButton}"
+                        ToolTip="MaterialDesignFlatButton" Margin="81,20,69,28"/>
+                <Image Source="/Resources/Images/LogOut_Logo.jpg" Width="30" Height="30" Grid.Row="2" Margin="48,21,172,29"></Image>
             </Grid>
         </materialDesign:Card>
-        <Image x:Name="HomeLogo" Source="/Resources/Home_Logo.jpg" Height="25" Width="25" Grid.Row="1" Margin="51,6,169,634"/>
-        <Image x:Name="FitnessLogo" Source="/Resources/Fitness_Logo.jpg" Height="25" Width="25" Grid.Row="1" Margin="49,54,171,586"/>
-        <Image x:Name="NutritionLogo" Source="/Resources/Nutrition_Logo.jpg" Height="25" Width="25" Grid.Row="1" Margin="50,100,170,540"/>
-        <Image x:Name="SleepLogo" Source="/Resources/Sleep_Logo.jpg" Height="25" Width="25" Grid.Row="1" Margin="50,148,170,492"/>
-        <Image x:Name="DiagnosisLogo" Source="/Resources/Diagnosis_Logo.jpg" Grid.Row="1" Height="25" Width="25" Margin="50,200,170,440"/>
-        <Image x:Name="RemindersLogo" Source="/Resources/Reminders_Logo.jpg" Height="25" Width="25" Grid.Row="1" Margin="50,245,170,395"/>
-        <Image x:Name="SettingLogo" Source="/Resources/Setting_Logo.jpg" Height="25" Width="25" Grid.Row="1" Margin="49,296,171,344"/>
-        <Image Source="/Resources/Logo.jpg" Height="40" Width="40" Margin="26,13,184,27"/>
+        <Image Source="/Resources/Images/Logo.jpg" Height="40" Width="40" Margin="26,13,184,27"/>
         <TextBlock Text="Your Healthcare Companion" 
+                   FontFamily="Inter"
                    VerticalAlignment="Center" 
                    HorizontalAlignment="Left" 
                    Margin="70,0,0,0"
-                   Foreground="SeaGreen"
+                   Foreground="{StaticResource PrimaryColor}"
                    FontWeight="Bold"/>
         <materialDesign:Card Grid.Row="0" Grid.Column="1"
                              Margin="10,0,0,10">
             <Grid>
-                <TextBlock x:Name="helloUserText" Text="Hello UserName!" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,0"></TextBlock>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="UserName" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="User Name" 
+                               FontSize="14" FontWeight="Medium" FontFamily="Poppins"></TextBlock>
+                    <TextBlock x:Name="UserRule" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                               FontSize="12" Text="Rule" FontFamily="Poppins"></TextBlock>
+
+                </Grid>
+                <Image Grid.Column="2" Source="/Resources/Images/Message_Box_Icon.jpg" Width="40"></Image>
+                <Image Grid.Column="1" Source="/Resources/Images/Diagnosis_Logo.jpg" Width="40"></Image>
+                <Image x:Name="userAvarta" Grid.Column="3" Source="/Resources/Images/personAvata.jpg" Width="40"></Image>
+                <TextBlock x:Name="helloUserText" Text="Hello UserName!" FontSize="20" HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" Margin="60,0,0,0"
+                           Foreground="Black"
+                           FontFamily="Poppins"></TextBlock>
             </Grid>
         </materialDesign:Card>
     </Grid>

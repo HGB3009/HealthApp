@@ -4,4 +4,10 @@
                     xmlns:viewmodels = "clr-namespace:HealthCareApp.ViewModels">
     
     <viewmodels:SignInViewModel x:Key ="SignInVM"></viewmodels:SignInViewModel>
+    <viewmodels:MainViewModel x:Key="MainVM"></viewmodels:MainViewModel>
+    <viewmodels:SymptomCheckerViewModel x:Key="SymptomCheckerVM"></viewmodels:SymptomCheckerViewModel>
+    <viewmodels:MainScreenViewModel x:Key="MainScreenVM"></viewmodels:MainScreenViewModel>
+    <viewmodels:NutrientsViewModel x:Key="NutrientsVM"></viewmodels:NutrientsViewModel>
+    <viewmodels:FitnessViewModel x:Key="FitnessVM"></viewmodels:FitnessViewModel>
+    <viewmodels:CalculateCaloriesViewModel x:Key="CalculateCaloriesVM"></viewmodels:CalculateCaloriesViewModel>
 </ResourceDictionary> 
