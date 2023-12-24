@@ -45,25 +45,13 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
-            "MaterialDesignColors": {
-              "target": "Package",
-              "version": "[2.1.4, )"
-            },
             "MaterialDesignThemes": {
               "target": "Package",
               "version": "[4.9.0, )"
             },
-            "MongoDB.Bson": {
+            "Microsoft.Xaml.Behaviors.Wpf": {
               "target": "Package",
-              "version": "[2.23.1, )"
-            },
-            "MongoDB.Driver": {
-              "target": "Package",
-              "version": "[2.23.1, )"
-            },
-            "MongoDB.Driver.Core": {
-              "target": "Package",
-              "version": "[2.23.1, )"
+              "version": "[1.1.77, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
