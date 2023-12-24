@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthCareApp.ViewModels
 {
-    internal class ResetPasswordViewModel
+    class ForgotPasswordViewModel
     {
     }
 }
