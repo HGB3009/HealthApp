@@ -13,7 +13,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d" 
-        d:DesignHeight="650" d:DesignWidth="900">
+        d:DesignHeight="700" d:DesignWidth="900"
+        Title="Calculate Calories" Width="900" Height="750">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -81,8 +82,8 @@
                     <Image Source="/Resources/Images/Unit.jpg" Height="40" VerticalAlignment="Bottom"></Image>
                     <Line X1="10" Y1="10"
                           X2="10" Y2="60"
-                          HorizontalAlignment="Left"
-                          Stroke="Gray" Margin="57,0,0,0"></Line>
+                          HorizontalAlignment="Right"
+                          Stroke="Gray"></Line>
                     <TextBox
                           Margin="10,0,10,0"
                           FontSize="24"
@@ -107,7 +108,8 @@
                         Margin="80,0,10,10"
                         BorderThickness="1"
                         BorderBrush="Black">
-                    <TextBox x:Name="IngredientsBox"></TextBox>
+                    <TextBox x:Name="IngredientsBox"
+                             Text="{Binding IngredientTextBox}"></TextBox>
                 </Border>
             </Grid>
             <materialDesign:Card Grid.Column="1" Margin="10,0,10,0">
@@ -127,12 +129,13 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
                         <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <TextBlock Text="Nutrition Facts"
                                FontSize="28"
@@ -180,7 +183,481 @@
                                    HorizontalAlignment="Right"
                                    Foreground="Black"
                                    Grid.Column="1"></TextBlock>
+                        <Line X1="0" Y1="0"
+                              X2="420" Y2="0"
+                              Stroke="Black"
+                              StrokeThickness="9"
+                              VerticalAlignment="Bottom"
+                              Margin="10,0,10,0"
+                              Grid.ColumnSpan="2"
+                              Grid.Row="2"></Line>
                     </Grid>
+                    <TextBlock Grid.Row="3" Text="% Daily value*"
+                               HorizontalAlignment="Right"
+                               FontSize="12"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               Margin="10,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="3"></Line>
+                    <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Total Fat"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="31g"
+                                   x:Name="totalFatText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Row="4"
+                               Name="accTotalFatText"
+                               Text="40%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="4"></Line>
+
+                    <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="30,0,10,0">
+                        <TextBlock Text="Saturated Fat"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="14g"
+                                   x:Name="Saturated_FatText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Row="5"
+                               Name="accSaturated_FatText"
+                               Text="70%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="5"></Line>
+
+                    <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="30,0,10,0">
+                        <TextBlock Text="Trans Fat"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="0g"
+                                   x:Name="Trans_FatText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="6"></Line>
+
+                    <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="30,0,10,0">
+                        <TextBlock Text="Polyunsaturated Fat"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="3.2g"
+                                   x:Name="PolyunSaturated_FatText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="7"></Line>
+
+                    <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="30,0,10,0">
+                        <TextBlock Text="Monounsaturated Fat"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="12g"
+                                   x:Name="MonounSaturated_FatText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="8"></Line>
+
+                    <StackPanel Grid.Row="9" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Cholesterol"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="96mg"
+                                   x:Name="CholesterolText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Row="9"
+                               Name="accCholesterolText"
+                               Text="32%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="9"></Line>
+
+                    <StackPanel Grid.Row="10" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Sodium"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="1185mg"
+                                   x:Name="SodiumText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+
+                    <TextBlock Grid.Row="10"
+                               Name="accSodiumText"
+                               Text="52%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="10"></Line>
+
+                    <StackPanel Grid.Row="11" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Total Cacbohydrates"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="167mg"
+                                   x:Name="Total_CacbohydratesText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Row="11"
+                               Name="accTotal_CacbohydratesText"
+                               Text="61%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="11"></Line>
+
+                    <StackPanel Grid.Row="12" Orientation="Horizontal" Margin="30,0,10,0">
+                        <TextBlock Text="Dietary Fiber"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="5.9g"
+                                   x:Name="Dietary_FiberText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="12"></Line>
+                    <TextBlock Grid.Row="12"
+                               Name="accDietary_FiberText"
+                               Text="21%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+
+                    <StackPanel Grid.Row="13" Orientation="Horizontal" Margin="30,0,10,0">
+                        <TextBlock Text="Sugars"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="8g"
+                                   x:Name="SugarsText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="13"></Line>
+
+                    <StackPanel Grid.Row="14" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Protein"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="46g"
+                                   x:Name="ProteinText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="7"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="14"></Line>
+
+                    <StackPanel Grid.Row="15" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Vitamin D"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="0.2 mcg"
+                                   x:Name="VitaminDText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Row="15"
+                               Name="accVitaminDText"
+                               Text="1%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="15"></Line>
+
+                    <StackPanel Grid.Row="16" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Calcium"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="401 mg"
+                                   x:Name="CalciumText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Row="16"
+                               Name="accCalciumText"
+                               Text="31%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="16"></Line>
+
+                    <StackPanel Grid.Row="17" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Iron"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="4.3mg"
+                                   x:Name="IronText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Row="17"
+                               Name="accIronText"
+                               Text="24%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="1"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="17"></Line>
+
+                    <StackPanel Grid.Row="18" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Potassium"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="725 mg"
+                                   x:Name="PotassiumText"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="Black"
+                                   Margin="15,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Row="18"
+                               Name="accPotassiumText"
+                               Text="15%"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               HorizontalAlignment="Right"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"></TextBlock>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="7"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="18"></Line>
+
+
+                    <StackPanel Grid.Row="19" Orientation="Horizontal" Margin="10,0,10,0">
+                        <TextBlock Text="Caffeine"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="94.8mg"
+                                   x:Name="CaffeineText"
+                                   FontSize="14"
+                                   FontWeight="Light"
+                                   Foreground="Black"
+                                   Margin="8,0,0,0"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <Line X1="0" Y1="0"
+                          X2="420" Y2="0"
+                          Stroke="Black"
+                          StrokeThickness="3"
+                          VerticalAlignment="Bottom"
+                          Margin="10,0,10,0"
+                          Grid.Row="19"></Line>
+                    <TextBlock Text="*The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2000 calories a day is used for general nutrition advice."
+                               Margin="10,0,10,0"
+                               TextWrapping="Wrap"
+                               FontSize="12"
+                               FontWeight="Light"
+                               Foreground="Black"
+                               Grid.Row="20"
+                               ></TextBlock>
+
                 </Grid>
             </materialDesign:Card>
         </Grid>

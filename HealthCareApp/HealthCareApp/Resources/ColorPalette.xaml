@@ -6,4 +6,5 @@
     <SolidColorBrush x:Key="LightBlackColor" Color="#49454F"></SolidColorBrush>
     <SolidColorBrush x:Key="White" Color="#FFF"></SolidColorBrush>
     <SolidColorBrush x:Key="Orange" Color="#FF7222"></SolidColorBrush>
+    <SolidColorBrush x:Key="BlueSky" Color="#3081D0"></SolidColorBrush>
 </ResourceDictionary>

@@ -4,9 +4,71 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthCareApp.Views"
+        xmlns:uc="clr-namespace:HealthCareApp.Components"
         mc:Ignorable="d"
-        Title="NutrientsView" Height="450" Width="800">
-    <Grid>
         
+        DataContext="{StaticResource NutrientsVM}"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        d:DesignHeight="750" d:DesignWidth="1200"
+        Height="810" Width="1440" >
+    <Grid>
+        <uc:MainScreenComponent></uc:MainScreenComponent>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button FontSize="20"
+                            Height="60"
+                            Background="{StaticResource BlueSky}"
+                            Margin="30,0,0,0"
+                            Grid.Column="1"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="MaterialDesignRaisedButton with Round Corners"
+                            Command="{Binding CalculateCommand}">
+                        <TextBlock Text="Calories Calculate" TextWrapping="Wrap" TextAlignment="Center" />
+                    </Button>
+
+                    <Button FontSize="20"
+                            Height="60"
+                            Background="{StaticResource PrimaryColor}"
+                            Margin="10,0,20,0"
+                            Grid.Column="2"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="MaterialDesignRaisedButton with Round Corners"
+                            Command="{Binding AddMealCommand}">
+                        <TextBlock Text="Add Meal" />
+                    </Button>
+
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

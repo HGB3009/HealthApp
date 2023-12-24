@@ -14,7 +14,8 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}" 
-         d:DesignHeight="650" d:DesignWidth="900">
+         d:DesignHeight="600" d:DesignWidth="600"
+         Width="600" Height="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="120"></RowDefinition>
@@ -28,23 +29,23 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-           
+
             <Button
                 FontSize="20"
-                Height="auto"
+                Height="50"
                 Background="Black"
                 Margin="10,0,0,0"
                 Grid.Column="1"
                 materialDesign:ButtonAssist.CornerRadius="10"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
-                ToolTip="MaterialDesignRaisedButton with Round Corners"> 
+                ToolTip="MaterialDesignRaisedButton with Round Corners">
                 <TextBlock Text="Cancel" />
             </Button>
-            
+
             <Button
                 FontSize="20"
-                Height="auto"
+                Height="50"
                 Background="{StaticResource PrimaryColor}"
                 Margin="10,0,0,0"
                 Grid.Column="2"
@@ -52,7 +53,7 @@
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 ToolTip="MaterialDesignRaisedButton with Round Corners">
-                <TextBlock Text="Cancel" />
+                <TextBlock Text="Confirm" />
             </Button>
 
 
@@ -70,8 +71,10 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <materialDesign:Card Width="100" Height="100" Margin="78,40,79,294">
-                <Image Source="/Resources/Images/MealName.jpg" Width="90" Height="90"></Image>
+            <materialDesign:Card Width="100" Height="100">
+                <Grid>
+                    <Image Source="/Resources/Images/MealName.jpg" Width="90" Height="90"></Image>
+                </Grid>
             </materialDesign:Card>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -153,12 +156,12 @@
                     materialDesign:TextFieldAssist.HasClearButton="True"
                     materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource SecondaryHueMidBrush}" 
                     Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                        <ComboBoxItem Content="BreakFast" />
-                        <ComboBoxItem Content="Lunch"/>
-                        <ComboBoxItem Content="Late lunch" />
-                        <ComboBoxItem Content="Dinner" />
-                        <ComboBoxItem Content="Supper" />
-                </ComboBox> 
+                    <ComboBoxItem Content="BreakFast" />
+                    <ComboBoxItem Content="Lunch"/>
+                    <ComboBoxItem Content="Late lunch" />
+                    <ComboBoxItem Content="Dinner" />
+                    <ComboBoxItem Content="Supper" />
+                </ComboBox>
                 <TextBox
                     Grid.Column="2" Grid.Row="1"
                     FontSize="22"
@@ -171,59 +174,59 @@
                     Width="auto"
                     FontSize="22"
                     Margin="0,0,20,0"
-                    materialDesign:HintAssist.Hint="Custom"> 
+                    materialDesign:HintAssist.Hint="Day">
                     <DatePicker.Resources>
                         <Style
                             x:Key="CustomCalendarDayButton"
                             TargetType="CalendarDayButton"
-                            BasedOn="{StaticResource MaterialDesignCalendarDayButton}"> 
+                            BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
                             <Setter
                                 Property="materialDesign:CalendarAssist.SelectionColor"
-                                Value="#B2F39B" /> 
+                                Value="#B2F39B" />
                             <Setter
                                 Property="materialDesign:CalendarAssist.SelectionForegroundColor"
-                                Value="Black" /> 
+                                Value="Black" />
                         </Style>
                         <Style
                             x:Key="CustomCalendarButton"
                             TargetType="CalendarButton"
-                            BasedOn="{StaticResource MaterialDesignCalendarButton}"> 
+                            BasedOn="{StaticResource MaterialDesignCalendarButton}">
                             <Setter
                                 Property="materialDesign:CalendarAssist.SelectionColor"
-                                Value="#B2F39B" /> 
+                                Value="#B2F39B" />
                             <Setter
                                 Property="materialDesign:CalendarAssist.SelectionForegroundColor"
-                                Value="Black" /> 
+                                Value="Black" />
                         </Style>
                         <Style
                             x:Key="CustomCalendar"
                             TargetType="{x:Type Calendar}"
-                            BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}"> 
+                            BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
                             <Setter
                                 Property="Background"
-                                Value="#343C3F" /> 
+                                Value="#343C3F" />
                             <Setter
                                 Property="CalendarButtonStyle"
-                                Value="{StaticResource CustomCalendarButton}" /> 
+                                Value="{StaticResource CustomCalendarButton}" />
                             <Setter
                                 Property="CalendarDayButtonStyle"
-                                Value="{StaticResource CustomCalendarDayButton}" /> 
+                                Value="{StaticResource CustomCalendarDayButton}" />
                             <Setter
                                 Property="Foreground"
-                                Value="White" /> 
+                                Value="White" />
                             <Setter
                                 Property="materialDesign:CalendarAssist.HeaderBackground"
-                                Value="#A2E9FF" /> 
+                                Value="#A2E9FF" />
                             <Setter
                                 Property="materialDesign:CalendarAssist.HeaderForeground"
-                                Value="Black" /> 
+                                Value="Black" />
                         </Style>
                         <Style
                             TargetType="DatePicker"
-                            BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}"> 
+                            BasedOn="{StaticResource MaterialDesignFloatingHintDatePicker}">
                             <Setter
                                 Property="CalendarStyle"
-                                Value="{StaticResource CustomCalendar}" /> 
+                                Value="{StaticResource CustomCalendar}" />
                         </Style>
                     </DatePicker.Resources>
                 </DatePicker>

@@ -14,7 +14,8 @@
                 TextOptions.TextRenderingMode="Auto"
                 Background="{DynamicResource MaterialDesignPaper}"
                 FontFamily="{DynamicResource MaterialDesignFont}"
-                d:DesignHeight="750" d:DesignWidth="1200">
+                d:DesignHeight="750" d:DesignWidth="1200"
+                Height="810" Width="1440">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>

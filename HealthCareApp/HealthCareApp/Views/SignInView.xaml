@@ -37,7 +37,7 @@
                 FontWeight="Bold"
                 VerticalContentAlignment="Center"
                 HorizontalAlignment="Right"/>
-            
+
         </Grid>
         <Rectangle
             Fill="White"
