@@ -3,6 +3,7 @@ using HealthCareApp.Views;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -51,6 +52,7 @@ namespace HealthCareApp.ViewModels
         public SignInViewModel() 
         {
             _accountCollection = GetMongoCollection();
+            Username = "";
             SignInCommand = new RelayCommand<SignInView>((parameter) => true, (parameter) => SignInCM(parameter));
             OpenSignUpWindowCommand = new RelayCommand<SignInView>((parameter) => true, (parameter) => OpenSignUpWindow(parameter));
             OpenChangePasswordCommand = new RelayCommand<SignInView>((parameter) => true, (parameter) => OpenForgotPasswordWindow(parameter));
@@ -59,31 +61,39 @@ namespace HealthCareApp.ViewModels
         public void SignInCM(Window loginWindow)
         {
 
-            if (Username != null && !string.IsNullOrEmpty(Password))
+            if (Username != "")
             {
-                var user = GetUser(Username);
-
-                if (user == null)
+                if (!string.IsNullOrEmpty(Password))
                 {
-                    MessageBox.Show("Sai tên tài khoản hoặc mật khẩu.");
-                    return;
-                }
+                    var user = GetUser(Username);
 
-                if (Password == user.Password)
-                {
-                    MainWindowView mainWindow = new MainWindowView();
-                    mainWindow.Show();
-                    IsLogin = true;
-                    loginWindow.Close();
+                    if (user == null)
+                    {
+                        MessageBox.Show("Wrong username or password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    if (Password == user.Password)
+                    {
+                        MainWindowView mainWindow = new MainWindowView();
+                        mainWindow.Show();
+                        IsLogin = true;
+                        loginWindow.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong username or password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Sai tên tài khoản hoặc mật khẩu.");
+                    MessageBox.Show("Please enter the password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
-            }
+
+            } 
             else
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                MessageBox.Show("Please enter the username!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
         }

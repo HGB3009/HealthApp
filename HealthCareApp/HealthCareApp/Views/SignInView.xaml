@@ -13,6 +13,10 @@
         DataContext="{StaticResource SignInVM}"
         WindowStartupLocation="CenterScreen" 
         FontFamily="Poppins">
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=SignInWD}" />
+    </Window.InputBindings>
+    
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="\Resources\Images\screenSignIn.jpg"/>
@@ -155,13 +159,14 @@
                     Height="40"
                     FontSize="18"
                     Background="{StaticResource PrimaryColor}"
+                    BorderBrush="{StaticResource LightBlackColor}"
                     materialDesign:ButtonAssist.CornerRadius="25"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
                     Content="Login"
                     FontWeight="Bold">
-                    
+
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding SignInCommand}"
