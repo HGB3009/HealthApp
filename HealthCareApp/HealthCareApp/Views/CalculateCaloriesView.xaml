@@ -14,6 +14,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d" 
         d:DesignHeight="700" d:DesignWidth="900"
+        DataContext="{StaticResource CalculateCaloriesVM}"
         Title="Calculate Calories" Width="900" Height="750">
     <Grid>
         <Grid.RowDefinitions>
@@ -109,7 +110,7 @@
                         BorderThickness="1"
                         BorderBrush="Black">
                     <TextBox x:Name="IngredientsBox"
-                             Text="{Binding IngredientTextBox}"></TextBox>
+                             Text="{Binding IngredientTextBox, Mode=OneWayToSource}"></TextBox>
                 </Border>
             </Grid>
             <materialDesign:Card Grid.Column="1" Margin="10,0,10,0">
@@ -688,6 +689,7 @@
             </Button>
 
             <Button Margin="10"
+                    Command="{Binding CalculateCommand}"
                 Grid.Column="2"
                 Background="{StaticResource PrimaryColor}"
                 Height="auto"

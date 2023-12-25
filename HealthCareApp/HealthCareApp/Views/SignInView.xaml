@@ -142,6 +142,7 @@
 
             <Grid Grid.Row="3">
                 <Button
+                    Command="{Binding OpentempScreenCommand}"
                     Width="230" 
                     Height="40"
                     FontSize="18"

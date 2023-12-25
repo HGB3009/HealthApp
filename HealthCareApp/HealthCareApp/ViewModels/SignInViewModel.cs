@@ -13,10 +13,12 @@ namespace HealthCareApp.ViewModels
     {
         public ICommand OpenSignUpWindowCommand { get; set; }
         public ICommand OpenChangePasswordCommand { get; set; }
+        public ICommand OpentempScreenCommand { get; set; }
         public SignInViewModel() 
         {
             OpenSignUpWindowCommand = new RelayCommand<SignInView>((parameter) => true, (parameter) => OpenSignUpWindow(parameter));
             OpenChangePasswordCommand = new RelayCommand<SignInView>((parameter) => true, (parameter) => OpenForgotPasswordWindow(parameter));
+            OpentempScreenCommand = new RelayCommand<SignInView>((p) => { return true; }, (p) => { NutrientsView tempNutri = new NutrientsView(); tempNutri.ShowDialog(); });
         }
         public void OpenForgotPasswordWindow(Window loginWindow)
         {
