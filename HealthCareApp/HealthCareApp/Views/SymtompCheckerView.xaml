@@ -20,11 +20,11 @@
              FontFamily="{DynamicResource MaterialDesignFont}"
              DataContext="{StaticResource SymptomCheckerVM}"
              mc:Ignorable="d" 
-             d:DesignHeight="750" d:DesignWidth="1200">
+             d:DesignHeight="810" d:DesignWidth="1440">
 
     <Grid>
         <uc:MainScreenComponent></uc:MainScreenComponent>
-            <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -44,11 +44,11 @@
                         <RowDefinition Height="3*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Border x:Name="BDroundSymptomBox" 
-                 BorderBrush="Black" 
-                 BorderThickness="1" 
-                 CornerRadius="15" 
-                 Width="350" Height="150"
-                 VerticalAlignment="Bottom">
+                             BorderBrush="Black" 
+                             BorderThickness="1" 
+                             CornerRadius="15" 
+                             Width="350" Height="150"
+                             VerticalAlignment="Bottom">
                         <TextBox x:Name="SymptomsBox"
                       Margin="5"
                         Height="auto"
@@ -58,21 +58,24 @@
                       TextWrapping="Wrap"></TextBox>
                     </Border>
                     <TextBlock Grid.Row="0" 
-                    Text="Symptoms" 
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Left" 
-                    FontSize="20"
-                    FontWeight="Bold" Margin="22,0,0,0"></TextBlock>
+                                Text="Symptoms" 
+                                VerticalAlignment="Top" 
+                                HorizontalAlignment="Left" 
+                                FontSize="20"
+                               Foreground="{StaticResource PrimaryColor}"
+                                FontWeight="Bold" Margin="22,0,0,0"></TextBlock>
                     <TextBlock Text="Symptoms List"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
                     Grid.Row="1"
                     FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryColor}"
                     FontSize="20" Margin="26,0,0,0"></TextBlock>
                     <Button
+                        Background="{StaticResource PrimaryColor}"
                         x:Name="DiagnosisBtn" 
                         Command="{Binding DiagnosisBtnCommand}"
-                        CommandParameter="{Binding ElementName=SCView}"
+                        CommandParameter="{Binding ElementName=DiagnosisBtn}"
              Grid.Row="1"
              VerticalAlignment="Center"
              HorizontalAlignment="Left"
@@ -90,7 +93,6 @@
                     <ComboBox
                             Grid.Row="2"
                             x:Name="ComboBoxSymptoms"
-                            SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
                             Width="300" 
                             materialDesign:HintAssist.Hint="You are allowed to chose more than one symptom"
                             materialDesign:TextFieldAssist.HasClearButton="True"
@@ -99,7 +101,8 @@
                             Style="{StaticResource MaterialDesignFilledComboBox}" Margin="52,7,53,136">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding SelectionChangedItemCommand}"/>
+                                <i:InvokeCommandAction Command="{Binding SelectionChangedItemCommand}"
+                                                       CommandParameter="{Binding ElementName=ComboBoxSymptoms}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ComboBox>
@@ -117,6 +120,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <TextBlock Text="Result"
+                               Foreground="{StaticResource PrimaryColor}"
                     FontSize="20"
                     FontWeight="Bold"
                     VerticalAlignment="Center"
@@ -130,11 +134,78 @@
                  Width="350"
                  Height="250"
                  Grid.Row="1">
-                        <TextBlock x:Name="ResultBlock"></TextBlock>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="3*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="2.7*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Grid.Row="0"
+                                       Text="Issue Name:"
+                                       VerticalAlignment="Center"
+                                       FontSize="16"
+                                       FontWeight="Normal"
+                                       HorizontalAlignment="Right"></TextBlock>
+                            <TextBlock x:Name="IssueNameTextBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Right"
+                                       Margin="0,0,10,0"
+                                       VerticalAlignment="Center"
+                                       FontSize="16"
+                                       FontWeight="Bold"
+                                       FontStyle="Italic"
+                                       Text="{Binding IssueName}"></TextBlock>
+                            <TextBlock Grid.Column="0"
+                                       Grid.Row="1"
+                                       Text="Accuracy:"
+                                       VerticalAlignment="Center"
+                                       FontSize="16"
+                                       FontWeight="Normal"
+                                       HorizontalAlignment="Right"></TextBlock>
+                            <TextBlock x:Name="IssueAccTextBlock"
+                                       Grid.Column="1"
+                                       Grid.Row="1"
+                                       HorizontalAlignment="Right"
+                                       Margin="0,0,10,0"
+                                       VerticalAlignment="Center"
+                                       FontSize="16"
+                                       FontWeight="Bold"
+                                       FontStyle="Italic"
+                                       Text="{Binding IssueAcc}"></TextBlock>
+                            <TextBlock Text="Description"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="Black"
+                                       Grid.ColumnSpan="2"
+                                       Grid.Row="2"
+                                       TextDecorations="Underline"></TextBlock>
+                            <TextBlock x:Name="DescriptionText"
+                                       Text="{Binding DescriptionIssue}"
+                                       Grid.Row="3"
+                                       Grid.ColumnSpan="2"
+                                       TextWrapping="Wrap"
+                                       FontWeight="Light"
+                                       TextAlignment="Center"
+                                       VerticalAlignment="top"
+                                       HorizontalAlignment="Center"></TextBlock>
+
+
+
+                        </Grid>
                     </Border>
                     <TextBlock Text="Advice" Height="auto"
                     FontSize="20"
                     FontWeight="Bold"
+                            Foreground="{StaticResource PrimaryColor}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Grid.Row="2"></TextBlock>
@@ -147,7 +218,15 @@
                  VerticalAlignment="Center"
                  HorizontalAlignment="Center"
                  CornerRadius="15">
-                        <TextBlock x:Name="AdviceBlock"></TextBlock>
+                        <TextBlock x:Name="AdviceText"
+                                       Text="{Binding AdviceTreatment}"
+                                       TextWrapping="Wrap"
+                                       FontWeight="Light"
+                                       TextAlignment="Center"
+                                       VerticalAlignment="top"
+                                       HorizontalAlignment="Center"
+                                   FontSize="14"
+                                   FontStyle="Italic"></TextBlock>
                     </Border>
                 </Grid>
             </materialDesign:Card>

@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Net.Http.Json;
 using System.ComponentModel;
 using static HealthCareApp.Models.SymptomCheckerModel.Autherity;
+using System.Windows.Controls;
 
 namespace HealthCareApp.ViewModels
 {
@@ -24,24 +25,14 @@ namespace HealthCareApp.ViewModels
     {
         public ICommand DiagnosisBtnCommand { get; set; }
         public ICommand SelectionChangedItemCommand { get; set; }
-        public List<string> temp = new List<string>();
+        public List<string> tempItem = new List<string>();
         public List<string> Items
         {
-            get { return temp; }
+            get { return tempItem; }
             set
             {
-                temp = value;
-                OnPropertyChanged("Items");
-            }
-        }
-        public string selectedItem;
-        public string SelectedItem
-        {
-            get { return selectedItem; }
-            set
-            {
-                selectedItem = value;
-                OnPropertyChanged("SelectedItem");
+                tempItem = value;
+                OnPropertyChanged(nameof(Items));
             }
         }
         public string tempSymptoms;
@@ -51,7 +42,7 @@ namespace HealthCareApp.ViewModels
             set
             {
                 tempSymptoms = value;
-                OnPropertyChanged("TempSymptoms");
+                OnPropertyChanged(nameof(TempSymptoms));
             }
         }
         public string curSymptoms;
@@ -64,21 +55,58 @@ namespace HealthCareApp.ViewModels
                 OnPropertyChanged("dataOfSymptomBox");
             }
         }
+        public string resultDiagnosis;
+        public string ResultDiagnosis
+        {
+            get { return resultDiagnosis; }
+            set
+            {
+                resultDiagnosis = value;
+                OnPropertyChanged(nameof(ResultDiagnosis));
+            }
+        }
+        public string descriptionIssue;
+        public string DescriptionIssue
+        {
+            get { return descriptionIssue; }
+            set
+            {
+                descriptionIssue = value;
+                OnPropertyChanged(nameof(DescriptionIssue));
+            }
+        }
+        public string issueName;
+        public string IssueName
+        {
+            get { return issueName; }
+            set
+            {
+                issueName = value;
+                OnPropertyChanged(nameof(IssueName));
+            }
+        }
+        public string issueAcc;
+        public string IssueAcc
+        {
+            get { return issueAcc; }
+            set
+            {
+                issueAcc = value;
+                OnPropertyChanged(nameof(IssueAcc));
+            }
+        }
         bool successAccess = false;
         public SymptomCheckerViewModel()
         {
             LoadToken();
             LoadListSymptom();
-            DiagnosisBtnCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
+            DiagnosisBtnCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
                 DiagnosisBtn_Click();
             });
-            SelectionChangedItemCommand = new RelayCommand<object>((p) => { return p == null ? false : true; }, (p) => {
-                if (SelectedItem != null)
-                {
-                    tempSymptoms += SelectedItem.ToString();
-                }
+            SelectionChangedItemCommand = new RelayCommand<ComboBox>((p) => { return true; }, (p) => {
+                if (p.SelectedItem != null)
+                    UpdateSymptomsBox(p.SelectedItem.ToString());
             });
-
         }
         string api_key = "Ff24Y_GMAIL_COM_AUT";
         string secret_key = "Mi6b9GEz38Lfm7ZKd";
@@ -87,6 +115,7 @@ namespace HealthCareApp.ViewModels
 
         Autherity autherity;
         rootSymptoms ListSymptoms = new rootSymptoms();
+        issueInfo curIssuInfo;
 
         private async void LoadToken()
         {
@@ -155,20 +184,25 @@ namespace HealthCareApp.ViewModels
                 symptom newSymptoms = new symptom();
                 newSymptoms.Name = Nametemp;
                 newSymptoms.ID = IDtemp;
-                temp.Add(Nametemp);
+                tempItem.Add(Nametemp);
                 ListSymptoms.symptoms.Add(newSymptoms);
             }
         }
         private async void DiagnosisBtn_Click()
         {
-            string fewSymptoms = "33";
+            string fewSymptoms = ConvertSymptomToID(TempSymptoms);
             string gender = "male";
             string yearOfBirth = "1988";
-            string token = await getToken();
             string result = await getDiagnosis(url, autherity.Token, gender, yearOfBirth, fewSymptoms);
-            int topAccIssueID = getTopIssueID_or_Acc(result, 2);
-            double topAccIssue = getTopIssueID_or_Acc(result, 4);
+            if (result[0] == 'E')
+            {
+                MessageBox.Show(result);
+                return;
+            }
+            int topAccIssueID = getTopIssueID(result, 2);
+            double topAccIssue = getTopIssueAcc(result, 4);
             LoadIssueInfo(topAccIssueID);
+            ShowResultDiagnosis(topAccIssue.ToString());
         }
         private async Task<string> getDiagnosis(string url, string token, string gender, string yearOfBirth, string fewSymtomps)
         {
@@ -187,8 +221,7 @@ namespace HealthCareApp.ViewModels
         private async void LoadIssueInfo(int issue_id)
         {
             string result = await getIssueInfo(issue_id);
-            issueInfo curIssuInfo = JsonConvert.DeserializeObject<issueInfo>(result);
-            MessageBox.Show(curIssuInfo.Name);
+            curIssuInfo = JsonConvert.DeserializeObject<issueInfo>(result);
         }
         private async Task<string> getIssueInfo(int issue_id)
         {
@@ -206,7 +239,30 @@ namespace HealthCareApp.ViewModels
                 }
             }
         }
-        private int getTopIssueID_or_Acc(string issueList, int num_dot) // numdot=2 : lay ID; numdot=4: lay Acc
+        private void UpdateSymptomsBox(string element)
+        {
+            string s = TempSymptoms + ((TempSymptoms != null) ? ", " : "") + element;
+            TempSymptoms = s;
+        }
+        private string ConvertSymptomToID(string Symptoms)
+        {
+            string listID = "";
+            string[] elementSymptoms = Symptoms.Split(", ");
+            for (int i = 0; i < elementSymptoms.Length; ++i)
+            {
+                string temp = elementSymptoms[i];
+                for (int j = 0; j < ListSymptoms.symptoms.Count; ++j)
+                {
+                    if (temp == ListSymptoms.symptoms[j].Name)
+                    {
+                        listID += ((i != 0) ? "," : "") + ListSymptoms.symptoms[j].ID.ToString();
+                        break;
+                    }
+                }
+            }
+            return listID;
+        }
+        private int getTopIssueID(string issueList, int num_dot) // numdot=2 : lay ID; numdot=4: lay Acc
         {
             string result = "";
             int dot = 0;
@@ -223,6 +279,30 @@ namespace HealthCareApp.ViewModels
                 ++i;
             }
             return int.Parse(result);
+        }
+        private double getTopIssueAcc(string issueList, int num_dot) // numdot=2 : lay ID; numdot=4: lay Acc
+        {
+            string result = "";
+            int dot = 0;
+            int i = 0;
+            while (dot != num_dot)
+            {
+                if (issueList[i] == ':')
+                    dot++;
+                ++i;
+            }
+            while (issueList[i] != ',')
+            {
+                result += issueList[i];
+                ++i;
+            }
+            return double.Parse(result);
+        }
+        private void ShowResultDiagnosis(string acc)
+        {
+            issueName = curIssuInfo.Name;
+            issueAcc = acc;
+            descriptionIssue = curIssuInfo.DescriptionShort;
         }
     }
 }
