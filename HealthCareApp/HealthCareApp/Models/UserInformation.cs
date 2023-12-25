@@ -34,5 +34,17 @@ namespace HealthCareApp.Models
 
         [BsonElement("Username")]
         public string Username { get; set; }
+        
+        public UserInformation()
+        {
+            Id = "";
+            Name = "";
+            Gender = "";
+            PhoneNumber = "";
+            Birthday = "";
+            Address = "";
+            Email = "";
+            Username = "";
+        }    
     }
 }

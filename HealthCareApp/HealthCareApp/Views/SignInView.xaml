@@ -93,7 +93,7 @@
                         Width="30" 
                         Height="30" 
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom"  
+                        VerticalAlignment="Center"  
                         Margin="0" />
                 <TextBox 
                         x:Name= "Username"
@@ -124,7 +124,7 @@
                     Width="30" 
                     Height="30" 
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom" 
+                    VerticalAlignment="Center" 
                     Margin="0" />
                 <PasswordBox
                     x:Name="password"
@@ -145,7 +145,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="PasswordChanged">
                             <i:InvokeCommandAction Command="{Binding PasswordchangeCM}"
-                                                           CommandParameter="{Binding ElementName=password}">
+                                                   CommandParameter="{Binding ElementName=password}">
                                 
                             </i:InvokeCommandAction>
                         </i:EventTrigger>
