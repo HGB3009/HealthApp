@@ -92,7 +92,7 @@
                         VerticalAlignment="Bottom"  
                         Margin="0" />
                 <TextBox 
-                        x:Name="txtUsername"
+                        x:Name= "Username"
                         Text="{Binding Username}"
                         materialDesign:HintAssist.Hint="Username" 
                         Margin="0" 
@@ -123,7 +123,7 @@
                     VerticalAlignment="Bottom" 
                     Margin="0" />
                 <PasswordBox
-                    x:Name="txtPassword"
+                    x:Name="password"
                     materialDesign:HintAssist.Hint="Password" 
                     Margin="0" 
                     Width="250" 
@@ -136,7 +136,16 @@
                     VerticalAlignment="Center"
                     CaretBrush="{StaticResource PrimaryColor}" 
                     FontWeight="SemiBold" 
-                    Padding="2,0,0,0" >
+                    Padding="2,0,0,0" 
+                    PasswordChar="●">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PasswordChanged">
+                            <i:InvokeCommandAction Command="{Binding PasswordchangeCM}"
+                                                           CommandParameter="{Binding ElementName=password}">
+                                
+                            </i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </PasswordBox>
             </Grid>
 
@@ -149,9 +158,16 @@
                     materialDesign:ButtonAssist.CornerRadius="25"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                    ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
-                    <TextBlock
-                        Text="Login" />
+                    ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+                    Content="Login"
+                    FontWeight="Bold">
+                    
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SignInCommand}"
+                                               CommandParameter="{Binding ElementName=SignInWD}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </Button>
             </Grid>
 
