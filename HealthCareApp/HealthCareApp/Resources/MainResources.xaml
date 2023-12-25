@@ -11,4 +11,5 @@
     <viewmodels:FitnessViewModel x:Key="FitnessVM"></viewmodels:FitnessViewModel>
     <viewmodels:CalculateCaloriesViewModel x:Key="CalculateCaloriesVM"></viewmodels:CalculateCaloriesViewModel>
     <viewmodels:SignupViewModel x:Key="SignupVM"></viewmodels:SignupViewModel>
+    <viewmodels:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodels:ForgotPasswordViewModel>
 </ResourceDictionary> 
