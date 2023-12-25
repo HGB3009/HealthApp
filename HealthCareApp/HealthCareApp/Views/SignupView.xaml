@@ -9,6 +9,8 @@
         Title="SignupView"
         Height="600"
         Width="800"
+        ResizeMode="NoResize"
+        DataContext="{StaticResource SignupVM}"
         WindowStartupLocation="CenterScreen" 
         FontFamily="Poppins">
     <Border >
@@ -71,6 +73,7 @@
                                 Margin="65"/>
 
                             <Button
+                                x:Name="ChooseimageBtn"
                                 Height="50"
                                 Width="170"
                                 Margin="20"

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthCareApp.ViewModels
 {
-    class SignupViewModel
+    internal class SignupViewModel : BaseViewModel
     {
     }
 }
