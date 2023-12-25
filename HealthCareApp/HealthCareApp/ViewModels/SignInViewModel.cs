@@ -52,7 +52,6 @@ namespace HealthCareApp.ViewModels
         public SignInViewModel() 
         {
             _accountCollection = GetMongoCollection();
-            Username = "";
             SignInCommand = new RelayCommand<SignInView>((parameter) => true, (parameter) => SignInCM(parameter));
             OpenSignUpWindowCommand = new RelayCommand<SignInView>((parameter) => true, (parameter) => OpenSignUpWindow(parameter));
             OpenChangePasswordCommand = new RelayCommand<SignInView>((parameter) => true, (parameter) => OpenForgotPasswordWindow(parameter));
@@ -61,7 +60,7 @@ namespace HealthCareApp.ViewModels
         public void SignInCM(Window loginWindow)
         {
 
-            if (Username != "")
+            if (!string.IsNullOrEmpty(Username))
             {
                 if (!string.IsNullOrEmpty(Password))
                 {
