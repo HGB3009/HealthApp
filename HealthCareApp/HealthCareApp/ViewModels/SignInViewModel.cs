@@ -125,6 +125,7 @@ namespace HealthCareApp.ViewModels
             loginWindow.WindowStyle = WindowStyle.SingleBorderWindow;
             loginWindow.Opacity = 1;
             loginWindow.Show();
+            ReloadWindow(loginWindow);
         }
         public void OpenSignUpWindow(Window loginWindow)
         {
@@ -137,7 +138,14 @@ namespace HealthCareApp.ViewModels
             loginWindow.WindowStyle = WindowStyle.SingleBorderWindow;
             loginWindow.Opacity = 1;
             loginWindow.Show();
-            
+            ReloadWindow(loginWindow);
+        }
+        public void ReloadWindow(Window currentWindow)
+        {
+            SignInView newWindow = new SignInView();
+            newWindow.DataContext = currentWindow.DataContext;
+            currentWindow.Close();
+            newWindow.Show();
         }
     }
 }
