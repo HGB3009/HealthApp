@@ -216,7 +216,7 @@ namespace HealthCareApp.ViewModels
             string gender = "male";
             string yearOfBirth = "1988";
             string result = await getDiagnosis(url, autherity.Token, gender, yearOfBirth, fewSymptoms);
-            if (!successDiagnosis||result.Length<5)
+            if (!successDiagnosis || result.Length < 5)
             {
                 MessageBox.Show("Cannot Diagnosis. Please check again your symptoms infomation.");
                 ShowBadRequest();
@@ -226,7 +226,7 @@ namespace HealthCareApp.ViewModels
                 int topAccIssueID = getTopIssueID(result, 2);
                 double topAccIssue = getTopIssueAcc(result, 4);
                 LoadIssueInfo(topAccIssueID);
-                IssueAcc = topAccIssue.ToString()+"%";
+                IssueAcc = topAccIssue.ToString() + "%";
             }
         }
         private async Task<string> getDiagnosis(string url, string token, string gender, string yearOfBirth, string fewSymtomps)
@@ -244,7 +244,7 @@ namespace HealthCareApp.ViewModels
                 {
                     return $"Error:{responseMessage.StatusCode},{await responseMessage.Content.ReadAsStringAsync()}";
                 }
-                   
+
             }
         }
         private async void LoadIssueInfo(int issue_id)
@@ -254,7 +254,7 @@ namespace HealthCareApp.ViewModels
             IssueName = curIssueInfo.Name;
             DescriptionIssue = curIssueInfo.DescriptionShort;
             AdviceTreatment = curIssueInfo.TreatmentDescription;
-            PossibleSymptoms=curIssueInfo.PossibleSymptoms;
+            PossibleSymptoms = curIssueInfo.PossibleSymptoms;
         }
         private async Task<string> getIssueInfo(int issue_id)
         {
