@@ -49,7 +49,7 @@ namespace HealthCareApp.Models
             public int serving_weight_grams { get; set; }
             public double nf_calories { get; set; }
             public double nf_total_fat { get; set; }
-            public double saturated_fat { get; set; }
+            public double nf_saturated_fat { get; set; }
             public double nf_cholesterol { get; set; }
             public double nf_sodium { get; set; }
             public double nf_total_carbohydrate { get; set; }

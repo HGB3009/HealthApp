@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthCareApp.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -13,6 +14,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d" 
+        DataContext="{StaticResource CalculateCaloriesVM}"
+        Name="CalculateView"
         d:DesignHeight="700" d:DesignWidth="900"
         Title="Calculate Calories" Width="900" Height="750">
     <Grid>
@@ -45,14 +48,21 @@
                           HorizontalAlignment="Right"
                           Stroke="Gray"></Line>
                     <TextBox
+                          Text="{Binding FoodNameTextBox, Mode=TwoWay}"
                           Margin="10,0,10,0"
                           FontSize="24"
                           Height="auto"
                           Width="auto"
                           Grid.Column="1"
                           VerticalAlignment="Bottom"
-                          materialDesign:HintAssist.Hint="Meal Name"
-                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                          materialDesign:HintAssist.Hint="Food Name"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding FoodNameChangedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -64,15 +74,21 @@
                       X2="10" Y2="60"
                       HorizontalAlignment="Right"
                       Stroke="Gray"></Line>
-                    <TextBox
-                      Margin="10,0,10,0"
-                      FontSize="24"
-                      Height="auto"
-                      Width="auto"
-                      Grid.Column="1"
-                      VerticalAlignment="Bottom"
-                      materialDesign:HintAssist.Hint="Quantity"
-                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Margin="10,0,10,0"
+                             Text="{Binding QuantityTextBox, Mode=TwoWay}"
+                              FontSize="24"
+                              Height="auto"
+                              Width="auto"
+                              Grid.Column="1"
+                              VerticalAlignment="Bottom"
+                              materialDesign:HintAssist.Hint="Quantity"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding QuantityChangedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox> 
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -85,14 +101,21 @@
                           HorizontalAlignment="Right"
                           Stroke="Gray"></Line>
                     <TextBox
+                          Text="{Binding UnitTextBox, Mode=TwoWay}"
                           Margin="10,0,10,0"
                           FontSize="24"
                           Height="auto"
                           Width="auto"
                           Grid.Column="1"
                           VerticalAlignment="Center"
-                          materialDesign:HintAssist.Hint="Unit"
-                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                          materialDesign:HintAssist.Hint="Unit (Optional)"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding UnitChangedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
                 </Grid>
                 <TextBlock Text="OR"
                            Grid.Row="3"
@@ -109,7 +132,15 @@
                         BorderThickness="1"
                         BorderBrush="Black">
                     <TextBox x:Name="IngredientsBox"
-                             Text="{Binding IngredientTextBox}"></TextBox>
+                             FontSize="20"
+                             TextWrapping="Wrap"
+                             Text="{Binding IngredientTextBox, Mode=TwoWay}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding IngredientTextChangedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
                 </Border>
             </Grid>
             <materialDesign:Card Grid.Column="1" Margin="10,0,10,0">
@@ -176,7 +207,7 @@
                                    VerticalAlignment="Top"
                                    Foreground="Black"></TextBlock>
                         <TextBlock x:Name="caloriesBox"
-                                   Text="1144"
+                                   Text="{Binding SumCalories}"
                                    FontSize="29"
                                    FontWeight="Bold"
                                    Margin="0,0,10,0"
@@ -212,7 +243,7 @@
                                    FontWeight="Bold"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="31g"
+                        <TextBlock Text="{Binding TotalFat}"
                                    x:Name="totalFatText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -243,7 +274,7 @@
                                    FontWeight="Normal"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="14g"
+                        <TextBlock Text="{Binding SaturatedFat}"
                                    x:Name="Saturated_FatText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -340,7 +371,7 @@
                                    FontWeight="Bold"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="96mg"
+                        <TextBlock Text="{Binding TotalCholesterol}"
                                    x:Name="CholesterolText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -371,7 +402,7 @@
                                    FontWeight="Bold"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="1185mg"
+                        <TextBlock Text="{Binding TotalSodium}"
                                    x:Name="SodiumText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -403,7 +434,7 @@
                                    FontWeight="Bold"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="167mg"
+                        <TextBlock Text="{Binding TotalCacbohydrates}"
                                    x:Name="Total_CacbohydratesText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -434,7 +465,7 @@
                                    FontWeight="Normal"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="5.9g"
+                        <TextBlock Text="{Binding TotalDietaryFiber}"
                                    x:Name="Dietary_FiberText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -465,7 +496,7 @@
                                    FontWeight="Normal"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="8g"
+                        <TextBlock Text="{Binding TotalSugars}"
                                    x:Name="SugarsText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -487,7 +518,7 @@
                                    FontWeight="Bold"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="46g"
+                        <TextBlock Text="{Binding TotalProtein}"
                                    x:Name="ProteinText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -602,7 +633,7 @@
                                    FontWeight="Normal"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="725 mg"
+                        <TextBlock Text="{Binding TotalPotassium}"
                                    x:Name="PotassiumText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -688,6 +719,7 @@
             </Button>
 
             <Button Margin="10"
+                Command="{Binding CalculateBtnCommand}"
                 Grid.Column="2"
                 Background="{StaticResource PrimaryColor}"
                 Height="auto"
