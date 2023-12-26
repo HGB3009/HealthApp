@@ -51,7 +51,7 @@
                              Width="500" Height="200"
                              Margin="30,30,30,30"
                              VerticalAlignment="Center">
-                             
+
                         <TextBox x:Name="SymptomsBox"
                                  Margin="5"
                                  Height="auto"
@@ -59,7 +59,7 @@
                                  BorderBrush="White"
                                  Text="{Binding TempSymptoms, Mode=TwoWay}"
                                  FontSize="16"
-                                 TextWrapping="Wrap"></TextBox> 
+                                 TextWrapping="Wrap"></TextBox>
                     </Border>
                     <TextBlock Grid.Row="0" 
                                Text="Symptoms" 
@@ -87,7 +87,7 @@
                             Content="Diagnosis"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                             Style="{StaticResource MaterialDesignRaisedButton}"
-                            ToolTip="Resource name: MaterialDesignRaisedButton" Margin="222,0,0,0" > 
+                            ToolTip="Resource name: MaterialDesignRaisedButton" Margin="222,0,0,0" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding DiagnosisBtnCommand}"/>
@@ -139,7 +139,7 @@
                             CornerRadius="15"
                             Width="480"
                             Height="380"
-                            Grid.Row="1"> 
+                            Grid.Row="1">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -212,7 +212,7 @@
                                   StrokeThickness="0.8"
                                   VerticalAlignment="Bottom"
                                   HorizontalAlignment="Center"></Line>
-                                  
+
                             <TextBlock Grid.Column="0"
                                        Grid.Row="4"
                                        Text="Possible Symptoms:"
@@ -253,7 +253,7 @@
                             BorderBrush="Black"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Center"
-                            CornerRadius="15"> 
+                            CornerRadius="15">
                         <TextBlock x:Name="AdviceText"
                                    Text="{Binding AdviceTreatment}"
                                    TextWrapping="Wrap"
