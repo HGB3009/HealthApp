@@ -25,6 +25,7 @@ namespace HealthCareApp.ViewModels
     {
         public ICommand DiagnosisBtnCommand { get; set; }
         public ICommand SelectionChangedItemCommand { get; set; }
+
         public List<string> tempItem = new List<string>();
         public List<string> Items
         {
@@ -95,7 +96,27 @@ namespace HealthCareApp.ViewModels
                 OnPropertyChanged(nameof(IssueAcc));
             }
         }
-        bool successAccess = false;
+        public string adviceTreatment;
+        public string AdviceTreatment
+        {
+            get { return adviceTreatment; }
+            set
+            {
+                adviceTreatment = value;
+                OnPropertyChanged(nameof(AdviceTreatment));
+            }
+        }
+        public string possibleSymptoms;
+        public string PossibleSymptoms
+        {
+            get { return possibleSymptoms; }
+            set
+            {
+                possibleSymptoms = value;
+                OnPropertyChanged(nameof(PossibleSymptoms));
+            }
+        }
+        bool successDiagnosis = false;
         public SymptomCheckerViewModel()
         {
             LoadToken();
@@ -108,14 +129,14 @@ namespace HealthCareApp.ViewModels
                     UpdateSymptomsBox(p.SelectedItem.ToString());
             });
         }
-        string api_key = "Ff24Y_GMAIL_COM_AUT";
-        string secret_key = "Mi6b9GEz38Lfm7ZKd";
+        string api_key = "Dz2t8_GMAIL_COM_AUT";
+        string secret_key = "k4QJf68Tne9N3MjHd";
         string url = "https://healthservice.priaid.ch/";
         string token;
 
         Autherity autherity;
         rootSymptoms ListSymptoms = new rootSymptoms();
-        issueInfo curIssuInfo;
+        issueInfo curIssueInfo;
 
         private async void LoadToken()
         {
@@ -190,19 +211,23 @@ namespace HealthCareApp.ViewModels
         }
         private async void DiagnosisBtn_Click()
         {
+            successDiagnosis = false;
             string fewSymptoms = ConvertSymptomToID(TempSymptoms);
             string gender = "male";
             string yearOfBirth = "1988";
             string result = await getDiagnosis(url, autherity.Token, gender, yearOfBirth, fewSymptoms);
-            if (result[0] == 'E')
+            if (!successDiagnosis||result.Length<5)
             {
-                MessageBox.Show(result);
-                return;
+                MessageBox.Show("Cannot Diagnosis. Please check again your symptoms infomation.");
+                ShowBadRequest();
             }
-            int topAccIssueID = getTopIssueID(result, 2);
-            double topAccIssue = getTopIssueAcc(result, 4);
-            LoadIssueInfo(topAccIssueID);
-            ShowResultDiagnosis(topAccIssue.ToString());
+            else
+            {
+                int topAccIssueID = getTopIssueID(result, 2);
+                double topAccIssue = getTopIssueAcc(result, 4);
+                LoadIssueInfo(topAccIssueID);
+                IssueAcc = topAccIssue.ToString()+"%";
+            }
         }
         private async Task<string> getDiagnosis(string url, string token, string gender, string yearOfBirth, string fewSymtomps)
         {
@@ -212,16 +237,24 @@ namespace HealthCareApp.ViewModels
                 HttpResponseMessage responseMessage = await client.GetAsync(uri);
                 if (responseMessage.IsSuccessStatusCode)
                 {
+                    successDiagnosis = true;
                     return await responseMessage.Content.ReadAsStringAsync();
                 }
                 else
+                {
                     return $"Error:{responseMessage.StatusCode},{await responseMessage.Content.ReadAsStringAsync()}";
+                }
+                   
             }
         }
         private async void LoadIssueInfo(int issue_id)
         {
             string result = await getIssueInfo(issue_id);
-            curIssuInfo = JsonConvert.DeserializeObject<issueInfo>(result);
+            curIssueInfo = JsonConvert.DeserializeObject<issueInfo>(result);
+            IssueName = curIssueInfo.Name;
+            DescriptionIssue = curIssueInfo.DescriptionShort;
+            AdviceTreatment = curIssueInfo.TreatmentDescription;
+            PossibleSymptoms=curIssueInfo.PossibleSymptoms;
         }
         private async Task<string> getIssueInfo(int issue_id)
         {
@@ -298,11 +331,11 @@ namespace HealthCareApp.ViewModels
             }
             return double.Parse(result);
         }
-        private void ShowResultDiagnosis(string acc)
+        private void ShowBadRequest()
         {
-            issueName = curIssuInfo.Name;
-            issueAcc = acc;
-            descriptionIssue = curIssuInfo.DescriptionShort;
+            IssueAcc = "";
+            IssueName = "";
+            DescriptionIssue = "";
         }
     }
 }
