@@ -157,7 +157,7 @@ namespace HealthCareApp.ViewModels
             CancelCommand = new RelayCommand<SignupView>((p) => true, (p) => {  p.Close(); });
         }
 
-        public void SignUpCM(Window loginWindow)
+        public void SignUpCM(Window p)
         {
             if (ValidateSignUp())
             {
@@ -187,7 +187,7 @@ namespace HealthCareApp.ViewModels
 
                 MessageBox.Show("Sign up successful!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                loginWindow.Close();
+                p.Close();
             }
 
         }
