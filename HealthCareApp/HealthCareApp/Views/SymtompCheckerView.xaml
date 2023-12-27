@@ -24,36 +24,86 @@
              Height="810" Width="1440">
 
     <Grid>
-        <uc:MainScreenComponent></uc:MainScreenComponent>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="280"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+            <uc:NavigationBarView Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></uc:NavigationBarView>
+            <uc:LeftSideBarView Grid.Column="0" Grid.RowSpan="2"></uc:LeftSideBarView>
             <materialDesign:Card Grid.Row="1" Grid.Column="1" x:Name="SymptomsCard" 
                                  Width="auto" Height="auto"
                                  Margin="10">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="3*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="0.8*"></RowDefinition>
                         <RowDefinition Height="3*"></RowDefinition>
                     </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Background="{StaticResource PrimaryColor}"
+                            x:Name="DiagnosisBtn" 
+                            Command="{Binding DiagnosisBtnCommand}"
+                            CommandParameter="{Binding ElementName=SymptomsBox}"
+                            Grid.Row="0"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right"
+                            Width="150"
+                            Height="40"
+                            Content="Diagnosis"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Resource name: MaterialDesignRaisedButton" Margin="0,0,10,0" ></Button>
+
+                        <Button Background="Black"
+                             x:Name="ClearSymptomsBtn" 
+                             Command="{Binding ClearSymptomsBtnCommand}"
+                             Grid.Row="0"
+                                Grid.Column="1"
+                             VerticalAlignment="Bottom"
+                             HorizontalAlignment="Left"
+                             Width="150"
+                             Height="40"
+                             Content="Clear Symptoms"
+                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                             Style="{StaticResource MaterialDesignRaisedButton}"
+                             ToolTip="Resource name: MaterialDesignRaisedButton" Margin="10,0,0,0" ></Button>
+                    </Grid>
+
+                    <Button Background="{StaticResource PrimaryColor}"
+                            x:Name="AddSymptomBtn" 
+                            Command="{Binding AddSymptomBtnCommand}"
+                            CommandParameter="{Binding ElementName=ComboBoxSymptoms}"
+                            Grid.Row="2"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            Width="60"
+                            Height="40"
+                            FontSize="12"
+                            Content="Add"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Resource name: MaterialDesignRaisedButton" Margin="0,15,10,0" />
                     <Border x:Name="BDroundSymptomBox" 
                              BorderBrush="Black" 
                              BorderThickness="1" 
                              CornerRadius="15" 
-                             Width="500" Height="200"
+                             Width="auto" Height="200"
                              Margin="30,30,30,30"
                              VerticalAlignment="Center">
 
                         <TextBox x:Name="SymptomsBox"
-                                 Margin="5"
+                                 Margin="5,5,5,0"
                                  Height="auto"
                                  BorderThickness="0"
                                  BorderBrush="White"
@@ -75,26 +125,7 @@
                                FontWeight="Bold"
                                Foreground="{StaticResource PrimaryColor}"
                                FontSize="26" Margin="26,0,0,0"></TextBlock>
-                    <Button Background="{StaticResource PrimaryColor}"
-                            x:Name="DiagnosisBtn" 
-                            Command="{Binding DiagnosisBtnCommand}"
-                            CommandParameter="{Binding ElementName=DiagnosisBtn}"
-                            Grid.Row="1"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Width="150"
-                            Height="40"
-                            Content="Diagnosis"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                            Style="{StaticResource MaterialDesignRaisedButton}"
-                            ToolTip="Resource name: MaterialDesignRaisedButton" Margin="222,0,0,0" >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding DiagnosisBtnCommand}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Button>
-                    <ComboBox
+                    <ComboBox 
                             Grid.Row="2"
                             x:Name="ComboBoxSymptoms"
                             Width="400" 
@@ -156,8 +187,9 @@
                                        Grid.Row="0"
                                        Text="Issue Name:"
                                        VerticalAlignment="Center"
-                                       FontSize="20"
+                                       FontSize="18"
                                        FontWeight="Normal"
+                                       Margin="0,0,10,0"
                                        HorizontalAlignment="Right"></TextBlock>
                             <TextBlock x:Name="IssueNameTextBlock"
                                        Grid.Column="1"
@@ -173,7 +205,8 @@
                                        Grid.Row="1"
                                        Text="Accuracy:"
                                        VerticalAlignment="Center"
-                                       FontSize="20"
+                                       FontSize="18"
+                                       Margin="0,0,10,0"
                                        FontWeight="Normal"
                                        HorizontalAlignment="Right"></TextBlock>
                             <TextBlock x:Name="IssueAccTextBlock"
@@ -219,8 +252,9 @@
                                        TextWrapping="Wrap"
                                        TextAlignment="Center"
                                        VerticalAlignment="Center"
-                                       FontSize="20"
+                                       FontSize="18"
                                        FontWeight="Normal"
+                                       Margin="0,0,10,0"
                                        HorizontalAlignment="Right"></TextBlock>
                             <TextBlock x:Name="PossibleSymptomsText"
                                        Grid.Column="1"
@@ -233,9 +267,6 @@
                                        FontStyle="Italic"
                                        TextWrapping="Wrap"
                                        Text="{Binding PossibleSymptoms}"></TextBlock>
-
-
-
                         </Grid>
                     </Border>
                     <TextBlock Text="Advice" Height="auto"
@@ -250,6 +281,7 @@
                             Width="480"
                             Height="150"
                             BorderThickness="1"
+                            Margin="10,0,10,10"
                             BorderBrush="Black"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Center"
@@ -259,7 +291,7 @@
                                    TextWrapping="Wrap"
                                    FontWeight="Light"
                                    TextAlignment="Center"
-                                   VerticalAlignment="top"
+                                   VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    FontSize="14"
                                    FontStyle="Italic"></TextBlock>

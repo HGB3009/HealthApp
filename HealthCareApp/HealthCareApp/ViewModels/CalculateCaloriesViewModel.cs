@@ -97,37 +97,44 @@ namespace HealthCareApp.ViewModels
         public string TotalCalcium { get { return totalCalcium; } set { totalCalcium = value; OnPropertyChanged(nameof(TotalCalcium)); } }
         public string totalIron;
         public string TotalIron { get { return totalIron; } set { totalIron = value; OnPropertyChanged(nameof(TotalIron)); } }
-
+        public string totalPolyunsaturated;
+        public string TotalPolyunsaturated { get { return totalPolyunsaturated; } set { totalPolyunsaturated = value; OnPropertyChanged(nameof(TotalPolyunsaturated)); } }
+        public string totalMonounsaturated;
+        public string TotalMonounsaturated { get { return totalMonounsaturated; } set { totalMonounsaturated = value; OnPropertyChanged(nameof(TotalMonounsaturated)); } }
+        public string totalPhosphorus;
+        public string TotalPhosphorus { get { return totalPhosphorus; } set { totalPhosphorus = value; OnPropertyChanged(nameof(TotalPhosphorus)); } }
+        public string hintIngredient;
+        public string HintIngredient { get { return hintIngredient; } set { hintIngredient = value; OnPropertyChanged(nameof (HintIngredient)); } }
         public CalculateCaloriesViewModel()
         {
+            HintIngredient = "1 cup of rice" + '\n' + "10 oz of chickbeans";
             IngredientTextChangedCommand = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 FoodNameTextBox = "";
                 QuantityTextBox = "";
                 UnitTextBox = "";
             });
-            CalculateBtnCommand = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            CalculateBtnCommand = new RelayCommand<TextBox>((p) => { return (((IngredientTextBox == string.Empty || IngredientTextBox == null) && (p == null||p.Text==string.Empty)) &&
+                                                                                (FoodNameTextBox == string.Empty || QuantityTextBox == string.Empty ||
+                                                                                FoodNameTextBox == null || QuantityTextBox == null)) ? false : true; }, (p) =>
             {
-                if ((FoodNameTextBox == string.Empty || QuantityTextBox == string.Empty ||
-                    FoodNameTextBox == null || QuantityTextBox == null) && (IngredientTextBox == string.Empty || IngredientTextBox == null))
-                    MessageBox.Show("Some information is missing, please fill in all segments.");
+                if (IngredientTextBox == null || IngredientTextBox == string.Empty)
+                {
+                    string name = FoodNameTextBox;
+                    string quantity = QuantityTextBox;
+                    string unit = (UnitTextBox != null) ? UnitTextBox : "";
+                    string querry = ConvertFoodIngredient(name, quantity, unit);
+                    CalculateCaloriesNutrient(querry);
+                    List<string>querryEdamam = new List<string>();
+                    querryEdamam.Add(querry);
+                    CalculateCaloriesEdamam(querryEdamam);
+                }
                 else
                 {
-                    if (IngredientTextBox == null || IngredientTextBox == string.Empty)
-                    {
-                        string name = FoodNameTextBox;
-                        string quantity = QuantityTextBox;
-                        string unit = (UnitTextBox != null) ? UnitTextBox : "";
-                        string querry = ConvertFoodIngredient(name, quantity, unit);
-                        CalculateCaloriesNutrient(querry);
-                    }
-                    else
-                    {
-                        string convertNutrient = ConvertIngredientTextNutrient(IngredientTextBox);
-                        CalculateCaloriesNutrient(convertNutrient);
-                        List<string> ConvertEdamam=ConvertIngredientTextEdamam(IngredientTextBox);
-                        CalculateCaloriesEdamam(ConvertEdamam);
-                    }
+                    string convertNutrient = ConvertIngredientTextNutrient(IngredientTextBox);
+                    CalculateCaloriesNutrient(convertNutrient);
+                    List<string> ConvertEdamam=ConvertIngredientTextEdamam(IngredientTextBox);
+                    CalculateCaloriesEdamam(ConvertEdamam);
                 }
             });
             FoodNameChangedCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -213,26 +220,39 @@ namespace HealthCareApp.ViewModels
             double VitaminD = 0;
             double Iron = 0;
             double FatTrans = 0;
-            foreach(string Item in Items)
+            double Polyunsaturated = 0;
+            double Monounsaturated = 0;
+            double Phosphorus = 0;
+            foreach (string Item in Items)
             {
                 successCalculateEdamam = false;
                 string result=await GetInfoEdamamAPI(Item);
                 if (successCalculateEdamam)
                 {
-                    Calcium += findCalcium(result);
-                    VitaminD += findVitaminD(result);
-                    Iron += findIron(result);
-                    FatTrans += findFatTrans(result);
+                    Calcium += findNutrient(result,"Calcium");
+                    VitaminD += findNutrient(result, "Vitamin D");
+                    Iron += findNutrient(result, "Iron");
+                    FatTrans += findNutrient(result, "total trans");
+                    Polyunsaturated += findNutrient(result, "polyunsaturated");
+                    Monounsaturated += findNutrient(result, "monounsaturated");
+                    Phosphorus += findNutrient(result, "Phosphorus");
                 }
             }
             Calcium = Math.Round(Calcium, 2);
             VitaminD = Math.Round(VitaminD, 2);
             Iron = Math.Round(Iron, 2);
             FatTrans = Math.Round(FatTrans, 2);
+            Polyunsaturated = Math.Round(Polyunsaturated, 2);
+            Monounsaturated = Math.Round(Monounsaturated, 2);
+            Phosphorus = Math.Round(Phosphorus, 2);
+
             TotalFatTrans = FatTrans.ToString() + 'g';
             TotalIron = Iron.ToString() + "mg";
             TotalVitaminD = VitaminD.ToString() + "mcg";
             TotalCalcium = Calcium.ToString() + "mg";
+            TotalPolyunsaturated = Polyunsaturated.ToString() + 'g';
+            TotalMonounsaturated = Monounsaturated.ToString() + 'g';
+            TotalPhosphorus = Phosphorus.ToString() + "mg";
         }
         private async Task<string> GetInfoEdamamAPI(string foodItem)
         {
@@ -257,33 +277,10 @@ namespace HealthCareApp.ViewModels
                     return $"Error:{response.StatusCode},{await response.Content.ReadAsStringAsync()}";
             }
         }
-        private double findCalcium(string text)
+        private double findNutrient(string text,string Nutrient)
         {
-            string calcium = "";
-            int index = text.IndexOf("Calcium");
-            if (index == -1)
-                return 0;
-            else
-            {
-                int j = index;
-                while (text[j] != ':'&&j<text.Length)
-                {
-                    ++j;
-                }
-                ++j;
-                while (text[j] != ',')
-                {
-                    calcium += text[j];
-                    ++j;
-                }
-                return double.Parse(calcium);
-            }
-        }
-
-        private double findVitaminD(string text)
-        {
-            string calcium = "";
-            int index = text.IndexOf("Vitamin D");
+            string nutri = "";
+            int index = text.IndexOf(Nutrient);
             if (index == -1)
                 return 0;
             else
@@ -296,56 +293,10 @@ namespace HealthCareApp.ViewModels
                 ++j;
                 while (text[j] != ',')
                 {
-                    calcium += text[j];
+                    nutri += text[j];
                     ++j;
                 }
-                return double.Parse(calcium);
-            }
-        }
-
-        private double findIron(string text)
-        {
-            string calcium = "";
-            int index = text.IndexOf("Iron");
-            if (index == -1)
-                return 0;
-            else
-            {
-                int j = index;
-                while (text[j] != ':' && j < text.Length)
-                {
-                    ++j;
-                }
-                ++j;
-                while (text[j] != ',')
-                {
-                    calcium += text[j];
-                    ++j;
-                }
-                return double.Parse(calcium);
-            }
-        }
-
-        private double findFatTrans(string text)
-        {
-            string calcium = "";
-            int index = text.IndexOf("total trans");
-            if (index == -1)
-                return 0;
-            else
-            {
-                int j = index;
-                while (text[j] != ':' && j < text.Length)
-                {
-                    ++j;
-                }
-                ++j;
-                while (text[j] != ',')
-                {
-                    calcium += text[j];
-                    ++j;
-                }
-                return double.Parse(calcium);
+                return double.Parse(nutri);
             }
         }
         private string ConvertIngredientTextNutrient(string text)
@@ -368,7 +319,7 @@ namespace HealthCareApp.ViewModels
         }
         private void ShowCalculateResult(NutrientsModel.root result)
         {
-            SumCalories = CalculateSumCalories(result).ToString();
+            SumCalories = CalculateSumCalories(result).ToString()+" kcal";
             TotalFat = CalculateTotalFat(result).ToString() + 'g';
             SaturatedFat = CalculateTotalSaturatedFat(result).ToString() + 'g';
             TotalCholesterol = CalculateTotalCholesterol(result).ToString() + "mg";

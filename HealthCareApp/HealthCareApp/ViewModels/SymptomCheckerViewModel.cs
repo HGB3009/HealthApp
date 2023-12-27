@@ -25,6 +25,8 @@ namespace HealthCareApp.ViewModels
     {
         public ICommand DiagnosisBtnCommand { get; set; }
         public ICommand SelectionChangedItemCommand { get; set; }
+        public ICommand AddSymptomBtnCommand { get; set; }
+        public ICommand ClearSymptomsBtnCommand { get; set; }
 
         public List<string> tempItem = new List<string>();
         public List<string> Items
@@ -121,13 +123,15 @@ namespace HealthCareApp.ViewModels
         {
             LoadToken();
             LoadListSymptom();
-            DiagnosisBtnCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
+            DiagnosisBtnCommand = new RelayCommand<TextBox>((p) => { return (p == null || p.Text == string.Empty) ? false : true; }, (p) => {
                 DiagnosisBtn_Click();
             });
-            SelectionChangedItemCommand = new RelayCommand<ComboBox>((p) => { return true; }, (p) => {
+            AddSymptomBtnCommand = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
+            {
                 if (p.SelectedItem != null)
                     UpdateSymptomsBox(p.SelectedItem.ToString());
             });
+            ClearSymptomsBtnCommand = new RelayCommand<object>((p) => { return true; }, (p) => { TempSymptoms = string.Empty; });
         }
         string api_key = "Dz2t8_GMAIL_COM_AUT";
         string secret_key = "k4QJf68Tne9N3MjHd";
@@ -212,12 +216,14 @@ namespace HealthCareApp.ViewModels
         private async void DiagnosisBtn_Click()
         {
             successDiagnosis = false;
+            bool isNotice = false;
             string fewSymptoms = ConvertSymptomToID(TempSymptoms);
             string gender = "male";
             string yearOfBirth = "1988";
             string result = await getDiagnosis(url, autherity.Token, gender, yearOfBirth, fewSymptoms);
-            if (!successDiagnosis || result.Length < 5)
+            if ((!successDiagnosis || result.Length < 5) && !isNotice)
             {
+                isNotice = true;
                 MessageBox.Show("Cannot Diagnosis. Please check again your symptoms infomation.");
                 ShowBadRequest();
             }
@@ -274,7 +280,7 @@ namespace HealthCareApp.ViewModels
         }
         private void UpdateSymptomsBox(string element)
         {
-            string s = TempSymptoms + ((TempSymptoms != null) ? ", " : "") + element;
+            string s = TempSymptoms + ((TempSymptoms != null && TempSymptoms != string.Empty) ? ", " : "") + element;
             TempSymptoms = s;
         }
         private string ConvertSymptomToID(string Symptoms)
