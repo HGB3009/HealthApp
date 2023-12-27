@@ -146,45 +146,56 @@ namespace HealthCareApp.ViewModels
             NewPasswordchangeCM = new RelayCommand<PasswordBox>((p) => true, (p) => { PasswordVM = p.Password; });
             ReNewPasswordchangeCM = new RelayCommand<PasswordBox>((p) => true, (p) => { RePassword = p.Password; });
         }
-        public void ChangePassword(Window p)
+        public void ChangePassword(ForgotPasswordView parameter)
         {
-            if (!string.IsNullOrEmpty(PasswordVM) && !string.IsNullOrEmpty(RePassword))
+            if (!string.IsNullOrEmpty(PasswordVM))
             {
-                if (PasswordVM == RePassword)
+                if(!string.IsNullOrEmpty(RePassword))
                 {
-                    var account = GetAccount(UsernameVM);
-                    var filter = Builders<Account>.Filter.Eq(u => u.Username, UsernameVM);
-
-                    if (account != null)
+                    if (PasswordVM == RePassword)
                     {
-                        account.Password = PasswordVM;
+                        var account = GetAccount(UsernameVM);
+                        var filter = Builders<Account>.Filter.Eq(u => u.Username, UsernameVM);
 
-                        var updateDefinition = Builders<Account>.Update.Set(u => u.Password, PasswordVM);
+                        if (account != null)
+                        {
+                            account.Password = PasswordVM;
 
-                        _accountCollection.UpdateOne(filter, updateDefinition);
+                            var updateDefinition = Builders<Account>.Update.Set(u => u.Password, PasswordVM);
 
-                        MessageBox.Show("Password changed successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-                        p.Close();
+                            _accountCollection.UpdateOne(filter, updateDefinition);
+
+                            MessageBox.Show("Password changed successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                            parameter.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Username not found!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            parameter.Email.Focus();
+                        }
+
                     }
                     else
                     {
-                        MessageBox.Show("Username not found!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("Please enter matching new password and re-enter new password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        parameter.NewPassword.Focus();
                     }
-
                 }
                 else
                 {
-                    MessageBox.Show("Please enter matching new password and re-enter new password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Please enter re-enter new password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    parameter.ReNewPassword.Focus();
                 }
             }
             else
             {
-                MessageBox.Show("Please enter new password and re-enter new password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please enter new password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                parameter.NewPassword.Focus();
             }
         }
-        public void SendingVerification(Window p)
+        public void SendingVerification(ForgotPasswordView p)
         {
-            if (ValidateEmail())
+            if (ValidateEmail(p))
             {
                 try
                 {
@@ -220,7 +231,7 @@ namespace HealthCareApp.ViewModels
                 }
             }
         }
-        public void CheckVerificationPassword(Window p)
+        public void CheckVerificationPassword(ForgotPasswordView p)
         {
             if (ValidateResetPassword(p))
             {
@@ -234,13 +245,14 @@ namespace HealthCareApp.ViewModels
             int code = random.Next(100000, 999999);
             return code.ToString();
         }
-        private bool ValidateResetPassword(Window p)
+        private bool ValidateResetPassword(ForgotPasswordView p)
         {
             if (!string.IsNullOrEmpty(VerificationVM))
             {
                 if (VerificationVM != verificationCode)
                 {
                     MessageBox.Show("Your verification code does not match!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    p.Vertification.Focus();
                     return false;
                 }
                 else
@@ -251,10 +263,11 @@ namespace HealthCareApp.ViewModels
             else
             {
                 MessageBox.Show("Please enter the verification code!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Vertification.Focus();
                 return false;
             }
         }
-        private bool ValidateEmail()
+        private bool ValidateEmail(ForgotPasswordView p)
         {
             if (!string.IsNullOrEmpty(EmailVM))
             {
@@ -263,6 +276,7 @@ namespace HealthCareApp.ViewModels
                 if (user == null)
                 {
                     MessageBox.Show("The email you entered is not registered for an account!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    p.Email.Focus();
                     return false;
                 }
 
@@ -272,6 +286,7 @@ namespace HealthCareApp.ViewModels
             else
             {
                 MessageBox.Show("Please enter the email!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Email.Focus();
                 return false;
             }
         }
@@ -309,7 +324,7 @@ namespace HealthCareApp.ViewModels
 
             return database.GetCollection<UserInformation>("UserInformation");
         }
-        public void ReloadWindow(Window currentWindow)
+        public void ReloadWindow(ForgotPasswordView currentWindow)
         {
             ForgotPasswordView newWindow = new ForgotPasswordView();
             newWindow.DataContext = currentWindow.DataContext;
