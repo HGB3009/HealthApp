@@ -4,9 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthCareApp.Views"
+        xmlns:components = "clr-namespace:HealthCareApp.Components"
         mc:Ignorable="d"
-        Title="MainWindowView" Height="450" Width="800">
+        Title="MainWindowView"
+        x:Name="MainWindowWD"
+        Height="810" 
+        Width="1440"
+        WindowStartupLocation="CenterScreen" 
+        FontFamily="Poppins">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <components:LeftSideBarView></components:LeftSideBarView>
     </Grid>
 </Window>
