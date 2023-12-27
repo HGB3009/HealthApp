@@ -352,7 +352,7 @@
                                    FontWeight="Normal"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="12g"
+                        <TextBlock Text="{Binding TotalMonounsaturated}"
                                    x:Name="MonounSaturated_FatText"
                                    FontSize="14"
                                    FontWeight="Normal"
