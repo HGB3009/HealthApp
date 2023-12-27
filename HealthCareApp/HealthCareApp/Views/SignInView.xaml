@@ -94,7 +94,7 @@
                         Height="30" 
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"  
-                        Margin="0" />
+                    />
                 <TextBox 
                         x:Name= "Username"
                         Text="{Binding Username}"
