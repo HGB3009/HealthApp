@@ -16,7 +16,7 @@
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             Background="{DynamicResource MaterialDesignPaper}"
+             Background="{StaticResource MainBackgroundColor}"
              FontFamily="{DynamicResource MaterialDesignFont}"
              DataContext="{StaticResource SymptomCheckerVM}"
              mc:Ignorable="d" 

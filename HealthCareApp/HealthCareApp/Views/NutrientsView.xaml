@@ -14,34 +14,34 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{StaticResource MainBackgroundColor}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        d:DesignHeight="750" d:DesignWidth="1200"
+        d:DesignHeight="810" d:DesignWidth="1440"
         Height="810" Width="1440" >
     <Grid>
-        <uc:MainScreenComponent></uc:MainScreenComponent>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"></ColumnDefinition>
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Column="1" Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="120"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+        <uc:LeftSideBarView Grid.Column="0" Grid.RowSpan="2"></uc:LeftSideBarView>
+        <uc:NavigationBarView Grid.Row="0" Grid.Column="1"></uc:NavigationBarView>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-                    <Button FontSize="20"
+                <Button FontSize="20"
                             Height="60"
                             Background="{StaticResource BlueSky}"
                             Margin="30,0,0,0"
@@ -51,10 +51,10 @@
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             ToolTip="MaterialDesignRaisedButton with Round Corners"
                             Command="{Binding CalculateCommand}">
-                        <TextBlock Text="Calories Calculate" TextWrapping="Wrap" TextAlignment="Center" />
-                    </Button>
+                    <TextBlock Text="Calories Calculate" TextWrapping="Wrap" TextAlignment="Center" />
+                </Button>
 
-                    <Button FontSize="20"
+                <Button FontSize="20"
                             Height="60"
                             Background="{StaticResource PrimaryColor}"
                             Margin="10,0,20,0"
@@ -64,10 +64,9 @@
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             ToolTip="MaterialDesignRaisedButton with Round Corners"
                             Command="{Binding AddMealCommand}">
-                        <TextBlock Text="Add Meal" />
-                    </Button>
+                    <TextBlock Text="Add Meal" />
+                </Button>
 
-                </Grid>
             </Grid>
         </Grid>
     </Grid>

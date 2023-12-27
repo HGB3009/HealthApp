@@ -12,4 +12,6 @@
     <viewmodels:CalculateCaloriesViewModel x:Key="CalculateCaloriesVM"></viewmodels:CalculateCaloriesViewModel>
     <viewmodels:SignupViewModel x:Key="SignupVM"></viewmodels:SignupViewModel>
     <viewmodels:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodels:ForgotPasswordViewModel>
+    <viewmodels:LeftSideBarViewModel x:Key="LeftSideBarVM"></viewmodels:LeftSideBarViewModel>
+    <viewmodels:AddMealViewModel x:Key="AddMealVM"></viewmodels:AddMealViewModel>
 </ResourceDictionary> 
