@@ -1,5 +1,4 @@
-﻿using HealthCareApp.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,21 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HealthCareApp.Components
+namespace HealthCareApp.Views
 {
     /// <summary>
-    /// Interaction logic for LeftSideBarView.xaml
+    /// Interaction logic for SettingView.xaml
     /// </summary>
-    public partial class LeftSideBarView : UserControl
+    public partial class SettingView : Window
     {
-        public LeftSideBarViewModel ViewModel { get; set; }
-        public LeftSideBarView()
+        public SettingView()
         {
             InitializeComponent();
-            this.DataContext=ViewModel=new LeftSideBarViewModel();
         }
     }
 }
