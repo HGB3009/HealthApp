@@ -57,7 +57,7 @@ namespace HealthCareApp.ViewModels
             OpenChangePasswordCommand = new RelayCommand<SignInView>((parameter) => true, (parameter) => OpenForgotPasswordWindow(parameter));
             PasswordchangeCM = new RelayCommand<PasswordBox>((p) => true, (p) => { Password = p.Password; });
         }
-        public void SignInCM(Window loginWindow)
+        public void SignInCM(SignInView loginWindow)
         {
 
             if (!string.IsNullOrEmpty(Username))
@@ -69,6 +69,7 @@ namespace HealthCareApp.ViewModels
                     if (user == null)
                     {
                         MessageBox.Show("Wrong username or password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        loginWindow.Username.Focus();
                         return;
                     }
 
@@ -82,17 +83,20 @@ namespace HealthCareApp.ViewModels
                     else
                     {
                         MessageBox.Show("Wrong username or password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        loginWindow.Username.Focus();
                     }
                 }
                 else
                 {
                     MessageBox.Show("Please enter the password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    loginWindow.password.Focus();
                 }
 
             } 
             else
             {
                 MessageBox.Show("Please enter the username!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                loginWindow.Username.Focus();
             }
 
         }
