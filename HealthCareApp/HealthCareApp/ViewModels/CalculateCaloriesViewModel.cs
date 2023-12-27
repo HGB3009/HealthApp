@@ -132,10 +132,15 @@ namespace HealthCareApp.ViewModels
             });
         }
 
-        string API_ID = "1c2aa54e";
-        string API_Key = "146bf4035a385f1d5632b717d12f3a4a";
-        string endPoint;
-        string url = $"https://trackapi.nutritionix.com/v2/natural/";
+        private string Nutrient_API_ID = "1c2aa54e";
+        private string Nutrient_API_Key = "146bf4035a385f1d5632b717d12f3a4a";
+        private string endPoint;
+        private string Nutrient_url = $"https://trackapi.nutritionix.com/v2/natural/";
+
+        private string Edamam_appId = "9541ae7b";
+        private string Edamam_apiKey = "80938161b72eb2819453ebff5678e7cb";
+        private string Edamam_apiUrl = "https://api.edamam.com/api/nutrition-data";
+
         bool sucessGetCalculate;
         NutrientsModel.root NutrientSource;
         private string ConvertFoodIngredient(string name, string quantity, string unit)
@@ -166,14 +171,14 @@ namespace HealthCareApp.ViewModels
         {
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("x-app-id", API_ID);
-                client.DefaultRequestHeaders.Add("x-app-key", API_Key);
+                client.DefaultRequestHeaders.Add("x-app-id", Nutrient_API_ID);
+                client.DefaultRequestHeaders.Add("x-app-key", Nutrient_API_Key);
 
                 var parameters = new
                 {
                     query = query,
                 };
-                var uri = new Uri($"{url}{endPoint}");
+                var uri = new Uri($"{Nutrient_url}{endPoint}");
                 HttpResponseMessage response = await client.PostAsJsonAsync(uri, parameters);
                 if (response.IsSuccessStatusCode)
                 {
@@ -184,6 +189,27 @@ namespace HealthCareApp.ViewModels
                 {
                     return $"Error: {response.StatusCode},{await response.Content.ReadAsStringAsync()}";
                 }
+            }
+        }
+        private async Task<string> GetInfoEdamamAPI(string foodItem)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var parameters = new
+                {
+                    app_id = Edamam_appId,
+                    app_key = Edamam_apiKey,
+                    ingr = foodItem
+                };
+
+                var uri = new Uri($"{Edamam_apiUrl}?app_id={Edamam_appId}&app_key={Edamam_apiKey}&ingr={foodItem}");
+                HttpResponseMessage response = await client.GetAsync(uri);
+
+                if (response.IsSuccessStatusCode)
+                    return await response.Content.ReadAsStringAsync();
+                else
+                    return $"Error:{response.StatusCode},{await response.Content.ReadAsStringAsync()}";
+
             }
         }
         private void ShowCalculateResult(NutrientsModel.root result)
