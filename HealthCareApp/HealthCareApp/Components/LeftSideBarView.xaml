@@ -1,0 +1,320 @@
+﻿<UserControl x:Class="HealthCareApp.Components.LeftSideBarView"
+             x:Name="LeftSideBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HealthCareApp.Components"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             Height="760" 
+             Width="280"
+             FontFamily="Poppins">
+    <Grid Background="{StaticResource White}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Image 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Source="\Resources\Images\Logo.jpg"/>
+            </Grid>
+
+            <TextBlock
+                Grid.Column="1"
+                x:Name="appName" 
+                Text="Your Healthcare Companion"
+                FontSize="25" 
+                Foreground="{StaticResource PrimaryColor}" 
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                TextWrapping="Wrap"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <RadioButton 
+                x:Name="MainMenuNavigationBtn"
+                Style="{StaticResource BtnStyle}"
+                GroupName="ButtonGroup">
+                <Border Padding="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" >
+                            <Icon:PackIconTypicons 
+                                Kind="Home" 
+                                Foreground="{StaticResource LightBlackColor}"
+                                Width="30" 
+                                Height="30" 
+                                HorizontalAlignment="Left"
+                                Margin="0,0,15,5"
+                                VerticalAlignment="Center"  />
+                        </Grid>
+                        <Grid Grid.Column="1" >
+                            <TextBlock Text="Main Menu" 
+                                       Foreground="#49454F" 
+                                       FontSize="22" 
+                                       FontWeight="DemiBold"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </RadioButton>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <RadioButton 
+                x:Name="Fitness"
+                Style="{StaticResource BtnStyle}"
+                GroupName="ButtonGroup">
+                <Border Padding="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" >
+                            <Icon:PackIconFontAwesome 
+                                Kind="RunningSolid"
+                                Foreground="{StaticResource LightBlackColor}"
+                                Width="30" 
+                                Height="30" 
+                                HorizontalAlignment="Left"
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"  />
+                        </Grid>
+                        <Grid Grid.Column="1" >
+                            <TextBlock Text="Fitness" 
+                                       Foreground="#49454F" 
+                                       FontSize="22" 
+                                       FontWeight="DemiBold"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </RadioButton>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <RadioButton 
+                x:Name="Nutrition"
+                Style="{StaticResource BtnStyle}"
+                GroupName="ButtonGroup">
+                <Border Padding="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" >
+                            <Icon:PackIconMaterial 
+                                Kind="Nutrition"
+                                Foreground="{StaticResource LightBlackColor}"
+                                Width="30" 
+                                Height="30" 
+                                HorizontalAlignment="Left"
+                                Margin="0,0,15,5"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <Grid Grid.Column="1" >
+                            <TextBlock 
+                                Text="Nutrition" 
+                                Foreground="#49454F" 
+                                FontSize="22" 
+                                FontWeight="DemiBold"
+                                HorizontalAlignment="Left"                               VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </RadioButton>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <RadioButton
+                x:Name="Sleep"
+                Style="{StaticResource BtnStyle}"
+                GroupName="ButtonGroup">
+                <Border Padding="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" >
+                            <Icon:PackIconFontAwesome 
+                                Kind="BedSolid"
+                                Foreground="{StaticResource LightBlackColor}"
+                                Width="30" 
+                                Height="30" 
+                                HorizontalAlignment="Left"
+                                Margin="0,0,15,5"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <Grid Grid.Column="1" >
+                            <TextBlock 
+                                Text="Sleep" 
+                                Foreground="#49454F" 
+                                FontSize="22" 
+                                FontWeight="DemiBold"
+                                HorizontalAlignment="Left"                               VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </RadioButton>
+        </Grid>
+
+        <Grid Grid.Row="5">
+            <RadioButton 
+                x:Name="Diagnosis"
+                Style="{StaticResource BtnStyle}"
+                GroupName="ButtonGroup">
+                <Border Padding="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" >
+                            <Icon:PackIconFontAwesome Kind="StethoscopeSolid" 
+                                Foreground="{StaticResource LightBlackColor}"
+                                Width="30" 
+                                Height="30" 
+                                HorizontalAlignment="Left"
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <Grid Grid.Column="1" >
+                            <TextBlock 
+                                Text="Diagnosis" 
+                                Foreground="#49454F" 
+                                FontSize="22" 
+                                FontWeight="DemiBold"
+                                    HorizontalAlignment="Left"                               VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </RadioButton>
+        </Grid>
+
+        <Grid Grid.Row="6">
+            <RadioButton 
+                x:Name="Reminder"
+                Style="{StaticResource BtnStyle}"
+                GroupName="ButtonGroup">
+                <Border Padding="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" >
+                            <Icon:PackIconVaadinIcons 
+                                Kind="Alarm" 
+                                Foreground="{StaticResource LightBlackColor}"
+                                Width="30" 
+                                Height="30" 
+                                HorizontalAlignment="Left"
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <Grid Grid.Column="1" >
+                            <TextBlock 
+                                Text="Reminders" 
+                                Foreground="#49454F" 
+                                FontSize="22" 
+                                FontWeight="DemiBold"
+                                HorizontalAlignment="Left"                               VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </RadioButton>
+        </Grid>
+
+        <Grid Grid.Row="7">
+            <RadioButton 
+                x:Name="Setting"
+                Style="{StaticResource BtnStyle}"
+                GroupName="ButtonGroup">
+                <Border Padding="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" >
+                            <Icon:PackIconRemixIcon 
+                                Kind="Settings4Fill"
+                                Foreground="{StaticResource LightBlackColor}"
+                                Width="30" 
+                                Height="30" 
+                                HorizontalAlignment="Left"
+                                Margin="0,0,15,5"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <Grid Grid.Column="1" >
+                            <TextBlock 
+                                Text="Setting" 
+                                Foreground="#49454F" 
+                                FontSize="22" 
+                                FontWeight="DemiBold"
+                                HorizontalAlignment="Left"  
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </RadioButton>
+        </Grid>
+
+        <Grid Grid.Row="8">
+            <Grid
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" >
+                    <Icon:PackIconForkAwesome 
+                        Kind="SignOut"
+                        Foreground="{StaticResource PrimaryColor}"
+                        Width="30" 
+                        Height="30" 
+                        HorizontalAlignment="Left"
+                        Margin="0,0,10,30"
+                        VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="1" >
+                    <TextBlock 
+                        Text="Log out" 
+                        Foreground="#49454F" 
+                        FontSize="25" 
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"  
+                        VerticalAlignment="Top"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
