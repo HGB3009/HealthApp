@@ -120,7 +120,7 @@
                                     <ColumnDefinition Width="117*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Resources/Images/Reminders_Logo.jpg" Margin="34,0,38,-1"/>
-                                <TextBlock Grid.Column="1" Text="Remiders" FontSize="16" FontFamily="Inter"
+                                <TextBlock Grid.Column="1" Text="Reminders" FontSize="16" FontFamily="Inter"
                         FontWeight="Medium"
                         VerticalAlignment="Center" Height="16"/>
                             </Grid>
@@ -134,7 +134,7 @@
                                     <ColumnDefinition Width="117*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="/Resources/Images/Setting_Logo.jpg" Margin="34,0,38,-1"/>
-                                <TextBlock Grid.Column="1" Text="Setting" FontSize="16" FontFamily="Inter"
+                                <TextBlock Grid.Column="1" Text="Settings" FontSize="16" FontFamily="Inter"
                                            FontWeight="Medium"
                                            VerticalAlignment="Center" Height="20"/>    
                             </Grid>
