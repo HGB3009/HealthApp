@@ -84,9 +84,7 @@
                                 materialDesign:ButtonAssist.CornerRadius="5"
                                 HorizontalAlignment="Right" 
                                 VerticalAlignment="Center" 
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                Background="{StaticResource PrimaryColor}"
-                                BorderBrush="{StaticResource LightBlackColor}"
+                                Style="{StaticResource MyPrimaryButtonStyle}"
                                 ToolTip="MaterialDesignRaisedLightButton with Round Corners">
                             <TextBlock
                                     Text="Choose your image" />
@@ -426,9 +424,7 @@
                     materialDesign:ButtonAssist.CornerRadius="5"
                     HorizontalAlignment="Left" 
                     VerticalAlignment="Center" 
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Background="{StaticResource LightBlackColor}"
-                    BorderBrush="{StaticResource LightBlackColor}"
+                    Style="{StaticResource MyBlackButtonStyle}"
                     ToolTip="MaterialDesignRaisedLightButton with Round Corners">
                 <TextBlock
                         Text="Cancel" />
@@ -447,9 +443,7 @@
                     materialDesign:ButtonAssist.CornerRadius="5"
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Center" 
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Background="{StaticResource PrimaryColor}"
-                    BorderBrush="{StaticResource LightBlackColor}"
+                    Style="{StaticResource MyPrimaryButtonStyle}"
                     ToolTip="MaterialDesignRaisedLightButton with Round Corners">
                 <TextBlock
                         Text="Confirm" />

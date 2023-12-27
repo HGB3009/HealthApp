@@ -13,6 +13,9 @@
     <Compile Update="Components\MainScreenComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\NavigationBarView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AddMealView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\MainScreenComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\NavigationBarView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\ButtonStyle.xaml">

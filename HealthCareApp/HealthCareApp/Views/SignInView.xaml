@@ -10,6 +10,7 @@
         Title="SignInScreen" 
         Height="810" 
         Width="1440" 
+        ResizeMode="CanMinimize"
         DataContext="{StaticResource SignInVM}"
         WindowStartupLocation="CenterScreen" 
         FontFamily="Poppins">
@@ -156,14 +157,10 @@
             <Grid Grid.Row="3">
                 <Button
                     Width="230" 
-                    Height="40"
+                    Height="45"
                     FontSize="18"
-                    Background="{StaticResource PrimaryColor}"
-                    BorderBrush="{StaticResource LightBlackColor}"
                     materialDesign:ButtonAssist.CornerRadius="25"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                    ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+                    Style="{StaticResource MyPrimaryButtonStyle}"
                     Content="Login"
                     FontWeight="Bold">
 
@@ -199,7 +196,6 @@
                                         Value="Underline" />
                                 <Setter Property="Cursor"
                                         Value="Hand"/>
-
                             </Trigger>
                         </Style.Triggers>
                     </Style>

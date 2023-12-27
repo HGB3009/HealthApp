@@ -10,14 +10,24 @@
         x:Name="MainWindowWD"
         Height="810" 
         Width="1440"
+        ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen" 
         FontFamily="Poppins">
-    <Grid>
+    <Grid Background="{StaticResource BackGround}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
+        
         <components:LeftSideBarView></components:LeftSideBarView>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <components:NavigationBarView></components:NavigationBarView>
+        </Grid>
     </Grid>
 </Window>
