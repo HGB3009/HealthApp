@@ -23,6 +23,7 @@ namespace HealthCareApp.ViewModels
         public ICommand FoodNameChangedCommand { get; set; }
         public ICommand QuantityChangedCommand { get; set; }
         public ICommand UnitChangedCommand { get; set; }
+        public ICommand CancelCalculateCommand { get; set; }
 
         public string foodNameTextBox;
         public string FoodNameTextBox
@@ -114,7 +115,10 @@ namespace HealthCareApp.ViewModels
                     }
                     else
                     {
-                        CalculateCaloriesNutrient(IngredientTextBox);
+                        MessageBox.Show(IngredientTextBox);
+                        string convert = ConvertIngredientText(IngredientTextBox);
+                        MessageBox.Show(convert);
+                        CalculateCaloriesNutrient(convert);
                     }
                 }
             });
@@ -129,6 +133,9 @@ namespace HealthCareApp.ViewModels
             UnitChangedCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 IngredientTextBox = "";
+            });
+            CancelCalculateCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
+                p.Close();
             });
         }
 
@@ -211,6 +218,16 @@ namespace HealthCareApp.ViewModels
                     return $"Error:{response.StatusCode},{await response.Content.ReadAsStringAsync()}";
 
             }
+        }
+        private string ConvertIngredientText(string text)
+        {
+            string result = "";
+            string[] Listtext = text.Split(new[] { Environment.NewLine }, StringSplitOptions.None); 
+            for(int i = 0;i<Listtext.Length; i++)
+            {
+                result += ((i != 0) ? ". " : "") + Listtext[i];
+            }
+            return result;
         }
         private void ShowCalculateResult(NutrientsModel.root result)
         {
