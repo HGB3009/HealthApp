@@ -307,7 +307,7 @@
                                    FontWeight="Normal"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="0g"
+                        <TextBlock Text="{Binding TotalFatTrans}"
                                    x:Name="Trans_FatText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -542,7 +542,7 @@
                                    FontWeight="Normal"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="0.2 mcg"
+                        <TextBlock Text="{Binding TotalVitaminD}"
                                    x:Name="VitaminDText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -573,7 +573,7 @@
                                    FontWeight="Normal"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="401 mg"
+                        <TextBlock Text="{Binding TotalCalcium}"
                                    x:Name="CalciumText"
                                    FontSize="14"
                                    FontWeight="Normal"
@@ -604,7 +604,7 @@
                                    FontWeight="Normal"
                                    Foreground="Black"
                                    VerticalAlignment="Center"></TextBlock>
-                        <TextBlock Text="4.3mg"
+                        <TextBlock Text="{Binding TotalIron}"
                                    x:Name="IronText"
                                    FontSize="14"
                                    FontWeight="Normal"
