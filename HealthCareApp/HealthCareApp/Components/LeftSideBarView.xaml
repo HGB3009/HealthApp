@@ -298,6 +298,23 @@
             <Grid
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding LogoutMainWD}"/>
+                        
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Cursor"
+                                        Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -319,7 +336,19 @@
                         FontSize="25" 
                         FontWeight="Bold"
                         HorizontalAlignment="Center"  
-                        VerticalAlignment="Top"/>
+                        VerticalAlignment="Top">
+                        <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="TextDecorations"
+                                            Value="Underline" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                    </TextBlock>
                 </Grid>
             </Grid>
         </Grid>
