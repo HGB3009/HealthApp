@@ -22,6 +22,9 @@
     <Compile Update="Views\CalculateCaloriesView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DiagnosisView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\FitnessView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -35,6 +38,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\NutrientsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NutritionView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\RemindersView.xaml.cs">
@@ -84,6 +90,9 @@
     <Page Update="Views\CalculateCaloriesView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\DiagnosisView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\FitnessView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -97,6 +106,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NutrientsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NutritionView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\RemindersView.xaml">

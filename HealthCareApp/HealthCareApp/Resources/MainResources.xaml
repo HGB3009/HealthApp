@@ -8,6 +8,8 @@
     <viewmodels:FitnessViewModel x:Key="FitnessVM"></viewmodels:FitnessViewModel>
     <viewmodels:RemindersViewModel x:Key="RemindersVM"></viewmodels:RemindersViewModel>
     <viewmodels:SleepViewModel x:Key="SleepVM"></viewmodels:SleepViewModel>
+    <viewmodels:NutritionViewModel x:Key="NutritionVM"></viewmodels:NutritionViewModel>
+    <viewmodels:DiagnosisViewModel x:Key="DiagnosisVM"></viewmodels:DiagnosisViewModel>
     <!--screen-->
     <viewmodels:SignInViewModel x:Key ="SignInVM"></viewmodels:SignInViewModel>
     <viewmodels:MainWindowViewModel x:Key="MainWindowVM"></viewmodels:MainWindowViewModel>
