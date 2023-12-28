@@ -31,7 +31,16 @@
     <Compile Update="Views\MainWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\MenuView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\NutrientsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\RemindersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SettingsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\SettingView.xaml.cs">
@@ -41,6 +50,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\SignupView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SleepView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\SymtompCheckerView.xaml.cs">
@@ -81,7 +93,16 @@
     <Page Update="Views\MainWindowView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\MenuView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\NutrientsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\RemindersView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SettingView.xaml">
@@ -91,6 +112,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SignupView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SleepView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SymtompCheckerView.xaml">

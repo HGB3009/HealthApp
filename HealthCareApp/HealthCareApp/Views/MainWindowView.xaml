@@ -12,7 +12,8 @@
         Width="1440"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen" 
-        FontFamily="Poppins">
+        FontFamily="Poppins"
+        DataContext="{StaticResource MainWindowVM}">
     <Grid Background="{StaticResource BackGround}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -24,10 +25,14 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <components:NavigationBarView></components:NavigationBarView>
+
+            <ContentControl x:Name="Content"
+                            Content="{Binding CurrentView}"
+                            Grid.Row="1" />
         </Grid>
     </Grid>
 </Window>

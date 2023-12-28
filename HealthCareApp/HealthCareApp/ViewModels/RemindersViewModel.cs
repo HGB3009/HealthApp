@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthCareApp.ViewModels
 {
-    public class FitnessViewModel : BaseViewModel
+    internal class RemindersViewModel : BaseViewModel
     {
     }
 }
