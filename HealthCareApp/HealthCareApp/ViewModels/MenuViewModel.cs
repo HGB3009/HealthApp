@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthCareApp.ViewModels
 {
-    public class FitnessViewModel : BaseViewModel
+    public class MenuViewModel:BaseViewModel
     {
     }
 }

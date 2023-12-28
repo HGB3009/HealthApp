@@ -1,5 +1,4 @@
-﻿using HealthCareApp.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HealthCareApp.Components
+namespace HealthCareApp.Views
 {
     /// <summary>
-    /// Interaction logic for LeftSideBarView.xaml
+    /// Interaction logic for SleepView.xaml
     /// </summary>
-    public partial class LeftSideBarView : UserControl
+    public partial class SleepView : UserControl
     {
-        public LeftSideBarView()
+        public SleepView()
         {
             InitializeComponent();
         }

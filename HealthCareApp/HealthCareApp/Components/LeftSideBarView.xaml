@@ -51,7 +51,7 @@
 
         <Grid Grid.Row="1">
             <RadioButton 
-                
+                Command="{Binding MenuFieldCommand}"
                 x:Name="MainMenuNavigationBtn"
                 Style="{StaticResource BtnStyle}"
                 GroupName="ButtonGroup">
@@ -156,6 +156,7 @@
 
         <Grid Grid.Row="4">
             <RadioButton
+                Command="{Binding SleepFieldCommand}"
                 x:Name="Sleep"
                 Style="{StaticResource BtnStyle}"
                 GroupName="ButtonGroup">
@@ -224,6 +225,7 @@
 
         <Grid Grid.Row="6">
             <RadioButton 
+                Command="{Binding RemindersFieldCommand}"
                 x:Name="Reminder"
                 Style="{StaticResource BtnStyle}"
                 GroupName="ButtonGroup">
@@ -258,6 +260,7 @@
 
         <Grid Grid.Row="7">
             <RadioButton 
+                Command="{Binding SettingFieldCommand}"
                 x:Name="Setting"
                 Style="{StaticResource BtnStyle}"
                 GroupName="ButtonGroup">

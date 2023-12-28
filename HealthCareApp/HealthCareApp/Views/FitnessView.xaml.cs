@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HealthCareApp.Views
@@ -17,7 +18,7 @@ namespace HealthCareApp.Views
     /// <summary>
     /// Interaction logic for FitnessView.xaml
     /// </summary>
-    public partial class FitnessView : Window
+    public partial class FitnessView : UserControl
     {
         public FitnessView()
         {
