@@ -54,41 +54,58 @@
 
                 <Grid Grid.Row="0">
                     <Grid>
-                        <Rectangle 
-                                x:Name="recImage"
-                                StrokeDashArray="4 2" 
-                                Stroke="{StaticResource PrimaryColor}" 
-                                StrokeThickness="4" 
-                                RadiusX="4" 
-                                RadiusY="4"
-                                Width="150"
-                                Height="150" 
-                                Margin="20"
-                                HorizontalAlignment="Left" 
-                                VerticalAlignment="Center"/>
-                        <materialDesign:PackIcon 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="10"
+                              Margin="20">
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Cursor"
+                                                    Value="Hand"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                            <Border Background="#ffff"
+                                    CornerRadius="8"
+                                    BorderThickness="5"
+                                    BorderBrush="{StaticResource PrimaryColor}">
+                                <Image x:Name="loadedImage"
+                                       Stretch="Uniform" />
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding BrowseImageCommand}"
+                                                               CommandParameter="{Binding ElementName=SignupWD}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Border>
+                            <materialDesign:PackIcon 
                                 x:Name="iconImage" 
                                 Kind="FileImageOutline" 
                                 Foreground="{StaticResource PrimaryColor}"
                                 Width="64" 
                                 Height="54"
-                                HorizontalAlignment="Left" 
+                                HorizontalAlignment="Center" 
                                 VerticalAlignment="Center"  
-                                Margin="65"/>
-
-                        <Button
-                                x:Name="ChooseimageBtn"
-                                Height="50"
-                                Width="170"
-                                Margin="20"
-                                materialDesign:ButtonAssist.CornerRadius="5"
-                                HorizontalAlignment="Right" 
-                                VerticalAlignment="Center" 
-                                Style="{StaticResource MyPrimaryButtonStyle}"
-                                ToolTip="MaterialDesignRaisedLightButton with Round Corners">
-                            <TextBlock
-                                    Text="Choose your image" />
-                        </Button>
+                                Margin="0"/>
+                            </Grid>
+                            
+                            <TextBlock 
+                            Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="10"
+                            FontSize="22"
+                            FontWeight="Medium"
+                            TextWrapping="WrapWithOverflow"
+                            Text="Choose your avatar">
+                        </TextBlock>
                     </Grid>
 
                 </Grid>
