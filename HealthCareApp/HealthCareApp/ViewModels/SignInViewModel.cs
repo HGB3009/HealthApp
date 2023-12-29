@@ -75,6 +75,7 @@ namespace HealthCareApp.ViewModels
 
                     if (Password == user.Password)
                     {
+                        Const.Instance.SetUser(Username);
                         MainWindowView mainWindow = new MainWindowView();
                         mainWindow.Show();
                         IsLogin = true;

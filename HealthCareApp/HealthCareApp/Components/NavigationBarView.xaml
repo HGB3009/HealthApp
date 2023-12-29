@@ -5,11 +5,85 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HealthCareApp.Components"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             Height="100" 
+             Height="80" 
              Width="1150"
-             FontFamily="Poppins">
+             FontFamily="Poppins"
+             DataContext="{StaticResource UserInfoVM}">
     <Grid Background="{StaticResource White}">
-            
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadWindowCommand}"
+                                       CommandParameter="{Binding ElementName=NavigationBar}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <TextBlock
+                Text="{Binding UsernameVM}"
+                Foreground="Gray"   
+                Margin="20,10,0,0"
+                FontSize="25"
+                VerticalAlignment="Center"
+                FontWeight="Medium"
+                TextAlignment="Left" />
+        </Grid>
+        <Grid 
+            Grid.Column="1" 
+            HorizontalAlignment="Right" 
+            Margin="0,0,50,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="avatarInnerBorder"
+                    Width="60"
+                    Height="60"
+                    Background="Transparent"
+                    BorderBrush="#D9D9D9"
+                    BorderThickness="2"
+                    CornerRadius="200">
+                <Border.Clip>
+                    <EllipseGeometry 
+                        RadiusX="30" 
+                        RadiusY="30"
+                        Center="30 30"/>
+                </Border.Clip>
+                <Grid>
+                    <Image Stretch="Fill"
+                           Source="{Binding AvatarImageSource}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+
+            <Grid Grid.Column="1"
+                  Margin="20 0 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock Text="{Binding NameVM}"
+                               Foreground="{StaticResource LightBlackColor}"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               VerticalAlignment="Bottom"
+                               TextAlignment="Left" />
+            </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Text="{Binding AgeVM}"
+                               Foreground="{StaticResource LightBlackColor}"
+                               FontWeight="Medium"
+                               VerticalAlignment="Center"
+                               TextAlignment="Left" />
+            </Grid>
+        </Grid>
+    </Grid>
     </Grid>
 </UserControl>
