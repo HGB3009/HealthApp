@@ -15,9 +15,6 @@
         DataContext="{StaticResource UpdateInfoVM}"
         WindowStartupLocation="CenterScreen" 
         FontFamily="Poppins">
-    <Window.InputBindings>
-        <KeyBinding Key="Enter" Command="{Binding UpdateInformationCM}" CommandParameter="{Binding ElementName=UpdateInfoWD}" />
-    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

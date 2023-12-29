@@ -150,6 +150,7 @@ namespace HealthCareApp.ViewModels
             UpdateWindow.ShowDialog();
             parameter.Opacity = 1;
             _LoadWindow(parameter);
+            parameter.Focus();
         }
         public void ChangePassword(SettingsView parameter) 
         {

@@ -156,6 +156,8 @@ namespace HealthCareApp.ViewModels
                 _userinfoCollection.UpdateOne(filter, updateDefinition);
                 isUpdate = true;
             }
+            Console.WriteLine($"AddressVM: {AddressVM}");
+            Console.WriteLine($"isUpdate (Address): {isUpdate}");
             if (!string.IsNullOrEmpty(EmailVM))
             {
                 User.Email = EmailVM;
@@ -170,12 +172,12 @@ namespace HealthCareApp.ViewModels
             {
                 MessageBox.Show("Information changed successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                parameter.Name.Clear();
-                parameter.Email.Clear();
-                parameter.Address.Clear();
-                parameter.PhoneNumber.Clear();
-                parameter.Gender.SelectedValue = null;
-                parameter.Birthday.SelectedDate = null;
+                NameVM = null;
+                BirthdayVM = null;
+                GenderVM = null;
+                AddressVM = null;
+                PhoneNumberVM = null;
+                EmailVM = null;
                 parameter.Close();
             }
             else
