@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {}
+    "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {
+    "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
+        "projectUniqueName": "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
         "projectName": "HealthCareApp",
-        "projectPath": "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
-        "packagesPath": "C:\\Users\\baoba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\obj\\",
+        "projectPath": "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
+        "packagesPath": "C:\\Users\\seter\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\baoba\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\seter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -105,7 +100,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

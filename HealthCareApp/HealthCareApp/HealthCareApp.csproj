@@ -48,6 +48,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="C1.WPF.Chart">
+      <HintPath>C:\Users\seter\.nuget\packages\c1.wpf.chart\8.0.20233.681\lib\net6.0-windows7.0\C1.WPF.Chart.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\Images\calories.jpg" />
     <Resource Include="Resources\Images\DateMeal.jpg" />
     <Resource Include="Resources\Images\Diagnosis_Logo.jpg">
