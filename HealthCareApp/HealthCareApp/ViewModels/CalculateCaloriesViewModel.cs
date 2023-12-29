@@ -156,7 +156,7 @@ namespace HealthCareApp.ViewModels
 
         private string Nutrient_API_ID = "1c2aa54e";
         private string Nutrient_API_Key = "146bf4035a385f1d5632b717d12f3a4a";
-        private string endPoint;
+        private string endPoint= "nutrients";
         private string Nutrient_url = $"https://trackapi.nutritionix.com/v2/natural/";
 
         private string Edamam_appId = "9541ae7b";
@@ -176,7 +176,6 @@ namespace HealthCareApp.ViewModels
         {
             sucessGetCalculate = false;
             string query = ingredients;
-            endPoint = "nutrients";
             string result = await GetNutritionInfo(query);
             if (sucessGetCalculate)
             {
