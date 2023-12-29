@@ -143,7 +143,13 @@ namespace HealthCareApp.ViewModels
         }
         public void UpdateInfo(SettingsView parameter)
         {
+            UpdateInformationView UpdateWindow = new UpdateInformationView();
 
+            //forgotPasswordWindow.Username.Text = null;
+            parameter.Opacity = 0.5;
+            UpdateWindow.ShowDialog();
+            parameter.Opacity = 1;
+            _LoadWindow(parameter);
         }
         public void ChangePassword(SettingsView parameter) 
         {
