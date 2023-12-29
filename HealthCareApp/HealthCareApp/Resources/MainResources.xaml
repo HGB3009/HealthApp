@@ -2,17 +2,27 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                     xmlns:viewmodels = "clr-namespace:HealthCareApp.ViewModels">
-    
+    <!--usercontrol-->
+    <viewmodels:MenuViewModel x:Key="MenuVM"></viewmodels:MenuViewModel>
+    <viewmodels:SettingsViewModel x:Key="SettingsVM"></viewmodels:SettingsViewModel>
+    <viewmodels:FitnessViewModel x:Key="FitnessVM"></viewmodels:FitnessViewModel>
+    <viewmodels:RemindersViewModel x:Key="RemindersVM"></viewmodels:RemindersViewModel>
+    <viewmodels:SleepViewModel x:Key="SleepVM"></viewmodels:SleepViewModel>
+    <viewmodels:NutritionViewModel x:Key="NutritionVM"></viewmodels:NutritionViewModel>
+    <viewmodels:DiagnosisViewModel x:Key="DiagnosisVM"></viewmodels:DiagnosisViewModel>
+    <viewmodels:LeftSideBarViewModel x:Key="LeftSideBarVM"></viewmodels:LeftSideBarViewModel>
+    <viewmodels:UserInformationViewModel x:Key ="UserInfoVM"></viewmodels:UserInformationViewModel>
+    <!--screen-->
     <viewmodels:SignInViewModel x:Key ="SignInVM"></viewmodels:SignInViewModel>
+    <viewmodels:MainWindowViewModel x:Key="MainWindowVM"></viewmodels:MainWindowViewModel>
     <viewmodels:MainViewModel x:Key="MainVM"></viewmodels:MainViewModel>
     <viewmodels:SymptomCheckerViewModel x:Key="SymptomCheckerVM"></viewmodels:SymptomCheckerViewModel>
     <viewmodels:MainScreenViewModel x:Key="MainScreenVM"></viewmodels:MainScreenViewModel>
     <viewmodels:NutrientsViewModel x:Key="NutrientsVM"></viewmodels:NutrientsViewModel>
-    <viewmodels:FitnessViewModel x:Key="FitnessVM"></viewmodels:FitnessViewModel>
+    <viewmodels:UpdateInformationViewModel x:Key="UpdateInfoVM"></viewmodels:UpdateInformationViewModel>
     <viewmodels:CalculateCaloriesViewModel x:Key="CalculateCaloriesVM"></viewmodels:CalculateCaloriesViewModel>
     <viewmodels:SignupViewModel x:Key="SignupVM"></viewmodels:SignupViewModel>
     <viewmodels:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodels:ForgotPasswordViewModel>
-    <viewmodels:RemindersViewModel x:Key="RemindersVM"></viewmodels:RemindersViewModel>
-    <viewmodels:AddExerciseViewModel x:Key="AddExerciseVM"></viewmodels:AddExerciseViewModel>
-    <viewmodels:ExerciseCaloriesViewModel x:Key="ExerciseCaloriesVM"></viewmodels:ExerciseCaloriesViewModel>
+    <viewmodels:AddMealViewModel x:Key="AddMealVM"></viewmodels:AddMealViewModel>
+    <viewmodels:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodels:ChangePasswordViewModel>
 </ResourceDictionary> 
