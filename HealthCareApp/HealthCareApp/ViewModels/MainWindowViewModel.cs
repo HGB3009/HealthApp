@@ -33,6 +33,7 @@ namespace HealthCareApp.ViewModels
         public ICommand RemindersFieldCommand { get; set; }
         public ICommand SettingFieldCommand { get; set; }
         public ICommand LogoutMainWD { get; set; }
+        public ICommand AvatarImageSource { get; set; }
 
         public MainWindowViewModel()
         {

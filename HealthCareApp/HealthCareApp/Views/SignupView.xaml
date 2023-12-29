@@ -352,7 +352,7 @@
                     <DatePicker
                                 x:Name="Birthday" 
                                 SelectedDate="{Binding BirthdayVM}"
-                                materialDesign:HintAssist.Hint="Birthday" 
+                                materialDesign:HintAssist.Hint="Birthday (Month/Day/Year)" 
                                 Margin="0" 
                                 Width="250"
                                 Height="50"
