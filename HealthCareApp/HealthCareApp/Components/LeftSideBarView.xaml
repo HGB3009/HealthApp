@@ -54,7 +54,8 @@
                 Command="{Binding MenuFieldCommand}"
                 x:Name="MainMenuNavigationBtn"
                 Style="{StaticResource BtnStyle}"
-                GroupName="ButtonGroup">
+                GroupName="ButtonGroup"
+                IsChecked="true">
                 <Border Padding="20">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -304,7 +305,8 @@
                 VerticalAlignment="Bottom">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
-                        <i:InvokeCommandAction Command="{Binding LogoutMainWD}"/>
+                        <i:InvokeCommandAction Command="{Binding LogoutMainWD}"
+                                               CommandParameter="{Binding ElementName=LeftSideBar}"/>
                         
                     </i:EventTrigger>
                 </i:Interaction.Triggers>

@@ -45,7 +45,7 @@ namespace HealthCareApp.ViewModels
             RemindersFieldCommand = new RelayCommand(Reminders);
             SettingFieldCommand = new RelayCommand(Settings);
             CurrentView = new MenuView();
-            LogoutMainWD = new RelayCommand<MainWindowView>((p) => true, (p) => _Logout(p));
+            LogoutMainWD = new RelayCommand<LeftSideBarView>((p) => true, (p) => _Logout(p));
         }
         private void MainMenu(object obj) => CurrentView = new MenuView();
         private void Fitness(object obj) => CurrentView = new FitnessView();
@@ -55,14 +55,16 @@ namespace HealthCareApp.ViewModels
         private void Reminders(object obj) => CurrentView = new RemindersView();
 
         private void Settings(object obj) => CurrentView = new SettingsView();
-        void _Logout(MainWindowView mainWindow)
+        void _Logout(LeftSideBarView mainWindow)
         {
+            SignInView loginView = new SignInView();
+            loginView.Show();
 
-            //var window = Window.GetWindow(mainWindow);
-            //if (window != null)
-            //{
-            //    window.Close();
-            //}
+            var window = Window.GetWindow(mainWindow);
+            if (window != null)
+            {
+                window.Close();
+            }
         }
     }
 }
