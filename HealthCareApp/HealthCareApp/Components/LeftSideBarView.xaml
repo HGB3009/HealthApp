@@ -147,7 +147,8 @@
                                 Foreground="#49454F" 
                                 FontSize="22" 
                                 FontWeight="DemiBold"
-                                HorizontalAlignment="Left"                               VerticalAlignment="Center"/>
+                                HorizontalAlignment="Left"                
+                                VerticalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </Border>
@@ -182,7 +183,8 @@
                                 Foreground="#49454F" 
                                 FontSize="22" 
                                 FontWeight="DemiBold"
-                                HorizontalAlignment="Left"                               VerticalAlignment="Center"/>
+                                HorizontalAlignment="Left"                
+                                VerticalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </Border>
@@ -216,7 +218,8 @@
                                 Foreground="#49454F" 
                                 FontSize="22" 
                                 FontWeight="DemiBold"
-                                    HorizontalAlignment="Left"                               VerticalAlignment="Center"/>
+                                    HorizontalAlignment="Left"         
+                                VerticalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </Border>
@@ -251,7 +254,8 @@
                                 Foreground="#49454F" 
                                 FontSize="22" 
                                 FontWeight="DemiBold"
-                                HorizontalAlignment="Left"                               VerticalAlignment="Center"/>
+                                HorizontalAlignment="Left"           
+                                VerticalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </Border>

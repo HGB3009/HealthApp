@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace HealthCareApp.Models
 {
@@ -34,7 +35,10 @@ namespace HealthCareApp.Models
 
         [BsonElement("Username")]
         public string Username { get; set; }
-        
+
+        [BsonElement("Avatar")]
+        public byte[] Avatar { get; set; }
+
         public UserInformation()
         {
             Id = "";
@@ -45,6 +49,21 @@ namespace HealthCareApp.Models
             Address = "";
             Email = "";
             Username = "";
-        }    
+        }
+        public BitmapImage AvatarImageSource
+        {
+            get
+            {
+                if (Avatar != null && Avatar.Length > 0)
+                {
+                    BitmapImage image = new BitmapImage();
+                    image.BeginInit();
+                    image.StreamSource = new System.IO.MemoryStream(Avatar);
+                    image.EndInit();
+                    return image;
+                }
+                return null;
+            }
+        }
     }
 }
