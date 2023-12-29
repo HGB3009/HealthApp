@@ -13,6 +13,12 @@
              DataContext="{StaticResource SettingsVM}">
     <Grid 
         Background="{StaticResource BackGround}">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadWindowCommand}"
+                               CommandParameter="{Binding ElementName=SettingScreen}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <Border 
             Background="White"
             CornerRadius="20"
@@ -29,13 +35,28 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver"
+                                             Value="True">
+                                        <Setter Property="Cursor"
+                                                Value="Hand"/>
+                                        <Setter Property="Opacity" 
+                                                Value="0.8"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
                         <Border Background="#ffff"
                                 CornerRadius="8"
                                 BorderThickness="5"
                                 BorderBrush="{StaticResource PrimaryColor}"
                                 Margin="70,30,70,240">
-                            <Image x:Name="loadedImage"
-                                   Stretch="Uniform" />
+                            <Image Stretch="Fill"
+                                   Source="{Binding AvatarImageSourceVM}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseLeftButtonDown">
                                     <i:InvokeCommandAction Command="{Binding BrowseImageCommand}"
@@ -87,7 +108,7 @@
                                     TextAlignment="Left" />
                                 <TextBlock
                                     Grid.Column="2"
-                                    Text=": Huỳnh Gia Bảo"
+                                    Text="{Binding NameVM}"
                                     Foreground="{StaticResource LightBlackColor}"
                                     FontSize="20"
                                     FontWeight="Medium"
@@ -130,7 +151,7 @@
                                     TextAlignment="Left" />
                                 <TextBlock
                                     Grid.Column="2"
-                                    Text=": Male"
+                                    Text="{Binding GenderVM}"
                                     Foreground="{StaticResource LightBlackColor}"
                                     FontSize="20"
                                     FontWeight="Medium"
@@ -172,7 +193,7 @@
                                     TextAlignment="Left" />
                                 <TextBlock
                                     Grid.Column="2"
-                                    Text=": Huỳnh Gia Bảo"
+                                    Text="{Binding PhoneNumberVM}"
                                     Foreground="{StaticResource LightBlackColor}"
                                     FontSize="20"
                                     FontWeight="Medium"
@@ -215,7 +236,7 @@
                                     TextAlignment="Left" />
                                 <TextBlock
                                     Grid.Column="2"
-                                    Text=": Huỳnh Gia Bảo"
+                                    Text="{Binding BirthdayVM}"
                                     Foreground="{StaticResource LightBlackColor}"
                                     FontSize="20"
                                     FontWeight="Medium"
@@ -258,7 +279,7 @@
                                     TextAlignment="Left" />
                                 <TextBlock
                                     Grid.Column="2"
-                                    Text=": Huỳnh Gia Bảo"
+                                    Text="{Binding AddressVM}"
                                     Foreground="{StaticResource LightBlackColor}"
                                     FontSize="20"
                                     FontWeight="Medium"
@@ -300,7 +321,7 @@
                                     TextAlignment="Left" />
                                 <TextBlock
                                     Grid.Column="2"
-                                    Text=": Huỳnh Gia Bảo"
+                                    Text="{Binding EmailVM}"
                                     Foreground="{StaticResource LightBlackColor}"
                                     FontSize="20"
                                     FontWeight="Medium"
