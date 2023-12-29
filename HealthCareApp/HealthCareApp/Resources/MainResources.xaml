@@ -10,6 +10,7 @@
     <viewmodels:SleepViewModel x:Key="SleepVM"></viewmodels:SleepViewModel>
     <viewmodels:NutritionViewModel x:Key="NutritionVM"></viewmodels:NutritionViewModel>
     <viewmodels:DiagnosisViewModel x:Key="DiagnosisVM"></viewmodels:DiagnosisViewModel>
+    <viewmodels:LeftSideBarViewModel x:Key="LeftSideBarVM"></viewmodels:LeftSideBarViewModel>
     <viewmodels:UserInformationViewModel x:Key ="UserInfoVM"></viewmodels:UserInformationViewModel>
     <!--screen-->
     <viewmodels:SignInViewModel x:Key ="SignInVM"></viewmodels:SignInViewModel>
@@ -22,6 +23,6 @@
     <viewmodels:CalculateCaloriesViewModel x:Key="CalculateCaloriesVM"></viewmodels:CalculateCaloriesViewModel>
     <viewmodels:SignupViewModel x:Key="SignupVM"></viewmodels:SignupViewModel>
     <viewmodels:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodels:ForgotPasswordViewModel>
-    <viewmodels:LeftSideBarViewModel x:Key="LeftSideBarVM"></viewmodels:LeftSideBarViewModel>
     <viewmodels:AddMealViewModel x:Key="AddMealVM"></viewmodels:AddMealViewModel>
+    <viewmodels:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodels:ChangePasswordViewModel>
 </ResourceDictionary> 

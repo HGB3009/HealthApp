@@ -145,16 +145,20 @@ namespace HealthCareApp.ViewModels
         {
             UpdateInformationView UpdateWindow = new UpdateInformationView();
 
-            //forgotPasswordWindow.Username.Text = null;
             parameter.Opacity = 0.5;
             UpdateWindow.ShowDialog();
             parameter.Opacity = 1;
             _LoadWindow(parameter);
-            parameter.Focus();
         }
         public void ChangePassword(SettingsView parameter) 
         {
-            
+            ChangePasswordView ChangePassWD = new ChangePasswordView();
+
+            //forgotPasswordWindow.Username.Text = null;
+            parameter.Opacity = 0.5;
+            ChangePassWD.ShowDialog();
+            parameter.Opacity = 1;
+            _LoadWindow(parameter);
         }
         void _LoadWindow(SettingsView p)
         {
