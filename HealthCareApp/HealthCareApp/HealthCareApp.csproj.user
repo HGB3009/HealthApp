@@ -22,6 +22,9 @@
     <Compile Update="Views\CalculateCaloriesView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ChangePasswordView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\DiagnosisView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -88,6 +91,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\CalculateCaloriesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ChangePasswordView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DiagnosisView.xaml">

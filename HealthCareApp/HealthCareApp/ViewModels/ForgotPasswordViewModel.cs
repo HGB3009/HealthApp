@@ -34,19 +34,6 @@ namespace HealthCareApp.ViewModels
                 }
             }
         }
-        private string _oldpassword;
-        public string OldPassword
-        {
-            get { return _oldpassword; }
-            set
-            {
-                if (_oldpassword != value)
-                {
-                    _oldpassword = value;
-                    OnPropertyChanged(nameof(OldPassword));
-                }
-            }
-        }
         private string _email;
         public string EmailVM
         {
