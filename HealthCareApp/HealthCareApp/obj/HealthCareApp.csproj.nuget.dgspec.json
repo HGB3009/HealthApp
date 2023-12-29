@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {}
+    "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {
+    "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
         "projectName": "HealthCareApp",
-        "projectPath": "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
-        "packagesPath": "C:\\Users\\seter\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive Data\\OneDrive - Trường ĐH CNTT - University of Information Technology\\HK3\\Visual Programming - IT008.O14\\HealthApp\\HealthCareApp\\HealthCareApp\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\seter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,7 +100,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
