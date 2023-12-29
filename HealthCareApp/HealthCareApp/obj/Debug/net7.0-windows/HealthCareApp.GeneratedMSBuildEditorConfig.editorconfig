@@ -8,6 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HealthCareApp
-build_property.ProjectDir = C:\Users\baoba\Documents\GitHub\HealthApp\HealthCareApp\HealthCareApp\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = D:\OneDrive Data\OneDrive - Trường ĐH CNTT - University of Information Technology\HK3\Visual Programming - IT008.O14\HealthApp\HealthCareApp\HealthCareApp\

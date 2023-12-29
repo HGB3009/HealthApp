@@ -4,11 +4,81 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HealthCareApp.Views"
+             Name="RView"
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:uc="clr-namespace:HealthCareApp.Components"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:components="clr-namespace:HealthCareApp.Components"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{StaticResource MainBackgroundColor}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             DataContext="{StaticResource RemindersVM}"
              mc:Ignorable="d" 
-             Height="680"
-             Width="1150"
-             DataContext="{StaticResource RemindersVM}">
-    <Grid Background="green">
+             d:DesignHeight="810" d:DesignWidth="1440">
+    <Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <uc:NavigationBarView Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></uc:NavigationBarView>
+            <uc:LeftSideBarView Grid.Column="0" Grid.RowSpan="6"></uc:LeftSideBarView>
+            <materialDesign:Card Grid.Row="1" Grid.Column="1" x:Name="DrinkRemindersCard"
+                                 Grid.RowSpan="3"
+                                 Width="auto" Height="auto"
+                                 Margin="10">
+                <TextBlock
+                    Text="Drink Reminders"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Center" 
+                    FontSize="26"
+                    Foreground="{StaticResource PrimaryColor}"
+                    FontWeight="Bold" Margin="22,0,0,0">
+                </TextBlock>
+
+            </materialDesign:Card>
             
+            <materialDesign:Card Grid.Row="1" Grid.Column="2" x:Name="MealRemindersCard"
+                                 Grid.RowSpan="3"
+                                 Width="auto" Height="auto"
+                                 Margin="10">
+                <TextBlock
+                    Text="Meal Reminders"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Center" 
+                    FontSize="26"
+                    Foreground="{StaticResource PrimaryColor}"
+                    FontWeight="Bold" Margin="22,0,0,0">
+                </TextBlock>
+            </materialDesign:Card>
+            
+            <materialDesign:Card Grid.Row="4" Grid.Column="1" x:Name="DoctorAppointmentCard"
+                                 Grid.ColumnSpan="2"
+                                 Grid.RowSpan="2"
+                                 Width="auto" Height="auto"
+                                 Margin="10">
+                <TextBlock
+                    Text="Doctors' Appointments"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Center" 
+                    FontSize="26"
+                    Foreground="{StaticResource PrimaryColor}"
+                    FontWeight="Bold" Margin="22,0,0,0">
+                </TextBlock>
+            </materialDesign:Card>            
+        </Grid>
     </Grid>
 </UserControl>
