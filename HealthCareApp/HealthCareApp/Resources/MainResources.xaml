@@ -18,7 +18,7 @@
     <viewmodels:SymptomCheckerViewModel x:Key="SymptomCheckerVM"></viewmodels:SymptomCheckerViewModel>
     <viewmodels:MainScreenViewModel x:Key="MainScreenVM"></viewmodels:MainScreenViewModel>
     <viewmodels:NutrientsViewModel x:Key="NutrientsVM"></viewmodels:NutrientsViewModel>
-    
+    <viewmodels:UpdateInformationViewModel x:Key="UpdateInfoVM"></viewmodels:UpdateInformationViewModel>
     <viewmodels:CalculateCaloriesViewModel x:Key="CalculateCaloriesVM"></viewmodels:CalculateCaloriesViewModel>
     <viewmodels:SignupViewModel x:Key="SignupVM"></viewmodels:SignupViewModel>
     <viewmodels:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodels:ForgotPasswordViewModel>

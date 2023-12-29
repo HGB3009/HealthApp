@@ -351,8 +351,8 @@
                             Text="Change Password" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding SignUpCommand}"
-                                                       CommandParameter="{Binding ElementName=SignupWD}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction Command="{Binding ChangePasswordCM}"
+                                                       CommandParameter="{Binding ElementName=SettingScreen}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
@@ -371,8 +371,8 @@
                             Text="Update Info" />
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding SignUpCommand}"
-                                                       CommandParameter="{Binding ElementName=SignupWD}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction Command="{Binding UpdateInfoCM}"
+                                                       CommandParameter="{Binding ElementName=SettingScreen}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
