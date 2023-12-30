@@ -156,8 +156,6 @@ namespace HealthCareApp.ViewModels
                 _userinfoCollection.UpdateOne(filter, updateDefinition);
                 isUpdate = true;
             }
-            Console.WriteLine($"AddressVM: {AddressVM}");
-            Console.WriteLine($"isUpdate (Address): {isUpdate}");
             if (!string.IsNullOrEmpty(EmailVM))
             {
                 User.Email = EmailVM;
