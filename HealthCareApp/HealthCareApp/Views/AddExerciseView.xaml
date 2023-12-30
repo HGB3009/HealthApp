@@ -44,14 +44,15 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBox Grid.Column="0" 
-                     Background="WhiteSmoke"
-                     materialDesign:HintAssist.Hint="Action"
+                     Background="WhiteSmoke" 
+                     Text="{Binding NameMerge}"
+                     Margin="15"
+                     FontSize="18"
+                     Height="auto"
+                     Width="auto"
                      VerticalAlignment="Center"
-                     Margin="18"
-                     Height="50"
-                     FontSize="16"
-                     FontWeight="Normal"
-                     Foreground="Black"></TextBox>
+                     materialDesign:HintAssist.Hint="Action"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
             <ComboBox 
                 Grid.Column="1"
                 x:Name="ComboBoxMuscle"
@@ -128,43 +129,74 @@
                              Width="auto"
                              Margin="0,10,0,10">
             <materialDesign:Card>
-                <StackPanel>
-                    <Expander
+                <ScrollViewer>
+                    <StackPanel>
+                        <Expander
                           HorizontalAlignment="Stretch"
-                          Header="Expander Example 2a">
-                        <StackPanel
+                          Header="{Binding FirstExerciseName}">
+                            <StackPanel
                             Margin="24,8,24,16"
                             Orientation="Vertical"
                             TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                            <TextBlock Text="Your Content" />
-                            <TextBlock ></TextBlock>
-                        </StackPanel>
-                    </Expander>
-                    <Border/>
-                    <Expander
+                                <TextBlock Text="{Binding FirstEquipmentBox}" />
+                                <TextBlock Text="{Binding FirstInstructionsBox}" 
+                                           TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Expander>
+                        <Border/>
+                        <Expander
                         HorizontalAlignment="Stretch"
-                        Header="Expander Example 2b">
-                        <StackPanel
+                        Header="{Binding SecondExerciseName}">
+                            <StackPanel
                             Margin="24,8,24,16"
                             Orientation="Vertical"
                             TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                            <TextBlock Text="Your Content" />
-                            <TextBlock></TextBlock>
-                        </StackPanel>
-                    </Expander>
-                    <Border />
-                    <Expander
+                                <TextBlock Text="{Binding SecondEquipmentBox}" />
+                                <TextBlock Text="{Binding SecondInstructionsBox}" 
+                                       TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Expander>
+                        <Border />
+                        <Expander
+                          HorizontalAlignment="Stretch"
+                          Header="{Binding ThirdExerciseName}">
+                            <StackPanel
+                            Margin="24,8,24,16"
+                            Orientation="Vertical"
+                            TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                                <TextBlock Text="{Binding ThirdEquipmentBox}" />
+                                <TextBlock Text="{Binding ThirdInstructionsBox}" 
+                                           TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Expander>
+                        <Border/>
+                        <Expander
+                          HorizontalAlignment="Stretch"
+                          Header="{Binding FouthExerciseName}">
+                            <StackPanel
+                            Margin="24,8,24,16"
+                            Orientation="Vertical"
+                            TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                                <TextBlock Text="{Binding FouthEquipmentBox}" />
+                                <TextBlock Text="{Binding FouthInstructionsBox}" 
+                                           TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Expander>
+                        <Border/>
+                        <Expander
                         HorizontalAlignment="Stretch"
-                        Header="Expander Example 2c">
-                        <StackPanel
+                        Header="{Binding FirthExerciseName}">
+                            <StackPanel
                             Margin="24,8,24,16"
                             Orientation="Vertical"
                             TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                            <TextBlock Text="Your Content" />
-                            <TextBlock></TextBlock>
-                        </StackPanel>
-                    </Expander>
-                </StackPanel>
+                                <TextBlock Text="{Binding FirthEquipmentBox}" />
+                                <TextBlock Text="{Binding FirstInstructionsBox}" 
+                                       TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
             </materialDesign:Card>
         </materialDesign:Card>
 

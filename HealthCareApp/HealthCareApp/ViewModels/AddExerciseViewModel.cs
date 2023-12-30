@@ -41,6 +41,48 @@ namespace HealthCareApp.ViewModels
         public List<string> tempDifficultyList = new List<string>();
         public List<string> TempDifficultyList { get { return tempDifficultyList; } set { tempDifficultyList = value; OnPropertyChanged(nameof(TempDifficultyList)); } }
 
+        public string firstExerciseName;
+        public string FirstExerciseName { get { return firstExerciseName; } set { firstExerciseName = value; OnPropertyChanged(nameof(FirstExerciseName)); } }
+
+        public string firstEquipmentBox;
+        public string FirstEquipmentBox { get { return firstEquipmentBox; } set { firstEquipmentBox = value; OnPropertyChanged(nameof(FirstEquipmentBox)); } }
+
+        public string firstInstructionsBox;
+        public string FirstInstructionsBox { get { return firstInstructionsBox; } set { firstInstructionsBox = value; OnPropertyChanged(nameof(FirstInstructionsBox)); } }
+        public string secondExerciseName;
+        public string SecondExerciseName { get { return secondExerciseName; } set { secondExerciseName = value; OnPropertyChanged(nameof(SecondExerciseName)); } }
+
+        public string secondEquipmentBox;
+        public string SecondEquipmentBox { get { return secondEquipmentBox; } set { secondEquipmentBox = value; OnPropertyChanged(nameof(SecondEquipmentBox)); } }
+
+        public string secondInstructionsBox;
+        public string SecondInstructionsBox { get { return secondInstructionsBox; } set { secondInstructionsBox = value; OnPropertyChanged(nameof(SecondInstructionsBox)); } }
+        public string thirdExerciseName;
+        public string ThirdExerciseName { get { return thirdExerciseName; } set { thirdExerciseName = value; OnPropertyChanged(nameof(ThirdExerciseName)); } }
+
+        public string thirdEquipmentBox;
+        public string ThirdEquipmentBox { get { return thirdEquipmentBox; } set { thirdEquipmentBox = value; OnPropertyChanged(nameof(ThirdEquipmentBox)); } }
+
+        public string thirdInstructionsBox;
+        public string ThirdInstructionsBox { get { return thirdInstructionsBox; } set { thirdInstructionsBox = value; OnPropertyChanged(nameof(ThirdInstructionsBox)); } }
+        public string fouthExerciseName;
+        public string FouthExerciseName { get { return fouthExerciseName; } set { fouthExerciseName = value; OnPropertyChanged(nameof(FouthExerciseName)); } }
+
+        public string fouthEquipmentBox;
+        public string FouthEquipmentBox { get { return fouthEquipmentBox; } set { fouthEquipmentBox = value; OnPropertyChanged(nameof(FouthEquipmentBox)); } }
+
+        public string fouthInstructionsBox;
+        public string FouthInstructionsBox { get { return fouthInstructionsBox; } set { fouthInstructionsBox = value; OnPropertyChanged(nameof(FouthInstructionsBox)); } }
+        public string firthExerciseName;
+        public string FirthExerciseName { get { return firthExerciseName; } set { firthExerciseName = value; OnPropertyChanged(nameof(FirthExerciseName)); } }
+
+        public string firthEquipmentBox;
+        public string FirthEquipmentBox { get { return firthEquipmentBox; } set { firthEquipmentBox = value; OnPropertyChanged(nameof(FirthEquipmentBox)); } }
+
+        public string firthInstructionsBox;
+        public string FirthInstructionsBox { get { return firthInstructionsBox; } set { firthInstructionsBox = value; OnPropertyChanged(nameof(FirthInstructionsBox)); } }
+
+
         public AddExerciseViewModel()
         {
             AddMuscleList();
@@ -49,31 +91,43 @@ namespace HealthCareApp.ViewModels
             ExitBtnCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
             SuggestBtnCommand = new RelayCommand<TextBox>((p) =>
             {
-                if ((MuscleBox == null || MuscleBox == string.Empty) & (TypeBox == null || TypeBox == string.Empty) & (DifficultyBox == null || DifficultyBox == string.Empty))
-                    return false;
-                return true;
+                return (MuscleBox == null || MuscleBox == string.Empty ||
+                        TypeBox == null || TypeBox == string.Empty ||
+                        DifficultyBox == null || DifficultyBox == string.Empty) ? false : true;
             }, (p) => {
-
+                if (NameMerge == null || NameMerge == string.Empty) NameMerge = string.Empty;
+                getExercise(NameMerge, TypeBox, MuscleBox, DifficultyBox);
             });
             MusleSelectedItemChangedCommand = new RelayCommand<ComboBox>((p) => { return (p == null) ? false : true; }, (p) =>
             {
-                MuscleBox = p.Text;
+                if (p.SelectedValue != null)
+                    MuscleBox = p.SelectedValue.ToString();
             });
             TypeSelectedItemChangedCommand = new RelayCommand<ComboBox>((p) => { return (p == null) ? false : true; }, (p) =>
             {
-                TypeBox = p.Text;
+                if (p.SelectedValue != null)
+                    TypeBox = p.SelectedValue.ToString();
             });
             DifficultySelectedItemChangedCommand = new RelayCommand<ComboBox>((p) => { return (p == null) ? false : true; }, (p) =>
             {
-                DifficultyBox = p.Text;
+                if (p.SelectedValue != null)
+                    DifficultyBox = p.SelectedValue.ToString();
             });
         }
         string api_key = "2qhorCkNJtS7gPC5veMb0w==vuH8jN3gfZBHCzzh";
         string url = "https://api.api-ninjas.com/v1/exercises?";
-        public rootExercises ListExercise;
+        public List<exercise> ListExercise;
         private async void getExercise(string name, string type, string muscle, string difficulty)
         {
             string result = await requestExercise(name, type, muscle, difficulty);
+            if (result.Length < 3)
+            {
+                MessageBox.Show("Can't find any exercises fit your options. Please try again!");
+                return;
+            }
+            ListExercise = ConvertData(result);
+            ShowResult(ListExercise);
+            // ListExercise = JsonConvert.DeserializeObject<rootExerciseInfo>(result);
         }
         private async Task<string> requestExercise(string name, string type, string muscle, string difficulty)
         {
@@ -93,22 +147,57 @@ namespace HealthCareApp.ViewModels
                 }
             }
         }
-        private rootExercises ConvertData(string data)
+        private List<exercise> ConvertData(string data)
         {
-            rootExercises result = new rootExercises();
+            List<exercise> result = new List<exercise>();
             int i = 2;
             int pair = 0;
             string element = "";
             while (data[i] != ']')
             {
-                if (data[i] == '}')
-                    if (pair < 2) { element += data[i]; ++i; }
-                    else
-                    {
+                if (data[i] == '}' || data[i] == '{')
+                    pair++;
+                if (pair < 2) { element += data[i]; }
+                else
+                {
+                    string namePath = convertPath(element, 1);
+                    string equipmetnPath = convertPath(element, 4);
+                    string instructionsPath = convertPath(element, 6);
+                    exercise newExercise = new exercise();
+                    newExercise.name = namePath;
+                    newExercise.type = typeBox;
+                    newExercise.muscle = MuscleBox;
+                    newExercise.equipment = equipmetnPath;
+                    newExercise.difficulty = DifficultyBox;
+                    newExercise.instructions = instructionsPath;
 
-                    }
+                    result.Add(newExercise);
+
+                    element = "";
+                    pair = 0;
+                }
+                ++i;
             }
             return result;
+        }
+        private string convertPath(string element, int k)
+        {
+            string temp = "";
+            int count = 0, i = 0;
+            while (count < k)
+            {
+                if (element[i] == ':') count++;
+                ++i;
+            }
+            while (element[i] != '"')
+                ++i;
+            i = i + 1;
+            while (element[i] != '"')
+            {
+                temp += element[i];
+                ++i;
+            }
+            return temp;
         }
         private void AddMuscleList()
         {
@@ -150,6 +239,28 @@ namespace HealthCareApp.ViewModels
             list.Add("intermediate");
             list.Add("expert");
             TempDifficultyList = list;
+        }
+        private void ShowResult(List<exercise> list)
+        {
+            FirstExerciseName = list[0].name;
+            FirstEquipmentBox = "Equipment: " + list[0].equipment;
+            FirstInstructionsBox = list[0].instructions;
+
+            SecondExerciseName = list[1].name;
+            SecondEquipmentBox = "Equipment: " + list[1].equipment;
+            SecondInstructionsBox = list[1].instructions;
+
+            ThirdExerciseName = list[2].name;
+            ThirdEquipmentBox = "Equipment: " + list[2].equipment;
+            ThirdInstructionsBox = list[2].instructions;
+
+            FouthExerciseName = list[3].name;
+            FouthEquipmentBox = "Equipment: " + list[3].equipment;
+            FouthInstructionsBox = list[3].instructions;
+
+            FirthExerciseName = list[4].name;
+            FirthEquipmentBox = "Equipment: " + list[4].equipment;
+            FirthInstructionsBox = list[4].instructions;
         }
     }
 }
