@@ -69,7 +69,11 @@
 
                     <!-- Target Water Intake Text -->
                     <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+<<<<<<< Updated upstream
                                Text="{Binding TargetWater, StringFormat=Target: \{0\} ml}"
+=======
+                               Text="{Binding TargetWater, StringFormat=🎯: \{0\} ml}"
+>>>>>>> Stashed changes
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18"

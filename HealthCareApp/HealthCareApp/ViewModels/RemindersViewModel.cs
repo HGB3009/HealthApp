@@ -66,7 +66,11 @@ namespace HealthCareApp.ViewModels
             _waterIntakeModel.Series.Clear();
             _waterIntakeModel.Title = null;
             
+<<<<<<< Updated upstream
             var consumedSlice = new PieSlice("Consumed", _consumedWater)
+=======
+            var consumedSlice = new PieSlice("Drinked", _consumedWater)
+>>>>>>> Stashed changes
             {
                 IsExploded = true,
                 Fill = OxyColor.Parse("#0E87CC") // The color for the "Consumed" slice
@@ -81,10 +85,17 @@ namespace HealthCareApp.ViewModels
             {
                 Slices = new List<PieSlice> { consumedSlice, remainingSlice },
                 StrokeThickness = 2.0,
+<<<<<<< Updated upstream
                 InsideLabelPosition = 0.8,
                 AngleSpan = 360,
                 StartAngle = 0,
                 FontSize = 15
+=======
+                InsideLabelPosition = 0.6,                
+                AngleSpan = 360,
+                StartAngle = 0,
+                FontSize = 18,                
+>>>>>>> Stashed changes
             };
 
             _waterIntakeModel.Series.Add(pieSeries);
