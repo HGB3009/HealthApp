@@ -194,7 +194,7 @@ namespace HealthCareApp.ViewModels
                     Name = NameVM,
                     Gender = GenderVM,
                     PhoneNumber = PhoneNumberVM,
-                    Birthday = BirthdayVM.HasValue ? BirthdayVM.Value.ToString("dd/MM/yyyy") : null,
+                    Birthday = BirthdayVM.HasValue ? BirthdayVM.Value.ToString("dd/MM/yyyy") : null, 
                     Address = AddressVM,
                     Email = EmailVM,
                     Username = UsernameVM,

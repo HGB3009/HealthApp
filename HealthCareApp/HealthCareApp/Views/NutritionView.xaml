@@ -290,6 +290,8 @@
                                         <Button 
                                             HorizontalAlignment="Center"
                                             Margin="10"
+                                            Command="{Binding DataContext.EditMealCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                            CommandParameter="{Binding}"
                                             Style="{StaticResource MyBlueButtonStyle}">
                                             <Icon:PackIconBoxIcons 
                                                 Kind="RegularEdit"
@@ -300,6 +302,8 @@
                                         <Button 
                                             HorizontalAlignment="Center"
                                             Margin="10"
+                                            Command="{Binding DataContext.DeleteMealCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                            CommandParameter="{Binding}"
                                             Style="{StaticResource MyRedButtonStyle}">
                                             <Icon:PackIconIonicons Kind="TrashMD" 
                                                    Width="14"
