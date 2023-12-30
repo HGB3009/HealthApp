@@ -89,16 +89,23 @@ namespace HealthCareApp.ViewModels
         public ICommand ViewByYearChangeCM { get; set; }
         public ICommand AddMealCommand { get; set; }
         public ICommand CalculateCommand { get; set; }
+        public ICommand EditMealCommand { get; set; }
+        public ICommand DeleteMealCommand { get; set; }
         public ICommand LoadWindowCommand { get; set; }
         public string ViewByMode { get; set; }
         public NutritionViewModel()
         {
             _nutritionCollection = GetMongoCollectionFromNutrition();
+
             ViewByChangeCM = new RelayCommand<NutritionView>((p) => true, (p) => ViewByChange(p));
             ViewByDayChangeCM = new RelayCommand<NutritionView>((p) => true, (p) => ViewByDayChange(p));
             ViewByMonthChangeCM = new RelayCommand<NutritionView>((p) => true, (p) => ViewByMonthChange(p));
             ViewByYearChangeCM = new RelayCommand<NutritionView>((p) => true, (p) => ViewByYearChange(p));
-            LoadWindowCommand = new RelayCommand<NutritionView>((p) => true, (p) => LoadMealList(p));
+
+            EditMealCommand = new RelayCommand<Nutrition>((meal) => true, (meal) => EditMeal(meal));
+            DeleteMealCommand = new RelayCommand<Nutrition>((meal) => true, (meal) => DeleteMeal(meal));
+
+            LoadWindowCommand = new RelayCommand<NutritionView>((p) => true, (p) => LoadMealList());
             AddMealCommand = new RelayCommand<NutritionView>((p) => { return true; }, (p) => AddMeal(p));
             CalculateCommand = new RelayCommand<NutritionView>((p) => { return true; }, (p) => Calculate(p));
         }
@@ -143,7 +150,7 @@ namespace HealthCareApp.ViewModels
                 ViewByMonthVM = null;
                 ViewByYearVM = null;
                 ViewByMode = null;
-                LoadMealList(parameter);
+                LoadMealList();
             }
         }
         public void ViewByDayChange(NutritionView parameter)
@@ -154,7 +161,7 @@ namespace HealthCareApp.ViewModels
                 ViewByMode = "Day";
             }
             else { ViewByMode = null; }
-            LoadMealList(parameter);
+            LoadMealList();
         }
         public void ViewByMonthChange(NutritionView parameter)
         {
@@ -163,7 +170,7 @@ namespace HealthCareApp.ViewModels
                 ViewByMode = "Month";
             }
             else { ViewByMode = null; }
-            LoadMealList(parameter);
+            LoadMealList();
         }
         public void ViewByYearChange(NutritionView parameter)
         {
@@ -172,9 +179,9 @@ namespace HealthCareApp.ViewModels
                 ViewByMode = "Year";
             }
             else { ViewByMode = null; }
-            LoadMealList(parameter);
+            LoadMealList();
         }
-        public void LoadMealList(NutritionView parameter)
+        public void LoadMealList()
         {
             var filterBuilder = Builders<Nutrition>.Filter;
             var usernameFilter = filterBuilder.Eq(x => x.Username, Const.Instance.Username);
@@ -211,6 +218,24 @@ namespace HealthCareApp.ViewModels
             var meals = _nutritionCollection.Find(finalFilter).ToList();
             MealList = new ObservableCollection<Nutrition>(meals);
         }
+        public void EditMeal(Nutrition meal)
+        {
+            MessageBox.Show("Hiii");
+        }
+        public void DeleteMeal(Nutrition meal) 
+        {
+            if (meal != null)
+            {
+                MessageBoxResult result = MessageBox.Show($"Are you sure you want to delete {meal.MealName}?",
+                                                          "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    var objectId = ObjectId.Parse(meal.Id);
+                    _nutritionCollection.DeleteOne(Builders<Nutrition>.Filter.Eq("_id", objectId));
+                    LoadMealList();
+                }
+            }
+        }
         private IMongoCollection<Nutrition> GetMongoCollectionFromNutrition()
         {
             // Set your MongoDB connection string and database name
@@ -228,7 +253,7 @@ namespace HealthCareApp.ViewModels
             parameter.Opacity = 0.5;
             addMealView.ShowDialog();
             parameter.Opacity = 1;
-            LoadMealList(parameter);
+            LoadMealList();
         }
         public void Calculate(NutritionView parameter)
         {
