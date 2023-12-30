@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace HealthCareApp.Models
 {
-    internal class Nutrition
+    public class Nutrition
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
