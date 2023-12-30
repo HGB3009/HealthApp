@@ -13,6 +13,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" 
         DataContext="{StaticResource AddExerciseVM}"
+        Name="AddExercise"
         mc:Ignorable="d" 
         Height="700"
         Width="700">
@@ -118,6 +119,8 @@
                 Margin="10"
                 HorizontalAlignment="Right"
                 Content="Exit"
+                Command="{Binding ExitBtnCommand}"
+                CommandParameter="{Binding ElementName=AddExercise}"
                 Style="{StaticResource MyBlackButtonStyle}"></Button>
         <materialDesign:Card Grid.Row="3"
                              Height="auto"
