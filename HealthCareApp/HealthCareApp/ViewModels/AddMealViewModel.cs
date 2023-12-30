@@ -133,7 +133,7 @@ namespace HealthCareApp.ViewModels
         }
         public void AddMealCM(AddMealView parameter)
         {
-            if(ValidateInput(parameter))
+            if (ValidateInput(parameter))
             {
                 //Create new meal
                 Nutrition newNutrition = new Nutrition
@@ -150,7 +150,14 @@ namespace HealthCareApp.ViewModels
                 _nutritionCollection.InsertOne(newNutrition);
 
                 MessageBox.Show("Add meal successful!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                MealNameVM = null;
+                MealTimeVM = null;
+                DayVM = null;
+                QuantityVM = null;
+                UnitVM = null;
+                CaloriesVM = null;
+                MealTimeVM = null;
+                parameter.loadedImage.Source = null;
                 parameter.Close();
             }
         }
@@ -231,7 +238,7 @@ namespace HealthCareApp.ViewModels
                     bitmapImage.BeginInit();
                     bitmapImage.UriSource = new Uri(imagePath);
                     bitmapImage.EndInit();
-                    parameter.mealIcon  .Visibility = Visibility.Hidden;
+                    parameter.mealIcon.Visibility = Visibility.Hidden;
                     parameter.loadedImage.Source = bitmapImage;
                 }
             }
