@@ -5,10 +5,285 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HealthCareApp.Views"
              mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:uc="clr-namespace:HealthCareApp.Components"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{StaticResource MainBackgroundColor}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             DataContext="{StaticResource SymptomCheckerVM}"
              Height="680"
-             Width="1150"
-             DataContext="{StaticResource DiagnosisVM}">
-    <Grid Background="Purple">
-            
+             Width="1150">
+    <Grid Background="{StaticResource BackGround}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card Grid.Column="0" x:Name="SymptomsCard" 
+                     Width="auto" Height="auto"
+                     Margin="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="0.8*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Background="{StaticResource PrimaryColor}"
+                x:Name="DiagnosisBtn" 
+                Command="{Binding DiagnosisBtnCommand}"
+                CommandParameter="{Binding ElementName=SymptomsBox}"
+                Grid.Row="0"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Width="150"
+                Height="40"
+                Content="Diagnosis"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                ToolTip="Resource name: MaterialDesignRaisedButton" Margin="0,0,10,0" ></Button>
+
+                    <Button Background="Black"
+                 x:Name="ClearSymptomsBtn" 
+                 Command="{Binding ClearSymptomsBtnCommand}"
+                 Grid.Row="0"
+                    Grid.Column="1"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Left"
+                 Width="150"
+                 Height="40"
+                 Content="Clear Symptoms"
+                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                 Style="{StaticResource MaterialDesignRaisedButton}"
+                 ToolTip="Resource name: MaterialDesignRaisedButton" Margin="10,0,0,0" ></Button>
+                </Grid>
+
+                <Button Background="{StaticResource PrimaryColor}"
+                x:Name="AddSymptomBtn" 
+                Command="{Binding AddSymptomBtnCommand}"
+                CommandParameter="{Binding ElementName=ComboBoxSymptoms}"
+                Grid.Row="2"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Width="60"
+                Height="40"
+                FontSize="12"
+                Content="Add"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                ToolTip="Resource name: MaterialDesignRaisedButton" Margin="0,15,10,0" />
+                <Border x:Name="BDroundSymptomBox" 
+                 BorderBrush="Black" 
+                 BorderThickness="1" 
+                 CornerRadius="15" 
+                 Width="auto" Height="200"
+                 Margin="30,30,30,30"
+                 VerticalAlignment="Center">
+
+                    <TextBox x:Name="SymptomsBox"
+                     Margin="5,5,5,0"
+                     Height="auto"
+                     BorderThickness="0"
+                     BorderBrush="White"
+                     Text="{Binding TempSymptoms, Mode=TwoWay}"
+                     FontSize="16"
+                     TextWrapping="Wrap"></TextBox>
+                </Border>
+                <TextBlock Grid.Row="0" 
+                   Text="Symptoms" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Left" 
+                   FontSize="26"
+                   Foreground="{StaticResource PrimaryColor}"
+                    FontWeight="Bold" Margin="22,0,0,0"></TextBlock>
+                <TextBlock Text="Symptoms List"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Grid.Row="1"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource PrimaryColor}"
+                   FontSize="26" Margin="26,0,0,0"></TextBlock>
+                <ComboBox 
+                Grid.Row="2"
+                x:Name="ComboBoxSymptoms"
+                Width="400" 
+                Height="50"
+                VerticalAlignment="Top"
+                materialDesign:HintAssist.Hint="You are allowed to chose more than one symptom"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                IsEditable="True"
+                ItemsSource="{Binding Items}"
+                Style="{StaticResource MaterialDesignFilledComboBox}" Margin="52,7,53,136">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectionChangedItemCommand}"
+                                           CommandParameter="{Binding ElementName=ComboBoxSymptoms}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card  Grid.Column="1" x:Name="ResultCard" 
+                     Width="auto" Height="auto"
+                     Margin="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="0.5*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Result"
+                   Foreground="{StaticResource PrimaryColor}"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   VerticalAlignment="Top"
+                   Grid.Row="0"
+                   HorizontalAlignment="Center"></TextBlock>
+                <Border x:Name="BDroundResult"
+                VerticalAlignment="Top"
+                BorderBrush="Black"
+                BorderThickness="1"
+                CornerRadius="15"
+                Width="480"
+                Height="380"
+                Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="3*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="2.7*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                           Grid.Row="0"
+                           Text="Issue Name:"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Normal"
+                           Margin="0,0,10,0"
+                           HorizontalAlignment="Right"></TextBlock>
+                        <TextBlock x:Name="IssueNameTextBlock"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           HorizontalAlignment="Right"
+                           Margin="0,0,10,0"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           FontStyle="Italic"
+                           Text="{Binding IssueName}"></TextBlock>
+                        <TextBlock Grid.Column="0"
+                           Grid.Row="1"
+                           Text="Accuracy:"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           Margin="0,0,10,0"
+                           FontWeight="Normal"
+                           HorizontalAlignment="Right"></TextBlock>
+                        <TextBlock x:Name="IssueAccTextBlock"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           HorizontalAlignment="Right"
+                           Margin="0,0,10,0"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           FontStyle="Italic"
+                           Text="{Binding IssueAcc}"></TextBlock>
+                        <TextBlock Text="Description"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Foreground="Black"
+                           Grid.ColumnSpan="2"
+                           Grid.Row="2"
+                           TextDecorations="Underline"></TextBlock>
+                        <TextBlock x:Name="DescriptionText"
+                           Text="{Binding DescriptionIssue}"
+                           Grid.Row="3"
+                           Grid.ColumnSpan="2"
+                           TextWrapping="Wrap"
+                           FontWeight="Light"
+                           TextAlignment="Center"
+                           VerticalAlignment="top"
+                           HorizontalAlignment="Center"></TextBlock>
+                        <Line X1="0" Y1="0"
+                      X2="300" Y2="0"
+                      Grid.Row="3"
+                      Grid.ColumnSpan="2"
+                      Stroke="{StaticResource PrimaryColor}"
+                      StrokeThickness="0.8"
+                      VerticalAlignment="Bottom"
+                      HorizontalAlignment="Center"></Line>
+
+                        <TextBlock Grid.Column="0"
+                           Grid.Row="4"
+                           Text="Possible Symptoms:"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Normal"
+                           Margin="0,0,10,0"
+                           HorizontalAlignment="Right"></TextBlock>
+                        <TextBlock x:Name="PossibleSymptomsText"
+                           Grid.Column="1"
+                           Grid.Row="4"
+                           HorizontalAlignment="Right"
+                           Margin="0,0,10,0"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           FontStyle="Italic"
+                           TextWrapping="Wrap"
+                           Text="{Binding PossibleSymptoms}"></TextBlock>
+                    </Grid>
+                </Border>
+                <TextBlock Text="Advice" Height="auto"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource PrimaryColor}"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   Grid.Row="2"></TextBlock>
+                <Border x:Name="BDroundAdvice"
+                Grid.Row="3"
+                Width="480"
+                Height="150"
+                BorderThickness="1"
+                Margin="10,0,10,10"
+                BorderBrush="Black"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                CornerRadius="15">
+                    <TextBlock x:Name="AdviceText"
+                       Text="{Binding AdviceTreatment}"
+                       TextWrapping="Wrap"
+                       FontWeight="Light"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="14"
+                       FontStyle="Italic"></TextBlock>
+                </Border>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

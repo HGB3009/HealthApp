@@ -100,13 +100,21 @@
                                        Foreground="Black"
                                        FontStyle="Italic"
                                        Margin="10"></TextBlock>
-                            
+
                         </Grid>
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
+                            <Line X1="0" Y1="0"
+                                  X2="480" Y2="0"
+                                  Stroke="Black"
+                                  StrokeThickness="1"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Center"
+                                  Margin="10"
+                                  Grid.Row="2" Grid.ColumnSpan="2"></Line>
                             <TextBlock Text="Total" 
                                        FontSize="24"
                                        FontWeight="Bold"
@@ -131,7 +139,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-        <Button Content="Calculate" 
+            <Button Content="Calculate" 
                 Style="{StaticResource MyPrimaryButtonStyle}"
                 Height="50"
                 Width="150"
@@ -139,7 +147,7 @@
                 HorizontalAlignment="Right" 
                 Command="{Binding CalculateBtnCommand}" 
                 CommandParameter="{Binding ElementName=ExerciseActText}"></Button>
-        <Button Content="Cancel" 
+            <Button Content="Cancel" 
                 Style="{StaticResource MyBlackButtonStyle}"
                 Height="50"
                 Width="150"
