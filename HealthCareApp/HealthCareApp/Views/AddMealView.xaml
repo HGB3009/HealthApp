@@ -135,8 +135,8 @@
                         <materialDesign:PackIcon 
                             Kind="StoreClock"
                             Foreground="{StaticResource LightBlackColor}"
-                            Width="30" 
-                            Height="30" 
+                            Width="33" 
+                            Height="33" 
                             HorizontalAlignment="Right"
                             Margin="0,0,15,0"
                             VerticalAlignment="Bottom"  />
@@ -190,13 +190,164 @@
                             Height="30" 
                             HorizontalAlignment="Right"
                             Margin="0,0,15,0"
-                            VerticalAlignment="Bottom"  />
+                            VerticalAlignment="Center"  />
                     </Grid>
                     <TextBox
                         Grid.Column="1"
                         x:Name="MealName"
                         Text="{Binding MealNameVM}"
                         materialDesign:HintAssist.Hint="Meal Name" 
+                        Margin="0" 
+                        Width="250"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}"
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryColor}"
+                        FontWeight="Medium" />
+                </Grid>
+
+                <Grid 
+                    Grid.Row="2"
+                    Width="400"
+                    Height="50"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Icon:PackIconModern 
+                            Kind="CalendarDay"
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Right"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"  />
+                    </Grid>
+                    <DatePicker
+                        Grid.Column="1"
+                        x:Name="Day" 
+                        SelectedDate="{Binding DayVM}"
+                        materialDesign:HintAssist.Hint="Day (Month/Day/Year)" 
+                        Margin="0" 
+                        Width="250"
+                        Height="50"
+                        HorizontalAlignment="Left" 
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}" 
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        FontWeight="Medium" 
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                </Grid>
+
+                <Grid 
+                    Grid.Row="3"
+                    Width="400"
+                    Height="50"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Icon:PackIconVaadinIcons 
+                            Kind="Cubes"
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="33" 
+                            Height="33" 
+                            HorizontalAlignment="Right"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"  />
+                    </Grid>
+                    <TextBox
+                        Grid.Column="1"
+                        x:Name="Quantity"
+                        Text="{Binding QuantityVM}"
+                        materialDesign:HintAssist.Hint="Quantity" 
+                        Margin="0" 
+                        Width="250"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}"
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryColor}"
+                        FontWeight="Medium" />
+                </Grid>
+
+                <Grid 
+                    Grid.Row="4"
+                    Width="400"
+                    Height="50"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Icon:PackIconMaterial 
+                            Kind="WeightPound"
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="33" 
+                            Height="33" 
+                            HorizontalAlignment="Right"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"  />
+                    </Grid>
+                    <TextBox
+                        Grid.Column="1"
+                        x:Name="Unit"
+                        Text="{Binding UnitVM}"
+                        materialDesign:HintAssist.Hint="Unit" 
+                        Margin="0" 
+                        Width="250"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}"
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryColor}"
+                        FontWeight="Medium" />
+                </Grid>
+
+                <Grid 
+                    Grid.Row="5"
+                    Width="400"
+                    Height="50"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Image
+                            Source="\Resources\Images\calories.jpg"
+                            Width="40" 
+                            Height="40" 
+                            HorizontalAlignment="Right"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"  />
+                    </Grid>
+                    <TextBox
+                        Grid.Column="1"
+                        x:Name="Calories"
+                        Text="{Binding CaloriesVM}"
+                        materialDesign:HintAssist.Hint="Unit" 
                         Margin="0" 
                         Width="250"
                         Height="50" 
