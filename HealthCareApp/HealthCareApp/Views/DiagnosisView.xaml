@@ -215,15 +215,15 @@
                            Grid.ColumnSpan="2"
                            Grid.Row="2"
                            TextDecorations="Underline"></TextBlock>
-                        <TextBlock x:Name="DescriptionText"
-                           Text="{Binding DescriptionIssue}"
-                           Grid.Row="3"
-                           Grid.ColumnSpan="2"
-                           TextWrapping="Wrap"
-                           FontWeight="Light"
-                           TextAlignment="Center"
-                           VerticalAlignment="top"
-                           HorizontalAlignment="Center"></TextBlock>
+                        <ScrollViewer  Grid.Row="3" Grid.ColumnSpan="2">
+                            <TextBlock x:Name="DescriptionText"
+                                        Text="{Binding DescriptionIssue}"
+                                        TextWrapping="Wrap"
+                                        FontWeight="Light"
+                                        TextAlignment="Center"
+                                        VerticalAlignment="top"
+                                        HorizontalAlignment="Center"></TextBlock>    
+                        </ScrollViewer>
                         <Line X1="0" Y1="0"
                       X2="300" Y2="0"
                       Grid.Row="3"
@@ -243,9 +243,8 @@
                            FontWeight="Normal"
                            Margin="0,0,10,0"
                            HorizontalAlignment="Right"></TextBlock>
-                        <TextBlock x:Name="PossibleSymptomsText"
-                           Grid.Column="1"
-                           Grid.Row="4"
+                        <ScrollViewer Grid.Column="1" Grid.Row="4" >
+                            <TextBlock x:Name="PossibleSymptomsText"
                            HorizontalAlignment="Right"
                            Margin="0,0,10,0"
                            VerticalAlignment="Center"
@@ -254,6 +253,8 @@
                            FontStyle="Italic"
                            TextWrapping="Wrap"
                            Text="{Binding PossibleSymptoms}"></TextBlock>
+                        </ScrollViewer>
+                        
                     </Grid>
                 </Border>
                 <TextBlock Text="Advice" Height="auto"
@@ -273,7 +274,8 @@
                 VerticalAlignment="Top"
                 HorizontalAlignment="Center"
                 CornerRadius="15">
-                    <TextBlock x:Name="AdviceText"
+                    <ScrollViewer>
+                        <TextBlock x:Name="AdviceText"
                        Text="{Binding AdviceTreatment}"
                        TextWrapping="Wrap"
                        FontWeight="Light"
@@ -282,6 +284,7 @@
                        HorizontalAlignment="Center"
                        FontSize="14"
                        FontStyle="Italic"></TextBlock>
+                    </ScrollViewer>
                 </Border>
             </Grid>
         </materialDesign:Card>
