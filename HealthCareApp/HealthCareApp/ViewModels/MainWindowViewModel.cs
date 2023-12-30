@@ -63,6 +63,7 @@ namespace HealthCareApp.ViewModels
             var window = Window.GetWindow(mainWindow);
             if (window != null)
             {
+                CurrentView = new MenuView();
                 window.Close();
             }
         }

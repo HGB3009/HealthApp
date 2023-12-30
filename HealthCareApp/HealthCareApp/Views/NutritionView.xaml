@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HealthCareApp.Views"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              Height="680"
              Width="1150"
@@ -16,6 +17,12 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="7*"></RowDefinition>
         </Grid.RowDefinitions>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadWindowCommand}"
+                       CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -26,11 +33,11 @@
 
             <TextBlock
                 Text="Nutrition Management"
-                Foreground="{StaticResource Orange}"   
+                Foreground="{StaticResource LightBlackColor}"   
                 Margin="20,0,0,0"
                 FontSize="35"
                 VerticalAlignment="Center"
-                FontWeight="Medium"
+                FontWeight="Bold"
                 TextAlignment="Left" />
             <Button
                 Grid.Column="2"
@@ -69,6 +76,94 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
+        </Grid>
+
+        <Grid 
+            Grid.Row="1"
+            Background="{StaticResource White}">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <DataGrid x:Name="mealDataGrid"
+                          ItemsSource="{Binding MealList}"
+                          AutoGenerateColumns="False"
+                          Style="{DynamicResource DataGridStyle}"
+                          CellStyle="{DynamicResource DataGridCellStyle}"
+                          RowStyle="{DynamicResource DataGridRowStyle}"
+                          Grid.Row="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn 
+                            Header="#"
+                            IsReadOnly="True"
+                            Width="50"
+                            Binding="{Binding ItemId}" />
+                        <DataGridTextColumn 
+                            Header="Meal Time"
+                            IsReadOnly="True"
+                            Width="130"
+                            Binding="{Binding MealTime}" />
+                        <DataGridTextColumn 
+                            Header="Meal Name"
+                            IsReadOnly="True"
+                            Width="*"
+                            Binding="{Binding MealName}" />
+                        <DataGridTextColumn 
+                            Header="Day" 
+                            IsReadOnly="True" 
+                            Width="140"
+                            Binding="{Binding Day}" />
+                        <DataGridTextColumn 
+                            Header="Quantity"
+                            IsReadOnly="True"
+                            Width="130"
+                            Binding="{Binding Quantity}"/>
+                        <DataGridTextColumn 
+                            Header="Unit"
+                            IsReadOnly="True"
+                            Width="130"
+                            Binding="{Binding Unit}"/>
+                        <DataGridTextColumn 
+                            Header="Calories"
+                            IsReadOnly="True"
+                            Width="130"
+                            Binding="{Binding Calories}"/>
+                        <DataGridTemplateColumn 
+                            Header="Actions" 
+                            IsReadOnly="True"
+                            Width="100" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel x:Name="subMenuGrid"
+                                                Orientation="Horizontal" 
+                                                Visibility="Visible" 
+                                                Background="Transparent">
+                                        <Button 
+                                                Command="{Binding DataContext.EditItemCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                CommandParameter="{Binding}">
+                                            <Icon:PackIconBoxIcons Kind="RegularEdit"
+                                                   Width="14"
+                                                   Height="14"
+                                                   VerticalAlignment="Center" />
+                                        </Button>
+                                        <Button 
+                                            Command="{Binding DataContext.RemoveItemCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                            CommandParameter="{Binding}">
+                                            <Icon:PackIconIonicons Kind="TrashMD" 
+                                                   Width="14"
+                                                   Height="14"
+                                                   VerticalAlignment="Center" />
+
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

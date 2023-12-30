@@ -24,5 +24,6 @@ namespace HealthCareApp.Views
         {
             InitializeComponent();
         }
+
     }
 }
