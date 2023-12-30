@@ -26,7 +26,7 @@
         <Grid Grid.Column="0">
             <TextBlock
                 Text="{Binding UsernameVM}"
-                Foreground="Gray"   
+                Foreground="{StaticResource PrimaryColor}"   
                 Margin="20,10,0,0"
                 FontSize="25"
                 VerticalAlignment="Center"

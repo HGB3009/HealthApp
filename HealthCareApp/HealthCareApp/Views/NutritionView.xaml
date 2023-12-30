@@ -24,7 +24,8 @@
             </i:EventTrigger>
         </i:Interaction.Triggers>
 
-        <Grid>
+        <Grid
+            >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -80,26 +81,25 @@
 
         <Grid 
             Grid.Row="1"
-            Background="{StaticResource White}">
+            Background="{StaticResource White}"
+            Margin="20 0 10 0 ">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="6*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="1">
+            <Grid 
+                Grid.Row="1"
+                Margin="20 0 20 0">
                 <DataGrid x:Name="mealDataGrid"
                           ItemsSource="{Binding MealList}"
                           AutoGenerateColumns="False"
                           Style="{DynamicResource DataGridStyle}"
                           CellStyle="{DynamicResource DataGridCellStyle}"
                           RowStyle="{DynamicResource DataGridRowStyle}"
+                          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}"
                           Grid.Row="2">
                     <DataGrid.Columns>
-                        <DataGridTextColumn 
-                            Header="#"
-                            IsReadOnly="True"
-                            Width="50"
-                            Binding="{Binding ItemId}" />
                         <DataGridTextColumn 
                             Header="Meal Time"
                             IsReadOnly="True"
@@ -133,24 +133,28 @@
                         <DataGridTemplateColumn 
                             Header="Actions" 
                             IsReadOnly="True"
-                            Width="100" >
+                            Width="180" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel x:Name="subMenuGrid"
                                                 Orientation="Horizontal" 
                                                 Visibility="Visible" 
+                                                HorizontalAlignment="Left"
                                                 Background="Transparent">
                                         <Button 
-                                                Command="{Binding DataContext.EditItemCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                                CommandParameter="{Binding}">
-                                            <Icon:PackIconBoxIcons Kind="RegularEdit"
+                                            HorizontalAlignment="Center"
+                                            Margin="10"
+                                            Style="{StaticResource MyBlueButtonStyle}">
+                                            <Icon:PackIconBoxIcons 
+                                                Kind="RegularEdit"
                                                    Width="14"
                                                    Height="14"
                                                    VerticalAlignment="Center" />
                                         </Button>
                                         <Button 
-                                            Command="{Binding DataContext.RemoveItemCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                            CommandParameter="{Binding}">
+                                            HorizontalAlignment="Center"
+                                            Margin="10"
+                                            Style="{StaticResource MyRedButtonStyle}">
                                             <Icon:PackIconIonicons Kind="TrashMD" 
                                                    Width="14"
                                                    Height="14"

@@ -133,6 +133,25 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="MyRedButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+        <Setter Property="Background" Value="{DynamicResource Red}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource LightBlackColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource White}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource Red}"></Setter>
+                <Setter Property="Background" Value="{StaticResource White}"></Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource White}"></Setter>
+                <Setter Property="Background" Value="{StaticResource Red}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="MyBlackButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
         <Setter Property="Background" Value="{DynamicResource LightBlackColor}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LightBlackColor}"/>
@@ -174,7 +193,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGrid}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{StaticResource LightBlackColor}" BorderThickness="1" CornerRadius="0" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                    <Border Background="{DynamicResource Transparent}" BorderBrush="{StaticResource White}" BorderThickness="1" CornerRadius="0" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
                         <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
                             <ScrollViewer.Template>
                                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
@@ -259,13 +278,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
 
-                    <Grid Background="{StaticResource PrimaryColor}">
-                        <Border Background="{TemplateBinding Background}" 
+                    <Grid Background="{DynamicResource Transparent}">
+                        <Border Background="{StaticResource PrimaryColor}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             Padding="{TemplateBinding Padding}">
                             <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                                <ContentPresenter RecognizesAccessKey="True" 
+                                <ContentPresenter RecognizesAccessKey="True"
+                                                  
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Grid>
@@ -281,13 +301,15 @@
             </Setter.Value>
         </Setter>
         <Setter Property="TextBlock.FontWeight" 
-            Value="Medium"/>
+            Value="Bold"/>
         <Setter Property="VerticalContentAlignment" 
             Value="Center"/>
+        <Setter Property="Foreground"
+                Value="{StaticResource LightBlackColor}"/>
     </Style>
     <Style x:Key="DataGridRowStyle" TargetType="{x:Type DataGridRow}">
         <Setter Property="Background" 
-            Value="Transparent"/>
+            Value="{StaticResource BackGround}"/>
         <Setter Property="Margin"
             Value="0 5 0 0"/>
         <Setter Property="SnapsToDevicePixels" 
