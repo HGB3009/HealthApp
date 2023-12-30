@@ -13,7 +13,7 @@
              FontFamily="Poppins">
     <Grid Background="{StaticResource White}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2.5*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>

@@ -9,4 +9,5 @@
     <SolidColorBrush x:Key="BlueSky" Color="#3081D0"></SolidColorBrush>
     <SolidColorBrush x:Key="PastelGreen" Color="#C1F2B0"></SolidColorBrush>
     <SolidColorBrush x:Key="BackGround" Color="#F0FFF0"></SolidColorBrush>
+    <SolidColorBrush x:Key="Red" Color="Red"></SolidColorBrush>
 </ResourceDictionary>
