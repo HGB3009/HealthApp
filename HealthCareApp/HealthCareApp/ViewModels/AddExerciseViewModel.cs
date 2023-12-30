@@ -9,14 +9,17 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using static HealthCareApp.Models.ExerciseModel;
 
 namespace HealthCareApp.ViewModels
 {
     internal class AddExerciseViewModel : BaseViewModel
     {
+        public ICommand ExitBtnCommand { get; set; }
         public AddExerciseViewModel()
         {
+            ExitBtnCommand=new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
             getExercise();
         }
         string api_key = "2qhorCkNJtS7gPC5veMb0w==vuH8jN3gfZBHCzzh";

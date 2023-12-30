@@ -27,19 +27,21 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button Style="{StaticResource MyPrimaryButtonStyle}" 
-                Width="150" 
-                Grid.Column="1"
-                HorizontalAlignment="Left"
-                Margin="10" 
-                Content="Add Exercise"
-                Height="50"></Button>
-            <Button Style="{StaticResource MyBlueButtonStyle}" 
-                Width="150" 
-                Grid.Column="0"
-                HorizontalAlignment="Right"
-                Margin="10"
-                Content="Training Assistant"
-                Height="50"></Button>
+                    Width="150"
+                    Command="{Binding CalculateCaloriesCommand}"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    Margin="10" 
+                    Content="Calculate Calories"
+                    Height="50"></Button>
+            <Button Style="{StaticResource MyBlueButtonStyle}"
+                    Command="{Binding TrainingBtnCommand}"
+                    Width="150" 
+                    Grid.Column="0"
+                    HorizontalAlignment="Right"
+                    Margin="10"
+                    Content="Training Assistant"
+                    Height="50"></Button>
         </Grid>
         <materialDesign:Card Margin="15"
                              Height="auto"
