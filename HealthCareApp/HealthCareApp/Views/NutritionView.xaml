@@ -11,7 +11,8 @@
              Width="1150"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             DataContext="{StaticResource NutritionVM}">
+             DataContext="{StaticResource NutritionVM}"
+             FontFamily="Poppins">
     <Grid Background="{StaticResource BackGround}">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -81,6 +82,7 @@
 
         <Grid 
             Grid.Row="1"
+
             Background="{StaticResource White}"
             Margin="20 0 10 0 ">
             <Grid.RowDefinitions>
@@ -88,16 +90,156 @@
                 <RowDefinition Height="6*"></RowDefinition>
             </Grid.RowDefinitions>
 
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox
+                    x:Name="ViewBy"
+                    SelectedValuePath="Content"
+                    SelectedValue="{Binding ViewByVM}"
+                    Width="180"
+                    FontSize="17"
+                    materialDesign:HintAssist.Hint="View by"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByChangeCM}"
+                                                   CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBoxItem Content="Day"/>
+                    <ComboBoxItem Content="Month"/>
+                    <ComboBoxItem Content="Year"/>
+                </ComboBox>
+
+
+                <ComboBox
+                    Grid.Column="1"
+                    x:Name="ChooseMonth"
+                    SelectedValuePath="Content"
+                    SelectedValue="{Binding ViewByMonthVM}"
+                    FontSize="17"
+                    Width="180"
+                    Visibility="Hidden"
+                    materialDesign:HintAssist.Hint="Choose Month"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByMonthChangeCM}"
+                               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                    <ComboBoxItem Content="6"/>
+                    <ComboBoxItem Content="7"/>
+                    <ComboBoxItem Content="8"/>
+                    <ComboBoxItem Content="9"/>
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem Content="11"/>
+                    <ComboBoxItem Content="12"/>
+                </ComboBox>
+
+                <TextBox
+                    x:Name="ChooseYear"
+                    Grid.Column="1"
+                    Visibility="Hidden"
+                    Text="{Binding ViewByYearVM}"
+                    FontSize="17"
+                    Width="180"                  
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 30 0"
+                    materialDesign:HintAssist.Hint="Choose Year?"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByYearChangeCM}"
+                               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+
+                <DatePicker
+                    Grid.Column="1"
+                    x:Name ="ChooseDay"
+                    SelectedDate="{Binding ViewByDayVM}"
+                    FontSize="17"
+                    Width="180"
+                    Visibility="Hidden"
+                    materialDesign:HintAssist.Hint="Pick Date"
+                    Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByDayChangeCM}"
+                               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </DatePicker>
+
+
+                <TextBox
+                    Grid.Column="2"
+                    FontSize="17"
+                    Width="350"                    
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 30 0"
+                    materialDesign:HintAssist.Hint="What did you eat?"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                </TextBox>
+
+                <Grid 
+                    Grid.Column="2"
+                    Width="35"
+                    Height="35"
+                    Margin="0 0 40 0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Cursor"
+                                             Value="Hand"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Icon:PackIconFontAwesome 
+                        Kind="SearchSolid" 
+                        Width="35"
+                        Height="35"/>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding ScreachCM}"
+                               CommandParameter="{Binding ElementName=NutritionScreen}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </Grid>
+
+            </Grid>
+
             <Grid 
                 Grid.Row="1"
                 Margin="20 0 20 0">
                 <DataGrid x:Name="mealDataGrid"
+                          Margin="1"
                           ItemsSource="{Binding MealList}"
                           AutoGenerateColumns="False"
                           Style="{DynamicResource DataGridStyle}"
                           CellStyle="{DynamicResource DataGridCellStyle}"
                           RowStyle="{DynamicResource DataGridRowStyle}"
-                          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}"
                           Grid.Row="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn 
