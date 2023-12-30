@@ -11,7 +11,9 @@
         FontFamily="Poppins" 
         DataContext="{StaticResource AddMealVM}"
         Height="600" 
-        Width="580">
+        Width="580"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="120"></RowDefinition>
@@ -36,7 +38,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding CancelCommand}"
-                                               CommandParameter="{Binding ElementName=SignupWD}"></i:InvokeCommandAction>
+                                               CommandParameter="{Binding ElementName=AddMealWindow}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
@@ -54,8 +56,8 @@
                     Text="Confirm" />
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SignUpCommand}"
-                                               CommandParameter="{Binding ElementName=SignupWD}"></i:InvokeCommandAction>
+                        <i:InvokeCommandAction Command="{Binding AddMealCommand}"
+                                               CommandParameter="{Binding ElementName=AddMealWindow}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
@@ -98,12 +100,12 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction Command="{Binding BrowseImageCommand}"
-                                                   CommandParameter="{Binding ElementName=SignupWD}" />
+                                                   CommandParameter="{Binding ElementName=AddMealWindow}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Border>
                 <materialDesign:PackIcon 
-                    x:Name="iconImage" 
+                    x:Name="mealIcon" 
                     Kind="FileImageOutline" 
                     Foreground="{StaticResource PrimaryColor}"
                     Width="64" 
@@ -135,8 +137,8 @@
                         <materialDesign:PackIcon 
                             Kind="StoreClock"
                             Foreground="{StaticResource LightBlackColor}"
-                            Width="30" 
-                            Height="30" 
+                            Width="33" 
+                            Height="33" 
                             HorizontalAlignment="Right"
                             Margin="0,0,15,0"
                             VerticalAlignment="Bottom"  />
@@ -190,13 +192,164 @@
                             Height="30" 
                             HorizontalAlignment="Right"
                             Margin="0,0,15,0"
-                            VerticalAlignment="Bottom"  />
+                            VerticalAlignment="Center"  />
                     </Grid>
                     <TextBox
                         Grid.Column="1"
                         x:Name="MealName"
                         Text="{Binding MealNameVM}"
                         materialDesign:HintAssist.Hint="Meal Name" 
+                        Margin="0" 
+                        Width="250"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}"
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryColor}"
+                        FontWeight="Medium" />
+                </Grid>
+
+                <Grid 
+                    Grid.Row="2"
+                    Width="400"
+                    Height="50"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Icon:PackIconModern 
+                            Kind="CalendarDay"
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="30" 
+                            Height="30" 
+                            HorizontalAlignment="Right"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"  />
+                    </Grid>
+                    <DatePicker
+                        Grid.Column="1"
+                        x:Name="Day" 
+                        SelectedDate="{Binding DayVM}"
+                        materialDesign:HintAssist.Hint="Day (Month/Day/Year)" 
+                        Margin="0" 
+                        Width="250"
+                        Height="50"
+                        HorizontalAlignment="Left" 
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}" 
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        FontWeight="Medium" 
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                </Grid>
+
+                <Grid 
+                    Grid.Row="3"
+                    Width="400"
+                    Height="50"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Icon:PackIconVaadinIcons 
+                            Kind="Cubes"
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="33" 
+                            Height="33" 
+                            HorizontalAlignment="Right"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"  />
+                    </Grid>
+                    <TextBox
+                        Grid.Column="1"
+                        x:Name="Quantity"
+                        Text="{Binding QuantityVM}"
+                        materialDesign:HintAssist.Hint="Quantity" 
+                        Margin="0" 
+                        Width="250"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}"
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryColor}"
+                        FontWeight="Medium" />
+                </Grid>
+
+                <Grid 
+                    Grid.Row="4"
+                    Width="400"
+                    Height="50"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Icon:PackIconMaterial 
+                            Kind="WeightPound"
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="33" 
+                            Height="33" 
+                            HorizontalAlignment="Right"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"  />
+                    </Grid>
+                    <TextBox
+                        Grid.Column="1"
+                        x:Name="Unit"
+                        Text="{Binding UnitVM}"
+                        materialDesign:HintAssist.Hint="Unit" 
+                        Margin="0" 
+                        Width="250"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}"
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryColor}"
+                        FontWeight="Medium" />
+                </Grid>
+
+                <Grid 
+                    Grid.Row="5"
+                    Width="400"
+                    Height="50"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Image
+                            Source="\Resources\Images\calories.jpg"
+                            Width="40" 
+                            Height="40" 
+                            HorizontalAlignment="Right"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"  />
+                    </Grid>
+                    <TextBox
+                        Grid.Column="1"
+                        x:Name="Calories"
+                        Text="{Binding CaloriesVM}"
+                        materialDesign:HintAssist.Hint="Calories" 
                         Margin="0" 
                         Width="250"
                         Height="50" 
