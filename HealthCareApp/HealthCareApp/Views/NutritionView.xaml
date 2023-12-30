@@ -134,41 +134,39 @@
                                CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                    <ComboBoxItem Content="01"/>
-                    <ComboBoxItem Content="02"/>
-                    <ComboBoxItem Content="03"/>
-                    <ComboBoxItem Content="04"/>
-                    <ComboBoxItem Content="05"/>
-                    <ComboBoxItem Content="06"/>
-                    <ComboBoxItem Content="07"/>
-                    <ComboBoxItem Content="08"/>
-                    <ComboBoxItem Content="09"/>
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                    <ComboBoxItem Content="6"/>
+                    <ComboBoxItem Content="7"/>
+                    <ComboBoxItem Content="8"/>
+                    <ComboBoxItem Content="9"/>
                     <ComboBoxItem Content="10"/>
                     <ComboBoxItem Content="11"/>
                     <ComboBoxItem Content="12"/>
                 </ComboBox>
 
-                <ComboBox
-                    Grid.Column="1"
+                <TextBox
                     x:Name="ChooseYear"
-                    SelectedValuePath="Content"
-                    SelectedValue="{Binding ViewByYearVM}"
-                    FontSize="17"
-                    Width="180"
+                    Grid.Column="1"
                     Visibility="Hidden"
-                    materialDesign:HintAssist.Hint="Choose Year"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
-                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    Text="{Binding ViewByYearVM}"
+                    FontSize="17"
+                    Width="180"                  
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 30 0"
+                    materialDesign:HintAssist.Hint="Choose Year?"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}">
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
+                        <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction Command="{Binding ViewByYearChangeCM}"
-               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                    <ComboBoxItem Content="2022"/>
-                    <ComboBoxItem Content="2023"/>
-                    <ComboBoxItem Content="2024"/>
-                </ComboBox>
+                </TextBox>
 
                 <DatePicker
                     Grid.Column="1"
@@ -180,7 +178,7 @@
                     materialDesign:HintAssist.Hint="Pick Date"
                     Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="CalendarClosed">
+                        <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding ViewByDayChangeCM}"
                                CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
