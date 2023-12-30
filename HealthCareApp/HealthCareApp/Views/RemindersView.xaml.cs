@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HealthCareApp.ViewModels;
 
 namespace HealthCareApp.Views
 {
@@ -23,6 +24,7 @@ namespace HealthCareApp.Views
         public RemindersView()
         {
             InitializeComponent();
+            DataContext = new RemindersViewModel();
         }
     }
 }

@@ -7,7 +7,8 @@
              Name="RView"
               xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:uc="clr-namespace:HealthCareApp.Components"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:oxy="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf"
              xmlns:components="clr-namespace:HealthCareApp.Components"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
@@ -40,17 +41,49 @@
                                  Grid.RowSpan="3"
                                  Width="auto" Height="auto"
                                  Margin="10">
-                <TextBlock
-                    Text="Drink Reminders"
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Center" 
-                    FontSize="26"
-                    Foreground="{StaticResource PrimaryColor}"
-                    FontWeight="Bold" Margin="22,0,0,0">
-                </TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
+                    <!-- Title: Drink Reminders -->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                               Text="Drink Reminders"
+                               VerticalAlignment="Top" 
+                               HorizontalAlignment="Center" 
+                               FontSize="26"
+                               Foreground="{StaticResource PrimaryColor}"
+                               FontWeight="Bold" Margin="10" TextAlignment="Center">
+                    </TextBlock>
+                    
+                    <oxy:PlotView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                  Model="{Binding WaterIntakeModel}"
+                                  Margin="10" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                               Text="{Binding TargetWater, StringFormat=🎯: \{0\} ml}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               Foreground="{StaticResource Orange}"
+                               Margin="10" FontWeight="Bold" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="2" 
+                               Text="Next Drink Time Placeholder"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               Margin="10" />
+                </Grid>
             </materialDesign:Card>
-            
+
             <materialDesign:Card Grid.Row="1" Grid.Column="2" x:Name="MealRemindersCard"
                                  Grid.RowSpan="3"
                                  Width="auto" Height="auto"
@@ -64,21 +97,20 @@
                     FontWeight="Bold" Margin="22,0,0,0">
                 </TextBlock>
             </materialDesign:Card>
-            
+
             <materialDesign:Card Grid.Row="4" Grid.Column="1" x:Name="DoctorAppointmentCard"
                                  Grid.ColumnSpan="2"
                                  Grid.RowSpan="2"
                                  Width="auto" Height="auto"
                                  Margin="10">
-                <TextBlock
-                    Text="Doctors' Appointments"
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Center" 
-                    FontSize="26"
-                    Foreground="{StaticResource PrimaryColor}"
-                    FontWeight="Bold" Margin="22,0,0,0">
-                </TextBlock>
-            </materialDesign:Card>            
+                    <TextBlock
+                        Text="Doctors' Appointments"
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Center" 
+                        FontSize="26"
+                        Foreground="{StaticResource PrimaryColor}"
+                        FontWeight="Bold" Margin="22,0,0,0"/>
+            </materialDesign:Card>
         </Grid>
     </Grid>
 </UserControl>
