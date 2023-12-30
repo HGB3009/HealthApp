@@ -11,11 +11,19 @@ namespace HealthCareApp.Models
     {
         public class DrinkReminder
         {
+            public double Volume {  get; set; } 
             public double ConsumedWater { get; set; }
             public double TargetWater { get; set; }
             public bool IsEnabled { get; set; }
             public DateTime ReminderTime { get; set; }
-
+            public void UpdateConsumedWater(double amount)
+            {
+                ConsumedWater += amount;
+            }
+            public bool IsTargetAchieved()
+            {
+                return ConsumedWater >= TargetWater;
+            }
         }
         public class MealReminder 
         {

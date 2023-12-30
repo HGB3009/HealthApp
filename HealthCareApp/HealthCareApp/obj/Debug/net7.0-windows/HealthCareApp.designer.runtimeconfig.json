@@ -12,12 +12,10 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\baoba\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\baoba\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\seter\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\seter\\.nuget\\packages"
     ],
     "configProperties": {
-      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
     }
   }
