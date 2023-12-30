@@ -148,25 +148,29 @@
                     <ComboBoxItem Content="12"/>
                 </ComboBox>
 
-                <TextBox
-                    x:Name="ChooseYear"
+                <ComboBox
                     Grid.Column="1"
-                    Visibility="Hidden"
-                    Text="{Binding ViewByYearVM}"
+                    x:Name="ChooseYear"
+                    SelectedValuePath="Content"
+                    SelectedValue="{Binding ViewByYearVM}"
                     FontSize="17"
-                    Width="180"                  
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"
-                    Margin="0 0 30 0"
-                    materialDesign:HintAssist.Hint="Choose Year?"
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                    Width="180"
+                    Visibility="Hidden"
+                    materialDesign:HintAssist.Hint="Choose Year"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="TextChanged">
+                        <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding ViewByYearChangeCM}"
-                               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                                                   CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                </TextBox>
+                    <ComboBoxItem Content="2020"/>
+                    <ComboBoxItem Content="2021"/>
+                    <ComboBoxItem Content="2022"/>
+                    <ComboBoxItem Content="2023"/>
+                    <ComboBoxItem Content="2024"/>
+                </ComboBox>
 
                 <DatePicker
                     Grid.Column="1"
@@ -178,7 +182,7 @@
                     materialDesign:HintAssist.Hint="Pick Date"
                     Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
+                        <i:EventTrigger EventName="CalendarClosed">
                             <i:InvokeCommandAction Command="{Binding ViewByDayChangeCM}"
                                CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>

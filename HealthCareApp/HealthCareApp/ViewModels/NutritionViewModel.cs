@@ -183,19 +183,28 @@ namespace HealthCareApp.ViewModels
 
             if (!string.IsNullOrEmpty(ViewByMode))
             {
-
                 if (ViewByMode == "Day")
                 {
-                    string SreachDay = ViewByDayVM.HasValue ? ViewByDayVM.Value.ToString("dd/MM/yyyy") : null;
-                    finalFilter &= filterBuilder.Eq(x => x.Day, SreachDay);
+                    string searchDay = ViewByDayVM.HasValue ? ViewByDayVM.Value.ToString("dd/MM/yyyy") : null;
+                    finalFilter &= filterBuilder.Eq(x => x.Day, searchDay);
                 }
                 else if (ViewByMode == "Month")
                 {
-                    finalFilter &= filterBuilder.Regex(x => x.Day, new BsonRegularExpression($@"^.*\/{ViewByMonthVM}\/.*$"));
+                    int targetMonth = int.Parse(ViewByMonthVM);
+                    string monthString = targetMonth.ToString("00");
+
+                    finalFilter &= filterBuilder.Regex(
+                        x => x.Day,
+                        new BsonRegularExpression($@"^.*\/{monthString}\/[0-9]{{4}}$")
+                    );
                 }
                 else if (ViewByMode == "Year")
                 {
-                    finalFilter &= filterBuilder.Regex(x => x.Day, new BsonRegularExpression($@"^.*\/{ViewByYearVM}\/.*$"));
+                    int targetYear = int.Parse(ViewByYearVM);
+                    finalFilter &= filterBuilder.Regex(
+                        x => x.Day,
+                        new BsonRegularExpression($@"^.*\/[0-9]{{2}}\/{targetYear}$")
+                    );
                 }
             }
 
