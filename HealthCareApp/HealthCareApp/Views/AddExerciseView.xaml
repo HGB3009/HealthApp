@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthCareApp.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -25,7 +26,7 @@
             <RowDefinition Height="4*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Add Exercise"
+        <TextBlock Text="Training Assistant"
                    Grid.Row="0"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
@@ -40,9 +41,19 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" 
+                     Background="WhiteSmoke"
+                     materialDesign:HintAssist.Hint="Action"
+                     VerticalAlignment="Center"
+                     Margin="18"
+                     Height="50"
+                     FontSize="16"
+                     FontWeight="Normal"
+                     Foreground="Black"></TextBox>
             <ComboBox 
-                Grid.Column="0"
+                Grid.Column="1"
                 x:Name="ComboBoxMuscle"
                 Width="auto " 
                 Height="50"
@@ -51,28 +62,17 @@
                 materialDesign:HintAssist.Hint="Muscle"
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 IsEditable="True"
-                ItemsSource="{Binding Items}"
+                ItemsSource="{Binding TempMuscleList}"
+                
                 Style="{StaticResource MaterialDesignFilledComboBox}">
-                <ComboBoxItem Content="abdominals"></ComboBoxItem>
-                <ComboBoxItem Content="abductors"></ComboBoxItem>
-                <ComboBoxItem Content="adductors"></ComboBoxItem>
-                <ComboBoxItem Content="biceps"></ComboBoxItem>
-                <ComboBoxItem Content="calves"></ComboBoxItem>
-                <ComboBoxItem Content="chest"></ComboBoxItem>
-                <ComboBoxItem Content="forearms"></ComboBoxItem>
-                <ComboBoxItem Content="glutes"></ComboBoxItem>
-                <ComboBoxItem Content="hamstrings"></ComboBoxItem>
-                <ComboBoxItem Content="lats"></ComboBoxItem>
-                <ComboBoxItem Content="lower_back"></ComboBoxItem>
-                <ComboBoxItem Content="middle_back"></ComboBoxItem>
-                <ComboBoxItem Content="neck"></ComboBoxItem>
-                <ComboBoxItem Content="quadriceps"></ComboBoxItem>
-                <ComboBoxItem Content="traps"></ComboBoxItem>
-                <ComboBoxItem Content="triceps"></ComboBoxItem>
-
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding MusleSelectedItemChangedCommand}" CommandParameter="{Binding ElementName=ComboBoxMuscle}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </ComboBox>
             <ComboBox 
-                Grid.Column="1"
+                Grid.Column="2"
                 x:Name="ComboBoxType"
                 Width="auto " 
                 Height="50"
@@ -81,18 +81,16 @@
                 materialDesign:HintAssist.Hint="Type"
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 IsEditable="True"
-                ItemsSource="{Binding Items}"
+                ItemsSource="{Binding TempTypeList}"
                 Style="{StaticResource MaterialDesignFilledComboBox}">
-                <ComboBoxItem Content="cardio"></ComboBoxItem>
-                <ComboBoxItem Content="cardioolympic_weightlifting"></ComboBoxItem>
-                <ComboBoxItem Content="plyometrics"></ComboBoxItem>
-                <ComboBoxItem Content="powerlifting"></ComboBoxItem>
-                <ComboBoxItem Content="strength"></ComboBoxItem>
-                <ComboBoxItem Content="stretching"></ComboBoxItem>
-                <ComboBoxItem Content="strongman"></ComboBoxItem>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding TypeSelectedItemChangedCommand}" CommandParameter="{Binding ElementName=ComboBoxType}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </ComboBox>
             <ComboBox 
-                Grid.Column="2"
+                Grid.Column="3"
                 x:Name="ComboBoxDifficult"
                 Width="auto " 
                 Height="50"
@@ -101,17 +99,20 @@
                 materialDesign:HintAssist.Hint="Difficulty"
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 IsEditable="True"
-                ItemsSource="{Binding Items}"
+                ItemsSource="{Binding TempDifficultyList}"
                 Style="{StaticResource MaterialDesignFilledComboBox}">
-                <ComboBoxItem Content="beginner"></ComboBoxItem>
-                <ComboBoxItem Content="intermediate"></ComboBoxItem>
-                <ComboBoxItem Content="expert"></ComboBoxItem>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding DifficultySelectedItemChangedCommand}" CommandParameter="{Binding ElementName=ComboBoxDifficult}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </ComboBox>
         </Grid>
         <Button Height="50"
                 Width="150"
                 Grid.Row="2"
                 Content="Suggest..."
+                Command="{Binding SuggestBtnCommand}"
                 Style="{StaticResource MyPrimaryButtonStyle}"></Button>
         <Button Height="50"
                 Width="150"
