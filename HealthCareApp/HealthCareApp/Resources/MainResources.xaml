@@ -25,4 +25,6 @@
     <viewmodels:ForgotPasswordViewModel x:Key="ForgotPasswordVM"></viewmodels:ForgotPasswordViewModel>
     <viewmodels:AddMealViewModel x:Key="AddMealVM"></viewmodels:AddMealViewModel>
     <viewmodels:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodels:ChangePasswordViewModel>
+    <viewmodels:ExerciseCaloriesViewModel x:Key="ExerciseCaloriesVM"></viewmodels:ExerciseCaloriesViewModel>
+    <viewmodels:AddExerciseViewModel x:Key="AddExerciseVM"></viewmodels:AddExerciseViewModel>
 </ResourceDictionary> 

@@ -14,9 +14,140 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" 
         DataContext="{StaticResource ExerciseCaloriesVM}"
-        Height="700"
-        Width="700">
+        Name="ExerciseCalories"
+        Height="750"
+        Width="900">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Exercise Calories"
+                   Foreground="{StaticResource PrimaryColor}"
+                   FontSize="30"
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"></TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" CornerRadius="15" Margin="10" 
+                    BorderThickness="1" 
+                    BorderBrush="Black">
+                <TextBox x:Name="ExerciseActText"
+                         Foreground="Black"
+                         FontSize="20"
+                         FontWeight="Normal"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         Grid.Row="1"
+                         Margin="10"
+                         Text="{Binding ListExerciseAct, Mode=OneWayToSource}"
+                         materialDesign:HintAssist.Hint="{Binding HintExercise}"></TextBox>
+            </Border>
+            <Border Grid.Column="1"
+                    BorderBrush="Black"
+                    Margin="10"
+                    CornerRadius="15"
+                    BorderThickness="1">
+                <materialDesign:Card UniformCornerRadius="15" Name="resultCard">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="5*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Activities" 
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10"
+                                   Foreground="Black"
+                                   FontSize="24"
+                                   FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="Kcal" 
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="20"
+                                   Foreground="Black"
+                                   FontSize="24"
+                                   FontWeight="Bold"></TextBlock>
+                        <Line X1="0" Y1="0" 
+                              X2="400" Y2="0"
+                              Stroke="Black"
+                              StrokeThickness="3"
+                              Grid.Row="0"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Bottom"
+                              Margin="10"></Line>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding ActivitiesList}"
+                                       FontSize="20"
+                                       FontWeight="Normal"
+                                       Foreground="Black"
+                                       Margin="10"></TextBlock>
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding CaloriesList}"
+                                       FontSize="20"
+                                       FontWeight="Normal"
+                                       Foreground="Black"
+                                       FontStyle="Italic"
+                                       Margin="10"></TextBlock>
+                            
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Total" 
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="Black"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Margin="10"
+                                       Grid.Column="0"></TextBlock>
+                            <TextBlock Text="{Binding TotalCalories}" 
+                                       Grid.Column="1"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        <Button Content="Calculate" 
+                Style="{StaticResource MyPrimaryButtonStyle}"
+                Height="50"
+                Width="150"
+                Margin="10"
+                HorizontalAlignment="Right" 
+                Command="{Binding CalculateBtnCommand}" 
+                CommandParameter="{Binding ElementName=ExerciseActText}"></Button>
+        <Button Content="Cancel" 
+                Style="{StaticResource MyBlackButtonStyle}"
+                Height="50"
+                Width="150"
+                Grid.Column="1"
+                Margin="10"
+                HorizontalAlignment="Left" 
+                Command="{Binding CancelBtnCommand}" 
+                CommandParameter="{Binding ElementName=ExerciseCalories}"></Button>
+        </Grid>
     </Grid>
 </Window>
