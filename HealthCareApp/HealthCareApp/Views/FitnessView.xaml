@@ -25,6 +25,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0"
                        Text="Fitness Management" 
@@ -34,20 +35,31 @@
                        Margin="20"
                        Foreground="{StaticResource BlueSky}"></TextBlock>
             <Button Style="{StaticResource MyPrimaryButtonStyle}" 
-                    Width="150"
+                    Width="170"
                     Command="{Binding CalculateCaloriesCommand}"
                     Grid.Column="1"
-                    HorizontalAlignment="Left"
-                    Margin="10" 
+                    materialDesign:ButtonAssist.CornerRadius="5"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
                     Content="Calculate Calories"
                     Height="50"></Button>
             <Button Style="{StaticResource MyBlueButtonStyle}"
                     Command="{Binding TrainingBtnCommand}"
-                    Width="150" 
+                    Width="170" 
+                    Margin="0,0,10,0"
                     Grid.Column="0"
                     HorizontalAlignment="Right"
-                    Margin="10"
+                    materialDesign:ButtonAssist.CornerRadius="5"
                     Content="Training Assistant"
+                    Height="50"></Button>
+            <Button Style="{StaticResource MyOrangeButtonStyle}" 
+                    Width="170"
+                    Command="{Binding AddExerciseCommand}"
+                    Grid.Column="2"
+                    materialDesign:ButtonAssist.CornerRadius="5"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Add Exercise"
                     Height="50"></Button>
         </Grid>
         <materialDesign:Card Margin="15"
@@ -68,15 +80,21 @@
                     <DataGridTextColumn Header="Type"
                                         IsReadOnly="True"
                                         Binding="{Binding ExerciseType}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Muscle"
+                    <DataGridTextColumn Header="Day Start"
                                         IsReadOnly="True"
-                                        Binding="{Binding ExerciseMuscle}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Difficulty"
+                                        Binding="{Binding ExerciseDayStart}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Day End"
                                         IsReadOnly="True"
-                                        Binding="{Binding ExerciseDifficulty}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Instructions"
+                                        Binding="{Binding ExerciseDayEnd}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Time"
                                         IsReadOnly="True"
-                                        Binding="{Binding ExerciseInstructions}"></DataGridTextColumn>
+                                        Binding="{Binding ExerciseTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Calories Burn"
+                                        IsReadOnly="True"
+                                        Binding="{Binding ExerciseCalories}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Equipment"
+                                        IsReadOnly="True"
+                                        Binding="{Binding ExerciseEquipment}"></DataGridTextColumn>
 
 
                 </DataGrid.Columns>

@@ -18,6 +18,7 @@ using System.Net.Http.Json;
 using System.ComponentModel;
 using static HealthCareApp.Models.SymptomCheckerModel.Autherity;
 using System.Windows.Controls;
+using MongoDB.Driver;
 
 namespace HealthCareApp.ViewModels
 {
@@ -119,10 +120,27 @@ namespace HealthCareApp.ViewModels
             }
         }
         bool successDiagnosis = false;
+        public string Gender;
+        public string BirthYear;
+        private readonly IMongoCollection<UserInformation> _userinfoCollection;
         public SymptomCheckerViewModel()
         {
             LoadToken();
             LoadListSymptom();
+
+            _userinfoCollection = GetMongoCollectionFromUserInfo();
+            string username=Const.Instance.Username;
+            var filter = Builders<UserInformation>.Filter.Eq(x => x.Username, username);
+            var User = _userinfoCollection.Find(filter).FirstOrDefault();
+            if (User != null)
+            {
+                string birthdayString = User.Birthday;
+                if (DateTime.TryParseExact(birthdayString, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime birthday))
+                {
+                    BirthYear=birthday.Year.ToString();
+                }
+                Gender = User.Gender;
+            }
             DiagnosisBtnCommand = new RelayCommand<TextBox>((p) => { return (p == null || p.Text == string.Empty) ? false : true; }, (p) => {
                 DiagnosisBtn_Click();
             });
@@ -133,8 +151,8 @@ namespace HealthCareApp.ViewModels
             });
             ClearSymptomsBtnCommand = new RelayCommand<object>((p) => { return true; }, (p) => { TempSymptoms = string.Empty; });
         }
-        string api_key = "Dz2t8_GMAIL_COM_AUT";
-        string secret_key = "k4QJf68Tne9N3MjHd";
+        string api_key = "w8HRx_GM_UIT_EDU_VN_AUT";
+        string secret_key = "g9C3SxWc4b5Q8EwJt";
         string url = "https://healthservice.priaid.ch/";
         string token;
 
@@ -216,14 +234,12 @@ namespace HealthCareApp.ViewModels
         private async void DiagnosisBtn_Click()
         {
             successDiagnosis = false;
-            bool isNotice = false;
             string fewSymptoms = ConvertSymptomToID(TempSymptoms);
-            string gender = "male";
-            string yearOfBirth = "1988";
+            string gender = Gender;
+            string yearOfBirth = BirthYear;
             string result = await getDiagnosis(url, autherity.Token, gender, yearOfBirth, fewSymptoms);
-            if ((!successDiagnosis || result.Length < 5) && !isNotice)
+            if (!successDiagnosis || result.Length < 5)
             {
-                isNotice = true;
                 MessageBox.Show("Cannot Diagnosis. Please check again your symptoms infomation.");
                 ShowBadRequest();
             }
@@ -280,6 +296,7 @@ namespace HealthCareApp.ViewModels
         }
         private void UpdateSymptomsBox(string element)
         {
+            Char.ToUpper(element[0]);
             string s = TempSymptoms + ((TempSymptoms != null && TempSymptoms != string.Empty) ? ", " : "") + element;
             TempSymptoms = s;
         }
@@ -289,6 +306,7 @@ namespace HealthCareApp.ViewModels
             string[] elementSymptoms = Symptoms.Split(", ");
             for (int i = 0; i < elementSymptoms.Length; ++i)
             {
+                Char.ToUpper(elementSymptoms[i][0]);
                 string temp = elementSymptoms[i];
                 for (int j = 0; j < ListSymptoms.symptoms.Count; ++j)
                 {
@@ -342,6 +360,17 @@ namespace HealthCareApp.ViewModels
             IssueAcc = "";
             IssueName = "";
             DescriptionIssue = "";
+        }
+        private IMongoCollection<UserInformation> GetMongoCollectionFromUserInfo()
+        {
+            // Set your MongoDB connection string and database name
+            string connectionString = "mongodb+srv://HGB3009:HGB30092004@bao-database.xwrghva.mongodb.net/"; // Update with your MongoDB server details
+            string databaseName = "HealthcareManagementDatabase"; // Update with your database name
+
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+
+            return database.GetCollection<UserInformation>("UserInformation");
         }
     }
 }

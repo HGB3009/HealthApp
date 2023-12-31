@@ -1,0 +1,201 @@
+﻿<Window x:Class="HealthCareApp.Views.AddLessonExerciseView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthCareApp.Views"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        FontFamily="Poppins" 
+        DataContext="{StaticResource AddLessonExerciseVM}"
+        Height="600" 
+        Width="580"
+        Name="AddLesson"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Add Exercise"
+                   Foreground="{StaticResource PrimaryColor}"
+                   FontSize="35"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontWeight="Bold"></TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox
+                        Grid.Column="1"
+                        x:Name="ExerciseName"
+                        Text=""
+                        materialDesign:HintAssist.Hint="Name" 
+                        Margin="0" 
+                        Width="315"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}"
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryColor}"
+                        FontWeight="Medium" />
+            <ComboBox
+                        Grid.Column="1" Grid.Row="1"
+                        x:Name="TypeExercise"
+                        SelectedValuePath="Content"
+                        SelectedValue="{Binding TypeExercise}"
+                        Margin="0" 
+                        Width="315"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        materialDesign:ColorZoneAssist.Mode="SecondaryLight"
+                        materialDesign:HintAssist.Hint="Type"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryColor}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        FontSize="16" 
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        FontWeight="Medium" >
+                <ComboBoxItem
+                            Content="cardio" />
+                <ComboBoxItem
+                            Content="cardioolympic_weightlifting" />
+                <ComboBoxItem
+                            Content="plyometrics" />
+                <ComboBoxItem
+                            Content="powerlifting" />
+                <ComboBoxItem
+                            Content="strength" />
+                <ComboBoxItem
+                            Content="stretching" />
+                <ComboBoxItem
+                            Content="strongman" />
+            </ComboBox>
+            <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+            <DatePicker
+                        x:Name="DayStart" 
+                        SelectedDate="{Binding DayVM}"
+                        materialDesign:HintAssist.Hint="Day Start" 
+                        Margin="0" 
+                        Width="150"
+                        Height="50"
+                        HorizontalAlignment="Left" 
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}" 
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        FontWeight="Medium" 
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                <DatePicker
+                        x:Name="DayEnd" 
+                        Margin="15,0,0,0"
+                        SelectedDate="{Binding DayVM}"
+                        materialDesign:HintAssist.Hint="Day End" 
+                        Width="150"
+                        Height="50"
+                        HorizontalAlignment="Left" 
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}" 
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        FontWeight="Medium" 
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
+            </StackPanel>
+            <TextBox
+                 Grid.Column="1" Grid.Row="3"
+                 x:Name="LengthTime"
+                 Text=""
+                 materialDesign:HintAssist.Hint="Time" 
+                 Margin="0" 
+                 Width="315"
+                 Height="50" 
+                 HorizontalAlignment="Left" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 FontSize="16" 
+                 BorderBrush="{StaticResource PrimaryColor}"
+                 TabIndex="1" 
+                 VerticalAlignment="Center"
+                 CaretBrush="{StaticResource PrimaryColor}"
+                 FontWeight="Medium" />
+
+            <TextBox
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        x:Name="Equipment"
+                        Text=""
+                        materialDesign:HintAssist.Hint="Equipment Utility" 
+                        Margin="0" 
+                        Width="315"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}"
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryColor}"
+                        FontWeight="Medium" />
+            <TextBox
+                        Grid.Column="1" Grid.Row="4"
+                        x:Name="CaloriesBurn"
+                        Text=""
+                        materialDesign:HintAssist.Hint="Calories" 
+                        Margin="0" 
+                        Width="315"
+                        Height="50" 
+                        HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        FontSize="16" 
+                        BorderBrush="{StaticResource PrimaryColor}"
+                        TabIndex="1" 
+                        VerticalAlignment="Center"
+                        CaretBrush="{StaticResource PrimaryColor}"
+                        FontWeight="Medium" />
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource MyBlackButtonStyle}"
+                    Content="Exit"
+                    materialDesign:ButtonAssist.CornerRadius="5"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,20,0"
+                    Width="150"
+                    Height="50"
+                    Command="{Binding ExitBtnCommand}"
+                    CommandParameter="{Binding ElementName=AddLesson}"></Button>
+            <Button Style="{StaticResource MyPrimaryButtonStyle}"
+                    Content="Add"
+                    materialDesign:ButtonAssist.CornerRadius="5"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="20,0,0,0"
+                    Width="150"
+                    Height="50"
+                    Grid.Column="1"
+                    Command="{Binding ExitBtnCommand}"
+                    CommandParameter="{Binding ElementName=AddLesson}"></Button>
+        </Grid>
+    </Grid>
+</Window>
