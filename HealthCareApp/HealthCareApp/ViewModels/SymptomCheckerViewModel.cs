@@ -237,7 +237,6 @@ namespace HealthCareApp.ViewModels
             string fewSymptoms = ConvertSymptomToID(TempSymptoms);
             string gender = Gender;
             string yearOfBirth = BirthYear;
-            MessageBox.Show(Gender+' '+ BirthYear);
             string result = await getDiagnosis(url, autherity.Token, gender, yearOfBirth, fewSymptoms);
             if (!successDiagnosis || result.Length < 5)
             {
@@ -297,6 +296,7 @@ namespace HealthCareApp.ViewModels
         }
         private void UpdateSymptomsBox(string element)
         {
+            Char.ToUpper(element[0]);
             string s = TempSymptoms + ((TempSymptoms != null && TempSymptoms != string.Empty) ? ", " : "") + element;
             TempSymptoms = s;
         }
@@ -306,6 +306,7 @@ namespace HealthCareApp.ViewModels
             string[] elementSymptoms = Symptoms.Split(", ");
             for (int i = 0; i < elementSymptoms.Length; ++i)
             {
+                Char.ToUpper(elementSymptoms[i][0]);
                 string temp = elementSymptoms[i];
                 for (int j = 0; j < ListSymptoms.symptoms.Count; ++j)
                 {
