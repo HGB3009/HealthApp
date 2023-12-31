@@ -46,7 +46,7 @@
             <Button Style="{StaticResource MyBlueButtonStyle}"
                     Command="{Binding TrainingBtnCommand}"
                     Width="170" 
-                    Margin="0,0,30,0"
+                    Margin="0,0,10,0"
                     Grid.Column="0"
                     HorizontalAlignment="Right"
                     materialDesign:ButtonAssist.CornerRadius="5"
@@ -80,15 +80,21 @@
                     <DataGridTextColumn Header="Type"
                                         IsReadOnly="True"
                                         Binding="{Binding ExerciseType}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Muscle"
+                    <DataGridTextColumn Header="Day Start"
                                         IsReadOnly="True"
-                                        Binding="{Binding ExerciseMuscle}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Difficulty"
+                                        Binding="{Binding ExerciseDayStart}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Day End"
                                         IsReadOnly="True"
-                                        Binding="{Binding ExerciseDifficulty}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Instructions"
+                                        Binding="{Binding ExerciseDayEnd}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Time"
                                         IsReadOnly="True"
-                                        Binding="{Binding ExerciseInstructions}"></DataGridTextColumn>
+                                        Binding="{Binding ExerciseTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Calories Burn"
+                                        IsReadOnly="True"
+                                        Binding="{Binding ExerciseCalories}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Equipment"
+                                        IsReadOnly="True"
+                                        Binding="{Binding ExerciseEquipment}"></DataGridTextColumn>
 
 
                 </DataGrid.Columns>
