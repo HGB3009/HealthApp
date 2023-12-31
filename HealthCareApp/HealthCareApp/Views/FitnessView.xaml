@@ -11,15 +11,15 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              Background="{DynamicResource MaterialDesignPaper}"
-             FontFamily="{DynamicResource MaterialDesignFont}" 
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             FontFamily="Poppins" 
              Height="680"
              Width="1150"
              DataContext="{StaticResource FitnessVM}">
     <Grid Background="{StaticResource BackGround}">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -28,7 +28,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0"
                        Text="Fitness Management" 
-                       FontSize="50"
+                       FontSize="35"
                        FontWeight="Bold"
                        VerticalAlignment="Center"
                        Margin="20"

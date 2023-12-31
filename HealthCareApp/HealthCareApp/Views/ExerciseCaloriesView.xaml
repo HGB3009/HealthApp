@@ -12,12 +12,15 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" 
         DataContext="{StaticResource ExerciseCaloriesVM}"
         Name="ExerciseCalories"
+        FontFamily="Poppins" 
+        ResizeMode="NoResize"
+        
+        WindowStartupLocation="CenterScreen"
         Height="750"
         Width="900">
-    <Grid>
+    <Grid Loaded="{Binding LoadCommand}">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>

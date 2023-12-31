@@ -20,11 +20,14 @@ namespace HealthCareApp.ViewModels
     {
         public ICommand CancelBtnCommand { get; set; }
         public ICommand CalculateBtnCommand { get; set; }
+        public ICommand LoadCommand { get; set; }
         public ExerciseCaloriesViewModel()
         {
+            LoadCommand = new RelayCommand<object>((p) => { return true; }, (p) => { ShowNullResult(); });
             HintExercise = "swam for 1 hour" + '\n' + "30 push-ups";
             CancelBtnCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
+                ShowNullResult();
                 p.Close();
             });
             CalculateBtnCommand = new RelayCommand<TextBox>((p) => { return (p == null || p.Text == string.Empty) ? false : true; }, (p) =>

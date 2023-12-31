@@ -14,7 +14,7 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              Background="{StaticResource MainBackgroundColor}"
-             FontFamily="{DynamicResource MaterialDesignFont}"
+             FontFamily="Poppins" 
              DataContext="{StaticResource SymptomCheckerVM}"
              Height="680"
              Width="1150">
@@ -113,15 +113,15 @@
                    Foreground="{StaticResource PrimaryColor}"
                    FontSize="26" Margin="26,0,0,0"></TextBlock>
                 <ComboBox 
-                Grid.Row="2"
-                x:Name="ComboBoxSymptoms"
-                Width="400" 
-                Height="50"
-                VerticalAlignment="Top"
-                materialDesign:HintAssist.Hint="You are allowed to chose more than one symptom"
-                materialDesign:TextFieldAssist.HasClearButton="True"
-                IsEditable="True"
-                ItemsSource="{Binding Items}"
+                    Grid.Row="2"
+                    x:Name="ComboBoxSymptoms"
+                    Width="400" 
+                    Height="50"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="You are allowed to chose more than one symptom"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    IsEditable="True"
+                    ItemsSource="{Binding Items}"
                 Style="{StaticResource MaterialDesignFilledComboBox}" Margin="52,7,53,136">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
@@ -222,7 +222,7 @@
                                         FontWeight="Light"
                                         TextAlignment="Center"
                                         VerticalAlignment="top"
-                                        HorizontalAlignment="Center"></TextBlock>    
+                                        HorizontalAlignment="Center"></TextBlock>
                         </ScrollViewer>
                         <Line X1="0" Y1="0"
                       X2="300" Y2="0"
@@ -254,7 +254,7 @@
                            TextWrapping="Wrap"
                            Text="{Binding PossibleSymptoms}"></TextBlock>
                         </ScrollViewer>
-                        
+
                     </Grid>
                 </Border>
                 <TextBlock Text="Advice" Height="auto"

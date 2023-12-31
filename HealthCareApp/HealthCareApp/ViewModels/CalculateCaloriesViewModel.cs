@@ -113,7 +113,7 @@ namespace HealthCareApp.ViewModels
         public string AccSaturated { get { return accSaturated; } set { accSaturated = value; OnPropertyChanged(nameof(AccSaturated)); } }
 
         public string accCholesterol;
-        public string AccCholesterol { get { return accCholesterol; } set { accCholesterol = value; OnPropertyChanged(nameof (AccCholesterol)); } }
+        public string AccCholesterol { get { return accCholesterol; } set { accCholesterol = value; OnPropertyChanged(nameof(AccCholesterol)); } }
 
         public string accSodium;
         public string AccSodium { get { return accSodium; } set { accSodium = value; OnPropertyChanged(nameof(AccSodium)); } }
@@ -139,7 +139,7 @@ namespace HealthCareApp.ViewModels
         {
             public double Fat = 70;
             public double SaturatedFat = 20;
-            public double DietaryFiber=28.57;
+            public double DietaryFiber = 28.57;
             public double Calcium = 1250;
             public double Iron = 18.18;
             public double Potassium = 5000;
@@ -148,7 +148,7 @@ namespace HealthCareApp.ViewModels
             public double VitaminD = 20;
             public double Cacbonhydrate = 270;
         }
-        baseNutritionDaily DailyNutrient=new baseNutritionDaily();
+        baseNutritionDaily DailyNutrient = new baseNutritionDaily();
         public CalculateCaloriesViewModel()
         {
             HintIngredient = "1 cup of rice" + '\n' + "10 oz of chickbeans";
@@ -241,15 +241,15 @@ namespace HealthCareApp.ViewModels
 
             AccCacbonhydrate = string.Empty;
             AccCalcium = string.Empty;
-            AccCholesterol= string.Empty;
-            AccDietaryFiber= string.Empty;
+            AccCholesterol = string.Empty;
+            AccDietaryFiber = string.Empty;
             AccFat = string.Empty;
-            AccPotassium= string.Empty;
+            AccPotassium = string.Empty;
             AccSaturated = string.Empty;
-            AccSodium= string.Empty;
-            AccVitaminD= string.Empty;
-            AccIron= string.Empty;
-           
+            AccSodium = string.Empty;
+            AccVitaminD = string.Empty;
+            AccIron = string.Empty;
+
         }
         private string ConvertFoodIngredient(string name, string quantity, string unit)
         {
@@ -264,16 +264,15 @@ namespace HealthCareApp.ViewModels
             string result = await GetNutritionInfo(query);
             if (sucessGetCalculate)
             {
+                sucessGetCalculate = true;
                 NutrientSource = JsonConvert.DeserializeObject<NutrientsModel.root>(result);
-                NutrientsModel.root temp = NutrientSource;
-                ShowCalculateResult(temp);
+                ShowCalculateResult(NutrientSource);
             }
             else
             {
                 MessageBox.Show(result);
             }
         }
-
         private async Task<string> GetNutritionInfo(string query)
         {
             using (HttpClient client = new HttpClient())
@@ -340,7 +339,7 @@ namespace HealthCareApp.ViewModels
 
             AccIron = (Math.Round(((Iron / DailyNutrient.Iron) * 100), 2)).ToString() + "%";
             AccVitaminD = (Math.Round(((VitaminD / DailyNutrient.VitaminD) * 100), 2)).ToString() + "%";
-            AccCalcium=(Math.Round(((Calcium / DailyNutrient.Calcium) * 100),2)).ToString() + "%";      
+            AccCalcium = (Math.Round(((Calcium / DailyNutrient.Calcium) * 100), 2)).ToString() + "%";
 
         }
         private async Task<string> GetInfoEdamamAPI(string foodItem)
@@ -419,19 +418,19 @@ namespace HealthCareApp.ViewModels
             TotalPotassium = CalculateTotalPotassium(result).ToString() + "mg";
             TotalDietaryFiber = CalculateTotalDietaryFiber(result).ToString() + 'g';
 
-            AccCholesterol = (Math.Round(((CalculateTotalCholesterol(result) / DailyNutrient.Cholesterol) * 100),2)).ToString() +"%";
-            AccDietaryFiber = (Math.Round(((CalculateTotalDietaryFiber(result) /DailyNutrient.DietaryFiber) * 100),2)).ToString() + "%";
-            AccFat=(Math.Round(((CalculateTotalFat(result) / DailyNutrient.Fat) * 100),2)).ToString() + "%";
-            AccSodium = (Math.Round(((CalculateTotalSodium(result) / DailyNutrient.Sodium) * 100),2)).ToString() + "%";
-            AccCacbonhydrate=(Math.Round(((CalculateTotalCacbohydrates(result) /DailyNutrient.Cacbonhydrate) * 100),2)).ToString() + "%";
-            AccPotassium=(Math.Round(((CalculateTotalPotassium(result) / DailyNutrient.Potassium) * 100),2)).ToString() + "%";
+            AccCholesterol = (Math.Round(((CalculateTotalCholesterol(result) / DailyNutrient.Cholesterol) * 100), 2)).ToString() + "%";
+            AccDietaryFiber = (Math.Round(((CalculateTotalDietaryFiber(result) / DailyNutrient.DietaryFiber) * 100), 2)).ToString() + "%";
+            AccFat = (Math.Round(((CalculateTotalFat(result) / DailyNutrient.Fat) * 100), 2)).ToString() + "%";
+            AccSodium = (Math.Round(((CalculateTotalSodium(result) / DailyNutrient.Sodium) * 100), 2)).ToString() + "%";
+            AccCacbonhydrate = (Math.Round(((CalculateTotalCacbohydrates(result) / DailyNutrient.Cacbonhydrate) * 100), 2)).ToString() + "%";
+            AccPotassium = (Math.Round(((CalculateTotalPotassium(result) / DailyNutrient.Potassium) * 100), 2)).ToString() + "%";
         }
         private double CalculateSumCalories(NutrientsModel.root result)
         {
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_calories;
+                sum += (result.foods[i].nf_calories != null) ? result.foods[i].nf_calories : 0;
             }
             return sum;
         }
@@ -440,7 +439,7 @@ namespace HealthCareApp.ViewModels
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_total_fat;
+                sum += (result.foods[i].nf_total_fat != null) ? result.foods[i].nf_total_fat : 0;
             }
             return sum;
         }
@@ -449,7 +448,7 @@ namespace HealthCareApp.ViewModels
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_saturated_fat;
+                sum += (result.foods[i].nf_saturated_fat != null) ? result.foods[i].nf_saturated_fat : 0;
             }
             return sum;
         }
@@ -458,7 +457,7 @@ namespace HealthCareApp.ViewModels
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_cholesterol;
+                sum += (result.foods[i].nf_cholesterol != null) ? result.foods[i].nf_cholesterol : 0;
             }
             return sum;
         }
@@ -467,7 +466,7 @@ namespace HealthCareApp.ViewModels
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_sodium;
+                sum += (result.foods[i].nf_sodium != null) ? result.foods[i].nf_sodium : 0;
             }
             return sum;
         }
@@ -476,7 +475,7 @@ namespace HealthCareApp.ViewModels
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_total_carbohydrate;
+                sum += (result.foods[i].nf_total_carbohydrate != null) ? result.foods[i].nf_total_carbohydrate : 0;
             }
             return sum;
         }
@@ -485,7 +484,7 @@ namespace HealthCareApp.ViewModels
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_sugars;
+                sum += (result.foods[i].nf_sugars != null) ? double.Parse(result.foods[i].nf_sugars) : 0;
             }
             return sum;
         }
@@ -494,7 +493,7 @@ namespace HealthCareApp.ViewModels
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_protein;
+                sum += (result.foods[i].nf_protein != null) ? result.foods[i].nf_protein : 0;
             }
             return sum;
         }
@@ -503,7 +502,7 @@ namespace HealthCareApp.ViewModels
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_potassium;
+                sum += (result.foods[i].nf_potassium != null) ? result.foods[i].nf_potassium : 0;
             }
             return sum;
         }
@@ -512,7 +511,7 @@ namespace HealthCareApp.ViewModels
             double sum = 0;
             for (int i = 0; i < result.foods.Count; i++)
             {
-                sum += result.foods[i].nf_dietary_fiber;
+                sum += (result.foods[i].nf_dietary_fiber != null) ? result.foods[i].nf_dietary_fiber : 0;
             }
             return sum;
         }

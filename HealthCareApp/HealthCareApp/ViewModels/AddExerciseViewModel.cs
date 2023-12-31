@@ -120,6 +120,7 @@ namespace HealthCareApp.ViewModels
         string url = "https://api.api-ninjas.com/v1/exercises?";
         public List<exercise> ListExercise;
         bool SuccessSuggest;
+        int countExercise = 0;
         private async void getExercise(string name, string type, string muscle, string difficulty,Card p)
         {
             string result = await requestExercise(name, type, muscle, difficulty);
@@ -131,7 +132,7 @@ namespace HealthCareApp.ViewModels
             }
             p.Visibility = Visibility.Visible;
             ListExercise = ConvertData(result);
-            ShowResult(ListExercise);
+            ShowResult(ListExercise,countExercise);
             return;
             // ListExercise = JsonConvert.DeserializeObject<rootExerciseInfo>(result);
         }
@@ -155,17 +156,19 @@ namespace HealthCareApp.ViewModels
         }
         private List<exercise> ConvertData(string data)
         {
+            countExercise = 0;
             List<exercise> result = new List<exercise>();
-            int i = 2;
+            int i = 1;
             int pair = 0;
             string element = "";
-            while (data[i] != ']')
+            while (i<data.Length)
             {
                 if (data[i] == '}' || data[i] == '{')
                     pair++;
                 if (pair < 2) { element += data[i]; }
                 else
                 {
+                    countExercise++;
                     string namePath = convertPath(element, 1);
                     string equipmetnPath = convertPath(element, 4);
                     string instructionsPath = convertPath(element, 6);
@@ -246,27 +249,38 @@ namespace HealthCareApp.ViewModels
             list.Add("expert");
             TempDifficultyList = list;
         }
-        private void ShowResult(List<exercise> list)
+        private void ShowResult(List<exercise> list,int k)
         {
-            FirstExerciseName = list[0].name;
-            FirstEquipmentBox = "Equipment: " + list[0].equipment;
-            FirstInstructionsBox = list[0].instructions;
-
-            SecondExerciseName = list[1].name;
-            SecondEquipmentBox = "Equipment: " + list[1].equipment;
-            SecondInstructionsBox = list[1].instructions;
-
-            ThirdExerciseName = list[2].name;
-            ThirdEquipmentBox = "Equipment: " + list[2].equipment;
-            ThirdInstructionsBox = list[2].instructions;
-
-            FouthExerciseName = list[3].name;
-            FouthEquipmentBox = "Equipment: " + list[3].equipment;
-            FouthInstructionsBox = list[3].instructions;
-
-            FirthExerciseName = list[4].name;
-            FirthEquipmentBox = "Equipment: " + list[4].equipment;
-            FirthInstructionsBox = list[4].instructions;
+            if (k > 0)
+            {
+                FirstExerciseName = list[0].name;
+                FirstEquipmentBox = "Equipment: " + list[0].equipment;
+                FirstInstructionsBox = list[0].instructions;
+            }
+            if (k > 1)
+            {
+                SecondExerciseName = list[1].name;
+                SecondEquipmentBox = "Equipment: " + list[1].equipment;
+                SecondInstructionsBox = list[1].instructions;
+            }
+            if (k > 2)
+            {
+                ThirdExerciseName = list[2].name;
+                ThirdEquipmentBox = "Equipment: " + list[2].equipment;
+                ThirdInstructionsBox = list[2].instructions;
+            }
+            if(k > 3)
+            {
+                FouthExerciseName = list[3].name;
+                FouthEquipmentBox = "Equipment: " + list[3].equipment;
+                FouthInstructionsBox = list[3].instructions;
+            }
+            if(k > 4)
+            {
+                FirthExerciseName = list[4].name;
+                FirthEquipmentBox = "Equipment: " + list[4].equipment;
+                FirthInstructionsBox = list[4].instructions;
+            }
         }
     }
 }
