@@ -73,15 +73,19 @@
                         VerticalAlignment="Center"
                         FontWeight="Medium" >
                 <ComboBoxItem
-                            Content="Breakfast" />
+                            Content="cardio" />
                 <ComboBoxItem
-                            Content="Dinner" />
+                            Content="cardioolympic_weightlifting" />
                 <ComboBoxItem
-                            Content="Snack" />
+                            Content="plyometrics" />
                 <ComboBoxItem
-                            Content="Brunch" />
+                            Content="powerlifting" />
                 <ComboBoxItem
-                            Content="Supper" />
+                            Content="strength" />
+                <ComboBoxItem
+                            Content="stretching" />
+                <ComboBoxItem
+                            Content="strongman" />
             </ComboBox>
             <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
             <DatePicker
