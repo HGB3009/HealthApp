@@ -20,7 +20,7 @@
         WindowStartupLocation="CenterScreen"
         Height="750"
         Width="900">
-    <Grid Loaded="{Binding LoadCommand}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
