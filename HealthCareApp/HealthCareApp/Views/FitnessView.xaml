@@ -26,6 +26,13 @@
                 <ColumnDefinition Width="4*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0"
+                       Text="Fitness Management" 
+                       FontSize="50"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"
+                       Margin="20"
+                       Foreground="{StaticResource BlueSky}"></TextBlock>
             <Button Style="{StaticResource MyPrimaryButtonStyle}" 
                     Width="150"
                     Command="{Binding CalculateCaloriesCommand}"
@@ -46,6 +53,34 @@
         <materialDesign:Card Margin="15"
                              Height="auto"
                              Width="auto" 
-                             Grid.Row="1"></materialDesign:Card>
+                             Grid.Row="1">
+            <DataGrid Name="ExerciseDataGrid" 
+                      Margin="5"
+                      AutoGenerateColumns="True"
+                      ItemsSource="{Binding ExerciseList}"
+                      Style="{DynamicResource DataGridStyle}"
+                      CellStyle="{DynamicResource DataGridCellStyle}"
+                      RowStyle="{DynamicResource DataGridRowStyle}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"
+                                        IsReadOnly="True"
+                                        Binding="{Binding ExerciseName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Type"
+                                        IsReadOnly="True"
+                                        Binding="{Binding ExerciseType}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Muscle"
+                                        IsReadOnly="True"
+                                        Binding="{Binding ExerciseMuscle}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Difficulty"
+                                        IsReadOnly="True"
+                                        Binding="{Binding ExerciseDifficulty}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Instructions"
+                                        IsReadOnly="True"
+                                        Binding="{Binding ExerciseInstructions}"></DataGridTextColumn>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>
