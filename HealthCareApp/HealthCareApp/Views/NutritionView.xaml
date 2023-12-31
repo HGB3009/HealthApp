@@ -193,45 +193,22 @@
                 <TextBox
                     Grid.Column="2"
                     FontSize="17"
-                    Width="350"                    
+                    Width="350"    
+                    x:Name="SreachMeal"
+                    Text="{Binding SreachMealVM}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right"
                     Margin="0 0 30 0"
-                    materialDesign:HintAssist.Hint="What did you eat?"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    materialDesign:HintAssist.Hint="What did you eat?"                    
                     Style="{StaticResource MaterialDesignOutlinedTextBox}">
-                </TextBox>
-
-                <Grid 
-                    Grid.Column="2"
-                    Width="35"
-                    Height="35"
-                    Margin="0 0 40 0"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right">
-                    <Grid.Style>
-                        <Style TargetType="Grid">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                    <Setter Property="Cursor"
-                                             Value="Hand"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-                    <Icon:PackIconFontAwesome 
-                        Kind="SearchSolid" 
-                        Width="35"
-                        Height="35"/>
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                            <i:InvokeCommandAction Command="{Binding ScreachCM}"
-                               CommandParameter="{Binding ElementName=NutritionScreen}" />
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding SreachMealCommand}"
+                               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-
-                </Grid>
-
+                </TextBox>
             </Grid>
 
             <Grid 

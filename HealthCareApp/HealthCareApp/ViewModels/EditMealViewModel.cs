@@ -10,8 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using ZstdSharp.Unsafe;
 
 namespace HealthCareApp.ViewModels
 {
@@ -171,7 +173,7 @@ namespace HealthCareApp.ViewModels
 
             ComfirmEditMealCommand = new RelayCommand<EditMealView>((p) => true, (p) => EditMealCM(p));
             BrowseImageCommand = new RelayCommand<EditMealView>(p => true, p => _BrowseImage(p));
-            //CancelEditMealCommand = new RelayCommand<EditMealView>(p => true, p => CancelCM(p));
+            CancelEditMealCommand = new RelayCommand<EditMealView>(p => true, p => CancelCM(p));
         }
         void _LoadWindow()
         {
@@ -196,7 +198,13 @@ namespace HealthCareApp.ViewModels
                 MealPictureVM = meal.MealPicture;
                 MealPictureSourceVM = meal.MealPictureSource;
             }
-
+        }
+        private void CancelCM(EditMealView parameter)
+        {
+            if (parameter != null)
+            {
+                _LoadWindow();
+            }
         }
         public void EditMealCM(EditMealView parameter)
         {
