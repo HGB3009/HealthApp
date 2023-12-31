@@ -215,7 +215,7 @@ namespace HealthCareApp.ViewModels
                     var updateDefinition = Builders<UserInformation>.Update.Set(u => u.Avatar, AvatarVM);
 
                     _userinfoCollection.UpdateOne(filter, updateDefinition);
-                    OnMainWindowReloadRequested();
+                    
                 }
             }
             catch (Exception ex)

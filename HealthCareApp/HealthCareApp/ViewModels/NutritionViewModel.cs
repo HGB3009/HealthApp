@@ -11,8 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using ZstdSharp.Unsafe;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HealthCareApp.ViewModels
 {
@@ -220,9 +223,23 @@ namespace HealthCareApp.ViewModels
         }
         public void EditMeal(Nutrition meal)
         {
-            MessageBox.Show("Hiii");
+            if (meal != null)
+            {
+                EditMealViewModel editMealViewModel = new EditMealViewModel(meal);
+                EditMealView editView = new EditMealView();
+                editView.DataContext = editMealViewModel;
+                var window = new Window
+                {
+                    Content = editView,
+                    SizeToContent = SizeToContent.WidthAndHeight,
+                    ResizeMode = ResizeMode.NoResize,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+                window.Closed += (sender, args) => LoadMealList();
+                window.ShowDialog();
+            }
         }
-        public void DeleteMeal(Nutrition meal) 
+        public void DeleteMeal(Nutrition meal)
         {
             if (meal != null)
             {

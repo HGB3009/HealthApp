@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HealthCareApp.Views
@@ -17,7 +18,7 @@ namespace HealthCareApp.Views
     /// <summary>
     /// Interaction logic for EditMealView.xaml
     /// </summary>
-    public partial class EditMealView : Window
+    public partial class EditMealView : UserControl
     {
         public EditMealView()
         {
