@@ -35,7 +35,7 @@
 
             <TextBlock
                 Text="Nutrition Management"
-                Foreground="{StaticResource LightBlackColor}"   
+                Foreground="{StaticResource BlueSky}"   
                 Margin="20,0,0,0"
                 FontSize="35"
                 VerticalAlignment="Center"
