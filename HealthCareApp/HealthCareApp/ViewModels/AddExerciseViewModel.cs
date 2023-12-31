@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -96,9 +97,8 @@ namespace HealthCareApp.ViewModels
                         TypeBox == null || TypeBox == string.Empty ||
                         DifficultyBox == null || DifficultyBox == string.Empty) ? false : true;
             }, (p) => {
-                p.Visibility = Visibility.Visible;
                 if (NameMerge == null || NameMerge == string.Empty) NameMerge = string.Empty;
-                getExercise(NameMerge, TypeBox, MuscleBox, DifficultyBox);
+                getExercise(NameMerge, TypeBox, MuscleBox, DifficultyBox,p);
             });
             MusleSelectedItemChangedCommand = new RelayCommand<ComboBox>((p) => { return (p == null) ? false : true; }, (p) =>
             {
@@ -119,16 +119,20 @@ namespace HealthCareApp.ViewModels
         string api_key = "2qhorCkNJtS7gPC5veMb0w==vuH8jN3gfZBHCzzh";
         string url = "https://api.api-ninjas.com/v1/exercises?";
         public List<exercise> ListExercise;
-        private async void getExercise(string name, string type, string muscle, string difficulty)
+        bool SuccessSuggest;
+        private async void getExercise(string name, string type, string muscle, string difficulty,Card p)
         {
             string result = await requestExercise(name, type, muscle, difficulty);
             if (result.Length < 3)
             {
+                p.Visibility = Visibility.Hidden;
                 MessageBox.Show("Can't find any exercises fit your options. Please try again!");
                 return;
             }
+            p.Visibility = Visibility.Visible;
             ListExercise = ConvertData(result);
             ShowResult(ListExercise);
+            return;
             // ListExercise = JsonConvert.DeserializeObject<rootExerciseInfo>(result);
         }
         private async Task<string> requestExercise(string name, string type, string muscle, string difficulty)
