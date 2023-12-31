@@ -735,7 +735,5 @@
                 <TextBlock Text="Calculate" Foreground="White" />
             </Button>
         </Grid>
-
-
     </Grid>
 </Window>
