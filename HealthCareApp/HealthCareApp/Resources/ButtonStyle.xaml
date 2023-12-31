@@ -122,7 +122,6 @@
                             <Setter Property="Background"
                              TargetName="border"
                              Value="#C1F2B0"/>
-                            
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
