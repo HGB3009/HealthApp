@@ -19,25 +19,22 @@
              FontFamily="{DynamicResource MaterialDesignFont}"
              DataContext="{StaticResource RemindersVM}"
              mc:Ignorable="d" 
-             d:DesignHeight="810" d:DesignWidth="1440">
+             d:Height="680" d:Width="1150">
     <Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="280"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <uc:NavigationBarView Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></uc:NavigationBarView>
-            <uc:LeftSideBarView Grid.Column="0" Grid.RowSpan="6"></uc:LeftSideBarView>
-            <materialDesign:Card Grid.Row="1" Grid.Column="1" x:Name="DrinkRemindersCard"
+
+            <materialDesign:Card Grid.Row="0" Grid.Column="0" x:Name="DrinkRemindersCard"
                                  Grid.RowSpan="3"
                                  Width="auto" Height="auto"
                                  Margin="10">
@@ -61,21 +58,20 @@
                                Foreground="{StaticResource PrimaryColor}"
                                FontWeight="Bold" Margin="10" TextAlignment="Center">
                     </TextBlock>
-                    
+
                     <oxy:PlotView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                                  Model="{Binding WaterIntakeModel}"
-                                  Margin="10" />
+                                  Model="{Binding WaterIntakeModel}" Height="295" VerticalAlignment="Center" />
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                                Text="{Binding TargetWater, StringFormat=🎯: \{0\} ml}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18"
-                               Foreground="{StaticResource Orange}"
+                               Foreground="{StaticResource Red}"
                                Margin="10" FontWeight="Bold" />
 
                     <TextBlock Grid.Row="1" Grid.Column="2" 
-                               Text="Next Drink Time Placeholder"
+                               Text="Next Drink Time"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="16"
@@ -83,26 +79,124 @@
                 </Grid>
             </materialDesign:Card>
 
-            <materialDesign:Card Grid.Row="1" Grid.Column="2" x:Name="MealRemindersCard"
-                                 Grid.RowSpan="3"
-                                 Width="auto" Height="auto"
-                                 Margin="10">
-                <TextBlock
-                    Text="Meal Reminders"
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Center" 
-                    FontSize="26"
-                    Foreground="{StaticResource PrimaryColor}"
-                    FontWeight="Bold" Margin="22,0,0,0">
-                </TextBlock>
+            <materialDesign:Card Grid.Row="0" Grid.Column="1" x:Name="MealRemindersCard"
+                     Grid.RowSpan="3"
+                     Width="auto" Height="auto"
+                     Margin="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Text="Meal Reminders"
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Center" 
+                   FontSize="26"
+                   Foreground="{StaticResource PrimaryColor}"
+                   FontWeight="Bold" Margin="10" TextAlignment="Center"/>
+
+                    <!-- Breakfast -->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon 
+                            Kind="Coffee" 
+                            Width="33" 
+                            Height="33"
+                            VerticalAlignment="Center"
+                            Margin="0,0,5,0"/>
+                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+             materialDesign:HintAssist.Hint="Breakfast"
+             FontSize="16"
+             BorderBrush="{StaticResource PrimaryColor}"
+             FontWeight="Medium"
+             Text="{Binding BreakfastTime, Mode=TwoWay}"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             Height="50"
+             Width="100"/>
+                    </StackPanel>
+
+                    <!-- Lunch -->
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon 
+                            Kind="Food"
+                            Width="33" 
+                            Height="33"
+                            VerticalAlignment="Center"
+                            Margin="0,0,5,0"/>
+                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+             materialDesign:HintAssist.Hint="Lunch"
+             FontSize="16"
+             BorderBrush="{StaticResource PrimaryColor}"
+             FontWeight="Medium"
+             Text="{Binding LunchTime, Mode=TwoWay}"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             Height="50"
+             Width="100"/>
+                    </StackPanel>
+
+                    <!-- Snack -->
+                    <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon 
+                            Kind="FoodApple"
+                            Width="33" 
+                            Height="33"
+                            VerticalAlignment="Center"
+                            Margin="0,0,5,0"/>
+                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+             materialDesign:HintAssist.Hint="Snack"
+             FontSize="16"
+             BorderBrush="{StaticResource PrimaryColor}"
+             FontWeight="Medium"
+             Text="{Binding SnackTime, Mode=TwoWay}"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             Height="50"
+             Width="100"/>
+                    </StackPanel>
+
+                    <!-- Dinner -->
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon 
+                            Kind="SilverwareForkKnife"
+                            Width="33" 
+                            Height="33"
+                            VerticalAlignment="Center" 
+                            Margin="0,0,5,0"/>
+                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+             materialDesign:HintAssist.Hint="Dinner"
+             FontSize="16"
+             BorderBrush="{StaticResource PrimaryColor}"
+             FontWeight="Medium"
+             Text="{Binding DinnerTime, Mode=TwoWay}"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             Height="50"
+             Width="100"/>
+                    </StackPanel>
+
+                    <!-- Edit and Save Buttons -->
+                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Command="{Binding EditCommand}" Content="Edit" Margin="5"/>
+                        <Button Command="{Binding SaveCommand}" Content="Save" Margin="5"/>
+                    </StackPanel>
+                </Grid>
             </materialDesign:Card>
 
-            <materialDesign:Card Grid.Row="4" Grid.Column="1" x:Name="DoctorAppointmentCard"
+            <materialDesign:Card Grid.Row="3" Grid.Column="0" x:Name="DoctorAppointmentCard"
                                  Grid.ColumnSpan="2"
                                  Grid.RowSpan="2"
                                  Width="auto" Height="auto"
                                  Margin="10">
-                    <TextBlock
+                <TextBlock
                         Text="Doctors' Appointments"
                         VerticalAlignment="Top" 
                         HorizontalAlignment="Center" 

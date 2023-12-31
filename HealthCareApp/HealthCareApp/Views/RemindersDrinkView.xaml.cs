@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthCareApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,12 @@ namespace HealthCareApp.Views
     /// <summary>
     /// Interaction logic for RemindersDrinkView.xaml
     /// </summary>
-    public partial class RemindersDrinkView : Page
+    public partial class RemindersDrinkView : Window
     {
         public RemindersDrinkView()
         {
             InitializeComponent();
+            DataContext = new RemindersDrinkViewModel();
         }
     }
 }

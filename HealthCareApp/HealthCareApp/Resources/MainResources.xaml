@@ -32,4 +32,7 @@
     <viewmodels:EditMealViewModel x:Key="EditMealVM"></viewmodels:EditMealViewModel>
     <viewmodels:SleepTrackerViewModel x:Key ="SleepTrackerVM"></viewmodels:SleepTrackerViewModel>
     <viewmodels:AddLessonExerciseViewModel x:Key="AddLessonExerciseVM"></viewmodels:AddLessonExerciseViewModel>
+    <viewmodels:RemindersDrinkViewModel x:Key="RemindersDrinkVM"></viewmodels:RemindersDrinkViewModel>
+    <viewmodels:RemindersMealViewModel x:Key="RemindersMealVM"></viewmodels:RemindersMealViewModel>
+    <viewmodels:RemindersDoctorViewModel x:Key="RemindersDrVM"></viewmodels:RemindersDoctorViewModel>
 </ResourceDictionary> 

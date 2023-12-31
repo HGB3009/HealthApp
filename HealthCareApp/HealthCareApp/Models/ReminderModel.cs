@@ -1,45 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HealthCareApp.Models;
 
 namespace HealthCareApp.Models
 {
     public class ReminderModel
     {
-        public class DrinkReminder
+        // Drink Reminder properties
+        public double Volume { get; set; }
+        public double ConsumedWater { get; set; }
+        public double TargetWater { get; set; }
+
+        // Meal Reminder properties
+        public DateTime MealTime { get; set; }
+        public string Description { get; set; }
+
+        // Doctor Appointment properties
+        public DateTime AppointmentDateTime { get; set; }
+        public string DoctorName { get; set; }
+        public string Specialization { get; set; }
+        public string AppointmentLocation { get; set; }
+
+        // Common properties
+        public bool IsEnabled { get; set; }
+        public DateTime ReminderTime { get; set; }
+
+        // Combined methods
+        public void UpdateConsumedWater(double amount)
         {
-            public double Volume {  get; set; } 
-            public double ConsumedWater { get; set; }
-            public double TargetWater { get; set; }
-            public bool IsEnabled { get; set; }
-            public DateTime ReminderTime { get; set; }
-            public void UpdateConsumedWater(double amount)
-            {
-                ConsumedWater += amount;
-            }
-            public bool IsTargetAchieved()
-            {
-                return ConsumedWater >= TargetWater;
-            }
+            ConsumedWater += amount;
         }
-        public class MealReminder 
+
+        public bool IsTargetAchieved() 
         {
-            public DateTime MealTime { get; set; }
-            public required string Description { get; set; }
-            public bool IsEnabled { get; set; }
-            public DateTime ReminderTime { get; set; }
-        }
-        public class DoctorAppointment
-        {
-            public DateTime AppointmentDateTime { get; set; }
-            public string DoctorName { get; set; }
-            public string Specialization { get; set; }
-            public string AppointmentLocation { get; set; }
-            public bool IsEnabled { get; set; }
-            public DateTime ReminderTime { get; set; }
+            return ConsumedWater >= TargetWater;
         }
     }
 }
