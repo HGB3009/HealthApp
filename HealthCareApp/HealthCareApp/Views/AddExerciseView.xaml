@@ -12,9 +12,10 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" 
+        FontFamily="Poppins"
         DataContext="{StaticResource AddExerciseVM}"
         Name="AddExercise"
+        ResizeMode="NoResize"
         mc:Ignorable="d" 
         Height="700"
         Width="700">
@@ -123,10 +124,9 @@
                     Margin="10"
                     HorizontalAlignment="Right"
                     Content="Add Exercise"
-                    Command="{Binding ExitBtnCommand}"
-                    CommandParameter="{Binding ElementName=AddExercise}"
+                    Command="{Binding AddExerciseBtnCommand}"
                     Style="{StaticResource MyPrimaryButtonStyle}"></Button>
-            
+
             <Button Height="50"
                     Width="150"
                     Grid.Row="4"
@@ -146,73 +146,73 @@
                              Visibility="Hidden">
             <Grid>
                 <ScrollViewer>
-                <StackPanel>
-                    <Expander
+                    <StackPanel>
+                        <Expander
                           HorizontalAlignment="Stretch"
                           Header="{Binding FirstExerciseName}">
-                        <StackPanel
+                            <StackPanel
                             Margin="24,8,24,16"
                             Orientation="Vertical"
                             TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                            <TextBlock Text="{Binding FirstEquipmentBox}" />
-                            <TextBlock Text="{Binding FirstInstructionsBox}" 
+                                <TextBlock Text="{Binding FirstEquipmentBox}" />
+                                <TextBlock Text="{Binding FirstInstructionsBox}" 
                                            TextWrapping="Wrap"></TextBlock>
-                        </StackPanel>
-                    </Expander>
-                    <Border/>
-                    <Expander
+                            </StackPanel>
+                        </Expander>
+                        <Border/>
+                        <Expander
                         HorizontalAlignment="Stretch"
                         Header="{Binding SecondExerciseName}">
-                        <StackPanel
+                            <StackPanel
                             Margin="24,8,24,16"
                             Orientation="Vertical"
                             TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                            <TextBlock Text="{Binding SecondEquipmentBox}" />
-                            <TextBlock Text="{Binding SecondInstructionsBox}" 
+                                <TextBlock Text="{Binding SecondEquipmentBox}" />
+                                <TextBlock Text="{Binding SecondInstructionsBox}" 
                                        TextWrapping="Wrap"></TextBlock>
-                        </StackPanel>
-                    </Expander>
-                    <Border />
-                    <Expander
+                            </StackPanel>
+                        </Expander>
+                        <Border />
+                        <Expander
                           HorizontalAlignment="Stretch"
                           Header="{Binding ThirdExerciseName}">
-                        <StackPanel
+                            <StackPanel
                             Margin="24,8,24,16"
                             Orientation="Vertical"
                             TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                            <TextBlock Text="{Binding ThirdEquipmentBox}" />
-                            <TextBlock Text="{Binding ThirdInstructionsBox}" 
+                                <TextBlock Text="{Binding ThirdEquipmentBox}" />
+                                <TextBlock Text="{Binding ThirdInstructionsBox}" 
                                            TextWrapping="Wrap"></TextBlock>
-                        </StackPanel>
-                    </Expander>
-                    <Border/>
-                    <Expander
+                            </StackPanel>
+                        </Expander>
+                        <Border/>
+                        <Expander
                           HorizontalAlignment="Stretch"
                           Header="{Binding FouthExerciseName}">
-                        <StackPanel
+                            <StackPanel
                             Margin="24,8,24,16"
                             Orientation="Vertical"
                             TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                            <TextBlock Text="{Binding FouthEquipmentBox}" />
-                            <TextBlock Text="{Binding FouthInstructionsBox}" 
+                                <TextBlock Text="{Binding FouthEquipmentBox}" />
+                                <TextBlock Text="{Binding FouthInstructionsBox}" 
                                            TextWrapping="Wrap"></TextBlock>
-                        </StackPanel>
-                    </Expander>
-                    <Border/>
-                    <Expander
+                            </StackPanel>
+                        </Expander>
+                        <Border/>
+                        <Expander
                         HorizontalAlignment="Stretch"
                         Header="{Binding FirthExerciseName}">
-                        <StackPanel
+                            <StackPanel
                             Margin="24,8,24,16"
                             Orientation="Vertical"
                             TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                            <TextBlock Text="{Binding FirthEquipmentBox}" />
-                            <TextBlock Text="{Binding FirstInstructionsBox}" 
+                                <TextBlock Text="{Binding FirthEquipmentBox}" />
+                                <TextBlock Text="{Binding FirstInstructionsBox}" 
                                        TextWrapping="Wrap"></TextBlock>
-                        </StackPanel>
-                    </Expander>
-                </StackPanel>
-            </ScrollViewer>
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
             </Grid>
         </materialDesign:Card>
 

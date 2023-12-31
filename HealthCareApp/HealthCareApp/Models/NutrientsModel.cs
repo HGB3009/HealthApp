@@ -54,7 +54,7 @@ namespace HealthCareApp.Models
             public double nf_sodium { get; set; }
             public double nf_total_carbohydrate { get; set; }
             public double nf_dietary_fiber { get; set; }
-            public double nf_sugars { get; set; }
+            public string nf_sugars { get; set; }
             public double nf_protein { get; set; }
             public double nf_potassium { get; set; }
             public double nf_p { get; set; }
