@@ -256,7 +256,7 @@
                     </StackPanel>
                     <TextBlock Grid.Row="4"
                                Name="accTotalFatText"
-                               Text="40%"
+                               Text="{Binding AccFat}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
@@ -287,7 +287,7 @@
                     </StackPanel>
                     <TextBlock Grid.Row="5"
                                Name="accSaturated_FatText"
-                               Text="70%"
+                               Text="{Binding AccSaturated}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
@@ -384,7 +384,7 @@
                     </StackPanel>
                     <TextBlock Grid.Row="9"
                                Name="accCholesterolText"
-                               Text="32%"
+                               Text="{Binding AccCholesterol}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
@@ -416,7 +416,7 @@
 
                     <TextBlock Grid.Row="10"
                                Name="accSodiumText"
-                               Text="52%"
+                               Text="{Binding AccSodium}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
@@ -447,7 +447,7 @@
                     </StackPanel>
                     <TextBlock Grid.Row="11"
                                Name="accTotal_CacbohydratesText"
-                               Text="61%"
+                               Text="{Binding AccCacbonhydrate}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
@@ -485,7 +485,7 @@
                           Grid.Row="12"></Line>
                     <TextBlock Grid.Row="12"
                                Name="accDietary_FiberText"
-                               Text="21%"
+                               Text="{Binding AccDietaryFiber}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
@@ -553,7 +553,7 @@
                     </StackPanel>
                     <TextBlock Grid.Row="15"
                                Name="accVitaminDText"
-                               Text="1%"
+                               Text="{Binding AccVitaminD}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
@@ -584,7 +584,7 @@
                     </StackPanel>
                     <TextBlock Grid.Row="16"
                                Name="accCalciumText"
-                               Text="31%"
+                               Text="{Binding AccCalcium}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
@@ -615,13 +615,13 @@
                     </StackPanel>
                     <TextBlock Grid.Row="17"
                                Name="accIronText"
-                               Text="24%"
+                               Text="{Binding AccIron}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
                                HorizontalAlignment="Right"
-                               Margin="0,0,10,0"
-                               VerticalAlignment="Center"></TextBlock>
+                               Margin="10,0,10,0"
+                               VerticalAlignment="Top"></TextBlock>
                     <Line X1="0" Y1="0"
                           X2="420" Y2="0"
                           Stroke="Black"
@@ -646,7 +646,7 @@
                     </StackPanel>
                     <TextBlock Grid.Row="18"
                                Name="accPotassiumText"
-                               Text="15%"
+                               Text="{Binding AccPotassium}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="Black"
