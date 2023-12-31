@@ -28,4 +28,5 @@
     <viewmodels:ExerciseCaloriesViewModel x:Key="ExerciseCaloriesVM"></viewmodels:ExerciseCaloriesViewModel>
     <viewmodels:AddExerciseViewModel x:Key="AddExerciseVM"></viewmodels:AddExerciseViewModel>
     <viewmodels:EditMealViewModel x:Key="EditMealVM"></viewmodels:EditMealViewModel>
+    <viewmodels:AddLessonExerciseViewModel x:Key="AddLessonExerciseVM"></viewmodels:AddLessonExerciseViewModel>
 </ResourceDictionary> 

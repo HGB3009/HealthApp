@@ -133,8 +133,8 @@ namespace HealthCareApp.ViewModels
             });
             ClearSymptomsBtnCommand = new RelayCommand<object>((p) => { return true; }, (p) => { TempSymptoms = string.Empty; });
         }
-        string api_key = "Dz2t8_GMAIL_COM_AUT";
-        string secret_key = "k4QJf68Tne9N3MjHd";
+        string api_key = "w8HRx_GM_UIT_EDU_VN_AUT";
+        string secret_key = "g9C3SxWc4b5Q8EwJt";
         string url = "https://healthservice.priaid.ch/";
         string token;
 
@@ -216,14 +216,12 @@ namespace HealthCareApp.ViewModels
         private async void DiagnosisBtn_Click()
         {
             successDiagnosis = false;
-            bool isNotice = false;
             string fewSymptoms = ConvertSymptomToID(TempSymptoms);
             string gender = "male";
             string yearOfBirth = "1988";
             string result = await getDiagnosis(url, autherity.Token, gender, yearOfBirth, fewSymptoms);
-            if ((!successDiagnosis || result.Length < 5) && !isNotice)
+            if (!successDiagnosis || result.Length < 5)
             {
-                isNotice = true;
                 MessageBox.Show("Cannot Diagnosis. Please check again your symptoms infomation.");
                 ShowBadRequest();
             }

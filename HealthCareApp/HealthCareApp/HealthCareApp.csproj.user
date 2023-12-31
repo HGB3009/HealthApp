@@ -19,6 +19,9 @@
     <Compile Update="Views\AddExerciseView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AddLessonExerciseView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AddMealView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -106,6 +109,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AddExerciseView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddLessonExerciseView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AddMealView.xaml">
