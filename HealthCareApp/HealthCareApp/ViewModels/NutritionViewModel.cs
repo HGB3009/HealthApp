@@ -74,7 +74,19 @@ namespace HealthCareApp.ViewModels
                 }
             }
         }
-
+        private string _sreachmeal;
+        public string SreachMealVM
+        {
+            get { return _sreachmeal; }
+            set
+            {
+                if (_sreachmeal != value)
+                {
+                    _sreachmeal = value;
+                    OnPropertyChanged(nameof(SreachMealVM));
+                }
+            }
+        }
         private ObservableCollection<Nutrition> _meallist;
         public ObservableCollection<Nutrition> MealList
         {
@@ -90,6 +102,7 @@ namespace HealthCareApp.ViewModels
         public ICommand ViewByDayChangeCM { get; set; }
         public ICommand ViewByMonthChangeCM { get; set; }
         public ICommand ViewByYearChangeCM { get; set; }
+        public ICommand SreachMealCommand { get; set; }
         public ICommand AddMealCommand { get; set; }
         public ICommand CalculateCommand { get; set; }
         public ICommand EditMealCommand { get; set; }
@@ -108,6 +121,7 @@ namespace HealthCareApp.ViewModels
             EditMealCommand = new RelayCommand<Nutrition>((meal) => true, (meal) => EditMeal(meal));
             DeleteMealCommand = new RelayCommand<Nutrition>((meal) => true, (meal) => DeleteMeal(meal));
 
+            SreachMealCommand = new RelayCommand<NutritionView>((p) => true, (p) => SreachMeal(p));
             LoadWindowCommand = new RelayCommand<NutritionView>((p) => true, (p) => LoadMealList());
             AddMealCommand = new RelayCommand<NutritionView>((p) => { return true; }, (p) => AddMeal(p));
             CalculateCommand = new RelayCommand<NutritionView>((p) => { return true; }, (p) => Calculate(p));
@@ -252,6 +266,30 @@ namespace HealthCareApp.ViewModels
                     LoadMealList();
                 }
             }
+        }
+        public void SreachMeal(NutritionView parameter)
+        {
+            var filterBuilder = Builders<Nutrition>.Filter;
+            var usernameFilter = filterBuilder.Eq(x => x.Username, Const.Instance.Username);
+
+            FilterDefinition<Nutrition> finalFilter = usernameFilter;
+
+            if (!string.IsNullOrEmpty(parameter.SreachMeal.Text))
+            {
+                var keyword = parameter.SreachMeal.Text;
+
+                finalFilter &= filterBuilder.Regex(
+                    x => x.MealName,
+                    new BsonRegularExpression($".*{keyword}.*", "i") 
+                );
+
+                var meals = _nutritionCollection.Find(finalFilter).ToList();
+                MealList = new ObservableCollection<Nutrition>(meals);
+            }
+            else
+            {
+                LoadMealList();
+            }         
         }
         private IMongoCollection<Nutrition> GetMongoCollectionFromNutrition()
         {
