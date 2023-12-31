@@ -15,6 +15,9 @@
     <viewmodels:DiagnosisViewModel x:Key="DiagnosisVM"></viewmodels:DiagnosisViewModel>
     <viewmodels:LeftSideBarViewModel x:Key="LeftSideBarVM"></viewmodels:LeftSideBarViewModel>
     <viewmodels:UserInformationViewModel x:Key ="UserInfoVM"></viewmodels:UserInformationViewModel>
+    <viewmodels:SleepChartViewModel x:Key ="SleepChartVM"></viewmodels:SleepChartViewModel>
+    <viewmodels:SleepHistoryViewModel x:Key ="SleepHistoryVM"></viewmodels:SleepHistoryViewModel>
+    <viewmodels:SleepViewModel x:Key="SleepVM"></viewmodels:SleepViewModel>
     <!--screen-->
     <viewmodels:SignInViewModel x:Key ="SignInVM"></viewmodels:SignInViewModel>
     <viewmodels:MainWindowViewModel x:Key="MainWindowVM"></viewmodels:MainWindowViewModel>
@@ -31,5 +34,9 @@
     <viewmodels:ExerciseCaloriesViewModel x:Key="ExerciseCaloriesVM"></viewmodels:ExerciseCaloriesViewModel>
     <viewmodels:AddExerciseViewModel x:Key="AddExerciseVM"></viewmodels:AddExerciseViewModel>
     <viewmodels:EditMealViewModel x:Key="EditMealVM"></viewmodels:EditMealViewModel>
+    <viewmodels:SleepTrackerViewModel x:Key ="SleepTrackerVM"></viewmodels:SleepTrackerViewModel>
     <viewmodels:AddLessonExerciseViewModel x:Key="AddLessonExerciseVM"></viewmodels:AddLessonExerciseViewModel>
+    <viewmodels:RemindersDrinkViewModel x:Key="RemindersDrinkVM"></viewmodels:RemindersDrinkViewModel>
+    <viewmodels:RemindersMealViewModel x:Key="RemindersMealVM"></viewmodels:RemindersMealViewModel>
+    <viewmodels:RemindersDoctorViewModel x:Key="RemindersDrVM"></viewmodels:RemindersDoctorViewModel>
 </ResourceDictionary> 
