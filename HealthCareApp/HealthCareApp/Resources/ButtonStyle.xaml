@@ -74,6 +74,62 @@
         </Setter>
     </Style>
 
+    <Style x:Key="RadioBtnStyle"
+    TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border x:Name="border"
+                     BorderThickness="0"
+                     CornerRadius="10">
+                        <Border.Background>
+                            <SolidColorBrush x:Name="BorderBackground" Color="#F0FFF0"/>
+                        </Border.Background>
+                        <Grid>
+                            <ContentPresenter/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                          Value="True">
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Border.MouseEnter"
+                               SourceName="border">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="BorderBackground"
+                                             Storyboard.TargetProperty="Color"
+                                             From="White"
+                                             To="#F0FFF0"
+                                             Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Border.MouseLeave" SourceName="border">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="BorderBackground"
+                                             Storyboard.TargetProperty="Color"
+                                             From="#F0FFF0"
+                                             To="White"
+                                             Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsChecked"
+                          Value="True">
+
+                            <Setter Property="Background"
+                             TargetName="border"
+                             Value="#C1F2B0"/>
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="MyPrimaryButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
         <Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource LightBlackColor}"/>

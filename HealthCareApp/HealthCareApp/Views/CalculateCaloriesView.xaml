@@ -18,7 +18,8 @@
         Name="CalculateView"
         ResizeMode="NoResize"
         d:DesignHeight="700" d:DesignWidth="900"
-        Width="900" Height="750">
+        Width="900" Height="750"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>

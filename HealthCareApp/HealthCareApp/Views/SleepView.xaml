@@ -7,8 +7,122 @@
              mc:Ignorable="d" 
              Height="680"
              Width="1150"
-             DataContext="{StaticResource SleepVM}">
-    <Grid Background="Black">
-            
+             DataContext="{StaticResource SleepVM}"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             FontFamily="Poppins">
+    <Grid Background="{StaticResource BackGround}">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadWindowCommand}"
+               CommandParameter="{Binding ElementName=SleepScreen}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+
+        <Grid
+    >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Text="Sleep Management"
+                Foreground="{StaticResource BlueSky}"  
+                Margin="20,0,0,0"
+                FontSize="35"
+                VerticalAlignment="Center"
+                FontWeight="Bold"
+                TextAlignment="Left" />
+            <Button
+                Grid.Column="2"
+                Height="50"
+                Width="170"
+                materialDesign:ButtonAssist.CornerRadius="5"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Style="{StaticResource MyPrimaryButtonStyle}"
+                ToolTip="MaterialDesignRaisedLightButton with Round Corners">
+                <TextBlock
+                    Text="Sleep Tracker" />
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SleepTrackerCommand}"
+                           CommandParameter="{Binding ElementName=SleepScreen}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
+
+
+        <Grid 
+            Grid.Row="1"
+            Margin="20 0 10 0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid 
+                    Margin="0 10 0 0">
+                    <RadioButton
+                        x:Name="SleepChartShowBtn"
+                        Style="{StaticResource RadioBtnStyle}"
+                        GroupName="Sleep"
+                        IsChecked="true"
+                        Command="{Binding ChartShowCommand}">
+                        <TextBlock 
+                                Text="Sleep Chart" 
+                                Foreground="#49454F" 
+                                FontSize="18" 
+                                FontWeight="DemiBold"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                    </RadioButton>
+                </Grid>
+
+                <Grid 
+                    Grid.Column="1"
+                    Margin="0 10 0 0">
+                    <RadioButton
+                        x:Name="HistorySleepChartShowBtn"
+                        Style="{StaticResource RadioBtnStyle}"
+                        GroupName="Sleep"
+                        Command="{Binding HistoryCommand}">
+                        <Border>
+                            <TextBlock>
+                                <TextBlock 
+                                    Margin="37 17 0 0"
+                                    Text="History" 
+                                    Foreground="#49454F" 
+                                    FontSize="18" 
+                                    FontWeight="DemiBold"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </TextBlock>
+                        </Border>
+                    </RadioButton>
+                </Grid>
+            </Grid>
+
+            <ContentControl 
+                x:Name="Content"
+                Content="{Binding CurrentView}"
+                Grid.Row="1" 
+                Margin="0,0,0,0"/>
+        </Grid>
+
     </Grid>
 </UserControl>
