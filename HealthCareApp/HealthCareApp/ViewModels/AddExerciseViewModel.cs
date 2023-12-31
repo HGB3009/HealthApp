@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MaterialDesignThemes.Wpf;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -89,12 +90,13 @@ namespace HealthCareApp.ViewModels
             AddTypeList();
             AddDifficultyList();
             ExitBtnCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
-            SuggestBtnCommand = new RelayCommand<TextBox>((p) =>
+            SuggestBtnCommand = new RelayCommand<Card>((p) =>
             {
                 return (MuscleBox == null || MuscleBox == string.Empty ||
                         TypeBox == null || TypeBox == string.Empty ||
                         DifficultyBox == null || DifficultyBox == string.Empty) ? false : true;
             }, (p) => {
+                p.Visibility = Visibility.Visible;
                 if (NameMerge == null || NameMerge == string.Empty) NameMerge = string.Empty;
                 getExercise(NameMerge, TypeBox, MuscleBox, DifficultyBox);
             });
