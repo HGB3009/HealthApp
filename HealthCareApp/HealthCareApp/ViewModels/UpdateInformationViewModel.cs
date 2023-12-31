@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace HealthCareApp.ViewModels
 {
-    public class UpdateInformationViewModel :BaseViewModel
+    public class UpdateInformationViewModel : BaseViewModel
     {
         private readonly IMongoCollection<UserInformation> _userinfoCollection;
         private string _name;
@@ -102,6 +102,26 @@ namespace HealthCareApp.ViewModels
         public UpdateInformationViewModel()
         {
             _userinfoCollection = GetMongoCollectionFromUserInfo();
+            string username = Const.Instance.Username;
+            var filter = Builders<UserInformation>.Filter.Eq(x => x.Username, username);
+            var User = _userinfoCollection.Find(filter).FirstOrDefault();
+
+            if (User != null)
+            {
+                NameVM = User.Name;
+                GenderVM = User.Gender;
+                PhoneNumberVM = User.PhoneNumber;
+                DateTime parsedBirthday;
+                if (DateTime.TryParseExact(User.Birthday, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out parsedBirthday))
+                {
+                    BirthdayVM = parsedBirthday;
+                }
+                AddressVM = User.Address;
+                EmailVM = User.Email;
+            }
+
+
+
             UpdateInformationCM = new RelayCommand<UpdateInformationView>((p) => true, (p) => UpdateCM(p));
         }
         public void UpdateCM(UpdateInformationView parameter)
@@ -110,7 +130,7 @@ namespace HealthCareApp.ViewModels
             string username = Const.Instance.Username;
             var filter = Builders<UserInformation>.Filter.Eq(x => x.Username, username);
             var User = _userinfoCollection.Find(filter).FirstOrDefault();
-            if (!string.IsNullOrEmpty(NameVM))
+            if (NameVM != User.Name)
             {
                 User.Name = NameVM;
 
@@ -119,7 +139,7 @@ namespace HealthCareApp.ViewModels
                 _userinfoCollection.UpdateOne(filter, updateDefinition);
                 isUpdate = true;
             }
-            if (!string.IsNullOrEmpty(GenderVM))
+            if (GenderVM != User.Gender)
             {
                 User.Gender = GenderVM;
 
@@ -128,7 +148,7 @@ namespace HealthCareApp.ViewModels
                 _userinfoCollection.UpdateOne(filter, updateDefinition);
                 isUpdate = true;
             }
-            if (!string.IsNullOrEmpty(PhoneNumberVM))
+            if (PhoneNumberVM != User.PhoneNumber)
             {
                 User.PhoneNumber = PhoneNumberVM;
 
@@ -138,7 +158,7 @@ namespace HealthCareApp.ViewModels
                 isUpdate = true;
             }
             string birthday = BirthdayVM.HasValue ? BirthdayVM.Value.ToString("dd/MM/yyyy") : null;
-            if (!string.IsNullOrEmpty(birthday))
+            if (birthday != User.Birthday)
             {
                 User.Birthday = birthday;
 
@@ -147,7 +167,7 @@ namespace HealthCareApp.ViewModels
                 _userinfoCollection.UpdateOne(filter, updateDefinition);
                 isUpdate = true;
             }
-            if (!string.IsNullOrEmpty(AddressVM))
+            if (AddressVM != User.Address)
             {
                 User.Address = AddressVM;
 
@@ -156,7 +176,7 @@ namespace HealthCareApp.ViewModels
                 _userinfoCollection.UpdateOne(filter, updateDefinition);
                 isUpdate = true;
             }
-            if (!string.IsNullOrEmpty(EmailVM))
+            if (EmailVM != User.Email)
             {
                 User.Email = EmailVM;
 
@@ -169,19 +189,10 @@ namespace HealthCareApp.ViewModels
             if (isUpdate)
             {
                 MessageBox.Show("Information changed successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                NameVM = null;
-                BirthdayVM = null;
-                GenderVM = null;
-                AddressVM = null;
-                PhoneNumberVM = null;
-                EmailVM = null;
-                parameter.Close();
             }
             else
             {
                 MessageBox.Show("Nothing changed!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
-                parameter.Close();
             }
 
         }
