@@ -106,6 +106,49 @@ namespace HealthCareApp.ViewModels
         public string TotalPhosphorus { get { return totalPhosphorus; } set { totalPhosphorus = value; OnPropertyChanged(nameof(TotalPhosphorus)); } }
         public string hintIngredient;
         public string HintIngredient { get { return hintIngredient; } set { hintIngredient = value; OnPropertyChanged(nameof(HintIngredient)); } }
+
+        public string accFat;
+        public string AccFat { get { return accFat; } set { accFat = value; OnPropertyChanged(nameof(AccFat)); } }
+        public string accSaturated;
+        public string AccSaturated { get { return accSaturated; } set { accSaturated = value; OnPropertyChanged(nameof(AccSaturated)); } }
+
+        public string accCholesterol;
+        public string AccCholesterol { get { return accCholesterol; } set { accCholesterol = value; OnPropertyChanged(nameof (AccCholesterol)); } }
+
+        public string accSodium;
+        public string AccSodium { get { return accSodium; } set { accSodium = value; OnPropertyChanged(nameof(AccSodium)); } }
+
+        public string accCacbonhydrate;
+        public string AccCacbonhydrate { get { return accCacbonhydrate; } set { accCacbonhydrate = value; OnPropertyChanged(nameof(AccCacbonhydrate)); } }
+
+        public string accDietaryFiber;
+        public string AccDietaryFiber { get { return accDietaryFiber; } set { accDietaryFiber = value; OnPropertyChanged(nameof(AccDietaryFiber)); } }
+
+        public string accVitaminD;
+        public string AccVitaminD { get { return accVitaminD; } set { accVitaminD = value; OnPropertyChanged(nameof(AccVitaminD)); } }
+
+        public string accCalcium;
+        public string AccCalcium { get { return accCalcium; } set { accCalcium = value; OnPropertyChanged(nameof(AccCalcium)); } }
+
+        public string accIron;
+        public string AccIron { get { return accIron; } set { accIron = value; OnPropertyChanged(nameof(AccIron)); } }
+
+        public string accPotassium;
+        public string AccPotassium { get { return accPotassium; } set { accPotassium = value; OnPropertyChanged(nameof(AccPotassium)); } }
+        public class baseNutritionDaily
+        {
+            public double Fat = 70;
+            public double SaturatedFat = 20;
+            public double DietaryFiber=28.57;
+            public double Calcium = 1250;
+            public double Iron = 18.18;
+            public double Potassium = 5000;
+            public double Cholesterol = 300;
+            public double Sodium = 2272.72;
+            public double VitaminD = 20;
+            public double Cacbonhydrate = 270;
+        }
+        baseNutritionDaily DailyNutrient=new baseNutritionDaily();
         public CalculateCaloriesViewModel()
         {
             HintIngredient = "1 cup of rice" + '\n' + "10 oz of chickbeans";
@@ -195,6 +238,18 @@ namespace HealthCareApp.ViewModels
             TotalVitaminD = string.Empty;
             SumCalories = string.Empty;
             SaturatedFat = string.Empty;
+
+            AccCacbonhydrate = string.Empty;
+            AccCalcium = string.Empty;
+            AccCholesterol= string.Empty;
+            AccDietaryFiber= string.Empty;
+            AccFat = string.Empty;
+            AccPotassium= string.Empty;
+            AccSaturated = string.Empty;
+            AccSodium= string.Empty;
+            AccVitaminD= string.Empty;
+            AccIron= string.Empty;
+           
         }
         private string ConvertFoodIngredient(string name, string quantity, string unit)
         {
@@ -282,6 +337,11 @@ namespace HealthCareApp.ViewModels
             TotalPolyunsaturated = Polyunsaturated.ToString() + 'g';
             TotalMonounsaturated = Monounsaturated.ToString() + 'g';
             TotalPhosphorus = Phosphorus.ToString() + "mg";
+
+            AccIron = (Math.Round(((Iron / DailyNutrient.Iron) * 100), 2)).ToString() + "%";
+            AccVitaminD = (Math.Round(((VitaminD / DailyNutrient.VitaminD) * 100), 2)).ToString() + "%";
+            AccCalcium=(Math.Round(((Calcium / DailyNutrient.Calcium) * 100),2)).ToString() + "%";      
+
         }
         private async Task<string> GetInfoEdamamAPI(string foodItem)
         {
@@ -358,6 +418,13 @@ namespace HealthCareApp.ViewModels
             TotalProtein = CalculateTotalProtein(result).ToString() + 'g';
             TotalPotassium = CalculateTotalPotassium(result).ToString() + "mg";
             TotalDietaryFiber = CalculateTotalDietaryFiber(result).ToString() + 'g';
+
+            AccCholesterol = (Math.Round(((CalculateTotalCholesterol(result) / DailyNutrient.Cholesterol) * 100),2)).ToString() +"%";
+            AccDietaryFiber = (Math.Round(((CalculateTotalDietaryFiber(result) /DailyNutrient.DietaryFiber) * 100),2)).ToString() + "%";
+            AccFat=(Math.Round(((CalculateTotalFat(result) / DailyNutrient.Fat) * 100),2)).ToString() + "%";
+            AccSodium = (Math.Round(((CalculateTotalSodium(result) / DailyNutrient.Sodium) * 100),2)).ToString() + "%";
+            AccCacbonhydrate=(Math.Round(((CalculateTotalCacbohydrates(result) /DailyNutrient.Cacbonhydrate) * 100),2)).ToString() + "%";
+            AccPotassium=(Math.Round(((CalculateTotalPotassium(result) / DailyNutrient.Potassium) * 100),2)).ToString() + "%";
         }
         private double CalculateSumCalories(NutrientsModel.root result)
         {
