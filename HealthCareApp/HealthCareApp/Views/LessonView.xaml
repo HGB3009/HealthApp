@@ -32,7 +32,7 @@
 
                 <DataGrid 
                 x:Name="exerciseDataGrid"
-                Margin="0"
+                Margin="5,0,5,0"
                 ItemsSource="{Binding ExerciseList}"
                 AutoGenerateColumns="False"
                 Style="{DynamicResource DataGridStyle}"

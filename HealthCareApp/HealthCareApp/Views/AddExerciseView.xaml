@@ -49,15 +49,16 @@
                      Background="WhiteSmoke" 
                      Text="{Binding NameMerge}"
                      Margin="15"
-                     FontSize="18"
+                     FontSize="20"
                      Height="auto"
                      Width="auto"
                      VerticalAlignment="Center"
-                     materialDesign:HintAssist.Hint="Action"
+                     materialDesign:HintAssist.Hint="Name hint"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
             <ComboBox 
                 Grid.Column="1"
                 x:Name="ComboBoxMuscle"
+     
                 Width="auto " 
                 Height="50"
                 Margin="10"
@@ -74,6 +75,13 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ComboBox>
+            <TextBlock Text="*"
+                       FontSize="15"
+                       Grid.Column="1"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Margin="20,0,0,0"
+                       Foreground="Red"></TextBlock>
             <ComboBox 
                 Grid.Column="2"
                 x:Name="ComboBoxType"
@@ -92,6 +100,14 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ComboBox>
+
+            <TextBlock Text="*"
+                       FontSize="15"
+                       Grid.Column="2"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Margin="20,0,0,0"
+                       Foreground="Red"></TextBlock>
             <ComboBox 
                 Grid.Column="3"
                 x:Name="ComboBoxDifficult"
@@ -110,6 +126,13 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ComboBox>
+            <TextBlock Text="*"
+                       FontSize="15"
+                       Grid.Column="3"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Margin="20,0,0,0"
+                       Foreground="Red"></TextBlock>
         </Grid>
         <Button Height="50"
                 Width="150"
