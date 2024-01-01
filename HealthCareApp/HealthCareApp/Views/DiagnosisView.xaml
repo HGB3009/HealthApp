@@ -90,13 +90,14 @@
                  VerticalAlignment="Center">
 
                     <TextBox x:Name="SymptomsBox"
-                     Margin="5,5,5,0"
-                     Height="auto"
-                     BorderThickness="0"
-                     BorderBrush="White"
-                     Text="{Binding TempSymptoms, Mode=TwoWay}"
-                     FontSize="16"
-                     TextWrapping="Wrap"></TextBox>
+                         Margin="5,5,5,0"
+                         Height="auto"
+                             materialDesign:HintAssist.Hint="Choose symptom options in Symptom List below."
+                         BorderThickness="0"
+                         BorderBrush="White"
+                         Text="{Binding TempSymptoms, Mode=TwoWay}"
+                         FontSize="16"
+                         TextWrapping="Wrap"></TextBox>
                 </Border>
                 <TextBlock Grid.Row="0" 
                    Text="Symptoms" 
