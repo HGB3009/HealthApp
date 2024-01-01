@@ -22,9 +22,19 @@ namespace HealthCareApp.ViewModels
         public ICommand LoadWindowCommand { get; set; }
         public SleepViewModel()
         {
+            SleepTrackerCommand = new RelayCommand<SleepView>((p) => { return true; }, (p) => SleepTracker(p));
+
+
             ChartShowCommand = new RelayCommand(SleepChart);
             HistoryCommand = new RelayCommand(SleepHistory);
             CurrentView = new SleepChartView();
+        }
+        public void SleepTracker(SleepView parameter)
+        {
+            SleepTrackerView SleepTracker = new SleepTrackerView();
+            parameter.Opacity = 0.5;
+            SleepTracker.ShowDialog();
+            parameter.Opacity = 1;
         }
         private void SleepChart(object obj) => CurrentView = new SleepChartView();
         private void SleepHistory(object obj) => CurrentView = new SleepHistoryView();
