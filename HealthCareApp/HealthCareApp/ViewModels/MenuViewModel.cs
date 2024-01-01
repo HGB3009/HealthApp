@@ -18,17 +18,139 @@ namespace HealthCareApp.ViewModels
     {
         private readonly IMongoCollection<Nutrition> _nutritionCollection;
         private readonly IMongoCollection<ExerciseLesson> _ExerciseCollection;
-        public ICommand InitPieChartCommand { get; set; }
+        private readonly IMongoCollection<WaterPerDay> _waterperdayCollection;
         private SeriesCollection pieSeriesCollection;
         public SeriesCollection PieSeriesCollection { get => pieSeriesCollection; set { pieSeriesCollection = value; OnPropertyChanged(); } }
         private Func<ChartPoint, string> labelPoint;
         public Func<ChartPoint, string> LabelPoint { get => labelPoint; set => labelPoint = value; }
+        private SeriesCollection waterpieSeriesCollection;
+        public SeriesCollection WaterPieSeriesCollection { get => pieSeriesCollection; set { pieSeriesCollection = value; OnPropertyChanged(); } }
+        private Func<ChartPoint, string> waterlabelPoint;
+        public Func<ChartPoint, string> WaterLabelPoint { get => waterlabelPoint; set => waterlabelPoint = value; }
+        private string _amountofwater;
+        public string AmountOfWaterVM
+        {
+            get { return _amountofwater; }
+            set
+            {
+                if (_amountofwater != value)
+                {
+                    _amountofwater = value;
+                    OnPropertyChanged(nameof(AmountOfWaterVM));
+                }
+            }
+        }
+        private string _totalwater;
+        public string TotalVM
+        {
+            get { return _totalwater; }
+            set
+            {
+                if (_totalwater != value)
+                {
+                    _totalwater = value;
+                    OnPropertyChanged(nameof(TotalVM));
+                }
+            }
+        }
+        public ICommand InitPieChartCommand { get; set; }
+        public ICommand InitWaterChartCommand { get; set; }
+        public ICommand LoadWindowCommand { get; set; }
+        public ICommand AddingWaterCommand { get; set; }
         public MenuViewModel() 
         {
             _nutritionCollection = GetMongoCollectionFromNutrition();
             _ExerciseCollection = GetMongoCollectionFromExerciseLesson();
-
+            _waterperdayCollection = GetMongoCollectionFromWaterPerDay();
             InitPieChartCommand = new RelayCommand<MenuView>(parameter => true, parameter => InitPieChart(parameter));
+            InitWaterChartCommand = new RelayCommand<MenuView>(parameter => true, parameter => InitWaterChart(parameter));
+
+            AddingWaterCommand = new RelayCommand<MenuView>((p) => true, (p) => AddingWaterCM(p));
+            LoadWindowCommand = new RelayCommand<MenuView>((p) => true, (p) => _LoadWindow(p));
+        }
+        public void AddingWaterCM(MenuView view)
+        {
+            string username = Const.Instance.Username;
+            string currentDay = DateTime.Now.ToString("dd/MM/yyyy");
+            double amount = Convert.ToDouble(AmountOfWaterVM);
+
+            var filter = Builders<WaterPerDay>.Filter.And(
+                Builders<WaterPerDay>.Filter.Eq(x => x.Username, username),
+                Builders<WaterPerDay>.Filter.Eq(x => x.Day, currentDay)
+    );
+
+            var update = Builders<WaterPerDay>.Update.Inc(x => x.AmountOfWater, amount);
+
+            var options = new FindOneAndUpdateOptions<WaterPerDay, WaterPerDay>
+            {
+                IsUpsert = true,
+                ReturnDocument = ReturnDocument.After
+            };
+
+            var result = _waterperdayCollection.FindOneAndUpdate(filter, update, options);
+
+            if (result == null)
+            {
+                _waterperdayCollection.InsertOne(new WaterPerDay
+                {
+                    Username = username,
+                    Day = currentDay,
+                    AmountOfWater = amount
+                });
+            }
+            _LoadWindow(view);
+        }
+        public void InitWaterChart(MenuView homeWindow)
+        {
+            string username = Const.Instance.Username;
+            var filterBuilder = Builders<WaterPerDay>.Filter;
+            var usernameFilter = filterBuilder.Eq(x => x.Username, Const.Instance.Username);
+            FilterDefinition<WaterPerDay> finalFilter = usernameFilter;
+            string currentDay = DateTime.Now.ToString("dd/MM/yyyy");
+            finalFilter &= filterBuilder.Eq(x => x.Day, currentDay);
+
+            var amountwater = _waterperdayCollection.Find(finalFilter).FirstOrDefault();
+            waterlabelPoint = chartPoint => string.Format("{0:N0}", chartPoint.Y);
+            if (amountwater != null)
+            {
+                if(amountwater.AmountOfWater > 2)
+                {
+                    WaterPieSeriesCollection = new SeriesCollection
+                {
+                    new PieSeries
+                    {
+                        Title = "Drink",
+                        Values = new ChartValues<double> { amountwater.AmountOfWater },
+                        Fill = (Brush)new BrushConverter().ConvertFrom("Blue"),
+                        DataLabels = true,
+                        FontSize = 16,
+                    },
+                };
+                }
+                else
+                {
+                    double leftwater = 2 - amountwater.AmountOfWater;
+                    WaterPieSeriesCollection = new SeriesCollection
+                {
+                    new PieSeries
+                    {
+                        Title = "Drink",
+                        Values = new ChartValues<double> { amountwater.AmountOfWater },
+                        Fill = (Brush)new BrushConverter().ConvertFrom("Blue"),
+                        DataLabels = true,
+                        FontSize = 16,
+                    },
+                    new PieSeries
+                    {
+                        Title="Not Drink",
+                        Values = new ChartValues<double> { leftwater },
+                        Fill = (Brush)new BrushConverter().ConvertFrom("Gray"),
+                        DataLabels = true,
+                        FontSize = 16,
+                    },
+                };
+                }
+            }
         }
         public void InitPieChart(MenuView homeWindow)
         {
@@ -120,8 +242,27 @@ namespace HealthCareApp.ViewModels
             }
             else
             {
-                PieSeriesCollection.Clear();
+                if(PieSeriesCollection != null)
+                {
+                    PieSeriesCollection.Clear();
+                }
+
             }
+        }
+        void _LoadWindow(MenuView p)
+        {
+            string username = Const.Instance.Username;
+
+            var filter = Builders<WaterPerDay>.Filter.Eq(x => x.Username, username);
+            var User = _waterperdayCollection.Find(filter).FirstOrDefault();
+
+            if (User != null)
+            {
+                InitPieChart(p);
+                InitWaterChart(p);
+                TotalVM = User.AmountOfWater.ToString() + " L";
+            }
+
         }
         private IMongoCollection<Nutrition> GetMongoCollectionFromNutrition()
         {
@@ -144,6 +285,17 @@ namespace HealthCareApp.ViewModels
             var database = client.GetDatabase(databaseName);
 
             return database.GetCollection<ExerciseLesson>("ExerciseLesson");
+        }
+        private IMongoCollection<WaterPerDay> GetMongoCollectionFromWaterPerDay()
+        {
+            // Set your MongoDB connection string and database name
+            string connectionString = "mongodb+srv://HGB3009:HGB30092004@bao-database.xwrghva.mongodb.net/"; // Update with your MongoDB server details
+            string databaseName = "HealthcareManagementDatabase"; // Update with your database name
+
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+
+            return database.GetCollection<WaterPerDay>("WaterPerDay");
         }
     }
 }
