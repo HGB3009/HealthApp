@@ -33,7 +33,7 @@ namespace HealthCareApp.Models
         public string Unit { get; set; }
 
         [BsonElement("Calories")]
-        public float Calories { get; set; }
+        public double Calories { get; set; }
 
         [BsonElement("MealPicture")]
         public byte[] MealPicture { get; set; }

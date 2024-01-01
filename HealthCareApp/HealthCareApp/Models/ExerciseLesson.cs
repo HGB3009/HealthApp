@@ -34,6 +34,6 @@ namespace HealthCareApp.Models
         [BsonElement("Equipment")]
         public string Equipment { get; set; }
         [BsonElement("Calories")]
-        public string Calories { get; set; }
+        public double Calories { get; set; }
     }
 }
