@@ -19,14 +19,14 @@ namespace HealthCareApp.ViewModels
         public string typeExercise;
         public string TypeExercise { get { return typeExercise; } set { typeExercise = value; OnPropertyChanged(nameof(TypeExercise)); } }
 
-        public DateTime? dayStart;
-        public DateTime? DayStart { get { return dayStart; } set { dayStart = value; OnPropertyChanged(nameof(DayStart)); } }
+        public DateTime? timeStart;
+        public DateTime? TimeStart { get { return timeStart; } set { timeStart = value; OnPropertyChanged(nameof(TimeStart)); } }
 
-        public DateTime? dayEnd;
-        public DateTime? DayEnd { get { return dayEnd; } set { dayEnd = value; OnPropertyChanged(nameof(DayEnd)); } }
+        public DateTime? timeEnd;
+        public DateTime? TimeEnd { get { return timeEnd; } set { timeEnd = value; OnPropertyChanged(nameof(TimeEnd)); } }
 
-        public string timeExercise;
-        public string TimeExercise { get { return timeExercise; } set { timeExercise = value; OnPropertyChanged(nameof(TimeExercise)); } }
+        public DateTime? dayExercise;
+        public DateTime? DayExercise { get { return dayExercise; } set { dayExercise = value; OnPropertyChanged(nameof(DayExercise)); } }
 
         public string caloriesExercise;
         public string CaloriesExercise { get { return caloriesExercise; } set { caloriesExercise = value; OnPropertyChanged(nameof(CaloriesExercise)); } }
@@ -41,7 +41,7 @@ namespace HealthCareApp.ViewModels
         public AddLessonExerciseViewModel()
         {
             _ExerciseCollection = GetMongoCollectionFromExerciseLesson();
-            ExitBtnCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
+            ExitBtnCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { ShowNullView(); p.Close(); });
             AddBtnCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
                 AddLessonExercise();
@@ -55,76 +55,81 @@ namespace HealthCareApp.ViewModels
                 {
                     Username = Const.Instance.Username,
                     ExerciseName = NameExercise,
-                    ExerciseType=TypeExercise,
-                    ExerciseDayEnd=DayEnd,
-                    ExerciseDayStart=DayStart,
-                    ExerciseTime=TimeExercise,
-                    Equipment=EquipmentExercise,
-                    Calories=CaloriesExercise,
+                    ExerciseType = TypeExercise,
+                    ExerciseTimeEnd = TimeEnd.Value.TimeOfDay,
+                    ExerciseTimeStart = TimeStart.Value.TimeOfDay,
+                    ExerciseDay = DayExercise.Value.ToString("dd/MM/yyyy"),
+                    Equipment = EquipmentExercise,
+                    Calories = CaloriesExercise,
                 };
                 _ExerciseCollection.InsertOne(newLesson);
                 MessageBox.Show("Add exercise lesson successful!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-                NameExercise = null;
-                TypeExercise = null;
-                DayEnd = null;
-                DayStart = null;
-                TimeExercise = null;
-                EquipmentExercise = null;
-                CaloriesExercise = null;
+                ShowNullView();
             }
         }
-    
-    private bool Validation()
-    {
-        if (string.IsNullOrEmpty(EquipmentExercise))
-        {
-            MessageBox.Show("Please enter the Equipment field");
-            return false;
-        }
-        if (string.IsNullOrEmpty(NameExercise))
-        {
-            MessageBox.Show("Please enter the Name field");
-            return false;
-        }
-        if (string.IsNullOrEmpty(TypeExercise))
-        {
-            MessageBox.Show("Please enter the Type field");
-            return false;
-        }
-        if (string.IsNullOrEmpty(TimeExercise))
-        {
-            MessageBox.Show("Please enter the Time field");
-            return false;
-        }
-        if (string.IsNullOrEmpty(CaloriesExercise.ToString()))
-        {
-            MessageBox.Show("Please enter the Name field");
-            return false;
-        }
-        string dayStart = DayStart.HasValue ? DayStart.Value.ToString() : null;
-        if (string.IsNullOrEmpty(dayStart))
-        {
-            MessageBox.Show("Please enter the Day Start field.");
-            return false;
-        }
-        string dayEnd = DayEnd.HasValue ? DayEnd.Value.ToString() : null;
-        if (string.IsNullOrEmpty(dayEnd))
-        {
-            MessageBox.Show("Please enter the Day End field.");
-            return false;
-        }
-        return true;
-    }
-    private IMongoCollection<ExerciseLesson> GetMongoCollectionFromExerciseLesson()
-    {
-        // Set your MongoDB connection string and database name
-        string connectionString = "mongodb+srv://HGB3009:HGB30092004@bao-database.xwrghva.mongodb.net/"; // Update with your MongoDB server details
-        string databaseName = "HealthcareManagementDatabase"; // Update with your database name
 
-        var client = new MongoClient(connectionString);
-        var database = client.GetDatabase(databaseName);
+        private bool Validation()
+        {
+            if (string.IsNullOrEmpty(NameExercise))
+            {
+                MessageBox.Show("Please enter the Name field");
+                return false;
+            }
+            if (string.IsNullOrEmpty(TypeExercise))
+            {
+                MessageBox.Show("Please enter the Type field");
+                return false;
+            }
+            string timeStart = TimeStart.HasValue ? TimeStart.Value.ToString() : null;
+            if (string.IsNullOrEmpty(timeStart))
+            {
+                MessageBox.Show("Please enter the Time Start field.");
+                return false;
+            }
+            string timeEnd = TimeEnd.HasValue ? TimeEnd.Value.ToString() : null;
+            if (string.IsNullOrEmpty(timeEnd))
+            {
+                MessageBox.Show("Please enter the Time End field.");
+                return false;
+            }
+            string day = DayExercise.HasValue ? DayExercise.Value.ToString() : null;
+            if (string.IsNullOrEmpty(day))
+            {
+                MessageBox.Show("Please enter the Day field");
+                return false;
+            }
+            if (string.IsNullOrEmpty(CaloriesExercise.ToString()))
+            {
+                MessageBox.Show("Please enter the Name field");
+                return false;
+            }
+            if (string.IsNullOrEmpty(EquipmentExercise))
+            {
+                MessageBox.Show("Please enter the Equipment field");
+                return false;
+            }
+            return true;
+        }
+        private IMongoCollection<ExerciseLesson> GetMongoCollectionFromExerciseLesson()
+        {
+            // Set your MongoDB connection string and database name
+            string connectionString = "mongodb+srv://HGB3009:HGB30092004@bao-database.xwrghva.mongodb.net/"; // Update with your MongoDB server details
+            string databaseName = "HealthcareManagementDatabase"; // Update with your database name
 
-        return database.GetCollection<ExerciseLesson>("ExerciseLesson");
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+
+            return database.GetCollection<ExerciseLesson>("ExerciseLesson");
+        }
+        private void ShowNullView()
+        {
+            NameExercise = null;
+            TypeExercise = null;
+            TimeEnd = null;
+            TimeStart = null;
+            DayExercise = null;
+            EquipmentExercise = null;
+            CaloriesExercise = null;
+        }
     }
-}
 }
