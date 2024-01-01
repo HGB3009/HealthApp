@@ -306,11 +306,10 @@ namespace HealthCareApp.ViewModels
             string[] elementSymptoms = Symptoms.Split(", ");
             for (int i = 0; i < elementSymptoms.Length; ++i)
             {
-                Char.ToUpper(elementSymptoms[i][0]);
-                string temp = elementSymptoms[i];
+                string temp = elementSymptoms[i].ToLower();
                 for (int j = 0; j < ListSymptoms.symptoms.Count; ++j)
                 {
-                    if (temp == ListSymptoms.symptoms[j].Name)
+                    if (temp == ListSymptoms.symptoms[j].Name.ToLower())
                     {
                         listID += ((i != 0) ? "," : "") + ListSymptoms.symptoms[j].ID.ToString();
                         break;
@@ -360,6 +359,8 @@ namespace HealthCareApp.ViewModels
             IssueAcc = "";
             IssueName = "";
             DescriptionIssue = "";
+            AdviceTreatment = "";
+            PossibleSymptoms = "";
         }
         private IMongoCollection<UserInformation> GetMongoCollectionFromUserInfo()
         {

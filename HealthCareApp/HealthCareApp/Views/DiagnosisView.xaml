@@ -177,7 +177,7 @@
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Normal"
-                           Margin="0,0,10,0"
+                           Margin="0,0,20,0"
                            HorizontalAlignment="Right"></TextBlock>
                         <TextBlock x:Name="IssueNameTextBlock"
                            Grid.Column="1"
@@ -194,7 +194,7 @@
                            Text="Accuracy:"
                            VerticalAlignment="Center"
                            FontSize="18"
-                           Margin="0,0,10,0"
+                           Margin="0,0,20,0"
                            FontWeight="Normal"
                            HorizontalAlignment="Right"></TextBlock>
                         <TextBlock x:Name="IssueAccTextBlock"
@@ -242,15 +242,15 @@
                            VerticalAlignment="Center"
                            FontSize="18"
                            FontWeight="Normal"
-                           Margin="0,0,10,0"
+                           Margin="0,0,20,0"
                            HorizontalAlignment="Right"></TextBlock>
                         <ScrollViewer Grid.Column="1" Grid.Row="4" >
                             <TextBlock x:Name="PossibleSymptomsText"
                            HorizontalAlignment="Right"
                            Margin="0,0,10,0"
                            VerticalAlignment="Center"
-                           FontSize="16"
-                           FontWeight="Bold"
+                           FontSize="14"
+                           FontWeight="Medium"
                            FontStyle="Italic"
                            TextWrapping="Wrap"
                            Text="{Binding PossibleSymptoms}"></TextBlock>
