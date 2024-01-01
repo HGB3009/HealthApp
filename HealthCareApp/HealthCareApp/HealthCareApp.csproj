@@ -13,14 +13,11 @@
     <None Remove="Resources\Fitness_Logo.png" />
     <None Remove="Resources\Home_Logo.jpg" />
     <None Remove="Resources\Images\calories.jpg" />
-    <None Remove="Resources\Images\DateMeal.jpg" />
-    <None Remove="Resources\Images\Fitness_Logo.jpg" />
     <None Remove="Resources\Images\MealName.jpg" />
     <None Remove="Resources\Images\MealTime.jpg" />
     <None Remove="Resources\Images\Message_Box_Icon.jpg" />
     <None Remove="Resources\Images\Nutrition_Logo.jpg" />
     <None Remove="Resources\Images\personAvata.jpg" />
-    <None Remove="Resources\Images\quatity.jpg" />
     <None Remove="Resources\Images\Reminders_Logo.jpg" />
     <None Remove="Resources\Images\Sleep_Logo.jpg" />
     <None Remove="Resources\Images\unit.jpg" />
@@ -51,14 +48,6 @@
 
   <ItemGroup>
     <Resource Include="Resources\Images\calories.jpg" />
-    <Resource Include="Resources\Images\DateMeal.jpg" />
-    <Resource Include="Resources\Images\Diagnosis_Logo.jpg">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\Fitness_Logo.jpg">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\Home_Logo.jpg" />
     <Resource Include="Resources\Images\Logo.jpg" />
     <Resource Include="Resources\Images\Logout_Logo.jpg" />
     <Resource Include="Resources\Images\MealName.jpg" />
@@ -68,14 +57,12 @@
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\personAvata.jpg" />
-    <Resource Include="Resources\Images\quatity.jpg" />
     <Resource Include="Resources\Images\Reminders_Logo.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\screenSignIn.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\Setting_Logo.jpg" />
     <Resource Include="Resources\Images\Sleep_Logo.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>

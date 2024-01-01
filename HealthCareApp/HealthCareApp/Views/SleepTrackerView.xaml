@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthCareApp.Views"
-        x:Name="AddMealWindow"
+        x:Name="SleepTrackerWD"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         FontFamily="Poppins" 
-        DataContext="{StaticResource AddMealVM}"
-        Height="600" 
+        DataContext="{StaticResource SleepTrackerVM}"
+        Height="620" 
         Width="400"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
@@ -38,7 +38,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding CancelCommand}"
-                                               CommandParameter="{Binding ElementName=AddMealWindow}"></i:InvokeCommandAction>
+                                               CommandParameter="{Binding ElementName=SleepTrackerWD}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
@@ -56,8 +56,8 @@
                     Text="Confirm" />
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding AddMealCommand}"
-                                               CommandParameter="{Binding ElementName=AddMealWindow}"></i:InvokeCommandAction>
+                        <i:InvokeCommandAction Command="{Binding ConfirmCommand}"
+                                               CommandParameter="{Binding ElementName=SleepTrackerWD}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
@@ -80,59 +80,46 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
+            </Grid.RowDefinitions>
 
-                <Grid              
+            <Grid              
                     Width="400"              
                     Height="50"
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0" >
-                        <materialDesign:PackIcon 
-                            Kind="StoreClock"
-                            Foreground="{StaticResource LightBlackColor}"
-                            Width="33" 
-                            Height="33" 
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"
-                            VerticalAlignment="Bottom"  />
-                    </Grid>
-                    <ComboBox
-                        Grid.Column="1"
-                        x:Name="MealTime"
-                        SelectedValuePath="Content"
-                        SelectedValue="{Binding MealTimeVM}"
-                        Margin="0" 
-                        Width="250"
-                        Height="50" 
-                        HorizontalAlignment="Left" 
-                        materialDesign:ColorZoneAssist.Mode="SecondaryLight"
-                        materialDesign:HintAssist.Hint="Meal Time"
-                        materialDesign:TextFieldAssist.HasClearButton="True"
-                        materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryColor}"
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                        FontSize="16" 
-                        TabIndex="1" 
-                        VerticalAlignment="Center"
-                        FontWeight="Medium" >
-                        <ComboBoxItem
-                            Content="Breakfast" />
-                        <ComboBoxItem
-                            Content="Dinner" />
-                        <ComboBoxItem
-                            Content="Snack" />
-                        <ComboBoxItem
-                            Content="Brunch" />
-                        <ComboBoxItem
-                            Content="Supper" />
-                    </ComboBox>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" >
+                    <Icon:PackIconMaterial 
+                        Kind="ArchiveClock"
+                        Foreground="{StaticResource LightBlackColor}"
+                        Width="33" 
+                        Height="33" 
+                        HorizontalAlignment="Right"
+                        Margin="0,0,15,0"
+                        VerticalAlignment="Center"  />
                 </Grid>
-
-                <Grid 
+                <materialDesign:TimePicker
+                    Grid.Column="1"
+                    x:Name="StartTime"
+                    materialDesign:HintAssist.Hint="Start Time"
+                    SelectedTime="{Binding StartTimeVM}"
+                    Margin="0" 
+                    Width="250"
+                    Height="50"
+                    HorizontalAlignment="Left" 
+                    Is24Hours="True"
+                    FontSize="16" 
+                    BorderBrush="{StaticResource PrimaryColor}" 
+                    TabIndex="1" 
+                    VerticalAlignment="Center"
+                    FontWeight="Medium" 
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"  />
+            </Grid>
+            <Grid 
                     Grid.Row="1"
                     Width="400"
                     Height="50"
@@ -143,32 +130,31 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
-                        <Icon:PackIconFontAwesome 
-                            Kind="UtensilsSolid"
-                            Foreground="{StaticResource LightBlackColor}"
-                            Width="30" 
-                            Height="30" 
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"
-                            VerticalAlignment="Center"  />
+                    <Icon:PackIconVaadinIcons 
+                        Kind="Calendar"
+                        Foreground="{StaticResource LightBlackColor}"
+                        Width="30" 
+                        Height="30" 
+                        HorizontalAlignment="Right"
+                        Margin="0,0,15,0"
+                        VerticalAlignment="Center"  />
                     </Grid>
-                    <TextBox
-                        Grid.Column="1"
-                        x:Name="MealName"
-                        Text="{Binding MealNameVM}"
-                        materialDesign:HintAssist.Hint="Meal Name" 
-                        Margin="0" 
-                        Width="250"
-                        Height="50" 
-                        HorizontalAlignment="Left" 
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        FontSize="16" 
-                        BorderBrush="{StaticResource PrimaryColor}"
-                        TabIndex="1" 
-                        VerticalAlignment="Center"
-                        CaretBrush="{StaticResource PrimaryColor}"
-                        FontWeight="Medium" />
-                </Grid>
+                <DatePicker
+                    Grid.Column="1"
+                    x:Name="StartDay"
+                    SelectedDate="{Binding StartDayVM}"
+                    materialDesign:HintAssist.Hint="Start Day (Month/Day/Year)"
+                    Width="250"
+                    Height="50"
+                    HorizontalAlignment="Left" 
+                    FontSize="16" 
+                    BorderBrush="{StaticResource PrimaryColor}" 
+                    TabIndex="1" 
+                    VerticalAlignment="Center"
+                    FontWeight="Medium" 
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            </Grid>
 
                 <Grid 
                     Grid.Row="2"
@@ -181,32 +167,33 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
-                        <Icon:PackIconModern 
-                            Kind="CalendarDay"
-                            Foreground="{StaticResource LightBlackColor}"
-                            Width="30" 
-                            Height="30" 
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"
-                            VerticalAlignment="Center"  />
+                    <Icon:PackIconMaterial 
+                        Kind="ArchiveClock"
+                        Foreground="{StaticResource LightBlackColor}"
+                        Width="30" 
+                        Height="30" 
+                        HorizontalAlignment="Right"
+                        Margin="0,0,15,0"
+                        VerticalAlignment="Center"  />
                     </Grid>
-                    <DatePicker
-                        Grid.Column="1"
-                        x:Name="Day" 
-                        SelectedDate="{Binding DayVM}"
-                        materialDesign:HintAssist.Hint="Day (Month/Day/Year)" 
-                        Margin="0" 
-                        Width="250"
-                        Height="50"
-                        HorizontalAlignment="Left" 
-                        FontSize="16" 
-                        BorderBrush="{StaticResource PrimaryColor}" 
-                        TabIndex="1" 
-                        VerticalAlignment="Center"
-                        FontWeight="Medium" 
-                        materialDesign:TextFieldAssist.HasClearButton="True"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                </Grid>
+                <materialDesign:TimePicker
+                    Grid.Column="1"
+                    x:Name="EndTime"
+                    materialDesign:HintAssist.Hint="End Time"
+                    SelectedTime="{Binding EndTimeVM}"
+                    Margin="0" 
+                    Width="250"
+                    Height="50"
+                    HorizontalAlignment="Left" 
+                    Is24Hours="True"
+                    FontSize="16" 
+                    BorderBrush="{StaticResource PrimaryColor}" 
+                    TabIndex="1" 
+                    VerticalAlignment="Center"
+                    FontWeight="Medium"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"  />
+            </Grid>
 
                 <Grid 
                     Grid.Row="3"
@@ -219,8 +206,8 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
-                        <Icon:PackIconVaadinIcons 
-                            Kind="Cubes"
+                    <Icon:PackIconVaadinIcons 
+                        Kind="Calendar"
                             Foreground="{StaticResource LightBlackColor}"
                             Width="33" 
                             Height="33" 
@@ -228,64 +215,25 @@
                             Margin="0,0,15,0"
                             VerticalAlignment="Center"  />
                     </Grid>
-                    <TextBox
-                        Grid.Column="1"
-                        x:Name="Quantity"
-                        Text="{Binding QuantityVM}"
-                        materialDesign:HintAssist.Hint="Quantity" 
-                        Margin="0" 
-                        Width="250"
-                        Height="50" 
-                        HorizontalAlignment="Left" 
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        FontSize="16" 
-                        BorderBrush="{StaticResource PrimaryColor}"
-                        TabIndex="1" 
-                        VerticalAlignment="Center"
-                        CaretBrush="{StaticResource PrimaryColor}"
-                        FontWeight="Medium" />
-                </Grid>
-
-                <Grid 
-                    Grid.Row="4"
-                    Width="400"
+                <DatePicker
+                    Grid.Column="1"
+                    x:Name="EndDay"
+                    SelectedDate="{Binding EndDayVM}"
+                    materialDesign:HintAssist.Hint="End Day (Month/Day/Year)"
+                    Width="250"
                     Height="50"
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0" >
-                        <Icon:PackIconMaterial 
-                            Kind="WeightPound"
-                            Foreground="{StaticResource LightBlackColor}"
-                            Width="33" 
-                            Height="33" 
-                            HorizontalAlignment="Right"
-                            Margin="0,0,15,0"
-                            VerticalAlignment="Center"  />
-                    </Grid>
-                    <TextBox
-                        Grid.Column="1"
-                        x:Name="Unit"
-                        Text="{Binding UnitVM}"
-                        materialDesign:HintAssist.Hint="Unit" 
-                        Margin="0" 
-                        Width="250"
-                        Height="50" 
-                        HorizontalAlignment="Left" 
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        FontSize="16" 
-                        BorderBrush="{StaticResource PrimaryColor}"
-                        TabIndex="1" 
-                        VerticalAlignment="Center"
-                        CaretBrush="{StaticResource PrimaryColor}"
-                        FontWeight="Medium" />
-                </Grid>
+                    HorizontalAlignment="Left" 
+                    FontSize="16" 
+                    BorderBrush="{StaticResource PrimaryColor}" 
+                    TabIndex="1" 
+                    VerticalAlignment="Center"
+                    FontWeight="Medium" 
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            </Grid>
 
             <Grid 
-                    Grid.Row="5"
+                    Grid.Row="4"
                     Width="400"
                     Height="50"
                     HorizontalAlignment="Center" 
@@ -295,30 +243,94 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" >
-                    <Image
-                            Source="\Resources\Images\calories.jpg"
-                            Width="40" 
-                            Height="40" 
+                    <Icon:PackIconBoxIcons 
+                        Kind="RegularCategory"
+                            Foreground="{StaticResource LightBlackColor}"
+                            Width="33" 
+                            Height="33" 
                             HorizontalAlignment="Right"
                             Margin="0,0,15,0"
                             VerticalAlignment="Center"  />
                 </Grid>
-                <TextBox
-                        Grid.Column="1"
-                        x:Name="Calories"
-                        Text="{Binding CaloriesVM}"
-                        materialDesign:HintAssist.Hint="Calories" 
-                        Margin="0" 
-                        Width="250"
-                        Height="50" 
-                        HorizontalAlignment="Left" 
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        FontSize="16" 
-                        BorderBrush="{StaticResource PrimaryColor}"
-                        TabIndex="1" 
-                        VerticalAlignment="Center"
-                        CaretBrush="{StaticResource PrimaryColor}"
-                        FontWeight="Medium" />
+                <ComboBox
+                    Grid.Column="1"
+                    x:Name="Type"
+                    SelectedValuePath="Content"
+                    SelectedValue="{Binding TypeVM}"
+                    Margin="0" 
+                    Width="250"
+                    Height="50" 
+                    HorizontalAlignment="Left" 
+                    materialDesign:ColorZoneAssist.Mode="SecondaryLight"
+                    materialDesign:HintAssist.Hint="Type"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryColor}"
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                    FontSize="16" 
+                    TabIndex="1" 
+                    VerticalAlignment="Center"
+                    FontWeight="Medium" >
+                    <ComboBoxItem
+                        Content="Light Sleep" />
+                    <ComboBoxItem
+                        Content="Deep Sleep" />
+                    <ComboBoxItem
+                        Content="Rapid Eye Movement" />
+                    <ComboBoxItem
+                        Content="Adjustment Sleep" />
+                    <ComboBoxItem
+                        Content="Main Sleep" />
+                </ComboBox>
+            </Grid>
+
+            <Grid 
+                Grid.Row="5"
+                Width="400"
+                Height="50"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" >
+                    <Icon:PackIconForkAwesome Kind="ThumbsUp"
+                        Foreground="{StaticResource LightBlackColor}"
+                        Width="33" 
+                        Height="33" 
+                        HorizontalAlignment="Right"
+                        Margin="0,0,15,0"
+                        VerticalAlignment="Center"  />
+                </Grid>
+                <ComboBox
+                    Grid.Column="1"
+                    x:Name="Quality"
+                    SelectedValuePath="Content"
+                    SelectedValue="{Binding QualityVM}"
+                    Margin="0" 
+                    Width="250"
+                    Height="50" 
+                    HorizontalAlignment="Left" 
+                    materialDesign:ColorZoneAssist.Mode="SecondaryLight"
+                    materialDesign:HintAssist.Hint="Quality"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryColor}"
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                    FontSize="16" 
+                    TabIndex="1" 
+                    VerticalAlignment="Center"
+                    FontWeight="Medium" >
+                    <ComboBoxItem
+                        Content="Good" />
+                    <ComboBoxItem
+                        Content="Fair" />
+                    <ComboBoxItem
+                        Content="Poor" />
+                    <ComboBoxItem
+                        Content="Insufficient Sleep" />
+                    <ComboBoxItem
+                        Content="Sleep Disorder" />
+                </ComboBox>
             </Grid>
         </Grid>
     </Grid>

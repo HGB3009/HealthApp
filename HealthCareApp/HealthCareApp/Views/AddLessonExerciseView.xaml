@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthCareApp.Views"
         mc:Ignorable="d"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         FontFamily="Poppins" 
         DataContext="{StaticResource AddLessonExerciseVM}"
         Height="600" 
-        Width="580"
+        Width="450"
         Name="AddLesson"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
@@ -36,8 +37,29 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <Icon:PackIconMaterial 
+                    Kind="RenameBox"
+                    Foreground="{StaticResource LightBlackColor}"
+                    Width="30" 
+                    Height="30" 
+                    HorizontalAlignment="Right"
+                    Margin="0,10,15,0"
+                    VerticalAlignment="Center"  />
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="1">
+                <Icon:PackIconVaadinIcons Kind="Notebook"
+                    Foreground="{StaticResource LightBlackColor}"
+                    Width="30" 
+                    Height="30" 
+                    HorizontalAlignment="Right"
+                    Margin="0,10,15,0"
+                    VerticalAlignment="Center"  />
+            </Grid>
+
             <TextBox
                         Grid.Column="1"
                         x:Name="ExerciseName"
