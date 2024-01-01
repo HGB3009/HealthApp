@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:HealthCareApp.Views"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
-             Height="680"
+             Height="530"
              Width="1150"
              FontFamily="Poppins"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
