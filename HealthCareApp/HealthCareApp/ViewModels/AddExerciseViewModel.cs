@@ -142,7 +142,7 @@ namespace HealthCareApp.ViewModels
             {
                 client.DefaultRequestHeaders.Add("X-Api-Key", api_key);
 
-                var uri = new Uri($"{url}muscle={muscle}&type={type}&difficulty={difficulty}");
+                var uri = new Uri($"{url}name={name}&muscle={muscle}&type={type}&difficulty={difficulty}");
                 HttpResponseMessage response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
