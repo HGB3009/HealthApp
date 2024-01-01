@@ -10,7 +10,7 @@ using System.DirectoryServices.ActiveDirectory;
 
 namespace HealthCareApp.Models
 {
-    class Sleep
+    public class Sleep
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -42,33 +42,27 @@ namespace HealthCareApp.Models
                 
                 if (StartDay != EndDay)
                 {
-                    string SleepTime;
+                    string endtimestr = $"{EndDay} {EndTime}";
+                    string starttimestr = $"{StartDay} {StartTime}";
 
-                    DateTime endtime = DateTime.ParseExact(EndTime, "HH:mm", null);
-                    DateTime starttime = DateTime.ParseExact(StartTime, "HH:mm", null);
+                    DateTime endtime = DateTime.ParseExact(endtimestr, "dd/MM/yyyy HH:mm", null);
+                    DateTime starttime = DateTime.ParseExact(starttimestr, "dd/MM/yyyy HH:mm", null);
 
-                    DateTime midnight1 = new DateTime(24, 0, 0);
-                    DateTime midnight2 = new DateTime(0, 0, 0);
+                    TimeSpan sleepDuration = endtime - starttime;
+                    double hours = Math.Abs((int)sleepDuration.TotalHours);
+                    int minutes = Math.Abs(sleepDuration.Minutes);
 
-                    TimeSpan duration1 = midnight1 - starttime;
-                    TimeSpan duration2 = endtime - midnight2;
-
-                    TimeSpan totalDuration = duration1 + duration2;
-                    int hours = totalDuration.Hours;
-                    int minutes = totalDuration.Minutes;
-
-                    return ($"Sleep Time: {hours} hours {minutes} minutes");
+                    return ($"{hours} hours {minutes} minutes");
                 }
                 else
                 {
-                    string SleepTime;
                     DateTime endtime = DateTime.ParseExact(EndTime, "HH:mm", null);
                     DateTime starttime = DateTime.ParseExact(StartTime, "HH:mm", null);
                     TimeSpan sleepDuration = endtime - starttime;
-                    int hours = sleepDuration.Hours;
-                    int minutes = sleepDuration.Minutes;
+                    int hours = Math.Abs(sleepDuration.Hours);
+                    int minutes = Math.Abs(sleepDuration.Minutes);
 
-                    return($"Sleep Time: {hours} hours {minutes} minutes");
+                    return($"{hours} hours {minutes} minutes");
                 }
             }
         }
