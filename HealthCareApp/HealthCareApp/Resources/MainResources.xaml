@@ -14,6 +14,7 @@
     <viewmodels:SleepChartViewModel x:Key ="SleepChartVM"></viewmodels:SleepChartViewModel>
     <viewmodels:SleepHistoryViewModel x:Key ="SleepHistoryVM"></viewmodels:SleepHistoryViewModel>
     <viewmodels:SleepViewModel x:Key="SleepVM"></viewmodels:SleepViewModel>
+    <viewmodels:LessonViewModel x:Key="LessonVM"></viewmodels:LessonViewModel>
     <!--screen-->
     <viewmodels:SignInViewModel x:Key ="SignInVM"></viewmodels:SignInViewModel>
     <viewmodels:MainWindowViewModel x:Key="MainWindowVM"></viewmodels:MainWindowViewModel>

@@ -4,19 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"              
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HealthCareApp.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             Background="{DynamicResource MaterialDesignPaper}"
              mc:Ignorable="d"
              FontFamily="Poppins" 
              Height="680"
              Width="1150"
+             Name="FitnessScreen"
              DataContext="{StaticResource FitnessVM}">
     <Grid Background="{StaticResource BackGround}">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadWindowCommand}"
+                                       CommandParameter="{Binding ElementName=FitnessScreen}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="7*"></RowDefinition>
@@ -27,6 +35,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+
             <TextBlock Grid.Column="0" Grid.Row="0"
                        Text="Fitness Management" 
                        FontSize="35"
@@ -62,43 +71,15 @@
                     Content="Add Exercise"
                     Height="50"></Button>
         </Grid>
-        <materialDesign:Card Margin="15"
-                             Height="auto"
-                             Width="auto" 
-                             Grid.Row="1">
-            <DataGrid Name="ExerciseDataGrid" 
-                      Margin="5"
-                      AutoGenerateColumns="True"
-                      ItemsSource="{Binding ExerciseList}"
-                      Style="{DynamicResource DataGridStyle}"
-                      CellStyle="{DynamicResource DataGridCellStyle}"
-                      RowStyle="{DynamicResource DataGridRowStyle}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name"
-                                        IsReadOnly="True"
-                                        Binding="{Binding ExerciseName}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Type"
-                                        IsReadOnly="True"
-                                        Binding="{Binding ExerciseType}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Day Start"
-                                        IsReadOnly="True"
-                                        Binding="{Binding ExerciseDayStart}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Day End"
-                                        IsReadOnly="True"
-                                        Binding="{Binding ExerciseDayEnd}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Time"
-                                        IsReadOnly="True"
-                                        Binding="{Binding ExerciseTime}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Calories Burn"
-                                        IsReadOnly="True"
-                                        Binding="{Binding ExerciseCalories}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Equipment"
-                                        IsReadOnly="True"
-                                        Binding="{Binding ExerciseEquipment}"></DataGridTextColumn>
-
-
-                </DataGrid.Columns>
-            </DataGrid>
-        </materialDesign:Card>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="14*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ContentControl x:Name="ContentView"
+                            Grid.Row="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"></ContentControl>
+        </Grid>
     </Grid>
 </UserControl>

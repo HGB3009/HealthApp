@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="HealthCareApp.Views.LessonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:HealthCareApp.Views"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             FontFamily="Poppin"
+             DataContext="{StaticResource LessonVM}">
+    <Grid>
+        <materialDesign:Card>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="11*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button
+                        HorizontalAlignment="Left"
+                        Margin="10,0"
+                        Width="100"
+                        Command="{Binding RefreshBtnCommand}"
+                        materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                        materialDesign:ButtonProgressAssist.Value="-1"
+                        Content="Refresh"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFlatButton}" />
+
+                <DataGrid 
+                x:Name="exerciseDataGrid"
+                Margin="0"
+                ItemsSource="{Binding ExerciseList}"
+                AutoGenerateColumns="False"
+                Style="{DynamicResource DataGridStyle}"
+                CellStyle="{DynamicResource DataGridCellStyle}"
+                RowStyle="{DynamicResource DataGridRowStyle}"
+                Grid.Row="1">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                        Header="Name"
+                        IsReadOnly="True"
+                        Width="130"
+                        Binding="{Binding ExerciseName}" />
+                        <DataGridTextColumn 
+                         Header="Type"
+                         IsReadOnly="True"
+                         Width="*"
+                         Binding="{Binding ExerciseType}" />
+                        <DataGridTextColumn 
+                         Header="Time Start" 
+                         IsReadOnly="True" 
+                         Width="140"
+                         Binding="{Binding ExerciseTimeStart}" />
+                        <DataGridTextColumn 
+                         Header="Time End"
+                         IsReadOnly="True"
+                         Width="130"
+                         Binding="{Binding ExerciseTimeEnd}"/>
+                        <DataGridTextColumn 
+                         Header="Day"
+                         IsReadOnly="True"
+                         Width="130"
+                         Binding="{Binding ExerciseDay}"/>
+                        <DataGridTextColumn 
+                         Header="Equipment"
+                         IsReadOnly="True"
+                         Width="130"
+                         Binding="{Binding Equipment}"/>
+                        <DataGridTextColumn 
+                         Header="Calories"
+                         IsReadOnly="True"
+                         Width="130"
+                         Binding="{Binding Calories}"/>
+                        <DataGridTemplateColumn 
+                         Header="Delete" 
+                         IsReadOnly="True"
+                         Width="180" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button 
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Command="{Binding DataContext.DeleteExerciseCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                         CommandParameter="{Binding}"
+                                         Style="{StaticResource MyRedButtonStyle}">
+                                        <Icon:PackIconIonicons 
+                                            Kind="TrashMD" 
+                                            Width="14"
+                                            Height="14"
+                                            VerticalAlignment="Center" />
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </materialDesign:Card>
+
+    </Grid>
+</UserControl>
