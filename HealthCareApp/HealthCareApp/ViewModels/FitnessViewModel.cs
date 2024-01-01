@@ -14,12 +14,15 @@ namespace HealthCareApp.ViewModels
         public ICommand CalculateCaloriesCommand { get; set; }
         public ICommand TrainingBtnCommand { get; set; }
         public ICommand AddExerciseCommand { get; set; }
+        public ICommand LoadWindowCommand {  get; set; }
 
-        public FitnessViewModel() 
+        public object currentView;
+        public object CurrentView { get { return currentView; } set { currentView = value; OnPropertyChanged(nameof(CurrentView)); } }
+        public FitnessViewModel()
         {
-            CalculateCaloriesCommand=new RelayCommand<object>((p) => { return true; }, (p) =>
+            CalculateCaloriesCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                ExerciseCaloriesView window= new ExerciseCaloriesView();
+                ExerciseCaloriesView window = new ExerciseCaloriesView();
                 window.ShowDialog();
             });
             TrainingBtnCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -32,7 +35,8 @@ namespace HealthCareApp.ViewModels
                 AddLessonExerciseView window = new AddLessonExerciseView();
                 window.ShowDialog();
             });
+            CurrentView = new LessonView();
         }
-
+       
     }
 }

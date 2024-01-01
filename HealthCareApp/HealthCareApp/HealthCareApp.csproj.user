@@ -46,6 +46,9 @@
     <Compile Update="Views\ForgotPasswordView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\LessonView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\MainWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -83,6 +86,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\SymtompCheckerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\TrainingView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UpdateInformationView.xaml.cs">
@@ -138,6 +144,9 @@
     <Page Update="Views\ForgotPasswordView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\LessonView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\MainWindowView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -175,6 +184,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SymtompCheckerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TrainingView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UpdateInformationView.xaml">

@@ -88,53 +88,58 @@
                             Content="strongman" />
             </ComboBox>
             <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-                <DatePicker
-                        x:Name="DayStart" 
-                        SelectedDate="{Binding DayStart}"
-                        materialDesign:HintAssist.Hint="Day Start" 
-                        Margin="0" 
-                        Width="150"
-                        Height="50"
-                        HorizontalAlignment="Left" 
-                        FontSize="16" 
-                        BorderBrush="{StaticResource PrimaryColor}" 
-                        TabIndex="1" 
-                        VerticalAlignment="Center"
-                        FontWeight="Medium" 
-                        materialDesign:TextFieldAssist.HasClearButton="True"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                <DatePicker
-                        x:Name="DayEnd" 
-                        Margin="15,0,0,0"
-                        SelectedDate="{Binding DayEnd}"
-                        materialDesign:HintAssist.Hint="Day End" 
-                        Width="150"
-                        Height="50"
-                        HorizontalAlignment="Left" 
-                        FontSize="16" 
-                        BorderBrush="{StaticResource PrimaryColor}" 
-                        TabIndex="1" 
-                        VerticalAlignment="Center"
-                        FontWeight="Medium" 
-                        materialDesign:TextFieldAssist.HasClearButton="True"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
+                <materialDesign:TimePicker
+                    x:Name="TimeStart" 
+                    SelectedTime="{Binding TimeStart}"
+                    materialDesign:HintAssist.Hint="Time Start" 
+                    Margin="0" 
+                    Width="150"
+                    Height="50"
+                    HorizontalAlignment="Left" 
+                    FontSize="16" 
+                    BorderBrush="{StaticResource PrimaryColor}" 
+                    TabIndex="1" 
+                    VerticalAlignment="Center"
+                    FontWeight="Medium"
+                    materialDesign:TextFieldAssist.HasClearButton="True"  
+                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}">
+                </materialDesign:TimePicker>
+
+                <materialDesign:TimePicker
+                    x:Name="TimeEnd" 
+                    SelectedTime="{Binding TimeEnd}"
+                    materialDesign:HintAssist.Hint="Time End" 
+                    Margin="15,0,0,0" 
+                    Width="150"
+                    Height="50"
+                    HorizontalAlignment="Left" 
+                    FontSize="16" 
+                    BorderBrush="{StaticResource PrimaryColor}" 
+                    TabIndex="1" 
+                    VerticalAlignment="Center"
+                    FontWeight="Medium"
+                    materialDesign:TextFieldAssist.HasClearButton="True"  
+                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}">
+                </materialDesign:TimePicker>
             </StackPanel>
-            <TextBox
-                 Grid.Column="1" Grid.Row="3"
-                 x:Name="LengthTime"
-                 Text="{Binding TimeExercise}"
-                 materialDesign:HintAssist.Hint="Time" 
+            <DatePicker
+                 x:Name="DayConduct" 
+                 Grid.Row="3" Grid.Column="1"
+                 SelectedDate="{Binding DayExercise}"
+                 materialDesign:HintAssist.Hint="Day" 
                  Margin="0" 
                  Width="315"
-                 Height="50" 
+                 Height="50"
                  HorizontalAlignment="Left" 
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  FontSize="16" 
-                 BorderBrush="{StaticResource PrimaryColor}"
+                 BorderBrush="{StaticResource PrimaryColor}" 
                  TabIndex="1" 
                  VerticalAlignment="Center"
-                 CaretBrush="{StaticResource PrimaryColor}"
-                 FontWeight="Medium" />
+                 FontWeight="Medium"
+                 materialDesign:TextFieldAssist.HasClearButton="True"  
+                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+            </DatePicker>
+                
 
             <TextBox
                         Grid.Column="1"

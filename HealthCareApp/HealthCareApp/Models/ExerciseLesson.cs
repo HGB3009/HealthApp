@@ -22,14 +22,14 @@ namespace HealthCareApp.Models
 
         [BsonElement("ExerciseType")]
         public string ExerciseType{ get; set; }
-        [BsonElement("DayStart")]
-        public DateTime? ExerciseDayStart { get; set; }
+        [BsonElement("TimeStart")]
+        public TimeSpan? ExerciseTimeStart { get; set; }
 
-        [BsonElement("DayEnd")]
-        public DateTime? ExerciseDayEnd { get; set; }
+        [BsonElement("TimeEnd")]
+        public TimeSpan? ExerciseTimeEnd { get; set; }
 
-        [BsonElement("ExerciseTime")]
-        public string ExerciseTime { get; set; }
+        [BsonElement("ExerciseDay")]
+        public string ExerciseDay { get; set; }
 
         [BsonElement("Equipment")]
         public string Equipment { get; set; }
