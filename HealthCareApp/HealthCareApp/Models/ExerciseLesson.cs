@@ -23,10 +23,10 @@ namespace HealthCareApp.Models
         [BsonElement("ExerciseType")]
         public string ExerciseType{ get; set; }
         [BsonElement("DayStart")]
-        public DateTime DayStart { get; set; }
+        public DateTime? ExerciseDayStart { get; set; }
 
         [BsonElement("DayEnd")]
-        public DateTime DayEnd { get; set; }
+        public DateTime? ExerciseDayEnd { get; set; }
 
         [BsonElement("ExerciseTime")]
         public string ExerciseTime { get; set; }
@@ -34,6 +34,6 @@ namespace HealthCareApp.Models
         [BsonElement("Equipment")]
         public string Equipment { get; set; }
         [BsonElement("Calories")]
-        public double Calories { get; set; }
+        public string Calories { get; set; }
     }
 }
