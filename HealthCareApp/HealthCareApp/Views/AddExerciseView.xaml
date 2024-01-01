@@ -119,14 +119,6 @@
                 CommandParameter="{Binding ElementName=CardExercise}"
                 Style="{StaticResource MyPrimaryButtonStyle}"></Button>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Height="50"
-                    Width="150"
-                    Grid.Row="4"
-                    Margin="10"
-                    HorizontalAlignment="Right"
-                    Content="Add Exercise"
-                    Command="{Binding AddExerciseBtnCommand}"
-                    Style="{StaticResource MyPrimaryButtonStyle}"></Button>
 
             <Button Height="50"
                     Width="150"
