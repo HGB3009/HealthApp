@@ -60,7 +60,7 @@ namespace HealthCareApp.ViewModels
                     ExerciseTimeStart = TimeStart.Value.TimeOfDay,
                     ExerciseDay = DayExercise.Value.ToString("dd/MM/yyyy"),
                     Equipment = EquipmentExercise,
-                    Calories = CaloriesExercise,
+                    Calories = Double.Parse(CaloriesExercise),
                 };
                 _ExerciseCollection.InsertOne(newLesson);
                 MessageBox.Show("Add exercise lesson successful!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);

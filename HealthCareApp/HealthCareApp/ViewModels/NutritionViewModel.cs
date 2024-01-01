@@ -233,6 +233,7 @@ namespace HealthCareApp.ViewModels
             }
 
             var meals = _nutritionCollection.Find(finalFilter).ToList();
+
             MealList = new ObservableCollection<Nutrition>(meals);
         }
         public void EditMeal(Nutrition meal)
