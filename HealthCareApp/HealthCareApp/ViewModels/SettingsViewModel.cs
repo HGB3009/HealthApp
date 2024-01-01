@@ -179,6 +179,17 @@ namespace HealthCareApp.ViewModels
             }
             
         }
+        private void ReloadWindow()
+        {
+            var mainWindow = App.Current.MainWindow;
+            App.Current.MainWindow = null;
+            var newMainWindow = new MainWindowView(1);
+            App.Current.MainWindow = newMainWindow;
+
+            newMainWindow.Show();
+            mainWindow.Close();
+        }
+
 
         private void OnMainWindowReloadRequested()
         {
@@ -215,7 +226,8 @@ namespace HealthCareApp.ViewModels
                     var updateDefinition = Builders<UserInformation>.Update.Set(u => u.Avatar, AvatarVM);
 
                     _userinfoCollection.UpdateOne(filter, updateDefinition);
-                    
+                    _LoadWindow(parameter);
+                    ReloadWindow();
                 }
             }
             catch (Exception ex)

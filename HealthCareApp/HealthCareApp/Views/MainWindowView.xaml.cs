@@ -23,5 +23,9 @@ namespace HealthCareApp.Views
         {
             InitializeComponent();
         }
+        public MainWindowView(int i)
+        {
+            InitializeComponent();
+        }
     }
 }

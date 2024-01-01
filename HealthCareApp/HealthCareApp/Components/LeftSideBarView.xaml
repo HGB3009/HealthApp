@@ -54,8 +54,7 @@
                 Command="{Binding MenuFieldCommand}"
                 x:Name="MainMenuNavigationBtn"
                 Style="{StaticResource BtnStyle}"
-                GroupName="ButtonGroup"
-                IsChecked="true">
+                GroupName="ButtonGroup">
                 <Border Padding="20">
                     <Grid>
                         <Grid.ColumnDefinitions>

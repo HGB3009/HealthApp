@@ -63,66 +63,193 @@
 
 
         <Grid 
-            Grid.Row="1"
-            Margin="20 0 10 0">
+    Grid.Row="1"
+
+    Background="{StaticResource White}"
+    Margin="20 0 10 0 ">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
+                <ComboBox
+            x:Name="ViewBy"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding ViewByVM}"
+            Width="180"
+            FontSize="17"
+            materialDesign:HintAssist.Hint="View by"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByChangeCM}"
+                                           CommandParameter="{Binding ElementName=SleepScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBoxItem Content="Day"/>
+                    <ComboBoxItem Content="Month"/>
+                    <ComboBoxItem Content="Year"/>
+                </ComboBox>
 
-                <Grid 
-                    Margin="0 10 0 0">
-                    <RadioButton
-                        x:Name="SleepChartShowBtn"
-                        Style="{StaticResource RadioBtnStyle}"
-                        GroupName="Sleep"
-                        IsChecked="true"
-                        Command="{Binding ChartShowCommand}">
-                        <TextBlock 
-                                Text="Sleep Chart" 
-                                Foreground="#49454F" 
-                                FontSize="18" 
-                                FontWeight="DemiBold"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                    </RadioButton>
-                </Grid>
 
-                <Grid 
-                    Grid.Column="1"
-                    Margin="0 10 0 0">
-                    <RadioButton
-                        x:Name="HistorySleepChartShowBtn"
-                        Style="{StaticResource RadioBtnStyle}"
-                        GroupName="Sleep"
-                        Command="{Binding HistoryCommand}">
-                        <Border>
-                            <TextBlock>
-                                <TextBlock 
-                                    Margin="37 13 0 0"
-                                    Text="History" 
-                                    Foreground="#49454F" 
-                                    FontSize="18" 
-                                    FontWeight="DemiBold"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
-                            </TextBlock>
-                        </Border>
-                    </RadioButton>
+                <ComboBox
+            Grid.Column="1"
+            x:Name="ChooseMonth"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding ViewByMonthVM}"
+            FontSize="17"
+            Width="180"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Choose Month"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByMonthChangeCM}"
+                       CommandParameter="{Binding ElementName=SleepScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                    <ComboBoxItem Content="6"/>
+                    <ComboBoxItem Content="7"/>
+                    <ComboBoxItem Content="8"/>
+                    <ComboBoxItem Content="9"/>
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem Content="11"/>
+                    <ComboBoxItem Content="12"/>
+                </ComboBox>
+
+                <ComboBox
+            Grid.Column="1"
+            x:Name="ChooseYear"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding ViewByYearVM}"
+            FontSize="17"
+            Width="180"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Choose Year"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByYearChangeCM}"
+                                           CommandParameter="{Binding ElementName=SleepScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBoxItem Content="2020"/>
+                    <ComboBoxItem Content="2021"/>
+                    <ComboBoxItem Content="2022"/>
+                    <ComboBoxItem Content="2023"/>
+                    <ComboBoxItem Content="2024"/>
+                    <ComboBoxItem Content="2025"/>
+                    <ComboBoxItem Content="2026"/>
+                </ComboBox>
+
+                <DatePicker
+            Grid.Column="1"
+            x:Name ="ChooseDay"
+            SelectedDate="{Binding ViewByDayVM}"
+            FontSize="17"
+            Width="180"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Pick Date"
+            Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="CalendarClosed">
+                            <i:InvokeCommandAction Command="{Binding ViewByDayChangeCM}"
+                       CommandParameter="{Binding ElementName=SleepScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </DatePicker>
+            </Grid>
+            <Grid 
+        Grid.Row="1"
+        Background="White">
+                    <DataGrid x:Name="mealDataGrid"
+                              Margin="1"
+                              ItemsSource="{Binding SleepList}"
+                              AutoGenerateColumns="False"
+                              Style="{DynamicResource DataGridStyle}"
+                              CellStyle="{DynamicResource DataGridCellStyle}"
+                              RowStyle="{DynamicResource DataGridRowStyle}"
+                  Grid.Row="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn 
+                                Header="Type"
+                                IsReadOnly="True"
+                                Width="180"
+                                Binding="{Binding Type}"/>
+                            <DataGridTextColumn 
+                                Header="Start Day"
+                                IsReadOnly="True"
+                                Width="130"
+                                Binding="{Binding StartDay}" />
+                            <DataGridTextColumn 
+                                Header="Start Time"
+                                IsReadOnly="True"
+                                Width="130"
+                                Binding="{Binding StartTime}" />
+                            <DataGridTextColumn 
+                                Header="End Day" 
+                                IsReadOnly="True" 
+                                Width="130"
+                                Binding="{Binding EndDay}" />
+                            <DataGridTextColumn 
+                                Header="End Time"
+                                IsReadOnly="True"
+                                Width="130"
+                                Binding="{Binding EndTime}" />
+                            <DataGridTextColumn 
+                                Header="Quality"
+                                IsReadOnly="True"
+                                Width="150"
+                                Binding="{Binding Quality}"/>
+                            <DataGridTextColumn 
+                                Header="Sleep Duration"
+                                IsReadOnly="True"
+                                Width="*"
+                                Binding="{Binding SleepTime}"/>
+                            <DataGridTemplateColumn 
+                                Header="Actions" 
+                                IsReadOnly="True"
+                                Width="100" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel x:Name="subMenuGrid"
+                                        Orientation="Horizontal" 
+                                        Visibility="Visible" 
+                                        HorizontalAlignment="Left"
+                                        Background="Transparent">
+                                            <Button 
+                                                HorizontalAlignment="Center"
+                                                Margin="10"
+                                                Command="{Binding DataContext.DeleteSleepCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                                CommandParameter="{Binding}"
+                                                Style="{StaticResource MyRedButtonStyle}">
+                                                <Icon:PackIconIonicons Kind="TrashMD" 
+                                                                       Width="14"
+                                                                       Height="14"
+                                                                       VerticalAlignment="Center" />
+
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </Grid>
-
-            <ContentControl 
-                x:Name="Content"
-                Content="{Binding CurrentView}"
-                Grid.Row="1" />
         </Grid>
-    </Grid>
 </UserControl>

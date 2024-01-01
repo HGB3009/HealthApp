@@ -11,8 +11,6 @@
     <viewmodels:DiagnosisViewModel x:Key="DiagnosisVM"></viewmodels:DiagnosisViewModel>
     <viewmodels:LeftSideBarViewModel x:Key="LeftSideBarVM"></viewmodels:LeftSideBarViewModel>
     <viewmodels:UserInformationViewModel x:Key ="UserInfoVM"></viewmodels:UserInformationViewModel>
-    <viewmodels:SleepChartViewModel x:Key ="SleepChartVM"></viewmodels:SleepChartViewModel>
-    <viewmodels:SleepHistoryViewModel x:Key ="SleepHistoryVM"></viewmodels:SleepHistoryViewModel>
     <viewmodels:SleepViewModel x:Key="SleepVM"></viewmodels:SleepViewModel>
     <viewmodels:LessonViewModel x:Key="LessonVM"></viewmodels:LessonViewModel>
     <!--screen-->
