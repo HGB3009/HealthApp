@@ -165,6 +165,8 @@
                         <ComboBoxItem
                             Content="Breakfast" />
                         <ComboBoxItem
+                            Content="Lunch" />
+                        <ComboBoxItem
                             Content="Dinner" />
                         <ComboBoxItem
                             Content="Snack" />
