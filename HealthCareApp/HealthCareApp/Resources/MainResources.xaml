@@ -34,4 +34,5 @@
     <viewmodels:RemindersDrinkViewModel x:Key="RemindersDrinkVM"></viewmodels:RemindersDrinkViewModel>
     <viewmodels:RemindersMealViewModel x:Key="RemindersMealVM"></viewmodels:RemindersMealViewModel>
     <viewmodels:RemindersDoctorViewModel x:Key="RemindersDrVM"></viewmodels:RemindersDoctorViewModel>
+    <viewmodels:UpdateBodyViewModel x:Key="UpdateBodyVM"></viewmodels:UpdateBodyViewModel>
 </ResourceDictionary> 

@@ -34,7 +34,6 @@
             </Grid.ColumnDefinitions>
 
             <Border
-                Grid.Row="1"
                 Background="LightCyan"
                 BorderBrush="{StaticResource LightBlackColor}"
                 CornerRadius="20"
@@ -179,6 +178,80 @@
                     </Grid>
                 </Grid>
             </Border>
+
+            <Border 
+                Grid.Column="1"
+                Background="DarkOrange"
+                BorderBrush="{StaticResource LightBlackColor}"
+                CornerRadius="20"
+                Margin="15 10 10 10">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Text="The last sleep duration:"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Margin="10 0 0 0"
+                            Foreground="White"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"/>
+                        <Grid Grid.Column="1"
+                              Height="40"
+                              Width="40"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Top"
+                              Margin="0 5 5 0">
+                            <Ellipse 
+                                Fill="White"/>
+                            <Icon:PackIconModern Kind="MoonSleep"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Width="25"
+                                                 Height="25"
+                                                 Foreground="Black"/>
+                        </Grid>
+                    </Grid>
+                    <TextBlock
+                        Grid.Row="1"
+                        Text="{Binding LastSleepDurationVM}"
+                        FontSize="29"
+                        FontWeight="Bold"
+                        Margin="10 0 0 0"
+                        Foreground="White"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <Button
+                Grid.Column="2"
+                Height="50"
+                Width="250"
+                Margin="0 20 10 0"
+                materialDesign:ButtonAssist.CornerRadius="5"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Top" 
+                Style="{StaticResource MyPrimaryButtonStyle}"
+                ToolTip="MaterialDesignRaisedLightButton with Round Corners">
+            <TextBlock
+                    Text="Update your weight and height" />
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding UpdateBodyCommand}"
+                                   CommandParameter="{Binding ElementName=MenuScreen}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            </Button>
+
         </Grid>
 
         <Grid Grid.Row="1">
@@ -187,7 +260,7 @@
                 <ColumnDefinition Width="1.75*"/>
             </Grid.ColumnDefinitions>
             <Border     
-                Grid.Row="1"
+                Grid.Column="0"
                 Background="{StaticResource White}"
                 BorderBrush="{StaticResource LightBlackColor}"
                 CornerRadius="20"
@@ -291,6 +364,20 @@
                             FontWeight="SemiBold" 
                             VerticalAlignment="Center"/>
                     </StackPanel>
+                </Grid>
+            </Border>
+            <Border     
+                Grid.Column="1"
+                Background="{StaticResource White}"
+                BorderBrush="{StaticResource LightBlackColor}"
+                CornerRadius="20"
+                Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="8*"/>
+                        <Gr
+                    </Grid.RowDefinitions>
                 </Grid>
             </Border>
         </Grid>

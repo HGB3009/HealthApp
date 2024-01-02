@@ -20,7 +20,6 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -227,42 +226,6 @@
         </Grid>
 
         <Grid Grid.Row="6">
-            <RadioButton 
-                Command="{Binding RemindersFieldCommand}"
-                x:Name="Reminder"
-                Style="{StaticResource BtnStyle}"
-                GroupName="ButtonGroup">
-                <Border Padding="20">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0" >
-                            <Icon:PackIconVaadinIcons 
-                                Kind="Alarm" 
-                                Foreground="{StaticResource LightBlackColor}"
-                                Width="30" 
-                                Height="30" 
-                                HorizontalAlignment="Left"
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center" />
-                        </Grid>
-                        <Grid Grid.Column="1" >
-                            <TextBlock 
-                                Text="Reminders" 
-                                Foreground="#49454F" 
-                                FontSize="22" 
-                                FontWeight="DemiBold"
-                                HorizontalAlignment="Left"           
-                                VerticalAlignment="Center"/>
-                        </Grid>
-                    </Grid>
-                </Border>
-            </RadioButton>
-        </Grid>
-
-        <Grid Grid.Row="7">
             <RadioButton 
                 Command="{Binding SettingFieldCommand}"
                 x:Name="Setting"

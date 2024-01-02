@@ -7,6 +7,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -16,6 +17,7 @@ namespace HealthCareApp.ViewModels
 {
     public class MenuViewModel:BaseViewModel
     {
+        private readonly IMongoCollection<Sleep> _sleepCollection;
         private readonly IMongoCollection<Nutrition> _nutritionCollection;
         private readonly IMongoCollection<ExerciseLesson> _ExerciseCollection;
         private readonly IMongoCollection<WaterPerDay> _waterperdayCollection;
@@ -53,8 +55,22 @@ namespace HealthCareApp.ViewModels
                 }
             }
         }
+        private string _lastsleepduration;
+        public string LastSleepDurationVM
+        {
+            get { return _lastsleepduration; }
+            set
+            {
+                if (_lastsleepduration != value)
+                {
+                    _lastsleepduration = value;
+                    OnPropertyChanged(nameof(LastSleepDurationVM));
+                }
+            }
+        }
         public ICommand InitPieChartCommand { get; set; }
         public ICommand InitWaterChartCommand { get; set; }
+        public ICommand UpdateBodyCommand { get; set; }
         public ICommand LoadWindowCommand { get; set; }
         public ICommand AddingWaterCommand { get; set; }
         public MenuViewModel() 
@@ -62,11 +78,36 @@ namespace HealthCareApp.ViewModels
             _nutritionCollection = GetMongoCollectionFromNutrition();
             _ExerciseCollection = GetMongoCollectionFromExerciseLesson();
             _waterperdayCollection = GetMongoCollectionFromWaterPerDay();
+            _sleepCollection = GetMongoCollectionFromSleep();
+
             InitPieChartCommand = new RelayCommand<MenuView>(parameter => true, parameter => InitPieChart(parameter));
             InitWaterChartCommand = new RelayCommand<MenuView>(parameter => true, parameter => InitWaterChart(parameter));
 
+            UpdateBodyCommand = new RelayCommand<MenuView>((p) => true, (p) => UpdateBodyCM(p));
             AddingWaterCommand = new RelayCommand<MenuView>((p) => true, (p) => AddingWaterCM(p));
             LoadWindowCommand = new RelayCommand<MenuView>((p) => true, (p) => _LoadWindow(p));
+        }
+        public void UpdateBodyCM(MenuView view)
+        {
+            UpdateBodyView updateBodyView = new UpdateBodyView();
+            view.Opacity = 0.5;
+            updateBodyView.ShowDialog();
+            view.Opacity = 1;
+            _LoadWindow(view);
+        }
+        public Sleep GetNearestSleep(List<Sleep> sleeps)
+        {
+            DateTime now = DateTime.Now;
+
+            Sleep nearestSleep = sleeps.OrderBy(sleep =>
+            {
+                DateTime sleepStartTime = DateTime.ParseExact(sleep.StartDay + " " + sleep.StartTime, "dd/MM/yyyy HH:mm", null);
+                DateTime sleepEndTime = DateTime.ParseExact(sleep.EndDay + " " + sleep.EndTime, "dd/MM/yyyy HH:mm", null);
+
+                return Math.Min(Math.Abs((now - sleepStartTime).TotalSeconds), Math.Abs((now - sleepEndTime).TotalSeconds));
+            }).FirstOrDefault();
+
+            return nearestSleep;
         }
         public void AddingWaterCM(MenuView view)
         {
@@ -77,7 +118,7 @@ namespace HealthCareApp.ViewModels
             var filter = Builders<WaterPerDay>.Filter.And(
                 Builders<WaterPerDay>.Filter.Eq(x => x.Username, username),
                 Builders<WaterPerDay>.Filter.Eq(x => x.Day, currentDay)
-    );
+            );
 
             var update = Builders<WaterPerDay>.Update.Inc(x => x.AmountOfWater, amount);
 
@@ -263,6 +304,10 @@ namespace HealthCareApp.ViewModels
                 TotalVM = User.AmountOfWater.ToString() + " L";
             }
 
+            var filter1 = Builders<Sleep>.Filter.Eq(x => x.Username, username);
+            var sleeps = _sleepCollection.Find(filter1).ToList();
+            var sleep = GetNearestSleep(sleeps);
+            LastSleepDurationVM = sleep.SleepTime;
         }
         private IMongoCollection<Nutrition> GetMongoCollectionFromNutrition()
         {
@@ -296,6 +341,17 @@ namespace HealthCareApp.ViewModels
             var database = client.GetDatabase(databaseName);
 
             return database.GetCollection<WaterPerDay>("WaterPerDay");
+        }
+        private IMongoCollection<Sleep> GetMongoCollectionFromSleep()
+        {
+            // Set your MongoDB connection string and database name
+            string connectionString = "mongodb+srv://HGB3009:HGB30092004@bao-database.xwrghva.mongodb.net/"; // Update with your MongoDB server details
+            string databaseName = "HealthcareManagementDatabase"; // Update with your database name
+
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+
+            return database.GetCollection<Sleep>("Sleep");
         }
     }
 }
