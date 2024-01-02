@@ -251,7 +251,7 @@ namespace HealthCareApp.ViewModels
                 _nutritionCollection.UpdateOne(filter, updateDefinition);
                 isEdit = true;
             }
-            int calories = int.Parse(CaloriesVM);
+            double calories = double.Parse(CaloriesVM);
             if (calories != meal.Calories)
             {
                 meal.Calories = calories;
