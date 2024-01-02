@@ -249,7 +249,7 @@
                         </Grid>
                         <Grid Grid.Column="1" >
                             <TextBlock 
-                                Text="Setting" 
+                                Text="Settings" 
                                 Foreground="#49454F" 
                                 FontSize="22" 
                                 FontWeight="DemiBold"

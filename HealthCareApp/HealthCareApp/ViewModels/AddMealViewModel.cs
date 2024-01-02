@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -129,7 +130,19 @@ namespace HealthCareApp.ViewModels
             _nutritionCollection = GetMongoCollectionFromNutrition();
             AddMealCommand = new RelayCommand<AddMealView>((p) => true, (p) => AddMealCM(p));
             BrowseImageCommand = new RelayCommand<AddMealView>(p => true, p => _BrowseImage(p));
-            CancelAddMealCommand = new RelayCommand<AddMealView>((p) => { return true; }, (p) => { p.Close(); });
+            CancelAddMealCommand = new RelayCommand<AddMealView>((p) => { return true; }, (p) => CancelCM(p));
+        }
+        public void CancelCM(AddMealView p)
+        {
+            MealNameVM = null;
+            MealTimeVM = null;
+            DayVM = null;
+            QuantityVM = null;
+            UnitVM = null;
+            CaloriesVM = null;
+            MealTimeVM = null;
+            p.loadedImage.Source = null;
+            p.Close();
         }
         public void AddMealCM(AddMealView parameter)
         {

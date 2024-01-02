@@ -5,7 +5,6 @@
     <!--usercontrol-->
     <viewmodels:MenuViewModel x:Key="MenuVM"></viewmodels:MenuViewModel>
     <viewmodels:SettingsViewModel x:Key="SettingsVM"></viewmodels:SettingsViewModel>
-    <viewmodels:FitnessViewModel x:Key="FitnessVM"></viewmodels:FitnessViewModel>
     <viewmodels:RemindersViewModel x:Key="RemindersVM"></viewmodels:RemindersViewModel>
     <viewmodels:NutritionViewModel x:Key="NutritionVM"></viewmodels:NutritionViewModel>
     <viewmodels:DiagnosisViewModel x:Key="DiagnosisVM"></viewmodels:DiagnosisViewModel>
@@ -13,6 +12,8 @@
     <viewmodels:UserInformationViewModel x:Key ="UserInfoVM"></viewmodels:UserInformationViewModel>
     <viewmodels:SleepViewModel x:Key="SleepVM"></viewmodels:SleepViewModel>
     <viewmodels:LessonViewModel x:Key="LessonVM"></viewmodels:LessonViewModel>
+    <viewmodels:AddLessonExerciseViewModel x:Key="AddLessonExerciseVM"></viewmodels:AddLessonExerciseViewModel>
+    <viewmodels:FitnessViewModel x:Key="FitnessVM"></viewmodels:FitnessViewModel>
     <!--screen-->
     <viewmodels:SignInViewModel x:Key ="SignInVM"></viewmodels:SignInViewModel>
     <viewmodels:MainWindowViewModel x:Key="MainWindowVM"></viewmodels:MainWindowViewModel>
@@ -30,9 +31,9 @@
     <viewmodels:AddExerciseViewModel x:Key="AddExerciseVM"></viewmodels:AddExerciseViewModel>
     <viewmodels:EditMealViewModel x:Key="EditMealVM"></viewmodels:EditMealViewModel>
     <viewmodels:SleepTrackerViewModel x:Key ="SleepTrackerVM"></viewmodels:SleepTrackerViewModel>
-    <viewmodels:AddLessonExerciseViewModel x:Key="AddLessonExerciseVM"></viewmodels:AddLessonExerciseViewModel>
     <viewmodels:RemindersDrinkViewModel x:Key="RemindersDrinkVM"></viewmodels:RemindersDrinkViewModel>
     <viewmodels:RemindersMealViewModel x:Key="RemindersMealVM"></viewmodels:RemindersMealViewModel>
     <viewmodels:RemindersDoctorViewModel x:Key="RemindersDrVM"></viewmodels:RemindersDoctorViewModel>
     <viewmodels:UpdateBodyViewModel x:Key="UpdateBodyVM"></viewmodels:UpdateBodyViewModel>
+    <viewmodels:EditExerciseListViewModel x:Key="EditEXVM"></viewmodels:EditExerciseListViewModel>
 </ResourceDictionary> 

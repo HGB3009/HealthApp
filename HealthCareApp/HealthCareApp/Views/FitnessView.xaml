@@ -1,4 +1,5 @@
 ﻿<UserControl x:Class="HealthCareApp.Views.FitnessView"
+             x:Name="FitnessScreen"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"              
@@ -16,9 +17,9 @@
              FontFamily="Poppins" 
              Height="680"
              Width="1150"
-             Name="FitnessScreen"
              DataContext="{StaticResource FitnessVM}">
-    <Grid Background="{StaticResource BackGround}">
+    <Grid Background="{StaticResource BackGround}"
+          Margin="0 0 10 0">
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="Loaded">
                 <i:InvokeCommandAction Command="{Binding LoadWindowCommand}"
@@ -46,6 +47,7 @@
             <Button Style="{StaticResource MyPrimaryButtonStyle}" 
                     Width="170"
                     Command="{Binding CalculateCaloriesCommand}"
+                    CommandParameter="{Binding ElementName=FitnessScreen}"
                     Grid.Column="1"
                     materialDesign:ButtonAssist.CornerRadius="5"
                     HorizontalAlignment="Center"
@@ -54,6 +56,7 @@
                     Height="50"></Button>
             <Button Style="{StaticResource MyBlueButtonStyle}"
                     Command="{Binding TrainingBtnCommand}"
+                    CommandParameter="{Binding ElementName=FitnessScreen}"
                     Width="170" 
                     Margin="0,0,10,0"
                     Grid.Column="0"
@@ -64,6 +67,7 @@
             <Button Style="{StaticResource MyOrangeButtonStyle}" 
                     Width="170"
                     Command="{Binding AddExerciseCommand}"
+                    CommandParameter="{Binding ElementName=FitnessScreen}"
                     Grid.Column="2"
                     materialDesign:ButtonAssist.CornerRadius="5"
                     HorizontalAlignment="Center"
@@ -71,15 +75,228 @@
                     Content="Add Exercise"
                     Height="50"></Button>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid 
+    Grid.Row="1"
+
+    Background="{StaticResource White}"
+    Margin="20 0 10 0 ">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="14*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
             </Grid.RowDefinitions>
-            <ContentControl x:Name="ContentView"
-                            Grid.Row="1"
-                            Margin="10"
-                            Content="{Binding CurrentView}"></ContentControl>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox
+            x:Name="ViewBy"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding ViewByVM}"
+            Width="180"
+            FontSize="17"
+            materialDesign:HintAssist.Hint="View by"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByChangeCM}"
+                                           CommandParameter="{Binding ElementName=FitnessScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBoxItem Content="Day"/>
+                    <ComboBoxItem Content="Month"/>
+                    <ComboBoxItem Content="Year"/>
+                </ComboBox>
+
+
+                <ComboBox
+            Grid.Column="1"
+            x:Name="ChooseMonth"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding ViewByMonthVM}"
+            FontSize="17"
+            Width="180"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Choose Month"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByMonthChangeCM}"
+                       CommandParameter="{Binding ElementName=FitnessScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                    <ComboBoxItem Content="6"/>
+                    <ComboBoxItem Content="7"/>
+                    <ComboBoxItem Content="8"/>
+                    <ComboBoxItem Content="9"/>
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem Content="11"/>
+                    <ComboBoxItem Content="12"/>
+                </ComboBox>
+
+                <ComboBox
+            Grid.Column="1"
+            x:Name="ChooseYear"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding ViewByYearVM}"
+            FontSize="17"
+            Width="180"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Choose Year"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ViewByYearChangeCM}"
+                                           CommandParameter="{Binding ElementName=FitnessScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <ComboBoxItem Content="2020"/>
+                    <ComboBoxItem Content="2021"/>
+                    <ComboBoxItem Content="2022"/>
+                    <ComboBoxItem Content="2023"/>
+                    <ComboBoxItem Content="2024"/>
+                    <ComboBoxItem Content="2025"/>
+                    <ComboBoxItem Content="2026"/>
+                </ComboBox>
+
+                <DatePicker
+            Grid.Column="1"
+            x:Name ="ChooseDay"
+            SelectedDate="{Binding ViewByDayVM}"
+            FontSize="17"
+            Width="180"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Pick Date"
+            Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="CalendarClosed">
+                            <i:InvokeCommandAction Command="{Binding ViewByDayChangeCM}"
+                       CommandParameter="{Binding ElementName=FitnessScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </DatePicker>
+
+
+                <TextBox
+            Grid.Column="2"
+            FontSize="17"
+            Width="350"    
+            x:Name="SreachExercise"
+            Text="{Binding SreachExerciseVM}"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="0 0 30 0"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            materialDesign:HintAssist.Hint="Sreach for the exercise name?"                    
+            Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding SreachExerciseCommand}"
+                       CommandParameter="{Binding ElementName=FitnessScreen}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+            </Grid>
+
+            <Grid 
+        Grid.Row="1"
+        Margin="20 0 0 0">
+                <DataGrid x:Name="mealDataGrid"
+                  Margin="1"
+                  ItemsSource="{Binding ExerciseList}"
+                  AutoGenerateColumns="False"
+                  Style="{DynamicResource DataGridStyle}"
+                  CellStyle="{DynamicResource DataGridCellStyle}"
+                  RowStyle="{DynamicResource DataGridRowStyle}"
+                  Grid.Row="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn 
+                            Header="Exercise Name"
+                            IsReadOnly="True"
+                            Width="*"
+                            Binding="{Binding ExerciseName}" />
+                        <DataGridTextColumn 
+                            Header="ExerciseType"
+                            IsReadOnly="True"
+                            Width="170"
+                            Binding="{Binding ExerciseType}" />
+                        <DataGridTextColumn 
+                            Header="Time Start" 
+                            IsReadOnly="True" 
+                            Width="140"
+                            Binding="{Binding ExerciseTimeStart}" />
+                        <DataGridTextColumn 
+                            Header="End Start"
+                            IsReadOnly="True"
+                            Width="130"
+                            Binding="{Binding ExerciseTimeEnd}"/>
+                        <DataGridTextColumn 
+                            Header="Exercise Day"
+                            IsReadOnly="True"
+                            Width="130"
+                            Binding="{Binding ExerciseDay}"/>
+                        <DataGridTextColumn 
+                            Header="Equipment"
+                            IsReadOnly="True"
+                            Width="150"
+                            Binding="{Binding Equipment}"/>
+                        <DataGridTextColumn 
+                            Header="Calories"
+                            IsReadOnly="True"
+                            Width="100"
+                            Binding="{Binding Calories}"/>
+                        <DataGridTemplateColumn 
+                            Header="Actions" 
+                            IsReadOnly="True"
+                            Width="140" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel x:Name="subMenuGrid"
+                                                Orientation="Horizontal" 
+                                                Visibility="Visible" 
+                                                HorizontalAlignment="Left"
+                                                Background="Transparent">
+                                        <Button 
+                                            HorizontalAlignment="Center"
+                                            Margin="3"
+                                            Command="{Binding DataContext.EditLessonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource MyBlueButtonStyle}">
+                                            <Icon:PackIconBoxIcons 
+                                                Kind="RegularEdit"
+                                                Width="14"
+                                                Height="14"
+                                                VerticalAlignment="Center" />
+                                        </Button>
+                                        <Button 
+                                            HorizontalAlignment="Center"
+                                            Margin="3"
+                                            Command="{Binding DataContext.DeleteLessonCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                            CommandParameter="{Binding}"
+                                            Style="{StaticResource MyRedButtonStyle}">
+                                            <Icon:PackIconIonicons Kind="TrashMD" 
+                                                                   Width="14"
+                                                                   Height="14"
+                                                                   VerticalAlignment="Center" />
+
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

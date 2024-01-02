@@ -233,7 +233,6 @@ namespace HealthCareApp.ViewModels
         {
             List<string> list = new List<string>();
             list.Add("cardio");
-            list.Add("cardioolympic_weightlifting");
             list.Add("plyometrics");
             list.Add("powerlifting");
             list.Add("strength");
