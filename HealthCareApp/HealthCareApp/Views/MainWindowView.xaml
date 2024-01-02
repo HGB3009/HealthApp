@@ -19,10 +19,11 @@
     <Grid Background="{StaticResource BackGround}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1160*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        
-        <components:LeftSideBarView></components:LeftSideBarView>
+
+        <components:LeftSideBarView Margin="0,12,0,12"></components:LeftSideBarView>
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>

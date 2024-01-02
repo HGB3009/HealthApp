@@ -10,14 +10,18 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace HealthCareApp.ViewModels
 {
     public class MenuViewModel:BaseViewModel
     {
         private readonly IMongoCollection<Sleep> _sleepCollection;
+        private readonly IMongoCollection<UserInformation> _userinfoCollection;
         private readonly IMongoCollection<Nutrition> _nutritionCollection;
         private readonly IMongoCollection<ExerciseLesson> _ExerciseCollection;
         private readonly IMongoCollection<WaterPerDay> _waterperdayCollection;
@@ -68,6 +72,68 @@ namespace HealthCareApp.ViewModels
                 }
             }
         }
+        private string _bodyweight;
+        public string WeightVM
+        {
+            get { return _bodyweight; }
+            set
+            {
+                if (_bodyweight != value)
+                {
+                    _bodyweight = value;
+                    OnPropertyChanged(nameof(WeightVM));
+                }
+            }
+        }
+        private string _bodyheight;
+        public string HeightVM
+        {
+            get { return _bodyheight; }
+            set
+            {
+                if (_bodyheight != value)
+                {
+                    _bodyheight = value;
+                    OnPropertyChanged(nameof(HeightVM));
+                }
+            }
+        }
+        private string _bmi;
+        public string BMIVM
+        {
+            get { return _bmi; }
+            set
+            {
+                if (_bmi != value)
+                {
+                    _bmi = value;
+                    OnPropertyChanged(nameof(BMIVM));
+                }
+            }
+        }
+        private string _bodycontiditon;
+        public string BodyConditionVM
+        {
+            get { return _bodycontiditon; }
+            set
+            {
+                if (_bodycontiditon != value)
+                {
+                    _bodycontiditon = value;
+                    OnPropertyChanged(nameof(BodyConditionVM));
+                }
+            }
+        }
+        private BitmapImage _bodyconditionImage;
+        public BitmapImage BodyConditionImageVM
+        {
+            get => _bodyconditionImage;
+            set
+            {
+                _bodyconditionImage = value;
+                OnPropertyChanged(nameof(BodyConditionImageVM));
+            }
+        }
         public ICommand InitPieChartCommand { get; set; }
         public ICommand InitWaterChartCommand { get; set; }
         public ICommand UpdateBodyCommand { get; set; }
@@ -75,6 +141,7 @@ namespace HealthCareApp.ViewModels
         public ICommand AddingWaterCommand { get; set; }
         public MenuViewModel() 
         {
+            _userinfoCollection = GetMongoCollectionFromUserInfo();
             _nutritionCollection = GetMongoCollectionFromNutrition();
             _ExerciseCollection = GetMongoCollectionFromExerciseLesson();
             _waterperdayCollection = GetMongoCollectionFromWaterPerDay();
@@ -308,6 +375,51 @@ namespace HealthCareApp.ViewModels
             var sleeps = _sleepCollection.Find(filter1).ToList();
             var sleep = GetNearestSleep(sleeps);
             LastSleepDurationVM = sleep.SleepTime;
+
+            var filter2 = Builders<UserInformation>.Filter.Eq(x => x.Username, username);
+            var User2 = _userinfoCollection.Find(filter2).FirstOrDefault();
+            if (User2.Weight != null)
+            {
+                WeightVM = User2.Weight.ToString() + "kg";
+                HeightVM = User2.Height.ToString() + "cm";
+                double BMI = BMICalculate(User2.Weight, User2.Height);
+                BMIVM = BMI.ToString();
+                BodyConditionImageVM = TakeImageBMI(BMI);
+                BodyConditionVM = BodyCondition(BMI);
+            }
+
+        }
+        public double BMICalculate(double weight, double height)
+        {
+            double height1 = height / 100;
+            double height2 = height1 * height1;
+            double BMI = weight / height2;
+            return Math.Round(BMI, 1);
+        }
+        public BitmapImage TakeImageBMI(double BMI)
+        {
+            BitmapImage bodyImage = new BitmapImage();
+
+            if (BMI > 40)
+            {
+                string imagePath = "pack://application:,,,/Resources/Images/ObeseClass3.png";
+                BitmapImage bitmap = new BitmapImage(new Uri(imagePath));
+                bodyImage = bitmap;
+            }
+            else
+            {
+                MessageBox.Show("hii");
+            }
+
+            return bodyImage;
+        }
+        public string BodyCondition(double BMI)
+        {
+            if (BMI >= 40)
+            {
+                return "You are obese class III";
+            }
+            return "You are severe thinness";
         }
         private IMongoCollection<Nutrition> GetMongoCollectionFromNutrition()
         {
@@ -352,6 +464,17 @@ namespace HealthCareApp.ViewModels
             var database = client.GetDatabase(databaseName);
 
             return database.GetCollection<Sleep>("Sleep");
+        }
+        private IMongoCollection<UserInformation> GetMongoCollectionFromUserInfo()
+        {
+            // Set your MongoDB connection string and database name
+            string connectionString = "mongodb+srv://HGB3009:HGB30092004@bao-database.xwrghva.mongodb.net/"; // Update with your MongoDB server details
+            string databaseName = "HealthcareManagementDatabase"; // Update with your database name
+
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+
+            return database.GetCollection<UserInformation>("UserInformation");
         }
     }
 }
