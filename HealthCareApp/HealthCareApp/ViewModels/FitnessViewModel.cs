@@ -98,6 +98,10 @@ namespace HealthCareApp.ViewModels
         public ICommand EditLessonCommand { get; set; }
         public ICommand DeleteLessonCommand { get; set; }
         public ICommand SreachExerciseCommand { get; set; }
+        public ICommand ViewByChangeCM { get; set; }
+        public ICommand ViewByDayChangeCM { get; set; }
+        public ICommand ViewByMonthChangeCM { get; set; }
+        public ICommand ViewByYearChangeCM { get; set; }
         public string ViewByMode { get; set; }
         public FitnessViewModel()
         {
@@ -105,6 +109,11 @@ namespace HealthCareApp.ViewModels
             CalculateCaloriesCommand = new RelayCommand<FitnessView>((p) => { return true; }, (p) => CalculateCaloriesCM(p));
             TrainingBtnCommand = new RelayCommand<FitnessView>((p) => { return true; }, (p) => TrainingCM(p));
             AddExerciseCommand = new RelayCommand<FitnessView>((p) => { return true; }, (p) => AddExerciseCM(p));
+
+            ViewByChangeCM = new RelayCommand<FitnessView>((p) => true, (p) => ViewByChange(p));
+            ViewByDayChangeCM = new RelayCommand<FitnessView>((p) => true, (p) => ViewByDayChange(p));
+            ViewByMonthChangeCM = new RelayCommand<FitnessView>((p) => true, (p) => ViewByMonthChange(p));
+            ViewByYearChangeCM = new RelayCommand<FitnessView>((p) => true, (p) => ViewByYearChange(p));
 
             SreachExerciseCommand = new RelayCommand<FitnessView>((p) => true, (p) => SreachExercise(p));
             LoadWindowCommand = new RelayCommand<FitnessView>((p) => true, (p) => LoadWindowCM());
