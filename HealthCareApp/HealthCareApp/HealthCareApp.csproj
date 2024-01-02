@@ -16,9 +16,17 @@
     <None Remove="Resources\Images\MealName.jpg" />
     <None Remove="Resources\Images\MealTime.jpg" />
     <None Remove="Resources\Images\Message_Box_Icon.jpg" />
+    <None Remove="Resources\Images\MildThinness.png" />
+    <None Remove="Resources\Images\Moderatethinness.png" />
+    <None Remove="Resources\Images\Normal.png" />
     <None Remove="Resources\Images\Nutrition_Logo.jpg" />
+    <None Remove="Resources\Images\ObeseClass1.png" />
+    <None Remove="Resources\Images\ObeseClass2.png" />
+    <None Remove="Resources\Images\ObeseClass3.png" />
+    <None Remove="Resources\Images\Overweight.png" />
     <None Remove="Resources\Images\personAvata.jpg" />
     <None Remove="Resources\Images\Reminders_Logo.jpg" />
+    <None Remove="Resources\Images\Severethinness.png" />
     <None Remove="Resources\Images\Sleep_Logo.jpg" />
     <None Remove="Resources\Images\unit.jpg" />
     <None Remove="Resources\Logo.jpg" />
@@ -54,8 +62,32 @@
     <Resource Include="Resources\Images\Logo.jpg" />
     <Resource Include="Resources\Images\MealName.jpg" />
     <Resource Include="Resources\Images\MealTime.jpg" />
+    <Resource Include="Resources\Images\MildThinness.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Moderatethinness.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Normal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\ObeseClass1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\ObeseClass2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\ObeseClass3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Overweight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\screenSignIn.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Severethinness.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
