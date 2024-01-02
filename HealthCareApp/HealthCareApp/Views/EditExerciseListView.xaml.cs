@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace HealthCareApp.Views
 {
     /// <summary>
-    /// Interaction logic for FitnessView.xaml
+    /// Interaction logic for EditExerciseListView.xaml
     /// </summary>
-    public partial class FitnessView : UserControl
+    public partial class EditExerciseListView : UserControl
     {
-        public FitnessView()
+        public EditExerciseListView()
         {
             InitializeComponent();
         }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HealthCareApp.Models;
+using HealthCareApp.Views;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -41,13 +42,10 @@ namespace HealthCareApp.ViewModels
         public AddLessonExerciseViewModel()
         {
             _ExerciseCollection = GetMongoCollectionFromExerciseLesson();
-            ExitBtnCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { ShowNullView(); p.Close(); });
-            AddBtnCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-            {
-                AddLessonExercise();
-            });
+            ExitBtnCommand = new RelayCommand<AddLessonExerciseView>((p) => { return true; }, (p) => { ShowNullView(); p.Close(); });
+            AddBtnCommand = new RelayCommand<AddLessonExerciseView>((p) => { return true; }, (p) => AddLessonExercise(p));
         }
-        private void AddLessonExercise()
+        public void AddLessonExercise(AddLessonExerciseView parameter)
         {
             if (Validation())
             {
@@ -56,15 +54,15 @@ namespace HealthCareApp.ViewModels
                     Username = Const.Instance.Username,
                     ExerciseName = NameExercise,
                     ExerciseType = TypeExercise,
-                    ExerciseTimeEnd = TimeEnd.Value.TimeOfDay,
-                    ExerciseTimeStart = TimeStart.Value.TimeOfDay,
+                    ExerciseTimeEnd = TimeEnd.Value.ToString("HH/mm"),
+                    ExerciseTimeStart = TimeStart.Value.ToString("HH/mm"),
                     ExerciseDay = DayExercise.Value.ToString("dd/MM/yyyy"),
                     Equipment = EquipmentExercise,
                     Calories = Double.Parse(CaloriesExercise),
                 };
                 _ExerciseCollection.InsertOne(newLesson);
                 MessageBox.Show("Add exercise lesson successful!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-                ShowNullView();
+                ShowNullView();              
             }
         }
 
@@ -101,11 +99,6 @@ namespace HealthCareApp.ViewModels
             if (string.IsNullOrEmpty(CaloriesExercise.ToString()))
             {
                 MessageBox.Show("Please enter the Name field");
-                return false;
-            }
-            if (string.IsNullOrEmpty(EquipmentExercise))
-            {
-                MessageBox.Show("Please enter the Equipment field");
                 return false;
             }
             return true;

@@ -65,7 +65,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Foreground="{StaticResource Red}"
-                            Text="Recomend drinking at least 2 liters!"
+                            Text="Recommend drinking at least 2 liters!"
                             FontFamily="Popins"
                             FontSize="15"
                             Margin="10 0 0 0"

@@ -81,10 +81,10 @@
         </Grid>
 
         <Grid 
-            Grid.Row="1"
+    Grid.Row="1"
 
-            Background="{StaticResource White}"
-            Margin="20 0 10 0 ">
+    Background="{StaticResource White}"
+    Margin="20 0 10 0 ">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="6*"></RowDefinition>
@@ -97,18 +97,18 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <ComboBox
-                    x:Name="ViewBy"
-                    SelectedValuePath="Content"
-                    SelectedValue="{Binding ViewByVM}"
-                    Width="180"
-                    FontSize="17"
-                    materialDesign:HintAssist.Hint="View by"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
-                    Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="ViewBy_SelectionChanged">
+            x:Name="ViewBy"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding ViewByVM}"
+            Width="180"
+            FontSize="17"
+            materialDesign:HintAssist.Hint="View by"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding ViewByChangeCM}"
-                                                   CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                                           CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <ComboBoxItem Content="Day"/>
@@ -118,20 +118,20 @@
 
 
                 <ComboBox
-                    Grid.Column="1"
-                    x:Name="ChooseMonth"
-                    SelectedValuePath="Content"
-                    SelectedValue="{Binding ViewByMonthVM}"
-                    FontSize="17"
-                    Width="180"
-                    Visibility="Hidden"
-                    materialDesign:HintAssist.Hint="Choose Month"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
-                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+            Grid.Column="1"
+            x:Name="ChooseMonth"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding ViewByMonthVM}"
+            FontSize="17"
+            Width="180"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Choose Month"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding ViewByMonthChangeCM}"
-                               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                       CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <ComboBoxItem Content="1"/>
@@ -149,20 +149,20 @@
                 </ComboBox>
 
                 <ComboBox
-                    Grid.Column="1"
-                    x:Name="ChooseYear"
-                    SelectedValuePath="Content"
-                    SelectedValue="{Binding ViewByYearVM}"
-                    FontSize="17"
-                    Width="180"
-                    Visibility="Hidden"
-                    materialDesign:HintAssist.Hint="Choose Year"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
-                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+            Grid.Column="1"
+            x:Name="ChooseYear"
+            SelectedValuePath="Content"
+            SelectedValue="{Binding ViewByYearVM}"
+            FontSize="17"
+            Width="180"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Choose Year"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding ViewByYearChangeCM}"
-                                                   CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                                           CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <ComboBoxItem Content="2020"/>
@@ -175,119 +175,119 @@
                 </ComboBox>
 
                 <DatePicker
-                    Grid.Column="1"
-                    x:Name ="ChooseDay"
-                    SelectedDate="{Binding ViewByDayVM}"
-                    FontSize="17"
-                    Width="180"
-                    Visibility="Hidden"
-                    materialDesign:HintAssist.Hint="Pick Date"
-                    Style="{StaticResource MaterialDesignOutlinedDatePicker}">
+            Grid.Column="1"
+            x:Name ="ChooseDay"
+            SelectedDate="{Binding ViewByDayVM}"
+            FontSize="17"
+            Width="180"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="Pick Date"
+            Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="CalendarClosed">
                             <i:InvokeCommandAction Command="{Binding ViewByDayChangeCM}"
-                               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                       CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </DatePicker>
 
 
                 <TextBox
-                    Grid.Column="2"
-                    FontSize="17"
-                    Width="350"    
-                    x:Name="SreachMeal"
-                    Text="{Binding SreachMealVM}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"
-                    Margin="0 0 30 0"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
-                    materialDesign:HintAssist.Hint="What did you eat?"                    
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}">
+            Grid.Column="2"
+            FontSize="17"
+            Width="350"    
+            x:Name="SreachMeal"
+            Text="{Binding SreachMealVM}"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="0 0 30 0"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            materialDesign:HintAssist.Hint="What did you eat?"                    
+            Style="{StaticResource MaterialDesignOutlinedTextBox}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction Command="{Binding SreachMealCommand}"
-                               CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
+                       CommandParameter="{Binding ElementName=NutritionScreen}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBox>
             </Grid>
 
             <Grid 
-                Grid.Row="1"
-                Margin="20 0 20 0">
+        Grid.Row="1"
+        Margin="20 0 20 0">
                 <DataGrid x:Name="mealDataGrid"
-                          Margin="1"
-                          ItemsSource="{Binding MealList}"
-                          AutoGenerateColumns="False"
-                          Style="{DynamicResource DataGridStyle}"
-                          CellStyle="{DynamicResource DataGridCellStyle}"
-                          RowStyle="{DynamicResource DataGridRowStyle}"
-                          Grid.Row="2">
+                  Margin="1"
+                  ItemsSource="{Binding MealList}"
+                  AutoGenerateColumns="False"
+                  Style="{DynamicResource DataGridStyle}"
+                  CellStyle="{DynamicResource DataGridCellStyle}"
+                  RowStyle="{DynamicResource DataGridRowStyle}"
+                  Grid.Row="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn 
-                            Header="Meal Time"
-                            IsReadOnly="True"
-                            Width="130"
-                            Binding="{Binding MealTime}" />
+                    Header="Meal Time"
+                    IsReadOnly="True"
+                    Width="130"
+                    Binding="{Binding MealTime}" />
                         <DataGridTextColumn 
-                            Header="Meal Name"
-                            IsReadOnly="True"
-                            Width="*"
-                            Binding="{Binding MealName}" />
+                    Header="Meal Name"
+                    IsReadOnly="True"
+                    Width="*"
+                    Binding="{Binding MealName}" />
                         <DataGridTextColumn 
-                            Header="Day" 
-                            IsReadOnly="True" 
-                            Width="140"
-                            Binding="{Binding Day}" />
+                    Header="Day" 
+                    IsReadOnly="True" 
+                    Width="140"
+                    Binding="{Binding Day}" />
                         <DataGridTextColumn 
-                            Header="Quantity"
-                            IsReadOnly="True"
-                            Width="130"
-                            Binding="{Binding Quantity}"/>
+                    Header="Quantity"
+                    IsReadOnly="True"
+                    Width="130"
+                    Binding="{Binding Quantity}"/>
                         <DataGridTextColumn 
-                            Header="Unit"
-                            IsReadOnly="True"
-                            Width="130"
-                            Binding="{Binding Unit}"/>
+                    Header="Unit"
+                    IsReadOnly="True"
+                    Width="130"
+                    Binding="{Binding Unit}"/>
                         <DataGridTextColumn 
-                            Header="Calories"
-                            IsReadOnly="True"
-                            Width="130"
-                            Binding="{Binding Calories}"/>
+                    Header="Calories"
+                    IsReadOnly="True"
+                    Width="130"
+                    Binding="{Binding Calories}"/>
                         <DataGridTemplateColumn 
-                            Header="Actions" 
-                            IsReadOnly="True"
-                            Width="180" >
+                    Header="Actions" 
+                    IsReadOnly="True"
+                    Width="180" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel x:Name="subMenuGrid"
-                                                Orientation="Horizontal" 
-                                                Visibility="Visible" 
-                                                HorizontalAlignment="Left"
-                                                Background="Transparent">
+                                        Orientation="Horizontal" 
+                                        Visibility="Visible" 
+                                        HorizontalAlignment="Left"
+                                        Background="Transparent">
                                         <Button 
-                                            HorizontalAlignment="Center"
-                                            Margin="10"
-                                            Command="{Binding DataContext.EditMealCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                            CommandParameter="{Binding}"
-                                            Style="{StaticResource MyBlueButtonStyle}">
+                                    HorizontalAlignment="Center"
+                                    Margin="10"
+                                    Command="{Binding DataContext.EditMealCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource MyBlueButtonStyle}">
                                             <Icon:PackIconBoxIcons 
-                                                Kind="RegularEdit"
-                                                   Width="14"
-                                                   Height="14"
-                                                   VerticalAlignment="Center" />
+                                        Kind="RegularEdit"
+                                           Width="14"
+                                           Height="14"
+                                           VerticalAlignment="Center" />
                                         </Button>
                                         <Button 
-                                            HorizontalAlignment="Center"
-                                            Margin="10"
-                                            Command="{Binding DataContext.DeleteMealCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                            CommandParameter="{Binding}"
-                                            Style="{StaticResource MyRedButtonStyle}">
+                                    HorizontalAlignment="Center"
+                                    Margin="10"
+                                    Command="{Binding DataContext.DeleteMealCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource MyRedButtonStyle}">
                                             <Icon:PackIconIonicons Kind="TrashMD" 
-                                                   Width="14"
-                                                   Height="14"
-                                                   VerticalAlignment="Center" />
+                                           Width="14"
+                                           Height="14"
+                                           VerticalAlignment="Center" />
 
                                         </Button>
                                     </StackPanel>

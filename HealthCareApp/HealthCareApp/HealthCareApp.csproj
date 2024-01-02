@@ -13,6 +13,7 @@
     <None Remove="Resources\Fitness_Logo.png" />
     <None Remove="Resources\Home_Logo.jpg" />
     <None Remove="Resources\Images\calories.jpg" />
+    <None Remove="Resources\Images\LogoIco.ico" />
     <None Remove="Resources\Images\MealName.jpg" />
     <None Remove="Resources\Images\MealTime.jpg" />
     <None Remove="Resources\Images\Message_Box_Icon.jpg" />
@@ -37,6 +38,12 @@
     <None Remove="Resources\screenSignIn.png" />
     <None Remove="Resources\Setting_Logo.jpg" />
     <None Remove="Resources\Sleep_Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\LogoIco.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

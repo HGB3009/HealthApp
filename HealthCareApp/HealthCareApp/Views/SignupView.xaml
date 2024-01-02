@@ -11,6 +11,7 @@
         x:Name="SignupWD"
         Height="600"
         Width="800"
+        Icon="/Resources/Images/LogoIco.ico"
         ResizeMode="NoResize"
         DataContext="{StaticResource SignupVM}"
         WindowStartupLocation="CenterScreen" 
