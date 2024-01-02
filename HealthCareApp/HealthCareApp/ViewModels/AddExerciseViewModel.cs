@@ -211,41 +211,41 @@ namespace HealthCareApp.ViewModels
         private void AddMuscleList()
         {
             List<string> list = new List<string>();
-            list.Add("abdominals");
-            list.Add("abductors");
-            list.Add("adductors");
-            list.Add("biceps");
-            list.Add("calves");
-            list.Add("chest");
-            list.Add("forearms");
-            list.Add("glutes");
-            list.Add("hamstrings");
-            list.Add("lats");
-            list.Add("lower_back");
-            list.Add("middle_back");
-            list.Add("neck");
-            list.Add("quadriceps");
-            list.Add("traps");
-            list.Add("triceps");
+            list.Add("Abdominals");
+            list.Add("Abductors");
+            list.Add("Adductors");
+            list.Add("Biceps");
+            list.Add("Calves");
+            list.Add("Chest");
+            list.Add("Forearms");
+            list.Add("Glutes");
+            list.Add("Hamstrings");
+            list.Add("Lats");
+            list.Add("Lower_back");
+            list.Add("Middle_back");
+            list.Add("Neck");
+            list.Add("Quadriceps");
+            list.Add("Traps");
+            list.Add("Triceps");
             TempMuscleList = list;
         }
         private void AddTypeList()
         {
             List<string> list = new List<string>();
-            list.Add("cardio");
-            list.Add("plyometrics");
-            list.Add("powerlifting");
-            list.Add("strength");
-            list.Add("stretching");
-            list.Add("strongman");
+            list.Add("Cardio");
+            list.Add("Plyometrics");
+            list.Add("Powerlifting");
+            list.Add("Strength");
+            list.Add("Stretching");
+            list.Add("Strongman");
             TempTypeList = list;
         }
         private void AddDifficultyList()
         {
             List<string> list = new List<string>();
-            list.Add("beginner");
-            list.Add("intermediate");
-            list.Add("expert");
+            list.Add("Beginner");
+            list.Add("Intermediate");
+            list.Add("Expert");
             TempDifficultyList = list;
         }
         private void ShowResult(List<exercise> list,int k)
