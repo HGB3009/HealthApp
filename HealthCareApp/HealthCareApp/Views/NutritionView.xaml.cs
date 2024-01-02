@@ -25,5 +25,9 @@ namespace HealthCareApp.Views
             InitializeComponent();
         }
 
+        private void ViewBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

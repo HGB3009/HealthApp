@@ -392,8 +392,55 @@
                         </Grid.ColumnDefinitions>
 
                         <Image
-                            Source="{Binding BodyConditionImageM}"
-                            Margin="10"/>
+                            Grid.Column="0"
+                            x:Name="ObeseClass3"
+                            Source="\Resources\Images\ObeseClass2.png"
+                            Margin="10"
+                            Visibility="Hidden"/>
+
+                        <Image
+                                Grid.Column="0"
+                                x:Name="ObeseClass2"
+                                Source="\Resources\Images\ObeseClass2.png"
+                                Margin="10"
+                            Visibility="Hidden"
+                                />
+                        <Image
+                                Grid.Column="0"
+                                x:Name="ObeseClass1"
+                                Source="\Resources\Images\ObeseClass1.png"
+                                Margin="10"
+                                Visibility="Hidden"/>
+                            <Image
+                                Grid.Column="0"
+                                x:Name="Normal"
+                                Source="\Resources\Images\Normal.png"
+                                Margin="10"
+                                Visibility="Hidden"/>
+                            <Image
+                                Grid.Column="0"
+                                x:Name ="Overweight"
+                                Source="\Resources\Images\Overweight.png"
+                                Margin="10"
+                                Visibility="Hidden"/>
+                            <Image
+                                Grid.Column="0"
+                                x:Name="MildThinness"
+                                Source="\Resources\Images\MildThinness.png"
+                                Margin="10"
+                                Visibility="Hidden"/>
+                            <Image
+                                Grid.Column="0"
+                                x:Name="ModerateThinness"
+                                Source="\Resources\Images\Moderatethinness.png"
+                                Margin="10"
+                                Visibility="Hidden"/>
+                        <Image
+                            Grid.Column="0"
+                                x:Name="SevereThinness"
+                                Source="\Resources\Images\Severethinness.png"
+                                Margin="10"
+                                Visibility ="Hidden"/>
 
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>

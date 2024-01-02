@@ -104,7 +104,7 @@
                     FontSize="17"
                     materialDesign:HintAssist.Hint="View by"
                     materialDesign:TextFieldAssist.HasClearButton="True"
-                    Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="ViewBy_SelectionChanged">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding ViewByChangeCM}"
