@@ -32,6 +32,10 @@ namespace HealthCareApp.Models
 
         [BsonElement("Email")]
         public string Email { get; set; }
+        [BsonElement("Weight ")]
+        public double Weight { get; set; }
+        [BsonElement("Height")]
+        public double Height { get; set; }
 
         [BsonElement("Username")]
         public string Username { get; set; }

@@ -88,6 +88,9 @@
     <Compile Update="Views\SymtompCheckerView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UpdateBodyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UpdateInformationView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -181,6 +184,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SymtompCheckerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UpdateBodyView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UpdateInformationView.xaml">

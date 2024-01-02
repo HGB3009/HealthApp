@@ -30,7 +30,6 @@ namespace HealthCareApp.ViewModels
         public ICommand FitnessFieldCommand { get; set; }
         public ICommand SleepFieldCommand { get; set; }
         public ICommand DiagnosisFieldCommand { get; set; }
-        public ICommand RemindersFieldCommand { get; set; }
         public ICommand SettingFieldCommand { get; set; }
         public ICommand LogoutMainWD { get; set; }
         public ICommand AvatarImageSource { get; set; }
@@ -42,7 +41,6 @@ namespace HealthCareApp.ViewModels
             SleepFieldCommand = new RelayCommand(Sleep);
             NutritionFieldCommand = new RelayCommand(Nutrition);
             DiagnosisFieldCommand = new RelayCommand(Diagnosis);
-            RemindersFieldCommand = new RelayCommand(Reminders);
             SettingFieldCommand = new RelayCommand(Settings);
             CurrentView = new MenuView();
             LogoutMainWD = new RelayCommand<LeftSideBarView>((p) => true, (p) => _Logout(p));
@@ -52,7 +50,6 @@ namespace HealthCareApp.ViewModels
         private void Sleep(object obj) => CurrentView = new SleepView();
         private void Nutrition(object obj) => CurrentView = new NutritionView();
         private void Diagnosis(object obj) => CurrentView = new DiagnosisView();
-        private void Reminders(object obj) => CurrentView = new RemindersView();
 
         private void Settings(object obj) => CurrentView = new SettingsView();
         void _Logout(LeftSideBarView mainWindow)

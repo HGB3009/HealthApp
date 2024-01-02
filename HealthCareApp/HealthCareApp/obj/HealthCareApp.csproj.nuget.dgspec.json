@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {}
+    "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {
+    "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
+        "projectUniqueName": "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
         "projectName": "HealthCareApp",
-        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\obj\\",
+        "projectPath": "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\HealthCareApp.csproj",
+        "packagesPath": "C:\\Users\\baoba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\baoba\\Documents\\GitHub\\HealthApp\\HealthCareApp\\HealthCareApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\baoba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
