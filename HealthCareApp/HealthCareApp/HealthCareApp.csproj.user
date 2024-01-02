@@ -58,22 +58,7 @@
     <Compile Update="Views\MenuView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\NutrientsView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\NutritionView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\RemindersDoctorView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\RemindersDrinkView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\RemindersMealView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\RemindersView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\SettingsView.xaml.cs">
@@ -159,22 +144,7 @@
     <Page Update="Views\MenuView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\NutrientsView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Views\NutritionView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\RemindersDoctorView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\RemindersDrinkView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\RemindersMealView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\RemindersView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SettingsView.xaml">

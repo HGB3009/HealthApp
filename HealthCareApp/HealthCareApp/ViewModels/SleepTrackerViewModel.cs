@@ -14,7 +14,6 @@
         public class SleepTrackerViewModel : BaseViewModel
         {
             private readonly IMongoCollection<Sleep> _sleepCollection;
-            private readonly IMongoCollection<SleepPerDay> _sleepPerDayCollection;
 
             private string _username;
             public string UserNameVM
@@ -112,7 +111,7 @@
             public SleepTrackerViewModel() 
             {
                 _sleepCollection = GetMongoCollectionFromSleep();
-                _sleepPerDayCollection = GetMongoCollectionFromSleepPerDay();
+
                 ConfirmCommand = new RelayCommand<SleepTrackerView>(p => true, p => ConfirmCM(p));
                 CancelCommand = new RelayCommand<SleepTrackerView>((p) => { return true; }, (p) => { p.Close(); });
             }  
@@ -133,27 +132,6 @@
                     };
                     _sleepCollection.InsertOne(newSleep);
 
-                // Update SleepPerDay
-                List<SleepPerDay> sleepPerDayList = newSleep.ConvertToSleepPerDayList();
-                foreach (var sleepPerDay in sleepPerDayList)
-                {
-                    // Check if the document already exists for the day
-                    var filter = Builders<SleepPerDay>.Filter.Eq("Username", sleepPerDay.Username) &
-                                 Builders<SleepPerDay>.Filter.Eq("Day", sleepPerDay.Day);
-                    var existingSleepPerDay = _sleepPerDayCollection.Find(filter).FirstOrDefault();
-
-                    if (existingSleepPerDay != null)
-                    {
-                        // Update existing document
-                        var update = Builders<SleepPerDay>.Update.Set("Hour", (double)existingSleepPerDay.Hour + (double)sleepPerDay.Hour);
-                        _sleepPerDayCollection.UpdateOne(filter, update);
-                    }
-                    else
-                    {
-                        // Insert new document
-                        _sleepPerDayCollection.InsertOne(sleepPerDay);
-                    }
-                }
 
                 MessageBox.Show("Add sleep successful!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                     StartTimeVM = null;
@@ -236,16 +214,5 @@
 
                 return database.GetCollection<Sleep>("Sleep");
             }
-        private IMongoCollection<SleepPerDay> GetMongoCollectionFromSleepPerDay()
-        {
-            // Set your MongoDB connection string and database name
-            string connectionString = "mongodb+srv://HGB3009:HGB30092004@bao-database.xwrghva.mongodb.net/"; // Update with your MongoDB server details
-            string databaseName = "HealthcareManagementDatabase"; // Update with your database name
-
-            var client = new MongoClient(connectionString);
-            var database = client.GetDatabase(databaseName);
-
-            return database.GetCollection<SleepPerDay>("SleepPerDay");
-        }
     }
     }
