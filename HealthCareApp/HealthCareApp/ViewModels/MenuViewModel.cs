@@ -124,16 +124,6 @@ namespace HealthCareApp.ViewModels
                 }
             }
         }
-        private BitmapImage _bodyconditionImage;
-        public BitmapImage BodyConditionImageVM
-        {
-            get => _bodyconditionImage;
-            set
-            {
-                _bodyconditionImage = value;
-                OnPropertyChanged(nameof(BodyConditionImageVM));
-            }
-        }
         public ICommand InitPieChartCommand { get; set; }
         public ICommand InitWaterChartCommand { get; set; }
         public ICommand UpdateBodyCommand { get; set; }
@@ -178,6 +168,7 @@ namespace HealthCareApp.ViewModels
         }
         public void AddingWaterCM(MenuView view)
         {
+
             string username = Const.Instance.Username;
             string currentDay = DateTime.Now.ToString("dd/MM/yyyy");
             double amount = Convert.ToDouble(AmountOfWaterVM);
@@ -374,7 +365,14 @@ namespace HealthCareApp.ViewModels
             var filter1 = Builders<Sleep>.Filter.Eq(x => x.Username, username);
             var sleeps = _sleepCollection.Find(filter1).ToList();
             var sleep = GetNearestSleep(sleeps);
-            LastSleepDurationVM = sleep.SleepTime;
+            if (sleep != null)
+            {
+                LastSleepDurationVM = sleep.SleepTime;
+            }
+            else
+            {
+                LastSleepDurationVM = "N/A";
+            }
 
             var filter2 = Builders<UserInformation>.Filter.Eq(x => x.Username, username);
             var User2 = _userinfoCollection.Find(filter2).FirstOrDefault();
@@ -383,11 +381,10 @@ namespace HealthCareApp.ViewModels
                 WeightVM = User2.Weight.ToString() + "kg";
                 HeightVM = User2.Height.ToString() + "cm";
                 double BMI = BMICalculate(User2.Weight, User2.Height);
+                TakePicture(p, BMI);
                 BMIVM = BMI.ToString();
-                BodyConditionImageVM = TakeImageBMI(BMI);
                 BodyConditionVM = BodyCondition(BMI);
             }
-
         }
         public double BMICalculate(double weight, double height)
         {
@@ -396,30 +393,128 @@ namespace HealthCareApp.ViewModels
             double BMI = weight / height2;
             return Math.Round(BMI, 1);
         }
-        public BitmapImage TakeImageBMI(double BMI)
+        public void TakePicture(MenuView p, double BMI)
         {
-            BitmapImage bodyImage = new BitmapImage();
-
-            if (BMI > 40)
+            if (BMI >= 40)
             {
-                string imagePath = "pack://application:,,,/Resources/Images/ObeseClass3.png";
-                BitmapImage bitmap = new BitmapImage(new Uri(imagePath));
-                bodyImage = bitmap;
+                p.ObeseClass2.Visibility = Visibility.Hidden;
+                p.ObeseClass1.Visibility = Visibility.Hidden;
+                p.Normal.Visibility = Visibility.Hidden;
+                p.Overweight.Visibility = Visibility.Hidden;
+                p.SevereThinness.Visibility = Visibility.Hidden;
+                p.ModerateThinness.Visibility = Visibility.Hidden;
+                p.MildThinness.Visibility = Visibility.Hidden;
+                p.ObeseClass3.Visibility = Visibility.Visible;
             }
-            else
+            else if (35 <= BMI && BMI < 40)
             {
-                MessageBox.Show("hii");
+                p.ObeseClass3.Visibility = Visibility.Hidden;
+                p.ObeseClass1.Visibility = Visibility.Hidden;
+                p.Normal.Visibility = Visibility.Hidden;
+                p.Overweight.Visibility = Visibility.Hidden;
+                p.SevereThinness.Visibility = Visibility.Hidden;
+                p.ModerateThinness.Visibility = Visibility.Hidden;
+                p.MildThinness.Visibility = Visibility.Hidden;
+                p.ObeseClass2.Visibility = Visibility.Visible;
             }
-
-            return bodyImage;
+            else if (30 <= BMI && BMI < 35)
+            {
+                p.ObeseClass3.Visibility = Visibility.Hidden;
+                p.ObeseClass2.Visibility = Visibility.Hidden;
+                p.Normal.Visibility = Visibility.Hidden;
+                p.Overweight.Visibility = Visibility.Hidden;
+                p.SevereThinness.Visibility = Visibility.Hidden;
+                p.ModerateThinness.Visibility = Visibility.Hidden;
+                p.MildThinness.Visibility = Visibility.Hidden;
+                p.ObeseClass1.Visibility = Visibility.Visible;
+            }
+            else if (25 <= BMI && BMI < 30)
+            {
+                p.ObeseClass3.Visibility = Visibility.Hidden;
+                p.ObeseClass2.Visibility = Visibility.Hidden;
+                p.ObeseClass1.Visibility = Visibility.Hidden;
+                p.Normal.Visibility = Visibility.Hidden;
+                p.SevereThinness.Visibility = Visibility.Hidden;
+                p.ModerateThinness.Visibility = Visibility.Hidden;
+                p.MildThinness.Visibility = Visibility.Hidden;
+                p.Overweight.Visibility = Visibility.Visible;
+            }
+            else if (18.5 <= BMI && BMI < 25)
+            {
+                p.ObeseClass3.Visibility = Visibility.Hidden;
+                p.ObeseClass2.Visibility = Visibility.Hidden;
+                p.ObeseClass1.Visibility = Visibility.Hidden;
+                p.Overweight.Visibility = Visibility.Hidden;
+                p.SevereThinness.Visibility = Visibility.Hidden;
+                p.ModerateThinness.Visibility = Visibility.Hidden;
+                p.MildThinness.Visibility = Visibility.Hidden;
+                p.Normal.Visibility = Visibility.Visible;
+            }
+            else if (17 <= BMI && BMI < 18.5)
+            {
+                p.ObeseClass3.Visibility = Visibility.Hidden;
+                p.ObeseClass2.Visibility = Visibility.Hidden;
+                p.ObeseClass1.Visibility = Visibility.Hidden;
+                p.Normal.Visibility = Visibility.Hidden;
+                p.Overweight.Visibility = Visibility.Hidden;
+                p.SevereThinness.Visibility = Visibility.Hidden;
+                p.ModerateThinness.Visibility = Visibility.Hidden;
+                p.MildThinness.Visibility = Visibility.Visible;
+            }
+            else if (16 <= BMI && BMI < 17)
+            {
+                p.ObeseClass3.Visibility = Visibility.Hidden;
+                p.ObeseClass2.Visibility = Visibility.Hidden;
+                p.ObeseClass1.Visibility = Visibility.Hidden;
+                p.Normal.Visibility = Visibility.Hidden;
+                p.Overweight.Visibility = Visibility.Hidden;
+                p.SevereThinness.Visibility = Visibility.Hidden;
+                p.MildThinness.Visibility = Visibility.Hidden;
+                p.ModerateThinness.Visibility = Visibility.Visible;
+            }
+            else if (BMI <= 16)
+            {
+                p.ObeseClass3.Visibility = Visibility.Hidden;
+                p.ObeseClass2.Visibility = Visibility.Hidden;
+                p.ObeseClass1.Visibility = Visibility.Hidden;
+                p.Normal.Visibility = Visibility.Hidden;
+                p.Overweight.Visibility = Visibility.Hidden;
+                p.ModerateThinness.Visibility = Visibility.Hidden;
+                p.MildThinness.Visibility = Visibility.Hidden;
+                p.SevereThinness.Visibility = Visibility.Visible;
+            }
         }
         public string BodyCondition(double BMI)
         {
             if (BMI >= 40)
             {
-                return "You are obese class III";
+                return "You are Obese Class III";
             }
-            return "You are severe thinness";
+            else if (35 <= BMI && BMI < 40)
+            {
+                return "You are Obese Class II";
+            }
+            else if (30 <= BMI && BMI < 35)
+            {
+                return "You are Obese Class I";
+            }
+            else if (25 <= BMI && BMI < 30)
+            {
+                return "You are Overweight";
+            }
+            else if (18.5 <= BMI && BMI < 25)
+            {
+                return "You are Normal";
+            }
+            else if (17 <= BMI && BMI < 18.5)
+            {
+                return "You are Mild Thinness";
+            }
+            else if (16 <= BMI && BMI < 17)
+            {
+                return "You are obese Moderate Thinness";
+            }
+            return "You are Severe Thinness";
         }
         private IMongoCollection<Nutrition> GetMongoCollectionFromNutrition()
         {

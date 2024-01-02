@@ -52,24 +52,11 @@
   <ItemGroup>
     <Resource Include="Resources\Images\calories.jpg" />
     <Resource Include="Resources\Images\Logo.jpg" />
-    <Resource Include="Resources\Images\Logout_Logo.jpg" />
     <Resource Include="Resources\Images\MealName.jpg" />
     <Resource Include="Resources\Images\MealTime.jpg" />
-    <Resource Include="Resources\Images\Message_Box_Icon.jpg" />
-    <Resource Include="Resources\Images\Nutrition_Logo.jpg">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\personAvata.jpg" />
-    <Resource Include="Resources\Images\Reminders_Logo.jpg">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Images\screenSignIn.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Images\Sleep_Logo.jpg">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Images\unit.jpg" />
   </ItemGroup>
 
 </Project>
