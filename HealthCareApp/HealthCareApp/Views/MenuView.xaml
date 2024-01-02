@@ -376,8 +376,124 @@
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="8*"/>
-                        <Gr
                     </Grid.RowDefinitions>
+                    <TextBlock
+                        Text="Your body condition"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        Margin="10 0 0 0"
+                        Foreground="Green"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Source="{Binding BodyConditionImageM}"
+                            Margin="10"/>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid 
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Text="{Binding WeightVM}"
+                                        FontSize="29"
+                                        FontWeight="Bold"
+                                        Margin="10 0 0 15"
+                                        Foreground="Black"/>
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Text="Weight"
+                                        FontSize="20"
+                                        FontWeight="Medium"
+                                        Margin="20 0 0 0"
+                                        Foreground="{StaticResource LightBlackColor}"/>
+                                </Grid>
+
+                                <Grid 
+                                    Grid.Column="1"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Text="{Binding HeightVM}"
+                                        FontSize="29"
+                                        FontWeight="Bold"
+                                        Margin="10 0 0 15"
+                                        Foreground="Black"/>
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Text="Height"
+                                        FontSize="20"
+                                        FontWeight="Medium"
+                                        Margin="20 0 0 0"
+                                        Foreground="{StaticResource LightBlackColor}"/>
+                                </Grid>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock
+                                    Text="Your BMI: "
+                                    FontSize="29"
+                                    FontWeight="Bold"
+                                    Margin="10 0 0 0"
+                                    Foreground="Blue"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"/>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Text="{Binding BMIVM}"
+                                    FontSize="29"
+                                    FontWeight="Bold"
+                                    Margin="10 0 0 0"
+                                    Foreground="Black"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom"/>
+                            </Grid>
+
+                            <TextBlock
+                                Grid.Row="2"
+                                Text="{Binding BodyConditionVM}"
+                                TextWrapping="WrapWithOverflow"
+                                FontSize="30"
+                                FontWeight="Bold"
+                                Margin="10 0 0 10"
+                                Foreground="Red"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"/>
+
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Border>
         </Grid>
