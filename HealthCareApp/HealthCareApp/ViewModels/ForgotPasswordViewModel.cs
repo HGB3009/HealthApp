@@ -14,6 +14,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MongoDB.Bson.Serialization.Conventions;
+using System.Text.RegularExpressions;
 
 namespace HealthCareApp.ViewModels
 {
@@ -258,17 +259,26 @@ namespace HealthCareApp.ViewModels
         {
             if (!string.IsNullOrEmpty(EmailVM))
             {
-                var user = GetUserInfo(EmailVM);
-
-                if (user == null)
+                if (IsEmailFormatValid(EmailVM))
                 {
-                    MessageBox.Show("The email you entered is not registered for an account!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    var user = GetUserInfo(EmailVM);
+
+                    if (user == null)
+                    {
+                        MessageBox.Show("The email you entered is not registered for an account!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        p.Email.Focus();
+                        return false;
+                    }
+
+                    UsernameVM = user.Username;
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Please enter the email in a correct format!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
                     p.Email.Focus();
                     return false;
                 }
-
-                UsernameVM = user.Username;
-                return true;
             }
             else
             {
@@ -288,7 +298,11 @@ namespace HealthCareApp.ViewModels
             var filter = Builders<UserInformation>.Filter.Eq(u => u.Email, Email);
             return _userinfoCollection.Find(filter).FirstOrDefault();
         }
-
+        private bool IsEmailFormatValid(string email)
+        {
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, emailPattern);
+        }
         private IMongoCollection<Account> GetMongoCollectionFromAccount()
         {
             // Set your MongoDB connection string and database name

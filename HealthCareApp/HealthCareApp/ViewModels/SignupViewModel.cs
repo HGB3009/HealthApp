@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -175,9 +176,9 @@ namespace HealthCareApp.ViewModels
             BrowseImageCommand = new RelayCommand<SignupView>(p => true, p => _BrowseImage(p));
         }
 
-        public void SignUpCM(Window loginWindow)
+        public void SignUpCM(SignupView p)
         {
-            if (ValidateSignUp())
+            if (ValidateSignUp(p))
             {
                 //Create new account
                 Account newAccount = new Account
@@ -206,26 +207,88 @@ namespace HealthCareApp.ViewModels
 
                 MessageBox.Show("Sign up successful!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                loginWindow.Close();
+                p.Close();
             }
 
         }
-        private bool ValidateSignUp()
+        private bool ValidateSignUp(SignupView p)
         {
 
-            if (string.IsNullOrEmpty(UsernameVM) || string.IsNullOrEmpty(PasswordVM) || string.IsNullOrEmpty(RePassword))
+            if (string.IsNullOrEmpty(UsernameVM))
             {
-                MessageBox.Show("Please enter all required fields!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please enter the username!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Username.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(PasswordVM))
+            {
+                MessageBox.Show("Please enter the password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Password.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(RePassword))
+            {
+                MessageBox.Show("Please enter the re-password!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.RePassword.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(NameVM))
+            {
+                MessageBox.Show("Please enter the name!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Name.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(GenderVM))
+            {
+                MessageBox.Show("Please enter the gender!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Gender.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(PhoneNumberVM))
+            {
+                MessageBox.Show("Please enter the phone number!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.PhoneNumber.Focus();
+                return false;
+            }
+            if (BirthdayVM == null)
+            {
+                MessageBox.Show("Please enter the birthday!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Birthday.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(AddressVM))
+            {
+                MessageBox.Show("Please enter the address!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Address.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(EmailVM))
+            {
+                MessageBox.Show("Please enter the email!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Email.Focus();
+                return false;
+            }
+            if (!IsEmailFormatValid(EmailVM))
+            {
+                MessageBox.Show("Please enter the email in a correct format!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                p.Email.Focus();
                 return false;
             }
 
             if (PasswordVM != RePassword)
             {
                 MessageBox.Show("Password and Confirm Password do not match!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                
                 return false;
             }
 
+
             return true;
+        }
+        private bool IsEmailFormatValid(string email)
+        {
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, emailPattern);
         }
         private void _BrowseImage(SignupView parameter)
         {

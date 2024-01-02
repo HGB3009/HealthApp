@@ -209,10 +209,12 @@ namespace HealthCareApp.ViewModels
             finalFilter &= filterBuilder.Eq(x => x.Day, currentDay);
 
             var amountwater = _waterperdayCollection.Find(finalFilter).FirstOrDefault();
+
             waterlabelPoint = chartPoint => string.Format("{0:N0}", chartPoint.Y);
             if (amountwater != null)
             {
-                if(amountwater.AmountOfWater > 2)
+                TotalVM = amountwater.AmountOfWater.ToString() + " L";
+                if (amountwater.AmountOfWater > 2)
                 {
                     WaterPieSeriesCollection = new SeriesCollection
                 {
@@ -250,6 +252,7 @@ namespace HealthCareApp.ViewModels
                 };
                 }
             }
+            else { TotalVM = "N/A"; }
         }
         public void InitPieChart(MenuView homeWindow)
         {
@@ -359,7 +362,6 @@ namespace HealthCareApp.ViewModels
             {
                 InitPieChart(p);
                 InitWaterChart(p);
-                TotalVM = User.AmountOfWater.ToString() + " L";
             }
 
             var filter1 = Builders<Sleep>.Filter.Eq(x => x.Username, username);
@@ -371,7 +373,7 @@ namespace HealthCareApp.ViewModels
             }
             else
             {
-                LastSleepDurationVM = "N/A";
+                LastSleepDurationVM = "NaN";
             }
 
             var filter2 = Builders<UserInformation>.Filter.Eq(x => x.Username, username);
@@ -488,33 +490,37 @@ namespace HealthCareApp.ViewModels
         {
             if (BMI >= 40)
             {
-                return "You are Obese Class III";
+                return "You are Obese Class III!";
             }
             else if (35 <= BMI && BMI < 40)
             {
-                return "You are Obese Class II";
+                return "You are Obese Class II!";
             }
             else if (30 <= BMI && BMI < 35)
             {
-                return "You are Obese Class I";
+                return "You are Obese Class I!";
             }
             else if (25 <= BMI && BMI < 30)
             {
-                return "You are Overweight";
+                return "You are Overweight!";
             }
             else if (18.5 <= BMI && BMI < 25)
             {
-                return "You are Normal";
+                return "You are Normal!";
             }
             else if (17 <= BMI && BMI < 18.5)
             {
-                return "You are Mild Thinness";
+                return "You are Mild Thinness!";
             }
             else if (16 <= BMI && BMI < 17)
             {
-                return "You are obese Moderate Thinness";
+                return "You are obese Moderate Thinness!";
             }
-            return "You are Severe Thinness";
+            else if (0 < BMI && BMI < 16)
+            {
+                return "You are severe Moderate Thinness!";
+            }
+            return "You are ";
         }
         private IMongoCollection<Nutrition> GetMongoCollectionFromNutrition()
         {
