@@ -78,9 +78,9 @@ namespace HealthCareApp.ViewModels
                         Const.Instance.SetUser(Username);
                         MainWindowView mainWindow = new MainWindowView();
                         Application.Current.MainWindow = mainWindow;
+                        loginWindow.Close();
                         mainWindow.Show();
                         IsLogin = true;
-                        loginWindow.Close();
                     }
                     else
                     {
