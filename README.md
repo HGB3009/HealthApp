@@ -21,7 +21,7 @@
 * **Mã lớp:** IT008.O14
 * **Năm học:** HK1 (2023 - 2024)
 * **Giảng viên**: Thầy Nguyễn Tấn Toàn, giảng viên Khoa Công Nghệ Phần Mềm, trường Đại học Công nghệ Thông tin, Đại học Quốc gia Thành phố Hồ Chí Minh
-* 
+ 
 ## 1. Mở đầu
 * Your HealthCare Companion là một ứng dụng quản lý sức khỏe cá nhân, áp dụng công nghệ để cung cấp một trải nghiệm quản lý sức khỏe toàn diện và tùy biến. Phần mềm này hỗ trợ người dùng trong việc theo dõi và quản lý sức khỏe hàng ngày.
   
