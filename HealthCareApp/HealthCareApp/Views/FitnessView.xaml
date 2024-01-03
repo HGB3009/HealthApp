@@ -233,12 +233,12 @@
                         <DataGridTextColumn 
                             Header="Time Start" 
                             IsReadOnly="True" 
-                            Width="140"
+                            Width="100"
                             Binding="{Binding ExerciseTimeStart}" />
                         <DataGridTextColumn 
                             Header="End Start"
                             IsReadOnly="True"
-                            Width="130"
+                            Width="100"
                             Binding="{Binding ExerciseTimeEnd}"/>
                         <DataGridTextColumn 
                             Header="Exercise Day"
