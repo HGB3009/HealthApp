@@ -222,7 +222,12 @@ namespace HealthCareApp.ViewModels
         {
             if (ValidateResetPassword(p))
             {
+                MessageBox.Show("You can changed your password now!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                 isValidCode = true;
+            }
+            else
+            {
+                isValidCode = false;
             }
         }
         private string GenerateRandomVerificationCode()
