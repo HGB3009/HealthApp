@@ -76,7 +76,7 @@
 
 ## 6. Hướng dẫn cài đặt và sử dụng
 ### Với người sử dụng 
-* Download và giải nén phần mềm tại đường dẫn: [https://tinyurl.com/HealthcareApp2023](https://drive.google.com/drive/folders/1JwskxdjTCxUPm3L_oCvpkcpNG4QZV7c8?usp=sharing).
+* Download và giải nén phần mềm tại đường dẫn: [[https://tinyurl.com/HealthcareApp2023](https://drive.google.com/drive/folders/1JwskxdjTCxUPm3L_oCvpkcpNG4QZV7c8?usp=sharing).](http://tinyurl.com/HealthCareApp2023)
 * Chạy file exe để sử dụng.
 
 
