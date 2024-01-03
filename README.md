@@ -74,9 +74,21 @@
 * Hỗ trợ lưu trữ mã nguồn, collab-coding: GitHub (Desktop - Web).
 * Thiết kế UI: Adobe Illustrator, Adobe Photoshop, Figma.
 
-## 6.Hướng dẫn cài đặt và sử dụng
+## 6. Hướng dẫn cài đặt và sử dụng
+### Với người sử dụng 
+* Download và giải nén phần mềm tại đường dẫn: [https://tinyurl.com/FFM2021](https://drive.google.com/drive/folders/1JwskxdjTCxUPm3L_oCvpkcpNG4QZV7c8?usp=sharing).
+* Chạy file exe để sử dụng.
 
 
-## 7.Phản hồi 
+### Với nhà phát triển 
+
+* Download và giải nén phền mềm tại Github: [https://github.com/HGB3009/HealthApp](https://github.com/HGB3009/HealthApp).
+
+## 7. Hướng phát triển trong tương lai
+* Thêm các chứng năng liên quan đến việc quản lý sức khỏe người dùng theo chiều sâu.
+* Thêm các api hỗ trợ gợi ý người dùng liên quan đến việc ăn uống.
+* Hỗ trợ người dùng theo các mục đích sức khỏe người dùng đề ra.
+
+## 8. Phản hồi 
 
 Tạo phản hồi ở mục Issues, mỗi phản hồi của bạn sẽ giúp chúng tôi cải thiện ứng dụng tốt hơn. Cảm ơn vì sự giúp đỡ! 
