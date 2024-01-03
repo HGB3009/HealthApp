@@ -210,7 +210,6 @@ namespace HealthCareApp.ViewModels
                     mail.To.Add(EmailVM);
                     client.Send(mail);
                     isValidEmail = true;
-                    ReloadWindow(p);
                     MessageBox.Show("Verification code sent to registration email!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
@@ -224,7 +223,6 @@ namespace HealthCareApp.ViewModels
             if (ValidateResetPassword(p))
             {
                 isValidCode = true;
-                ReloadWindow(p);
             }
         }
         private string GenerateRandomVerificationCode()
