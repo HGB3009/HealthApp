@@ -220,12 +220,6 @@ namespace HealthCareApp.ViewModels
                 parameter.Calories.Focus();
                 return false;
             }
-            if (!double.TryParse(CaloriesVM, out _))
-            {
-                MessageBox.Show("Please enter the calories in numeric format!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
-                parameter.Calories.Focus();
-                return false;
-            }
             return true;
         }
         private void _BrowseImage(AddMealView parameter)
