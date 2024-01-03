@@ -46,7 +46,7 @@ namespace HealthCareApp.Models
             public string brand_name { get; set; }
             public int serving_qty { get; set; }
             public string serving_unit { get; set; }
-            public int serving_weight_grams { get; set; }
+            public double serving_weight_grams { get; set; }
             public double nf_calories { get; set; }
             public double nf_total_fat { get; set; }
             public double nf_saturated_fat { get; set; }
