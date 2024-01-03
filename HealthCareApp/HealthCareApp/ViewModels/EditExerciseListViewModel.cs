@@ -108,7 +108,7 @@ namespace HealthCareApp.ViewModels
                 _ExerciseCollection.UpdateOne(filter, updateDefinition);
                 isEdit = true;
             }
-            string starttime = TimeStart.HasValue ? TimeStart.Value.ToString("HH/mm") : null;
+            string starttime = TimeStart.HasValue ? TimeStart.Value.ToString("HH:mm tt") : null;
             if (starttime != ex.ExerciseTimeStart)
             {
                 ex.ExerciseTimeStart = starttime;
@@ -118,7 +118,7 @@ namespace HealthCareApp.ViewModels
                 _ExerciseCollection.UpdateOne(filter, updateDefinition);
                 isEdit = true;
             }
-            string endtime = TimeEnd.HasValue ? TimeEnd.Value.ToString("HH/mm") : null;
+            string endtime = TimeEnd.HasValue ? TimeEnd.Value.ToString("HH:mm tt") : null;
             if (endtime != ex.ExerciseTimeEnd)
             {
                 ex.ExerciseTimeEnd = endtime;
@@ -168,12 +168,12 @@ namespace HealthCareApp.ViewModels
                 NameExercise = ex.ExerciseName;
                 TypeExercise = ex.ExerciseType;
                 DateTime starttime;
-                if (DateTime.TryParseExact(ex.ExerciseTimeStart, "HH/mm", null, System.Globalization.DateTimeStyles.None, out starttime))
+                if (DateTime.TryParseExact(ex.ExerciseTimeStart, "HH:mm tt", null, System.Globalization.DateTimeStyles.None, out starttime))
                 {
                     TimeStart = starttime;
                 }
                 DateTime endtime;
-                if (DateTime.TryParseExact(ex.ExerciseTimeEnd, "HH/mm", null, System.Globalization.DateTimeStyles.None, out endtime))
+                if (DateTime.TryParseExact(ex.ExerciseTimeEnd, "HH:mm tt", null, System.Globalization.DateTimeStyles.None, out endtime))
                 {
                     TimeEnd = endtime;
                 }

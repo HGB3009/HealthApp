@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Reflection.Metadata.BlobBuilder;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HealthCareApp.ViewModels
 {
@@ -213,7 +214,7 @@ namespace HealthCareApp.ViewModels
             waterlabelPoint = chartPoint => string.Format("{0:N0}", chartPoint.Y);
             if (amountwater != null)
             {
-                TotalVM = amountwater.AmountOfWater.ToString() + " L";
+                TotalVM = Math.Round(amountwater.AmountOfWater, 2).ToString() + " L";
                 if (amountwater.AmountOfWater > 2)
                 {
                     WaterPieSeriesCollection = new SeriesCollection
@@ -221,7 +222,7 @@ namespace HealthCareApp.ViewModels
                     new PieSeries
                     {
                         Title = "Drink",
-                        Values = new ChartValues<double> { amountwater.AmountOfWater },
+                        Values = new ChartValues<double> { Math.Round(amountwater.AmountOfWater,2) },
                         Fill = (Brush)new BrushConverter().ConvertFrom("Blue"),
                         DataLabels = true,
                         FontSize = 16,
@@ -236,7 +237,7 @@ namespace HealthCareApp.ViewModels
                     new PieSeries
                     {
                         Title = "Drink",
-                        Values = new ChartValues<double> { amountwater.AmountOfWater },
+                        Values = new ChartValues<double> { Math.Round(amountwater.AmountOfWater,2) },
                         Fill = (Brush)new BrushConverter().ConvertFrom("Blue"),
                         DataLabels = true,
                         FontSize = 16,
@@ -244,7 +245,7 @@ namespace HealthCareApp.ViewModels
                     new PieSeries
                     {
                         Title="Not Drink",
-                        Values = new ChartValues<double> { leftwater },
+                        Values = new ChartValues<double> { Math.Round(leftwater,2) },
                         Fill = (Brush)new BrushConverter().ConvertFrom("Gray"),
                         DataLabels = true,
                         FontSize = 16,
@@ -284,7 +285,7 @@ namespace HealthCareApp.ViewModels
                     new PieSeries
                     {
                         Title = "Burn",
-                        Values = new ChartValues<double> { burnCalories },
+                        Values = new ChartValues<double> { Math.Round(burnCalories, 2) },
                         Fill = (Brush)new BrushConverter().ConvertFrom("#FF7222"),
                         DataLabels = true,
                         FontSize = 16,
@@ -293,7 +294,7 @@ namespace HealthCareApp.ViewModels
                     new PieSeries
                     {
                         Title="Eaten",
-                        Values = new ChartValues<double> { eatenCalories },
+                        Values = new ChartValues<double> { Math.Round(eatenCalories,2) },
                         Fill = (Brush)new BrushConverter().ConvertFrom("Green"),
                         DataLabels = true,
                         FontSize = 16,
@@ -325,7 +326,7 @@ namespace HealthCareApp.ViewModels
                     new PieSeries
                     {
                         Title = "Burn",
-                        Values = new ChartValues<double> { burnCalories },
+                        Values = new ChartValues<double> { Math.Round(burnCalories,2) },
                         Fill = (Brush)new BrushConverter().ConvertFrom("Orange"),
                         DataLabels = true,
                         FontSize = 16,
@@ -334,7 +335,7 @@ namespace HealthCareApp.ViewModels
                     new PieSeries
                     {
                         Title="Eaten",
-                        Values = new ChartValues<double> { eatenCalories },
+                        Values = new ChartValues<double> { Math.Round(eatenCalories,2) },
                         Fill = (Brush)new BrushConverter().ConvertFrom("Green"),
                         DataLabels = true,
                         FontSize = 16,
