@@ -12,8 +12,8 @@
 | STT    | MSSV          | Họ và Tên              |Chức Vụ    | Github                                                  | Email                   |
 | ------ |:-------------:| ----------------------:|----------:|--------------------------------------------------------:|-------------------------:
 | 1      | 22520103      | Huỳnh Gia Bảo          |Nhóm trưởng|[HGB3009](https://github.com/HGB3009)                    |22520103@gm.uit.edu.vn   |
-| 2      | 22521474      | Tô Vĩnh Tiến           |Thành viên |[PhanVanDiej](https://github.com/PhanVanDiej)            |22521474@gm.uit.edu.vn   |
-| 3      | 22520182      | Phan Văn Đại           |Thành viên |[Terry-UIT](https://github.com/Terry-UIT)                |22520182@gm.uit.edu.vn   |
+| 2      | 22520182      | Phan Văn Đại           |Thành viên |[PhanVanDiej](https://github.com/PhanVanDiej)            |22520182@gm.uit.edu.vn   |
+| 3      | 22521474      | Tô Vĩnh Tiến           |Thành viên |[Terry-UIT](https://github.com/Terry-UIT)                |22521474@gm.uit.edu.vn   |
 
 ## GIỚI THIỆU MÔN HỌC
 * **Tên môn học:** Lập Trình Trực Quan
