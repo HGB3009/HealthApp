@@ -227,7 +227,6 @@ namespace HealthCareApp.ViewModels
 
                     _userinfoCollection.UpdateOne(filter, updateDefinition);
                     _LoadWindow(parameter);
-                    ReloadWindow();
                 }
             }
             catch (Exception ex)
